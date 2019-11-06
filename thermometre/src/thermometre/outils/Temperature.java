@@ -1,19 +1,16 @@
 package thermometre.outils;
 
-import java.util.regex.Pattern;;
 
 public class Temperature {
 	
-	private String date;
+	private int date;
 	
 	private String heure;
 	
 	private String temp;
-	
-	/* private static Pattern format = */
-	
-	public Temperature(String temp) {
 		
+	public Temperature(String temp) {
+		this.date = temp.charAt(0)+temp.charAt(1);
 	}
 
 	public String getDate() {
@@ -27,5 +24,8 @@ public class Temperature {
 	public String getTemp() {
 		return this.temp;
 	}
-
+	
+	public String toString() {
+		return date + " " + heure + " " + temp;
+	}
 }
