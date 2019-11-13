@@ -19,11 +19,10 @@ public class RechercheTemperature {
 		String ligne;    // ligne lue dans le fichier
 
 		try ( // déclaration et création de l'objet fichier
-			BufferedReader fichier = new BufferedReader(new FileReader("thermometre/outils/fichierTemp.txt"))) {
+			BufferedReader fichier = new BufferedReader(new FileReader("fichierTemp.txt"))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
 				listeTemp.add(new Temperature(ligne));
-				System.out.println(listeTemp.get(listeTemp.size()));
 		} 
 
 			// fermeture du fichier automatique avec try-with-ressource          
@@ -38,14 +37,25 @@ public class RechercheTemperature {
 		System.out.println(listeTemp.get(listeTemp.size()-1).toString());
 	}
 	
+	private static void tempAnterieure(String date) {
+		
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			
+			if (listeTemp.get(x).getDate() == date) {
+				System.out.println(listeTemp.get(x).toString());
+			}
+		}
+	}
+	
+	private static void diffTemp(String date1, String date2) {
+		
+	}
+	
 	
 
 
 	public static void main(String[] args) {
-		System.out.println("Bonjour");
 		initTemp();
-		listeTemp.add(new Temperature("23/05/1999 13:23:34 8,5"));
-		tempActuelle();
 		int choix = -1;
 		do {
 			entree.hasNextLine();
@@ -54,9 +64,9 @@ public class RechercheTemperature {
 			if (choix == 1) {
 				tempActuelle();
 			} else if (choix == 2) {
-				// tempAnterieure();
+				tempAnterieure("01/11/2019 10:11:12 14,5");
 			} else if (choix == 3) {
-				// diffTemp();
+				diffTemp("01/11/2019 10:11:12 14,5", "04/11/2019 20:11:12 1,5");
 			} else {
 				System.out.println("Entrée incorecte");
 			}

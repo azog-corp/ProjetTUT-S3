@@ -7,40 +7,30 @@ import java.util.Date;
 public class Temperature {
 	
 	/**
-	 * Date de l'instance au format jj/mm/aaa
+	 * Date de l'instance au format jj/mm/aaa hh:mm;ss
 	 */
 	private String date;
 	
 	/**
-	 * Temps de l'instance au format hh:mm:ss 
-	 */
-	private String time;
-	
-	/**
 	 * 
 	 */
-	private String temp;
+	private double temp;
 		
 	public Temperature(String newTemp) {
-		String[] decomposition = newTemp.split(newTemp, ' ');
-		this.date = decomposition[0];
-		this.time = decomposition[1];
-		this.temp = decomposition[2];
+		String[] decomposition = newTemp.split(" ");
+		this.date = decomposition[0] + " " + decomposition[1];
+		this.temp = Double.parseDouble(decomposition[2]);
 	}
 
 	public String getDate() {
 		return this.date;
 	}
-	
-	public int getTime() {	
-		return this.getTime();
-	}
 
-	public String getTemp() {
+	public double getTemp() {
 		return this.temp;
 	}
 	
 	public String toString() {
-		return date + " " + time + " " + temp;
+		return date + " " + temp;
 	}
 }
