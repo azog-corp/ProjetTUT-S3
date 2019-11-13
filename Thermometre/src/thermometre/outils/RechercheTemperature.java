@@ -49,6 +49,31 @@ public class RechercheTemperature {
 	
 	private static void diffTemp(String date1, String date2) {
 		
+		double intervalle1 = 0,
+		intervalle2 = 0;
+		
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			if (date1 == listeTemp.get(x).getDate()) {
+				intervalle1 = x;
+				break;
+			} else if (date2 == listeTemp.get(x).getDate()) {
+				intervalle1 = x;
+				break;
+			}
+		}
+		
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			if (date1 == listeTemp.get(x).getDate()) {
+				intervalle2 = x;
+				break;
+			} else if (date2 == listeTemp.get(x).getDate()) {
+				intervalle2 = x;
+				break;
+			}
+		}
+		
+		System.out.println(intervalle1 - intervalle2);
+		
 	}
 	
 	
