@@ -10,10 +10,21 @@ import thermometre.outils.OutilsTemperature;
 
 public class RechercheTemperature {
 	
+	/**
+	 * Liste contenant toutes les instances de température
+	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 	
+	/**
+	 * Entree courante
+	 */
 	private static Scanner entree = new Scanner(System.in);
 	
+	/**
+	 * Fonction qui lit un fichier texte contenant
+	 * des température et créé une instance pour chacune
+	 * d'entre elle
+	 */
 	private static void initTemp() {    
 		
 		String ligne;    // ligne lue dans le fichier
@@ -33,10 +44,17 @@ public class RechercheTemperature {
 		return;
 	}
 	
+	/**
+	 * Affiche la dernière instance de la liste de température
+	 */
 	private static void tempActuelle() {
 		System.out.println(listeTemp.get(listeTemp.size()-1).toString());
 	}
 	
+	/**
+	 * Affiche l'instance de température à une date donnée
+	 * @param date la date en question
+	 */
 	private static void tempAnterieure(String date) {
 		
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
@@ -47,9 +65,14 @@ public class RechercheTemperature {
 		}
 	}
 	
+	/**
+	 * Affiche la différence de température entre deux intervalle
+	 * @param date1
+	 * @param date2
+	 */
 	private static void diffTemp(String date1, String date2) {
 		
-		double intervalle1 = 0,
+		int intervalle1 = 0,
 		intervalle2 = 0;
 		
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
@@ -72,7 +95,7 @@ public class RechercheTemperature {
 			}
 		}
 		
-		System.out.println(intervalle1 - intervalle2);
+		System.out.println(listeTemp.get(intervalle1).getTemp() - listeTemp.get(intervalle2).getTemp());
 		
 	}
 	

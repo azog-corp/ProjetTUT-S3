@@ -12,7 +12,7 @@ public class Temperature {
 	private String date;
 	
 	/**
-	 * 
+	 * temperature
 	 */
 	private double temp;
 		
