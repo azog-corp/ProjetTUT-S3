@@ -29,6 +29,16 @@ public class OutilsTemperature {
 		return convertie;
 	}
 	
+	/**
+	 * Si date 1 est plus récent que date2, renvoie true, sinon false
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
+	public static boolean compareDate(Date date1, Date date2) {
+		return date1.compareTo(date2) > 0;
+	}
+	
 	
 	/**
 	 * Convertit l'horaire argument en entier (resultat en minutes)
