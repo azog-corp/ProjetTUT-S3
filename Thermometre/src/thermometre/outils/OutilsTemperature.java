@@ -1,7 +1,33 @@
 package thermometre.outils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * classe utilitaire sur les température et les dates
+ */
 public class OutilsTemperature {
 	
+	/**
+	 * Permet de convertir une date (jj/mm/aaa hh:mm:ss) en objet Date
+	 * @param aConvertir la string contenant la date et l'horaire à convertir
+	 * @return l'objet Date créée
+	 * @throws ParseException
+	 */
+	public static Date sToDate(String aConvertir) throws ParseException {
+		Date convertie = new Date();
+		
+		SimpleDateFormat format=new SimpleDateFormat("jj/MM/yyyy HH:mm:ss");
+		try {
+			convertie = format.parse(aConvertir);
+			
+		} catch (ParseException e) {
+			throw new ParseException("Erreur lors du formattage de la date " 
+										+ aConvertir, 0);
+		}
+		return convertie;
+	}
 	
 	
 	/**
