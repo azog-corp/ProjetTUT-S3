@@ -1,8 +1,10 @@
 package thermometre.outils;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import thermometre.outils.Temperature;
@@ -53,6 +55,25 @@ public class RechercheTemperature {
 	 */
 	public double getDerniereTemp() {
 		return listeTemp.get(listeTemp.size()-1).getTemp();
+	}
+	
+	public static boolean supprimerTemp() {
+		try {
+
+			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
+			printwriter.println("");
+			printwriter.close();
+			}
+			catch (Exception ex) {
+			System.out.println("Error clear file fichierTemp.txt");
+			return false;
+			}
+		return true;
+	}
+
+	public static boolean dateValide(String date) {
+		
+		date.split("/");
 	}
 
 }
