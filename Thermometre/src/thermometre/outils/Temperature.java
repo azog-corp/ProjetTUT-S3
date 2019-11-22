@@ -24,7 +24,7 @@ public class Temperature {
 	/**
 	 * format de la Date, pour pouvoir créer un objet Date à partir de la string
 	 */
-	private final SimpleDateFormat format=new SimpleDateFormat("jj/MM/yyyy HH:mm:ss");
+	private final SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	/**
 	 * Prend une string ayant la forme : jj/mm/yyyy hh:mm:ss temp pour la split en différent morceaux
@@ -34,13 +34,12 @@ public class Temperature {
 	public Temperature(String newTemp) throws ParseException {
 		
 		String[] decomposition = newTemp.split(" ");
-		/* création de l'objet date grace au parser et formatter  */
 		
+		/* création de l'objet date grace au parser et formatter  */
 		try {
 			this.date = format.parse(decomposition[0] + " " + decomposition[1]);
 			
 		} catch (ParseException e) {
-			
 			// on fait remonter l'erreur de format, ce cas ne devrais pas arriver
 			throw new ParseException("Erreur lors du formattage de la date " 
 										+ decomposition[0] + " " + decomposition[1], 0);

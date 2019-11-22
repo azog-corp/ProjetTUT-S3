@@ -12,7 +12,7 @@ public class RechercheTemperature {
 	/**
 	 * Liste contenant toutes les instances de température
 	 */
-	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
+	private ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -28,10 +28,11 @@ public class RechercheTemperature {
 				BufferedReader fichier = new BufferedReader(new FileReader("fichierTemp.txt"))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
+				
 				try {
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
-					System.out.println(e);
+					System.out.println(e +" problème création liste de températures");
 				}
 			} 
 			fichier.close();
@@ -42,7 +43,7 @@ public class RechercheTemperature {
 		}
 	}
 	
-	public ArrayList getListTemp() {
+	public ArrayList<Temperature> getListTemp() {
 		return listeTemp;
 	}
 
