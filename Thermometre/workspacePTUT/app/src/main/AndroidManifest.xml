@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".graphe"></activity>
-        <activity android:name=".menu" />
-        <activity android:name=".accueil">
+        <activity android:name=".Graphe"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".Accueil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class accueil extends AppCompatActivity {
+public class Accueil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class accueil extends AppCompatActivity {
     }
 
     private void openMenu() {
-        Intent intent = new Intent(this,menu.class);
+        Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }
 }
