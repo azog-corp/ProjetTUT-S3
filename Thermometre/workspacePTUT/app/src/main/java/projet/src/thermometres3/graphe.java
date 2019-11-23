@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import thermometre.outils.Temperature;
 
-
+//TODO creer boutons last connexion
+//
 public class Graphe extends AppCompatActivity {
 
     @Override
@@ -35,6 +36,7 @@ public class Graphe extends AppCompatActivity {
         });
 
     }
+
     public void creerGraph() {
         TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
         TextView tvFin = (TextView) findViewById(R.id.dateFin);
@@ -68,6 +70,7 @@ public class Graphe extends AppCompatActivity {
             conversionGraph(temp);
 
     }
+
     public void conversionGraph(ArrayList<Temperature> temp) {
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
         DataPoint[] pointGraphe = new DataPoint[temp.size()];
