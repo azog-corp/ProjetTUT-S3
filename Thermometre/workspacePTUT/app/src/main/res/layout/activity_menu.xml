@@ -50,10 +50,11 @@
                     android:textColor="@color/blanc"
                     tools:layout_editor_absoluteX="163dp"
                     tools:layout_editor_absoluteY="193dp"
-                    android:background="@color/couleurAppli"
+                    android:background="@drawable/btn_arrond"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -71,7 +72,7 @@
                     android:textColor="@color/blanc"
                     tools:layout_editor_absoluteX="161dp"
                     tools:layout_editor_absoluteY="300dp"
-                    android:background="@color/couleurAppli"
+                    android:background="@drawable/btn_arrond"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:textSize="25sp"/>
@@ -91,6 +92,7 @@
                     android:layout_marginRight="15dp"
                     android:text="Accueil"
                     android:textColor="@color/blanc"
+                    android:background="@color/grisF"
                     tools:layout_editor_absoluteX="163dp"
                     tools:layout_editor_absoluteY="435dp"
                     android:textSize="25sp"/>
