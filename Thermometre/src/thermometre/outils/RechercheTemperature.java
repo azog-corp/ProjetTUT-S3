@@ -89,14 +89,11 @@ public class RechercheTemperature {
 		saveTemp();
 	}
 	
-	public static boolean dateOk(Date date) {
+	public static boolean dateOk(String date) {
 		return true;
 	}
 
-	public static boolean intervalleOk(Date date1, Date date2) {
-		if (date1.before(date2) && (date1.getDate() - date2.getDate() <=2)) {
-			
-		}
+	public static boolean intervalleOk(String date1, String date2) {
 		return true;
 	}
 	
@@ -105,13 +102,13 @@ public class RechercheTemperature {
 		
 	}
 	
-	public static void supprimerIntervalle(Date date1, Date date2) {
+	public static void supprimerIntervalle(String date1, String date2) {
 		
 	}
 	
-	public static boolean dateExiste(Date date) {
+	public static boolean dateExiste(String date) {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (listeTemp.get(x).getDate() == date) {
+			if (listeTemp.get(x).getDate().toString() == date) {
 				return true;
 			}
 		}
