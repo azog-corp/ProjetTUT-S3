@@ -6,7 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 
 import thermometre.outils.Temperature;
 
@@ -94,16 +97,59 @@ public class RechercheTemperature {
 	}
 
 	public static boolean intervalleOk(String date1, String date2) {
-		return true;
+		
+		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    try {
+			Date date1formate  = format.parse(date1);
+			Date date2formate = format.parse(date2);
+			double diff = (date1formate.getTime() - date2formate.getTime() / (1000*60*60*24));
+			if (diff <= 2 && diff >= 0) {
+				return true;
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) {
-		return listeTemp;
 		
+		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
+		
+		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    try {
+			Date date1formate  = format.parse(date1);
+			Date date2formate = format.parse(date2);
+			for (int x = 0 ; x < listeTemp.size() ; x++) {
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+					tempIntervalle.add(listeTemp.get(x));
+				}
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tempIntervalle;
 	}
 	
 	public static void supprimerIntervalle(String date1, String date2) {
 		
+		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    try {
+			Date date1formate  = format.parse(date1);
+			Date date2formate = format.parse(date2);
+			for (int x = 0 ; x < listeTemp.size() ; x++) {
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+					listeTemp.remove(listeTemp.get(x));
+				}
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static boolean dateExiste(String date) {
