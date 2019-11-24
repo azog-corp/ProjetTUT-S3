@@ -5,9 +5,12 @@
 package thermometre.outils;
 
 import java.util.ArrayList;
+import thermometre.outils.RechercheTemperature;
+import thermometre.outils.Temperature;
+import thermometre.outils.OutilsTemperature;
 
 /**
- * Classe de test permettant de vérifier le bon fonctionnement des classes 
+ * Classe de test permettant de verifier le bon fonctionnement des classes
  * RechercheTemperature Temperature et OutilsTemperature
  */
 public class TestRecupTemp {

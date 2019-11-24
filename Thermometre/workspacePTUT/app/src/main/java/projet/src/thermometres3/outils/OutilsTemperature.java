@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * classe utilitaire sur les température et les dates
+ * classe utilitaire sur les temperature et les dates
  */
 public class OutilsTemperature {
 	
 	/**
 	 * Permet de convertir une date (jj/mm/aaa hh:mm:ss) en objet Date
-	 * @param aConvertir la string contenant la date et l'horaire à convertir
-	 * @return l'objet Date créée
+	 * @param aConvertir la string contenant la date et l'horaire et convertir
+	 * @return l'objet Date creee
 	 * @throws ParseException
 	 */
 	public static Date sToDate(String aConvertir) throws ParseException {
@@ -30,7 +30,7 @@ public class OutilsTemperature {
 	}
 	
 	/**
-	 * Si date 1 est plus récent que date2, renvoie true, sinon false
+	 * Si date 1 est plus recent que date2, renvoie true, sinon false
 	 * @param date1
 	 * @param date2
 	 * @return
@@ -40,11 +40,11 @@ public class OutilsTemperature {
 	}
 	
 	/**
-	 * Determine si une chaîne de caractères contient bien une date dans le format
+	 * Determine si une chaine de caracteres contient bien une date dans le format
 	 * "hh:mm:ss"
 	 * De plus, l'horaire doit etre un horaire de la journee (donc heure compris entre
 	 * 0 et 23 et minute entre 0 et 59)
-	 * @param aTester  chaîne contenant l'horaire a tester
+	 * @param aTester  chaine contenant l'horaire a tester
 	 * @return un booleen egal a vrai si l'horaire teste est valide
 	 */
 	public static boolean estValide(String horaire) {

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -15,7 +16,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import thermometre.outils.Temperature;
@@ -74,7 +77,8 @@ public class Graphe extends AppCompatActivity {
     public void conversionGraph(ArrayList<Temperature> temp) {
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
         DataPoint[] pointGraphe = new DataPoint[temp.size()];
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(pointGraphe);
+        LineGraphSeries<DataPoint> series;
+        final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
 
 
         for(int i = 0; i < temp.size(); i++) {
@@ -83,13 +87,30 @@ public class Graphe extends AppCompatActivity {
                 series = new LineGraphSeries<>(pointGraphe);
                 graphView.addSeries(series);
                 int tailleNew = temp.size() - pointGraphe.length;
-                pointGraphe = new DataPoint[tailleNew];
+                pointGraphe = new DataPoint[tailleNew]; //faux
             } else {
+                System.out.println(temp.get(i).getDate());
                 pointGraphe[i] = new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp());
             }
         }
         if (temp.size() > 0) {
+            for (int i = 0 ; i < pointGraphe.length; i++) {
+                System.out.println(pointGraphe[i]);
+            }
+            series = new LineGraphSeries<>(pointGraphe);
             graphView.addSeries(series); // TODO verif si pas vide crash ?
+            graphView.getGridLabelRenderer().setTextSize(40f);
+            graphView.getGridLabelRenderer().reloadStyles();
+            graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                @Override
+                public String formatLabel(double value, boolean isValueX) {
+                    if (isValueX) {
+                        return sdf.format(new Date((long)value));
+                    } else {
+                        return super.formatLabel(value, isValueX);
+                    }
+                }
+            });
         }
 
     }

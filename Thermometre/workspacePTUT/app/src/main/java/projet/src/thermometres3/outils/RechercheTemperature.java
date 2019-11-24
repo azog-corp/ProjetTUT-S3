@@ -12,13 +12,13 @@ import thermometre.outils.Temperature;
 public class RechercheTemperature {
 
 	/**
-	 * Liste contenant toutes les instances de température
+	 * Liste contenant toutes les instances de temperature
 	 */
 	private ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
-	 * des dates liées à des températures et créé une 
+	 * des dates liees et des temperatures et cree une
 	 * instance de Temperature pour chacune des lignes
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
@@ -26,7 +26,7 @@ public class RechercheTemperature {
 
 		String ligne;    // ligne lue dans le fichier
 
-		try ( // déclaration et création de l'objet fichier
+		try ( // dï¿½claration et crï¿½ation de l'objet fichier
 				BufferedReader fichier = new BufferedReader(new FileReader("fichierTemp.txt"))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
@@ -34,14 +34,14 @@ public class RechercheTemperature {
 				try {
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
-					System.out.println(e +" problème création liste de températures");
+					System.out.println(e +" probleme creation liste de temperatures");
 				}
 			} 
 			fichier.close();
 			// fermeture du fichier automatique avec try-with-ressource          
 		} catch (IOException ex) {      
-			System.out.println("Problème avec l'ouverture du fichier fichierTemp.txt");
-			// problème d'accès au fichier
+			System.out.println("Probleme avec l'ouverture du fichier fichierTemp.txt");
+			// probleme d'acces au fichier
 		}
 	}
 	
@@ -50,8 +50,8 @@ public class RechercheTemperature {
 	}
 
 	/**
-	 * Renvoie la dernière température 
-	 * de la liste de températures
+	 * Renvoie la derniere temperature
+	 * de la liste de temperatures
 	 */
 	public double getDerniereTemp() {
 		return listeTemp.get(listeTemp.size()-1).getTemp();
@@ -74,6 +74,7 @@ public class RechercheTemperature {
 	public static boolean dateValide(String date) {
 		
 		date.split("/");
+		return true;//todo stub
 	}
 
 }

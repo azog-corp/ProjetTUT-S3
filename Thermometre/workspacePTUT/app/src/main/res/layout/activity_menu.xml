@@ -20,9 +20,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textSize="50sp"
                 android:textAlignment="center"
                 android:textColor="@color/couleurAppli"
+                android:textSize="30sp"
                 tools:layout_editor_absoluteX="176dp"
                 tools:layout_editor_absoluteY="27dp" />
         </LinearLayout>
@@ -41,10 +41,13 @@
                 android:layout_weight="0.33">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btnGraph"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Graphe"
+                    android:minHeight="75dp"
+                    android:maxHeight="100dp"
+                    android:textColor="@color/blanc"
                     tools:layout_editor_absoluteX="163dp"
                     tools:layout_editor_absoluteY="193dp"
                     android:background="@color/couleurAppli"
@@ -59,10 +62,13 @@
                 android:layout_weight="0.33"
                 android:layout_marginTop="50dp">
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnDelete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Supprimer températures"
+                    android:minHeight="75dp"
+                    android:maxHeight="100dp"
+                    android:textColor="@color/blanc"
                     tools:layout_editor_absoluteX="161dp"
                     tools:layout_editor_absoluteY="300dp"
                     android:background="@color/couleurAppli"
@@ -78,12 +84,13 @@
                 android:layout_marginTop="100dp">
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnAccueil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:text="Accueil"
+                    android:textColor="@color/blanc"
                     tools:layout_editor_absoluteX="163dp"
                     tools:layout_editor_absoluteY="435dp"
                     android:textSize="25sp"/>
