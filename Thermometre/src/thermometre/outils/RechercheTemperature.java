@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
+
 import thermometre.outils.Temperature;
 
 public class RechercheTemperature {
@@ -14,7 +16,7 @@ public class RechercheTemperature {
 	/**
 	 * Liste contenant toutes les instances de température
 	 */
-	private ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
+	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -22,7 +24,7 @@ public class RechercheTemperature {
 	 * instance de Temperature pour chacune des lignes
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
-	public RechercheTemperature() {   
+	public static void rechercheTemperature() {
 
 		String ligne;    // ligne lue dans le fichier
 
@@ -70,10 +72,42 @@ public class RechercheTemperature {
 			}
 		return true;
 	}
-
-	public static boolean dateValide(String date) {
+	
+	public static void saveTemp() {
+		try {
+			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
+			for (int x = 0 ; x < listeTemp.size() ; x++) {
+				printwriter.println(listeTemp.get(x).toString());
+			}
+			printwriter.close();
+		} catch (Exception ex) {
+			System.out.println("Error clear file fichierTemp.txt");
+		}
+	}
+	
+	public static void addTemp() {
 		
-		date.split("/");
+	}
+	
+	public static boolean dateOk(Date date) {
+		return true;
 	}
 
+	public static boolean intervalleOk(Date date1, Date date2) {
+		return true;
+	}
+	
+	public static ArrayList dateIntervalle(String date1, String date2) {
+		
+	}
+	
+	public static void supprimerIntervalle(Date date1, Date date2) {
+		
+	}
+	
+	public static boolean dateExiste(Date date) {
+		return true;
+	}
+	
+	
 }
