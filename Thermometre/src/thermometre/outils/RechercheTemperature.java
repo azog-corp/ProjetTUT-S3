@@ -24,12 +24,12 @@ public class RechercheTemperature {
 	 * instance de Temperature pour chacune des lignes
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
-	public static void rechercheTemperature() {
+	public static void editTemp(String file) {
 
 		String ligne;    // ligne lue dans le fichier
 
 		try ( // déclaration et création de l'objet fichier
-				BufferedReader fichier = new BufferedReader(new FileReader("fichierTemp.txt"))) {
+				BufferedReader fichier = new BufferedReader(new FileReader(file))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
 				
@@ -81,7 +81,7 @@ public class RechercheTemperature {
 			}
 			printwriter.close();
 		} catch (Exception ex) {
-			System.out.println("Error clear file fichierTemp.txt");
+			System.out.println("Error save file fichierTemp.txt");
 		}
 	}
 	
