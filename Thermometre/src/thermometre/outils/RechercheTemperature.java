@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import thermometre.outils.Temperature;
 
@@ -86,7 +85,8 @@ public class RechercheTemperature {
 	}
 	
 	public static void addTemp() {
-		
+		editTemp("nouvellesTemperature.txt");
+		saveTemp();
 	}
 	
 	public static boolean dateOk(Date date) {
@@ -94,10 +94,14 @@ public class RechercheTemperature {
 	}
 
 	public static boolean intervalleOk(Date date1, Date date2) {
+		if (date1.before(date2) && (date1.getDate() - date2.getDate() <=2)) {
+			
+		}
 		return true;
 	}
 	
-	public static ArrayList dateIntervalle(String date1, String date2) {
+	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) {
+		return listeTemp;
 		
 	}
 	
@@ -106,7 +110,12 @@ public class RechercheTemperature {
 	}
 	
 	public static boolean dateExiste(Date date) {
-		return true;
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			if (listeTemp.get(x).getDate() == date) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
