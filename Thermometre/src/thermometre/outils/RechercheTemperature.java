@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -49,6 +48,10 @@ public class RechercheTemperature {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Temperature> getListTemp() {
 		return listeTemp;
 	}
@@ -61,6 +64,10 @@ public class RechercheTemperature {
 		return listeTemp.get(listeTemp.size()-1).getTemp();
 	}
 	
+	/**
+	 * Supprime toutes les température
+	 * @return
+	 */
 	public static boolean supprimerTemp() {
 		try {
 
@@ -150,6 +157,7 @@ public class RechercheTemperature {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    saveTemp();
 	}
 	
 	public static boolean dateExiste(String date) {
