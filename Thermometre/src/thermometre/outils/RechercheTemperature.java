@@ -82,6 +82,9 @@ public class RechercheTemperature {
 		return true;
 	}
 	
+	/**
+	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
+	 */
 	public static void saveTemp() {
 		try {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
@@ -94,72 +97,91 @@ public class RechercheTemperature {
 		}
 	}
 	
+	/**
+	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
+	 * dans le fichier listeTemp
+	 */
 	public static void addTemp() {
 		editTemp("nouvellesTemperature.txt");
 		saveTemp();
 	}
 	
+	/**
+	 * Vérifie si une date se trouve entre 2019 et 2020
+	 * @param date
+	 * @return
+	 */
 	public static boolean dateOk(String date) {
-		return true;
+		Date date1formate = conversion("01/01/2019 00:00:00");
+		Date date2formate = conversion("30/12/2020 00:00:00");
+		Date aVerifier = conversion(date);
+		if (aVerifier.getTime() > date1formate.getTime() || aVerifier.getTime() < date2formate.getTime()) {
+			return true;
+		}
+		return false;
 	}
 
+	/**
+	 * Vérifie si deux date sont chronologique avec deux jour d'écart
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
 	public static boolean intervalleOk(String date1, String date2) {
-		
-		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    try {
-			Date date1formate  = format.parse(date1);
-			Date date2formate = format.parse(date2);
+
+			Date date1formate = conversion(date1);
+			Date date2formate = conversion(date2);
 			double diff = (date1formate.getTime() - date2formate.getTime() / (1000*60*60*24));
 			if (diff <= 2 && diff >= 0) {
 				return true;
 			}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return false;
 	}
 	
+	/**
+	 * Créer une ArrayList contenant les instances de température conpris entre 2 intervalles
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
 	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) {
 		
 		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
-		
-		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    try {
-			Date date1formate  = format.parse(date1);
-			Date date2formate = format.parse(date2);
+
+			Date date1formate = conversion(date1);
+			Date date2formate = conversion(date2);
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
 				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					tempIntervalle.add(listeTemp.get(x));
 				}
 			}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return tempIntervalle;
 	}
 	
+	/**
+	 * Suprime de listeTemp toutes les température contenu dans un intervalle
+	 * @param date1
+	 * @param date2
+	 */
 	public static void supprimerIntervalle(String date1, String date2) {
-		
-		SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	    try {
-			Date date1formate  = format.parse(date1);
-			Date date2formate = format.parse(date2);
+
+			Date date1formate = conversion(date1);
+			Date date2formate = conversion(date2);
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
 				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					listeTemp.remove(listeTemp.get(x));
 				}
 			}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	    saveTemp();
 	}
 	
+	/**
+	 * Vérifie si une date existe dans listeTemp
+	 * @param date
+	 * @return
+	 */
 	public static boolean dateExiste(String date) {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
 			if (listeTemp.get(x).getDate().toString() == date) {
@@ -169,5 +191,21 @@ public class RechercheTemperature {
 		return false;
 	}
 	
-	
+	/**
+	 * Convertie un date en String à une date en Date
+	 * @param date
+	 * @return
+	 */
+	public static Date conversion(String date) {
+		
+	SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    try {
+		Date dateFormate  = format.parse(date);
+		return dateFormate;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    return null;
+	}
 }
