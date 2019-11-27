@@ -15,13 +15,13 @@ import thermometre.outils.Temperature;
 public class RechercheTemperature {
 
 	/**
-	 * Liste contenant toutes les instances de température
+	 * Liste contenant toutes les instances de tempÃ©rature
 	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
-	 * des dates liées à des températures et créé une 
+	 * des dates liÃ©es Ã  des tempÃ©ratures et crÃ©Ã© une 
 	 * instance de Temperature pour chacune des lignes
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
@@ -29,7 +29,7 @@ public class RechercheTemperature {
 
 		String ligne;    // ligne lue dans le fichier
 
-		try ( // déclaration et création de l'objet fichier
+		try ( // dÃ©claration et crÃ©ation de l'objet fichier
 				BufferedReader fichier = new BufferedReader(new FileReader(file))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
@@ -37,14 +37,14 @@ public class RechercheTemperature {
 				try {
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
-					System.out.println(e +" problème création liste de températures");
+					System.out.println(e +" problÃ¨me crÃ©ation liste de tempÃ©ratures");
 				}
 			} 
 			fichier.close();
 			// fermeture du fichier automatique avec try-with-ressource          
 		} catch (IOException ex) {      
-			System.out.println("Problème avec l'ouverture du fichier fichierTemp.txt");
-			// problème d'accès au fichier
+			System.out.println("ProblÃ¨me avec l'ouverture du fichier fichierTemp.txt");
+			// problÃ¨me d'accÃ¨s au fichier
 		}
 	}
 	
@@ -57,15 +57,15 @@ public class RechercheTemperature {
 	}
 
 	/**
-	 * Renvoie la dernière température 
-	 * de la liste de températures
+	 * Renvoie la derniÃ¨re tempÃ©rature 
+	 * de la liste de tempÃ©ratures
 	 */
 	public double getDerniereTemp() {
 		return listeTemp.get(listeTemp.size()-1).getTemp();
 	}
 	
 	/**
-	 * Supprime toutes les température
+	 * Supprime toutes les tempÃ©rature
 	 * @return
 	 */
 	public static boolean supprimerTemp() {
@@ -83,7 +83,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
+	 * Ã©crit dans le fichier fichierTemp les donnÃ©es contenu dans listeTemp
 	 */
 	public static void saveTemp() {
 		try {
@@ -98,7 +98,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
+	 * Ajoute les nouvelle tempÃ©ratures dans listeTemp et les enregistre
 	 * dans le fichier listeTemp
 	 */
 	public static void addTemp() {
@@ -107,22 +107,20 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Vérifie si une date se trouve entre 2019 et 2020
+	 * VÃ©rifie si une date se trouve entre 2019 et 2020
 	 * @param date
 	 * @return
 	 */
 	public static boolean dateOk(String date) {
-		Date date1formate = conversion("01/01/2019 00:00:00");
-		Date date2formate = conversion("30/12/2020 00:00:00");
+		Date dateMin = conversion("01/01/2019 00:00:00");
+		Date dateMax = conversion("30/12/2020 00:00:00");
 		Date aVerifier = conversion(date);
-		if (aVerifier.getTime() > date1formate.getTime() || aVerifier.getTime() < date2formate.getTime()) {
-			return true;
-		}
-		return false;
+		// si aVerifier est plus rÃ©cent que la date min et plus ancien que la dateMax
+		return aVerifier.compareDate(dateMin) && dateMax.compareDate(aVerifier);
 	}
 
 	/**
-	 * Vérifie si deux date sont chronologique avec deux jour d'écart
+	 * VÃ©rifie si deux date sont chronologique avec deux jour d'Ã©cart
 	 * @param date1
 	 * @param date2
 	 * @return
@@ -139,7 +137,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Créer une ArrayList contenant les instances de température conpris entre 2 intervalles
+	 * CrÃ©er une ArrayList contenant les instances de tempÃ©rature conpris entre 2 intervalles
 	 * @param date1
 	 * @param date2
 	 * @return
@@ -160,7 +158,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Suprime de listeTemp toutes les température contenu dans un intervalle
+	 * Suprime de listeTemp toutes les tempÃ©rature contenu dans un intervalle
 	 * @param date1
 	 * @param date2
 	 */
@@ -178,7 +176,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Vérifie si une date existe dans listeTemp
+	 * VÃ©rifie si une date existe dans listeTemp
 	 * @param date
 	 * @return
 	 */
@@ -192,7 +190,7 @@ public class RechercheTemperature {
 	}
 	
 	/**
-	 * Convertie un date en String à une date en Date
+	 * Convertie un date en String Ã  une date en Date
 	 * @param date
 	 * @return
 	 */
