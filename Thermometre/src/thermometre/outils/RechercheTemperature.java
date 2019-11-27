@@ -115,8 +115,8 @@ public class RechercheTemperature {
 		Date dateMin = conversion("01/01/2019 00:00:00");
 		Date dateMax = conversion("30/12/2020 00:00:00");
 		Date aVerifier = conversion(date);
-		// si aVerifier est plus récent que la date min et plus ancien que la dateMax
-		return aVerifier.compareDate(dateMin) && dateMax.compareDate(aVerifier);
+		// si aVerifier est entre dateMin et dateMax
+		return compareDate(aVerifier, dateMin) && compareDate(dateMax, aVerifier);
 	}
 
 	/**
