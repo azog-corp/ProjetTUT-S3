@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class Menu extends AppCompatActivity {
 
@@ -33,18 +34,35 @@ public class Menu extends AppCompatActivity {
                 openDelete();
             }
         });
+
+        btnAccueil.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                openAccueil();
+            }
+        });
     }
 
     private void openDelete() {
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Etes vous sur?")
+                .setTitleText("Etes vous sur ?")
                 .setContentText("Vous ne pourrez pas recuperer les temperatures apres suppression")
                 .setConfirmText("Supprimer")
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         //TODO rajouter suppression
-                        sDialog.dismissWithAnimation();
+                        RechercheTemperature.supprimerTemp();
+                        new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Confirmation")
+                                .setContentText("Temperature supprimees")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismissWithAnimation();
+                                    }
+                                }).show();
+                                sDialog.dismissWithAnimation();
                     }
                 })
                 .setCancelButton("Annuler", new SweetAlertDialog.OnSweetClickListener() {
@@ -54,6 +72,10 @@ public class Menu extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+    private void openAccueil(){
+        Intent intent = new Intent(this, Accueil.class);
+        startActivity(intent);
     }
 
     private void openGraphe() {

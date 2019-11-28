@@ -63,7 +63,7 @@ public class RechercheTemperature {
 	public double getDerniereTemp() {
 		return listeTemp.get(listeTemp.size()-1).getTemp();
 	}
-	
+
 	/**
 	 * Supprime toutes les températures
 	 * @return
@@ -81,7 +81,7 @@ public class RechercheTemperature {
 			}
 		return true;
 	}
-	
+
 	/**
 	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
 	 */
@@ -96,7 +96,7 @@ public class RechercheTemperature {
 			System.out.println("Error save file fichierTemp.txt");
 		}
 	}
-	
+
 	/**
 	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
 	 * dans le fichier listeTemp
@@ -107,12 +107,13 @@ public class RechercheTemperature {
 		editTemp("nouvellesTemperature.txt");
 		saveTemp();
 	}
-	
+
 	/**
 	 * Vérifie si une date se trouve entre 2019 et 2020
 	 * @param date
 	 * @return
 	 */
+	//TODO la date max est pas bonne
 	public static boolean dateOk(String date) {
 		Date dateMin = conversion("01/01/2019 00:00:00");
 		Date dateMax = conversion("30/12/2020 00:00:00");
@@ -128,10 +129,10 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static boolean intervalleOk(String date1, String date2) {
-
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
 			long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
+			System.out.println(diff);
 			if (diff < 2 && diff > 0) {
 				return true;
 			}
@@ -169,7 +170,7 @@ public class RechercheTemperature {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					listeTemp.remove(listeTemp.get(x));
 				}
@@ -197,7 +198,7 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static Date conversion(String date) {
-		
+
 	SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     try {
 		Date dateFormate  = format.parse(date);

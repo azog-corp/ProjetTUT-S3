@@ -58,7 +58,4 @@ public class OutilsTemperature {
 			return false;
 		}
 	}
-	
-	
-
 }

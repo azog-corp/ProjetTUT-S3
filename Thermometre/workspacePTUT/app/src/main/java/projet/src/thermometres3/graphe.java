@@ -21,7 +21,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import projet.src.thermometres3.Erreur.ErreurDate;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
+
+import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
+import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 //TODO creer boutons last connexion
 //
@@ -38,6 +44,13 @@ public class Graphe extends AppCompatActivity {
             }
         });
 
+        /*Button btnLastCo = (Button) findViewById(R.id.btnLastCo);
+        btnAfficher.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                creerGraph();
+            }
+        });*/
+
     }
 
     public void creerGraph() {
@@ -46,19 +59,20 @@ public class Graphe extends AppCompatActivity {
 
         String sDebut = tvDebut.getText().toString();
         String sFin = tvFin.getText().toString();
-            /* todo rajouter fct mael
-            try {
-                if (dateOk(sDebut,sFin)) {
-                    if (intervalleOk(sDebut,sFin)) {
-                        conversionGraph(dateIntervalle(sDebut,sFin));
-                    }
+        System.out.println(sDebut + "" + sFin);
+            if (dateOk(sDebut) && dateOk(sFin)) {
+                System.out.println("Date OK");
+                if (intervalleOk(sDebut,sFin)) {
+                    System.out.println("beepboop");
+                    conversionGraph(dateIntervalle(sDebut,sFin));
+                } else {
+                    messageErreurIntervalle();
                 }
-            } catch(ErreurDate e) {
+            } else {
                 messageErreurDate();
-            } catch(ErreurIntervalle e) {
-                messageErreurIntervalle();
             }
-            */
+
+             /* todo rajouter fct mael
             ArrayList<Temperature> temp = new ArrayList<Temperature>();
             try {
                 temp.add(new Temperature("19/01/2019 22:20:50 -3"));
@@ -70,7 +84,7 @@ public class Graphe extends AppCompatActivity {
             }catch(ParseException e) {
                 //todo
             }
-            conversionGraph(temp);
+            conversionGraph(temp);*/
 
     }
 
