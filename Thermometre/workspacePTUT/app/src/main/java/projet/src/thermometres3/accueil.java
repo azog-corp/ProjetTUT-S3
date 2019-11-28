@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import static projet.src.thermometres3.outils.RechercheTemperature.addTemp;
+
 public class Accueil extends AppCompatActivity {
 
     @Override
@@ -22,6 +24,7 @@ public class Accueil extends AppCompatActivity {
                 openMenu();
             }
         });
+        addTemp();//Ajoute les nouvelles temperatures
     }
 
     private void openMenu() {

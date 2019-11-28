@@ -18,6 +18,10 @@ public class RechercheTemperature {
 	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
+	private final static String NOM_FICHIER = "fichierTemp.txt";
+
+	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
+
 	/**
 	 * Fonction qui lit un fichier texte contenant
 	 * des dates liées à des températures et créé une 
@@ -71,7 +75,7 @@ public class RechercheTemperature {
 	public static boolean supprimerTemp() {
 		try {
 			//TODO utliser une constante global plutot
-			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
+			PrintWriter printwriter = new PrintWriter(new FileOutputStream(NOM_FICHIER));
 			printwriter.println("");
 			printwriter.close();
 			}
@@ -86,8 +90,9 @@ public class RechercheTemperature {
 	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
 	 */
 	public static void saveTemp() {
+		System.out.println("je sauvegarde");
 		try {
-			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
+			PrintWriter printwriter = new PrintWriter(new FileOutputStream(NOM_FICHIER));
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
 				printwriter.println(listeTemp.get(x).toString());
 			}
@@ -104,7 +109,7 @@ public class RechercheTemperature {
 	//TODO changer le nom
 	// + verif si vraiment a recuperer se serait mieux pour linstant petit fichier mais mieux pour la suite
 	public static void addTemp() {
-		editTemp("nouvellesTemperature.txt");
+		editTemp(NOUVELLE_TEMP);
 		saveTemp();
 	}
 
