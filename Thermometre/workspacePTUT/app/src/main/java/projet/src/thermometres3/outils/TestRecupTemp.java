@@ -2,15 +2,12 @@
  * 
  */
 
-package thermometre.outils;
+package projet.src.thermometres3.outils;
 
 import java.util.ArrayList;
-import thermometre.outils.RechercheTemperature;
-import thermometre.outils.Temperature;
-import thermometre.outils.OutilsTemperature;
 
 /**
- * Classe de test permettant de verifier le bon fonctionnement des classes
+ * Classe de test permettant de v�rifier le bon fonctionnement des classes 
  * RechercheTemperature Temperature et OutilsTemperature
  */
 public class TestRecupTemp {

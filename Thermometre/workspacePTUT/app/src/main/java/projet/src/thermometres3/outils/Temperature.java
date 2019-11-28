@@ -1,12 +1,12 @@
-package thermometre.outils;
+package projet.src.thermometres3.outils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Objet temperature correspondant a un objet Date creer a partir d'une string au format
- * jj/MM/yyyy HH:mm:ss et d'un double temperature contenu lui aussi dans la chaine
+ * Objet temp�rature correspondant � un objet Date cr�er � partir d'une string au format 
+ * jj/MM/yyyy HH:mm:ss et d'un double temp�rature contenu lui aussi dans la chaine
  *
  */
 public class Temperature {
@@ -17,18 +17,18 @@ public class Temperature {
 	private Date date;
 	
 	/**
-	 * temp�rature recuperee
+	 * temp�rature recup�r�e
 	 */
 	private double temp;
 	
 	/**
-	 * format de la Date, pour pouvoir creer un objet Date a partir de la string
+	 * format de la Date, pour pouvoir cr�er un objet Date � partir de la string
 	 */
 	private final SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	/**
-	 * Prend une string ayant la forme : jj/mm/yyyy hh:mm:ss temp pour la split en different morceaux
-	 * @param newTemp la string contenant la temperature et la date
+	 * Prend une string ayant la forme : jj/mm/yyyy hh:mm:ss temp pour la split en diff�rent morceaux
+	 * @param newTemp la string contenant la temp�rature et la date
 	 * @throws ParseException 
 	 */
 	public Temperature(String newTemp) throws ParseException {
@@ -50,7 +50,7 @@ public class Temperature {
 	}
 
 	/**
-	 * @return un objet Date correspondant a la String jj/MM/yyyy HH:mm:ss
+	 * @return un objet Date correspondant � la String jj/MM/yyyy HH:mm:ss
 	 * de l'instance courante
 	 */
 	public Date getDate() {
@@ -58,13 +58,9 @@ public class Temperature {
 	}
 
 	/**
-	 * @return un double contenant la temperature de l'instance courante
+	 * @return un double contenant la temp�rature de l'instance courante
 	 */
 	public double getTemp() {
 		return this.temp;
-	}
-	
-	public String toString() {
-		return date.toString() + " " + temp;
 	}
 }

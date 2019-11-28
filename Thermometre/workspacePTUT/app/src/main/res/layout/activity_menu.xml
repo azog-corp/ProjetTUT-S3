@@ -92,10 +92,10 @@
                     android:layout_marginRight="15dp"
                     android:text="Accueil"
                     android:textColor="@color/blanc"
-                    android:background="@color/grisF"
+                    android:background="@drawable/btn_arrond"
                     tools:layout_editor_absoluteX="163dp"
                     tools:layout_editor_absoluteY="435dp"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
             </LinearLayout>
 
         </LinearLayout>
