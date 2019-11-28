@@ -1,7 +1,9 @@
 package projet.src.thermometres3.outils;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -18,9 +20,9 @@ public class RechercheTemperature {
 	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
-	private final static String NOM_FICHIER = "fichierTemp.txt";
+	private final static String NOM_FICHIER = "/thermometres3/fichierTemp.txt";
 
-	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
+	private final static String NOUVELLE_TEMP = "/thermometres3/nouvellesTemperature.txt";
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -106,8 +108,6 @@ public class RechercheTemperature {
 	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
 	 * dans le fichier listeTemp
 	 */
-	//TODO changer le nom
-	// + verif si vraiment a recuperer se serait mieux pour linstant petit fichier mais mieux pour la suite
 	public static void addTemp() {
 		editTemp(NOUVELLE_TEMP);
 		saveTemp();
