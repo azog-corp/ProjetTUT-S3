@@ -63,8 +63,4 @@ public class Temperature {
 	public double getTemp() {
 		return this.temp;
 	}
-	
-	public String toString() {
-		return date.toString() + " " + temp;
-	}
 }

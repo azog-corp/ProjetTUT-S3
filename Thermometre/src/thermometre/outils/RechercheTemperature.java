@@ -52,7 +52,7 @@ public class RechercheTemperature {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Temperature> getListTemp() {
+	public static ArrayList<Temperature> getListTemp() {
 		return listeTemp;
 	}
 
@@ -116,7 +116,7 @@ public class RechercheTemperature {
 		Date dateMax = conversion("30/12/2020 00:00:00");
 		Date aVerifier = conversion(date);
 		// si aVerifier est entre dateMin et dateMax
-		return compareDate(aVerifier, dateMin) && compareDate(dateMax, aVerifier);
+		return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class RechercheTemperature {
 
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
-			double diff = (date1formate.getTime() - date2formate.getTime() / (1000*60*60*24));
-			if (diff <= 2 && diff >= 0) {
+			long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
+			if (diff < 2 && diff > 0) {
 				return true;
 			}
 		return false;
