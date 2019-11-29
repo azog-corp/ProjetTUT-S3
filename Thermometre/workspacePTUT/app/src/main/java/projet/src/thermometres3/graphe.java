@@ -15,19 +15,16 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import projet.src.thermometres3.Erreur.ErreurDate;
-import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
 
-import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
-import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
-import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
+import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
+import static projet.src.thermometres3.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
 
 //TODO creer boutons last connexion
 //

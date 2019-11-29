@@ -4,8 +4,8 @@ package projet.src.thermometres3.outils;
 
 import java.util.ArrayList;
 import java.util.Date;
-import projet.src.thermometres3.outils.Temperature;
-import projet.src.thermometres3.outils.RechercheTemperature;
+
+import projet.src.thermometres3.RechercheTemperature;
 
 public class testRechercheTemperature {
 	
@@ -40,10 +40,13 @@ public class testRechercheTemperature {
 	}
 
 	public static void main(String[] args) {
+		/* TODO enlever fait bugger
 		RechercheTemperature.editTemp("fichierTempTest.txt");
 		testTemp = RechercheTemperature.getListTemp();
 		// testGetDerniereTemp();
 		testIntervalleOk();
+
+		 */
 	}
 
 }

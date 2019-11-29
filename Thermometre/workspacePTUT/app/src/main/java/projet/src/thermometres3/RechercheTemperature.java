@@ -1,10 +1,18 @@
-package projet.src.thermometres3.outils;
+package projet.src.thermometres3;
+import android.content.Context;
+
+import androidx.core.graphics.drawable.IconCompat;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,9 +28,9 @@ public class RechercheTemperature {
 	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
-	private final static String NOM_FICHIER = "/thermometres3/fichierTemp.txt";
+	private final static String NOM_FICHIER = "fichierTemp.txt";
 
-	private final static String NOUVELLE_TEMP = "/thermometres3/nouvellesTemperature.txt";
+	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -30,12 +38,12 @@ public class RechercheTemperature {
 	 * instance de Temperature pour chacune des lignes
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
-	public static void editTemp(String file) {
+	public static void editTemp(Context myContext) {
 
 		String ligne;    // ligne lue dans le fichier
 
-		try ( // déclaration et création de l'objet fichier
-				BufferedReader fichier = new BufferedReader(new FileReader(file))) {
+		try { // déclaration et création de l'objet fichier
+            BufferedReader fichier = new BufferedReader(new InputStreamReader(myContext.getAssets().open(NOUVELLE_TEMP)));
 
 			while (((ligne = fichier.readLine()) != null)) {
 				
@@ -91,14 +99,14 @@ public class RechercheTemperature {
 	/**
 	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
 	 */
-	public static void saveTemp() {
+	public static void saveTemp(Context myContext) {
 		System.out.println("je sauvegarde");
 		try {
-			PrintWriter printwriter = new PrintWriter(new FileOutputStream(NOM_FICHIER));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput("fichierTemp.txt", Context.MODE_PRIVATE));
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				printwriter.println(listeTemp.get(x).toString());
+				outputStreamWriter.write(listeTemp.get(x).toString());
 			}
-			printwriter.close();
+            outputStreamWriter.close();
 		} catch (Exception ex) {
 			System.out.println("Error save file fichierTemp.txt");
 		}
@@ -108,9 +116,9 @@ public class RechercheTemperature {
 	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
 	 * dans le fichier listeTemp
 	 */
-	public static void addTemp() {
-		editTemp(NOUVELLE_TEMP);
-		saveTemp();
+	public static void addTemp(Context myContext) {
+		editTemp(myContext);
+		saveTemp(myContext);
 	}
 
 	/**
@@ -165,11 +173,11 @@ public class RechercheTemperature {
 		return tempIntervalle;
 	}
 	
-	/**
+	/** TODO refaire plus tard mais necessite context donc risque erreur
 	 * Suprime de listeTemp toutes les température contenu dans un intervalle
 	 * @param date1
 	 * @param date2
-	 */
+
 	public static void supprimerIntervalle(String date1, String date2) {
 
 			Date date1formate = conversion(date1);
@@ -181,7 +189,7 @@ public class RechercheTemperature {
 				}
 			}
 	    saveTemp();
-	}
+	}*/
 	
 	/**
 	 * Vérifie si une date existe dans listeTemp
