@@ -79,7 +79,9 @@ public class Graphe extends AppCompatActivity {
     /**
      * Fonction qui convertit une liste de température en point sur le graph
      * @param temp liste des températures dans l'intervalle entré par l'utilisateur
-     */
+     *///TODO attention si intervalle exemple verifier que intervalle ok significatif
+    //TODO essayer de grossir les points + faire les labels
+    //TODO plus faire des tests pour intervalle significatif (intervalle Ok)
     public void conversionGraph(ArrayList<Temperature> temp) {
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
@@ -104,8 +106,11 @@ public class Graphe extends AppCompatActivity {
                 }
                 /*Puis ajoute la series de point au graph si notre tableau a une taille > a 0
                  Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
-                if(pointGraphe.length > 0) {
+                if(listePoints.size() > 0) {
                     series = new LineGraphSeries<>(pointGraphe);
+                    series.setDataPointsRadius(10);
+                    series.setThickness(8);
+                    series.setDrawDataPoints(true);
                     donneeOk = true;
                     graphView.addSeries(series); // ajout au graph
                 }
@@ -127,10 +132,14 @@ public class Graphe extends AppCompatActivity {
                     pointGraphe[j] = listePoints.get(j);
                 }
                 series = new LineGraphSeries<>(pointGraphe);
+                series.setDataPointsRadius(10);
+                series.setThickness(8);
+                series.setDrawDataPoints(true);
                 donneeOk = true;
                 graphView.addSeries(series);
             }
 
+            System.out.println("Donnees ? " +donneeOk);
             if(!donneeOk) {
                 messageErreurListeDate();
             }

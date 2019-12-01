@@ -431,6 +431,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="afficher">Afficher</string>
     <string name="app_name">Thermometre</string>
+    <string name="btnLastCo">Dern. Connexion</string>
     <string name="btnMenu">Menu</string>
     <string name="default_progressbar">Default Progressbar:</string>
     <string name="dialog_cancel">Cancel</string>
