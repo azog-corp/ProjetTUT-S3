@@ -189,7 +189,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="817" />
     <option name="y" value="47" />
     <option name="width" value="854" />
@@ -219,7 +219,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java (generated)" type="edd41e36:AndroidSourceTypeNode" />
               <item name="thermometres3" type="cbb59c9e:AndroidPsiDirectoryNode" />
-
               <item name="Erreur" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>

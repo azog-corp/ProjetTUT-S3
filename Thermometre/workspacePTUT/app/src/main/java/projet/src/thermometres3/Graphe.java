@@ -52,7 +52,7 @@ public class Graphe extends AppCompatActivity {
         });
 
     }
-
+    //TODO ajouter méthode pour verifier intervalle significatif
     public void creerGraph() {
         TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
         TextView tvFin = (TextView) findViewById(R.id.dateFin);
@@ -90,6 +90,7 @@ public class Graphe extends AppCompatActivity {
         * Creer a cause de null exception dans le tableau définit trop grand*/
         ArrayList<DataPoint> listePoints = new ArrayList<DataPoint>();
         LineGraphSeries<DataPoint> series;
+        boolean donneeOk = false;
 
         for(int i = 0; i < temp.size(); i++) {
             if(temp.get(i).getTemp() == -300.0) { // Si temperature invalide
@@ -105,6 +106,7 @@ public class Graphe extends AppCompatActivity {
                  Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
                 if(pointGraphe.length > 0) {
                     series = new LineGraphSeries<>(pointGraphe);
+                    donneeOk = true;
                     graphView.addSeries(series); // ajout au graph
                 }
                 listePoints = new ArrayList<DataPoint>(); // on redéfinit l'arraylist pour ne pas garder les points déja entre
@@ -125,7 +127,12 @@ public class Graphe extends AppCompatActivity {
                     pointGraphe[j] = listePoints.get(j);
                 }
                 series = new LineGraphSeries<>(pointGraphe);
+                donneeOk = true;
                 graphView.addSeries(series);
+            }
+
+            if(!donneeOk) {
+                messageErreurListeDate();
             }
 
             /* Défninition des propriétés du graph */
@@ -150,9 +157,8 @@ public class Graphe extends AppCompatActivity {
      * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
      * et inferieur a 2 jours
      * @param
-     * @param
 
-    public void lastCo(ArrayList<Temperature> temp) {
+    //public void lastCo(ArrayList<Temperature> temp) {
         try{
             BufferedReader fichier = new BufferedReader(new InputStreamReader(getResources().getAssets().open("derniereCo.txt")));
             String sDebut = fichier.readLine();
@@ -181,14 +187,14 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
                 .setContentText("Impossible de lire le fichier dernière connexion")
-                .setConfirmText("OK");
+                .setConfirmText("OK").show();
     }
 
     public void messageErreurDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Date")
                 .setContentText("Erreur: date non valide(format: dd/MM/yyyy HH:mm:ss) ou non ordonnees")
-                .setConfirmText("OK");
+                .setConfirmText("OK").show();
     }
 
 
@@ -196,7 +202,7 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Intervalle")
                 .setContentText("Erreur: Intervalle non valide")
-                .setConfirmText("OK");
+                .setConfirmText("OK").show();
 
     }
 
