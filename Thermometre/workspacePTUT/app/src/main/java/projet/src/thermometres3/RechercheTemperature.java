@@ -145,7 +145,6 @@ public class RechercheTemperature {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
 			long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
-			System.out.println(diff);
 			if (diff < 2 && diff > 0) {
 				return true;
 			}
@@ -164,11 +163,19 @@ public class RechercheTemperature {
 
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+			System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString());
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
 				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+					//TODO des que cst NOK arrete la lecture
 					tempIntervalle.add(listeTemp.get(x));
+					System.out.println("C'est OK : " + listeTemp.get(x).getDate());
+				} else {
+					System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
 				}
+			}
+			for(int x = 0 ; x < tempIntervalle.size() ; x++) {
+				System.out.println(tempIntervalle.get(x).getDate());
 			}
 		return tempIntervalle;
 	}

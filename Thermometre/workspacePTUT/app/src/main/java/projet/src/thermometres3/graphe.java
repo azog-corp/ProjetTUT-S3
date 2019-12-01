@@ -59,12 +59,11 @@ public class Graphe extends AppCompatActivity {
         System.out.println(sDebut + "" + sFin);
             if (dateOk(sDebut) && dateOk(sFin)) {
                 System.out.println("Date OK");
-                if (intervalleOk(sDebut,sFin)) {
-                    System.out.println("beepboop");
+                //if (intervalleOk(sDebut,sFin)) {
                     conversionGraph(dateIntervalle(sDebut,sFin));
-                } else {
+                /*} else {
                     messageErreurIntervalle();
-                }
+                }*/
             } else {
                 messageErreurDate();
             }
@@ -85,31 +84,60 @@ public class Graphe extends AppCompatActivity {
 
     }
 
+    /**
+     * Fonction qui convertit une liste de température en point sur le graph
+     * @param temp liste des températures dans l'intervalle entré par l'utilisateur
+     */
     public void conversionGraph(ArrayList<Temperature> temp) {
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
-        DataPoint[] pointGraphe = new DataPoint[temp.size()];
+        /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
+        * Tableau qui contient les point du graphe*/
+        DataPoint[] pointGraphe =  new DataPoint[temp.size()];//initialisation par defaut
+        /*Array list qui récupère les points
+        * Creer a cause de null exception dans le tableau définit trop grand*/
+        ArrayList<DataPoint> listePoints = new ArrayList<DataPoint>();
         LineGraphSeries<DataPoint> series;
         final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
 
 
         for(int i = 0; i < temp.size(); i++) {
-            if(temp.get(i).getTemp() == -300.0) {
-                //TODO verif si vide crash ???
-                series = new LineGraphSeries<>(pointGraphe);
-                graphView.addSeries(series);
-                int tailleNew = temp.size() - pointGraphe.length;
-                pointGraphe = new DataPoint[tailleNew]; //faux
-            } else {
-                System.out.println(temp.get(i).getDate());
-                pointGraphe[i] = new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp());
+            if(temp.get(i).getTemp() == -300.0) { // Si temperature invalide
+                // on definit la  taille du tableau a la taille de listePoints ( qui contient tous les points récupérer )
+                pointGraphe = new DataPoint[listePoints.size()];
+                // On transfere toutes les points dans le tableau
+                //TODO mettre dans une fct a part ?
+                for(int j = 0; j < listePoints.size(); j++) {
+                    pointGraphe[j] = listePoints.get(j);
+                    System.out.println("-----" + pointGraphe[j]);
+                }
+                /*Puis ajoute la series de point au graph si notre tableau a une taille > a 0
+                 Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
+                if(pointGraphe.length > 0) {
+                    series = new LineGraphSeries<>(pointGraphe);
+                    graphView.addSeries(series); // ajout au graph
+                }
+                listePoints = new ArrayList<DataPoint>(); // on redéfinit l'arraylist pour ne pas garder les points déja entre
+            } else { // si la température est valide
+                //on ajoute le point a la liste
+                listePoints.add(new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp()));
             }
         }
-        if (temp.size() > 0) {
-            for (int i = 0 ; i < pointGraphe.length; i++) {
-                System.out.println(pointGraphe[i]);
+        if (temp.size() > 0) { // si il ya eu des températures
+            /* si il reste des températures a ajouter
+             * Ajoute au graph
+             * Vérification nécessaire car si la dernière température inscrite était invalide
+             * alors ajoute un tableau vide
+             */
+            if (listePoints.size() > 0) {
+                pointGraphe = new DataPoint[listePoints.size()];
+                for (int j = 0; j < listePoints.size(); j++) {
+                    pointGraphe[j] = listePoints.get(j);
+                }
+                series = new LineGraphSeries<>(pointGraphe);
+                graphView.addSeries(series); // TODO verif si pas vide crash ?
             }
-            series = new LineGraphSeries<>(pointGraphe);
-            graphView.addSeries(series); // TODO verif si pas vide crash ?
+
+            /* Défninition des propriétés du graph */
             graphView.getGridLabelRenderer().setTextSize(40f);
             graphView.getGridLabelRenderer().reloadStyles();
             graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {

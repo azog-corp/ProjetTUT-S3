@@ -54,8 +54,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp">
-
+                        android:layout_marginRight="20dp"
+                        android:hint="ex: 21/11/2000 11:50:25">
                     </EditText>
                 </LinearLayout>
 
@@ -69,14 +69,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
                         android:text="Fin"
-                        android:textSize="20sp"></TextView>
+                        android:textSize="20sp">
+                    </TextView>
 
                     <EditText
                         android:id="@+id/dateFin"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"></EditText>
+                        android:layout_marginRight="20dp"
+                        android:hint="ex: 21/11/2000 11:50:25">
+                    </EditText>
                 </LinearLayout>
 
                 <LinearLayout
