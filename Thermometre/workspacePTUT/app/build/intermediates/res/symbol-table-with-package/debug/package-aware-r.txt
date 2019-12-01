@@ -776,6 +776,7 @@ id btnAccueil
 id btnAfficher
 id btnDelete
 id btnGraph
+id btnLastCo
 id btnMenu
 id buttonPanel
 id buttons_container
@@ -1024,6 +1025,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string afficher
 string app_name
+string btnLastCo
 string btnMenu
 string default_progressbar
 string dialog_cancel
