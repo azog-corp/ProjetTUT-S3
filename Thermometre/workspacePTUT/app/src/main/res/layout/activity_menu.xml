@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menu">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@color/couleurAppli"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="176dp"
+                tools:layout_editor_absoluteY="27dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="3"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/btnGraph"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Graphe"
+                    android:minHeight="75dp"
+                    android:maxHeight="100dp"
+                    android:textColor="@color/blanc"
+                    tools:layout_editor_absoluteX="163dp"
+                    tools:layout_editor_absoluteY="193dp"
+                    android:background="@drawable/btn_arrond"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="25sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:layout_marginTop="50dp">
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Supprimer températures"
+                    android:minHeight="75dp"
+                    android:maxHeight="100dp"
+                    android:textColor="@color/blanc"
+                    tools:layout_editor_absoluteX="161dp"
+                    tools:layout_editor_absoluteY="300dp"
+                    android:background="@drawable/btn_arrond"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:layout_marginTop="100dp">
+
+                <Button
+                    android:id="@+id/btnAccueil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:text="Accueil"
+                    android:textColor="@color/blanc"
+                    android:background="@drawable/btn_arrond"
+                    tools:layout_editor_absoluteX="163dp"
+                    tools:layout_editor_absoluteY="435dp"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

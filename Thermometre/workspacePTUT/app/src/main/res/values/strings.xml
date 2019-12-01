@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Thermometre</string>
+    <string name="titre">THERMOMETRE</string>
+    <string name="temperatureActuelle">20,00</string>
+    <string name="afficher">Afficher</string>
+    <string name="btnMenu">Menu</string>
+    <string name="btnLastCo">Dern. Connexion</string>
+</resources>
