@@ -198,14 +198,14 @@ public class RechercheTemperature {
 	 */
 	public static Date conversion(String date) {
 		
-	SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    try {
-		Date dateFormate  = format.parse(date);
-		return dateFormate;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    return null;
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			try {
+				Date dateFormate  = format.parse(date);
+				return dateFormate;
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
 	}
 }
