@@ -221,7 +221,6 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static Date conversion(String date) {
-
 	SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     try {
 		Date dateFormate  = format.parse(date);

@@ -30,7 +30,7 @@ public class RechercheTemperature {
 		String ligne;    // ligne lue dans le fichier
 
 		try ( // déclaration et création de l'objet fichier
-				BufferedReader fichier = new BufferedReader(new FileReader(file))) {
+			BufferedReader fichier = new BufferedReader(new FileReader(file))) {
 
 			while (((ligne = fichier.readLine()) != null)) {
 				
@@ -74,11 +74,11 @@ public class RechercheTemperature {
 			PrintWriter printwriter = new PrintWriter(new FileOutputStream("fichierTemp.txt"));
 			printwriter.println("");
 			printwriter.close();
-			}
-			catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			System.out.println("Error clear file fichierTemp.txt");
 			return false;
-			}
+		}
 		return true;
 	}
 	
@@ -127,12 +127,12 @@ public class RechercheTemperature {
 	 */
 	public static boolean intervalleOk(String date1, String date2) {
 
-			Date date1formate = conversion(date1);
-			Date date2formate = conversion(date2);
-			long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
-			if (diff < 2 && diff > 0) {
-				return true;
-			}
+		Date date1formate = conversion(date1);
+		Date date2formate = conversion(date2);
+		long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
+		if (diff < 2 && diff > 0) {
+			return true;
+		}
 		return false;
 	}
 	
@@ -146,17 +146,17 @@ public class RechercheTemperature {
 		
 		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
 
-			Date date1formate = conversion(date1);
-			Date date2formate = conversion(date2);
-			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
-						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-					tempIntervalle.add(listeTemp.get(x));
-				}
-			}
-		return tempIntervalle;
+		Date date1formate = conversion(date1);
+		Date date2formate = conversion(date2);
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+				&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+				tempIntervalle.add(listeTemp.get(x));
+		}
 	}
-	
+	return tempIntervalle;
+}
+
 	/**
 	 * Suprime de listeTemp toutes les température contenu dans un intervalle
 	 * @param date1
@@ -164,17 +164,17 @@ public class RechercheTemperature {
 	 */
 	public static void supprimerIntervalle(String date1, String date2) {
 
-			Date date1formate = conversion(date1);
-			Date date2formate = conversion(date2);
-			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
-						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-					listeTemp.remove(listeTemp.get(x));
-				}
-			}
-	    saveTemp();
+		Date date1formate = conversion(date1);
+		Date date2formate = conversion(date2);
+		for (int x = 0 ; x < listeTemp.size() ; x++) {
+			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+				&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+				listeTemp.remove(listeTemp.get(x));
+		}
 	}
-	
+	saveTemp();
+}
+
 	/**
 	 * Vérifie si une date existe dans listeTemp
 	 * @param date
@@ -197,13 +197,13 @@ public class RechercheTemperature {
 	public static Date conversion(String date) {
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-			try {
-				Date dateFormate  = format.parse(date);
-				return dateFormate;
-			} catch (ParseException e) {
+		try {
+			Date dateFormate  = format.parse(date);
+			return dateFormate;
+		} catch (ParseException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
