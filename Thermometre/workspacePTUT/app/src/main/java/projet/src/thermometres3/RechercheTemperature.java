@@ -153,7 +153,7 @@ public class RechercheTemperature {
 			Date date2formate = conversion(date2);
 			if (date1formate != null && date2formate != null) {
 				double diff = ((date2formate.getTime() - date1formate.getTime()) / (1000 * 60 * 60 * 24));
-				if (diff =<2 && diff >= 0){
+				if (diff =< 2 && diff >= 0){
 					return true;
 				}
 			} else {
@@ -173,9 +173,10 @@ public class RechercheTemperature {
 
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+		if (date1formate != null && date2formate != null) {
 			System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString());
-			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+			for (int x = 0; x < listeTemp.size(); x++) {
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					//TODO des que cst NOK arrete la lecture
 					tempIntervalle.add(listeTemp.get(x));
@@ -184,10 +185,11 @@ public class RechercheTemperature {
 					System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
 				}
 			}
-			for(int x = 0 ; x < tempIntervalle.size() ; x++) {
+			for (int x = 0; x < tempIntervalle.size(); x++) {
 				System.out.println(tempIntervalle.get(x).getDate());
 			}
-		return tempIntervalle;
+			return tempIntervalle;
+		}
 	}
 	
 	/** TODO refaire plus tard mais necessite context donc risque erreur
