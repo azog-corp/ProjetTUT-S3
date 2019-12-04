@@ -181,12 +181,13 @@ public class RechercheTemperature {
 			Date date2formate = conversion(date2);
 			if (date1formate != null && date2formate != null) {
 				double diff = ((date2formate.getTime() - date1formate.getTime()) / (1000 * 60 * 60 * 24));
-				if (diff =< 2 && diff >= 0){
+				/*if (diff =< 2 && diff >= 0){
 					return true;
-				}
+				}*/
 			} else {
 				return false;
 			}
+		return false; // TODO stub a enlever
 	}
 	
 	/**
@@ -218,6 +219,8 @@ public class RechercheTemperature {
 			}
 			return tempIntervalle;
 		}
+		return tempIntervalle; // TODO enelver ( stub)
+		//TODO throw exception et rajouter un bouchon stub
 	}
 	
 	/** TODO refaire plus tard mais necessite context donc risque erreur
