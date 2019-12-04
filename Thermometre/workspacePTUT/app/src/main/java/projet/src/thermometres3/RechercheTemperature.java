@@ -1,10 +1,15 @@
 package projet.src.thermometres3;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 
 import androidx.core.graphics.drawable.IconCompat;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,6 +19,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,9 +34,11 @@ public class RechercheTemperature {
 	 */
 	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
-	private final static String NOM_FICHIER = "fichierTemp.txt";
+	public final static String NOM_FICHIER = "fichierTemp.txt";
 
-	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
+	public final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
+
+	public static String nouvellesTemps = "";
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -39,14 +47,11 @@ public class RechercheTemperature {
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
 	public static void editTemp(Context myContext) {
-
 		String ligne;    // ligne lue dans le fichier
-
 		try { // déclaration et création de l'objet fichier
-            BufferedReader fichier = new BufferedReader(new InputStreamReader(myContext.getAssets().open(NOUVELLE_TEMP)));
-
+			System.out.println(nouvellesTemps);
+			BufferedReader fichier = new BufferedReader(new InputStreamReader(myContext.getAssets().open(nouvellesTemps)));
 			while (((ligne = fichier.readLine()) != null)) {
-				
 				try {
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
@@ -85,8 +90,10 @@ public class RechercheTemperature {
 	public static boolean supprimerTemp(Context myContext) {
 		try {
 			//TODO utliser une constante global plutot
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE));
-            outputStreamWriter.write("");
+            //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE));
+			//OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream("/data/user/0/projet.src.thermometres3/files/fileTemp.txt"));
+			FileOutputStream outputStreamWriter = myContext.openFileOutput(NOM_FICHIER,Context.MODE_PRIVATE);
+            outputStreamWriter.write("aaaaa".getBytes());
             outputStreamWriter.close();
             /*lorsque l'application se charge les températures sont automatiquement chargées
             Pour les faire disparaitre et ne plus etre valable on  reinitialise la liste des temperatures en memoire*/
@@ -105,11 +112,32 @@ public class RechercheTemperature {
 	public static void saveTemp(Context myContext) {
 		System.out.println("je sauvegarde");
 		try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput("fichierTemp.txt", Context.MODE_PRIVATE));
+            //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput("fichierTemp.txt", Context.MODE_PRIVATE));
+			//OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream("/data/user/0/projet.src.thermometres3/files/fileTemp.txt"));
+			//FileOutputStream outputStreamWriter = myContext.openFileOutput(NOM_FICHIER,Context.MODE_PRIVATE);
+			//create a buffer that has the same size as the InputStream
+			//get the resource id from the file name
+			/*Resources resources = myContext.getResources();
+			int rID = resources.getIdentifier("fortyonepost.com.lfas:raw/"+NOM_FICHIER, null, null);
+			//get the file as a stream
+			InputStream iS = resources.openRawResource(rID);
+			byte[] buffer = new byte[iS.available()];
+			//read the text file as a stream, into the buffer
+			iS.read(buffer);
+			//create a output stream to write the buffer into
+			ByteArrayOutputStream oS = new ByteArrayOutputStream();
+			//write this buffer to the output stream
+			oS.write(buffer);
 			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				outputStreamWriter.write(listeTemp.get(x).toString());
+				outputStreamWriter.write(listeTemp.get(x).toString().getBytes());
 			}
-            outputStreamWriter.close();
+            outputStreamWriter.close();*/
+			try (FileOutputStream fos = myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE)) {
+				for (int x = 0 ; x < listeTemp.size() ; x++) {
+					fos.write(listeTemp.get(x).toString().getBytes());
+				}
+			}
+
 		} catch (Exception ex) {
 			System.out.println("Error save file fichierTemp.txt");
 		}

@@ -140,19 +140,19 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int LOADING = 0x7f0b0000;
-        public static final int app_name = 0x7f0b0029;
-        public static final int default_progressbar = 0x7f0b002c;
-        public static final int dialog_cancel = 0x7f0b002d;
-        public static final int dialog_default_title = 0x7f0b002e;
-        public static final int dialog_ok = 0x7f0b002f;
+        public static final int LOADING = 0x7f0c0000;
+        public static final int app_name = 0x7f0c0029;
+        public static final int default_progressbar = 0x7f0c002c;
+        public static final int dialog_cancel = 0x7f0c002d;
+        public static final int dialog_default_title = 0x7f0c002e;
+        public static final int dialog_ok = 0x7f0c002f;
     }
     public static final class style {
         private style() {}
 
-        public static final int alert_dialog_dark = 0x7f0c0160;
-        public static final int alert_dialog_light = 0x7f0c0161;
-        public static final int dialog_blue_button = 0x7f0c0162;
+        public static final int alert_dialog_dark = 0x7f0d0160;
+        public static final int alert_dialog_light = 0x7f0d0161;
+        public static final int dialog_blue_button = 0x7f0d0162;
     }
     public static final class styleable {
         private styleable() {}
