@@ -162,8 +162,12 @@ public class RechercheTemperature {
 		Date dateMin = conversion("01/01/2019 00:00:00");
 		Date dateMax = conversion("30/12/2020 00:00:00");
 		Date aVerifier = conversion(date);
-		// si aVerifier est entre dateMin et dateMax
-		return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
+		if (aVerifier != null) {
+			// si aVerifier est entre dateMin et dateMax
+			return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -175,11 +179,14 @@ public class RechercheTemperature {
 	public static boolean intervalleOk(String date1, String date2) {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
-			long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
-			if (diff < 2 && diff > 0) {
-				return true;
+			if (date1formate != null && date2formate != null) {
+				double diff = ((date2formate.getTime() - date1formate.getTime()) / (1000 * 60 * 60 * 24));
+				if (diff =< 2 && diff >= 0){
+					return true;
+				}
+			} else {
+				return false;
 			}
-		return false;
 	}
 	
 	/**
@@ -194,9 +201,10 @@ public class RechercheTemperature {
 
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+		if (date1formate != null && date2formate != null) {
 			System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString());
-			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime() 
+			for (int x = 0; x < listeTemp.size(); x++) {
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					//TODO des que cst NOK arrete la lecture
 					tempIntervalle.add(listeTemp.get(x));
@@ -205,10 +213,11 @@ public class RechercheTemperature {
 					System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
 				}
 			}
-			for(int x = 0 ; x < tempIntervalle.size() ; x++) {
+			for (int x = 0; x < tempIntervalle.size(); x++) {
 				System.out.println(tempIntervalle.get(x).getDate());
 			}
-		return tempIntervalle;
+			return tempIntervalle;
+		}
 	}
 	
 	/** TODO refaire plus tard mais necessite context donc risque erreur
@@ -249,15 +258,14 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static Date conversion(String date) {
-
-	SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date dateFormate = null;
     try {
-		Date dateFormate  = format.parse(date);
-		return dateFormate;
+		dateFormate  = format.parse(date);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    return null;
+    return dateFormate;
 	}
 }
