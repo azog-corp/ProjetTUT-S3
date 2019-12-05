@@ -56,7 +56,28 @@ public class TestRechercheTemperature {
 	}
 	
 	private static void TestDateIntervalle() {
+		ArrayList<Temperature> testIntervalle = new ArrayList<Temperature>();
+		testIntervalle.add(testTemp.get(3));
+		testIntervalle.add(testTemp.get(3));
+		testIntervalle.add(testTemp.get(4));
+		testIntervalle.add(testTemp.get(5));
+		testIntervalle.add(testTemp.get(6));
+		int dateBonne = 0;
 		
+		ArrayList<Temperature> intervalle = RechercheTemperature.dateIntervalle("03/11/2019 20:11:12 16.5", "05/11/2019 20:11:12 10");
+		
+		if (testIntervalle.size() == intervalle.size()) {
+			for (int x = 0 ; x < intervalle.size() ; x++) {
+				if (testIntervalle.get(x).toString() == intervalle.get(x).toString()) {
+					dateBonne++;
+				} else {
+					break;
+				}
+			}
+		}
+		if (dateBonne == 5) {
+			System.out.println("dateIntervalle OK");
+		}
 	}
 
 	public static void main(String[] args) {
@@ -64,8 +85,8 @@ public class TestRechercheTemperature {
 		testTemp = RechercheTemperature.getListTemp();
 		// testGetDerniereTemp();
 		// testIntervalleOk();
-		TestDateOk();
-		// TestDateIntervalle();
+		// TestDateOk();
+		TestDateIntervalle();
 	}
 
 }
