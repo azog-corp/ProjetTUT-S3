@@ -181,8 +181,11 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static boolean dateExiste(String date) {
+		
+		Date dateFormate = conversion(date);
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (listeTemp.get(x).getDate().toString() == date) {
+			System.out.println(listeTemp.get(x).getDate().toString() + dateFormate.toString());
+			if (listeTemp.get(x).getDate().toString() == dateFormate.toString()) {
 				return true;
 			}
 		}

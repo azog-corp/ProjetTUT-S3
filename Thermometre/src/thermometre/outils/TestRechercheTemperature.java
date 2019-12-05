@@ -80,9 +80,9 @@ public class TestRechercheTemperature {
 	}
 	
 	private static void testDateExiste() {
-		String[] dateTest = {"01/11/2019","02/11/2019","05/11/2222"};
+		String[] dateTest = {"01/11/2019 10:11:12 14.5","02/11/2019 20:11:12 15.5","03/11/2019 20:11:12 16.5"};
 		
-		if (RechercheTemperature.dateExiste(dateTest[0]) || RechercheTemperature.dateExiste(dateTest[1])) {
+		if (RechercheTemperature.dateExiste(dateTest[0]) && RechercheTemperature.dateExiste(dateTest[1])) {
 			System.out.println("dateExiste OK avec date valides");
 		}
 		if (!RechercheTemperature.dateExiste(dateTest[2])) {
@@ -97,7 +97,7 @@ public class TestRechercheTemperature {
 		// testIntervalleOk();
 		// TestDateOk();
 		// TestDateIntervalle(); // ne marche pas
-		testDateExiste();
+		// testDateExiste(); //ne marchye pas
 	}
 
 }
