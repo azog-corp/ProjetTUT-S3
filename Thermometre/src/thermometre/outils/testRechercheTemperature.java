@@ -43,7 +43,7 @@ public class testRechercheTemperature {
 		RechercheTemperature.editTemp("fichierTempTest.txt");
 		testTemp = RechercheTemperature.getListTemp();
 		// testGetDerniereTemp();
-		testIntervalleOk();
+		// testIntervalleOk();
 	}
 
 }
