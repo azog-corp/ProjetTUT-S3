@@ -93,28 +93,20 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static boolean supprimerTemp(Context myContext) {
-		try {
-			//TODO utliser une constante global plutot
-            String fich = myContext.getFilesDir()+"/" + NOM_FICHIER;
-            File f = new File(fich);
-            try (FileOutputStream fos = new FileOutputStream(f)) {
-                BufferedReader fichier = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
-                while (((fichier.readLine()) != null)) {
-                    fos.write("".getBytes());
-                }
-                fichier.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            /*lorsque l'application se charge les températures sont automatiquement chargées
-            Pour les faire disparaitre et ne plus etre valable on  reinitialise la liste des temperatures en memoire*/
-			listeTemp = new ArrayList<Temperature>();
+		//TODO utliser une constante global plutot
+		try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(myContext.getFilesDir()+"/"+NOM_FICHIER))) {
+			BufferedReader fichLect = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
+			while (((fichLect.readLine()) != null)) {
+				fichEcri.write("");
 			}
-			catch (Exception ex) {
-			System.out.println("Error clear file fichierTemp.txt");
+			fichLect.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 			return false;
-			}
+		}
+		/*lorsque l'application se charge les températures sont automatiquement chargées
+           Pour les faire disparaitre et ne plus etre valable on  reinitialise la liste des temperatures en memoire*/
+		listeTemp = new ArrayList<Temperature>();
 		return true;
 	}
 
@@ -152,15 +144,6 @@ public class RechercheTemperature {
 		} catch (Exception ex) {
 			System.out.println("Error save file fichierTemp.txt");
 		}
-	}
-
-	/**
-	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
-	 * dans le fichier listeTemp
-	 */
-	public static void addTemp(Context myContext) {
-		editTemp(myContext);
-		saveTemp(myContext);
 	}
 
 	/**
