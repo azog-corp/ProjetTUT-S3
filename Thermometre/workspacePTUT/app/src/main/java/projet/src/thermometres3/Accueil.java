@@ -51,7 +51,6 @@ public class Accueil extends AppCompatActivity {
             }
         });
 
-
         String derniereCo = Accueil.this.getFilesDir()+"/derniereCo.txt";
         File f = new File(derniereCo);
 
@@ -59,7 +58,6 @@ public class Accueil extends AppCompatActivity {
          * S' il n'existe pas cela signifie que c'est le premiere lancement de l'application
          * Il faut donc recuperer les temperatures et creer le fichier de temperatures
          */
-        creerFichierLastCo();
         if(!f.exists()) { // Si le fichier n'existe pas
             creerFichierLastCo();
             creerFichierTemperatures();
@@ -67,9 +65,9 @@ public class Accueil extends AppCompatActivity {
             /*Si le fichier existe alors on recupere
              * les nouvelles temperatures
              */
-            majFichierTemp();
+            //majFichierTemp();
             System.out.println("MAJ");
-            majFichierDerniereCo();
+            creerFichierLastCo();
         }
         String ligne;
         try {
@@ -92,7 +90,7 @@ public class Accueil extends AppCompatActivity {
      * Methode qui met a jour le fichier derniereCo.txt
      * Pour cela ecrase l'ancienne dater de derniere connexion par la nouvelle
      * correspondant a la dater actuelle
-     */
+     *
     private void majFichierDerniereCo() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -103,7 +101,7 @@ public class Accueil extends AppCompatActivity {
         try (BufferedReader fichier = new BufferedReader(new FileReader(new File(
                 Accueil.this.getFilesDir()+"/derniereCo.txt")))) {
             FileOutputStream fos = new FileOutputStream(f);
-            /* Lit la ligne deja inscrite et */
+            //Lit la ligne deja inscrite et
             while((ligne = fichier.readLine()) != null) {
                 System.out.println("INITIAL");
                 System.out.println(ligne);
@@ -112,7 +110,7 @@ public class Accueil extends AppCompatActivity {
         } catch (IOException e) {
             System.out.println("IO");
         }
-    }
+    }*/
 
     private void majFichierTemp() {
         String fichTemp = Accueil.this.getFilesDir()+"/fichierTemp.txt";
@@ -137,8 +135,9 @@ public class Accueil extends AppCompatActivity {
             BufferedReader fichier = new BufferedReader(new InputStreamReader(
                     Accueil.this.getAssets().open(NOM_FICHIER)));
             while (((ligne = fichier.readLine()) != null)) {
-                fos.write(ligne.getBytes());
+                fos.write((ligne + "\n").getBytes());
             }
+            fichier.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -147,12 +146,13 @@ public class Accueil extends AppCompatActivity {
     private void creerFichierLastCo() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        System.out.println(sdf.format(date));
         String derniereCo = Accueil.this.getFilesDir()+"/derniereCo.txt";
         File f = new File(derniereCo);
         try {
+            String ligne;
             BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)));
-            fic.write(sdf.format(date));
+                fic.write(sdf.format(date));
+            fic.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

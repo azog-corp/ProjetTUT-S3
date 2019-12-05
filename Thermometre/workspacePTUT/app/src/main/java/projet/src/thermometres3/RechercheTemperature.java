@@ -53,9 +53,11 @@ public class RechercheTemperature {
 		try { // déclaration et création de l'objet fichier
 			System.out.println(nouvellesTemps);
             BufferedReader fichier = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
+            int compteur = 0;
 			while (((ligne = fichier.readLine()) != null)) {
+				compteur++;
 				try {
-				    System.out.println(ligne);
+				    System.out.println(compteur + " " +ligne);
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
 					System.out.println(e +" problème création liste de températures");
