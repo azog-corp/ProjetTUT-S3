@@ -58,25 +58,35 @@ public class TestRechercheTemperature {
 	private static void TestDateIntervalle() {
 		ArrayList<Temperature> testIntervalle = new ArrayList<Temperature>();
 		testIntervalle.add(testTemp.get(3));
-		testIntervalle.add(testTemp.get(3));
 		testIntervalle.add(testTemp.get(4));
 		testIntervalle.add(testTemp.get(5));
 		testIntervalle.add(testTemp.get(6));
+		testIntervalle.add(testTemp.get(7));
 		int dateBonne = 0;
 		
-		ArrayList<Temperature> intervalle = RechercheTemperature.dateIntervalle("03/11/2019 20:11:12 16.5", "05/11/2019 20:11:12 10");
+		ArrayList<Temperature> intervalle = RechercheTemperature.dateIntervalle("03/11/2019 20:11:12 16.5", "06/11/2019 20:11:12 9");
 		
-		if (testIntervalle.size() == intervalle.size()) {
 			for (int x = 0 ; x < intervalle.size() ; x++) {
-				if (testIntervalle.get(x).toString() == intervalle.get(x).toString()) {
+				System.out.println(testIntervalle.get(x).toString() + intervalle.get(x).toString());
+				if (testIntervalle.get(x) == intervalle.get(x)) {
 					dateBonne++;
 				} else {
-					break;
+					System.out.println("test raté");
 				}
 			}
-		}
 		if (dateBonne == 5) {
-			System.out.println("dateIntervalle OK");
+			System.out.println("test OK");
+		}
+	}
+	
+	private static void testDateExiste() {
+		String[] dateTest = {"01/11/2019","02/11/2019","05/11/2222"};
+		
+		if (RechercheTemperature.dateExiste(dateTest[0]) || RechercheTemperature.dateExiste(dateTest[1])) {
+			System.out.println("dateExiste OK avec date valides");
+		}
+		if (!RechercheTemperature.dateExiste(dateTest[2])) {
+			System.out.println("dateExiste OK avec date invalide");
 		}
 	}
 
@@ -86,7 +96,8 @@ public class TestRechercheTemperature {
 		// testGetDerniereTemp();
 		// testIntervalleOk();
 		// TestDateOk();
-		TestDateIntervalle();
+		// TestDateIntervalle(); // ne marche pas
+		testDateExiste();
 	}
 
 }

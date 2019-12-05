@@ -63,4 +63,9 @@ public class Temperature {
 	public double getTemp() {
 		return this.temp;
 	}
+
+	@Override
+	public String toString() {
+		return "Temperature [date=" + date + ", temp=" + temp + "]";
+	}
 }
