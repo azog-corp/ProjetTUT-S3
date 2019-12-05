@@ -16,10 +16,14 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        /* Definitions des boutons */
         Button btnGraphe = (Button) findViewById(R.id.btnGraph);
         Button btnAccueil = (Button) findViewById(R.id.btnAccueil);
         Button btnDelete = (Button) findViewById(R.id.btnDelete);
 
+        /* Lorsque l'utilisateur clique sur le bouton Graphe
+         * Ouvre la page graphique
+         */
         btnGraphe.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -27,6 +31,10 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        /* Lorsque l'utilisateur clique sur le bouton Supprimer les temperatures
+         * Affiche une boite de dialogue qui demande a l'utilisateur si celui
+         * Souhaite supprimer les temperatures
+         */
         btnDelete.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -34,6 +42,9 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        /* Lorsque l'utilisateur clique sur le bouton Accueil
+         * Ouvre la page d'accueil
+         */
         btnAccueil.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -42,7 +53,12 @@ public class Menu extends AppCompatActivity {
         });
     }
 
+    /**
+     * Methode qui ouvre une boite de dialogue demandant a l'utilisateur
+     * si celui ci souhaite supprimer les temperatures de l'application
+     */
     private void openDelete() {
+        /* Affichage de la boite de dialogue */
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("Etes vous sur ?")
                 .setContentText("Vous ne pourrez pas recuperer les temperatures apres suppression")

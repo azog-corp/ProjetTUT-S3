@@ -8,6 +8,7 @@ import androidx.core.graphics.drawable.IconCompat;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,12 +48,14 @@ public class RechercheTemperature {
 	 * pour ensuite les enregistrer dans une arrayList
 	 */
 	public static void editTemp(Context myContext) {
+	    System.out.println("EDIT TEMP");
 		String ligne;    // ligne lue dans le fichier
 		try { // déclaration et création de l'objet fichier
 			System.out.println(nouvellesTemps);
-			BufferedReader fichier = new BufferedReader(new InputStreamReader(myContext.getAssets().open(nouvellesTemps)));
+            BufferedReader fichier = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
 			while (((ligne = fichier.readLine()) != null)) {
 				try {
+				    System.out.println(ligne);
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
 					System.out.println(e +" problème création liste de températures");
@@ -90,14 +93,21 @@ public class RechercheTemperature {
 	public static boolean supprimerTemp(Context myContext) {
 		try {
 			//TODO utliser une constante global plutot
-            //OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE));
-			//OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream("/data/user/0/projet.src.thermometres3/files/fileTemp.txt"));
-			FileOutputStream outputStreamWriter = myContext.openFileOutput(NOM_FICHIER,Context.MODE_PRIVATE);
-            outputStreamWriter.write("aaaaa".getBytes());
-            outputStreamWriter.close();
+            String fich = myContext.getFilesDir()+"/" + NOM_FICHIER;
+            File f = new File(fich);
+            try (FileOutputStream fos = new FileOutputStream(f)) {
+                BufferedReader fichier = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
+                while (((fichier.readLine()) != null)) {
+                    fos.write("".getBytes());
+                }
+                fichier.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             /*lorsque l'application se charge les températures sont automatiquement chargées
             Pour les faire disparaitre et ne plus etre valable on  reinitialise la liste des temperatures en memoire*/
-			RechercheTemperature.listeTemp = new ArrayList<Temperature>();
+			listeTemp = new ArrayList<Temperature>();
 			}
 			catch (Exception ex) {
 			System.out.println("Error clear file fichierTemp.txt");
@@ -132,12 +142,11 @@ public class RechercheTemperature {
 				outputStreamWriter.write(listeTemp.get(x).toString().getBytes());
 			}
             outputStreamWriter.close();*/
-			try (FileOutputStream fos = myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE)) {
+			try (FileOutputStream fos = myContext.openFileOutput(NOM_FICHIER, Context.MODE_APPEND)) {
 				for (int x = 0 ; x < listeTemp.size() ; x++) {
 					fos.write(listeTemp.get(x).toString().getBytes());
 				}
 			}
-
 		} catch (Exception ex) {
 			System.out.println("Error save file fichierTemp.txt");
 		}
