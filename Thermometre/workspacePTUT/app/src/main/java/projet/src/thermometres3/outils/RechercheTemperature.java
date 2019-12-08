@@ -1,4 +1,4 @@
-package projet.src.thermometres3;
+package projet.src.thermometres3.outils;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -39,8 +39,6 @@ public class RechercheTemperature {
 
 	public final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
 
-	public static String nouvellesTemps = "";
-
 	/**
 	 * Fonction qui lit un fichier texte contenant
 	 * des dates liées à des températures et créé une 
@@ -51,18 +49,21 @@ public class RechercheTemperature {
 	    System.out.println("EDIT TEMP");
 		String ligne;    // ligne lue dans le fichier
 		try { // déclaration et création de l'objet fichier
-			System.out.println(nouvellesTemps);
             BufferedReader fichier = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
             int compteur = 0;
 			while (((ligne = fichier.readLine()) != null)) {
 				compteur++;
 				try {
-				    System.out.println(compteur + " " +ligne);
 					listeTemp.add(new Temperature(ligne));
 				} catch (ParseException e) {
 					System.out.println(e +" problème création liste de températures");
 				}
-			} 
+			}
+			/*  test pour verifier le fonctionnement -- test visuel
+			System.out.println("TEST editTemp");
+			for(int i = 0; i < listeTemp.size(); i++) {
+				System.out.println(listeTemp.get(i).toString());//test visuel
+			}*/
 			fichier.close();
 			// fermeture du fichier automatique avec try-with-ressource          
 		} catch (IOException ex) {
@@ -92,22 +93,22 @@ public class RechercheTemperature {
 	 * Supprime toutes les températures
 	 * @return
 	 */
-	public static boolean supprimerTemp(Context myContext) {
-		//TODO utliser une constante global plutot
+	public static void supprimerTemp(Context myContext) {
+		System.out.println("Suppression");
+		System.out.println(myContext.getFilesDir()+"/"+NOM_FICHIER);
 		try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(myContext.getFilesDir()+"/"+NOM_FICHIER))) {
-			BufferedReader fichLect = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
-			while (((fichLect.readLine()) != null)) {
+			//BufferedReader fichLect = new BufferedReader(new FileReader(myContext.getFilesDir()+"/"+NOM_FICHIER));
+			//while (((fichLect.readLine()) != null)) {
+				System.out.println("Suppression ");
 				fichEcri.write("");
-			}
-			fichLect.close();
+			//}
+			//fichLect.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
 		}
 		/*lorsque l'application se charge les températures sont automatiquement chargées
            Pour les faire disparaitre et ne plus etre valable on  reinitialise la liste des temperatures en memoire*/
 		listeTemp = new ArrayList<Temperature>();
-		return true;
 	}
 
 	/**

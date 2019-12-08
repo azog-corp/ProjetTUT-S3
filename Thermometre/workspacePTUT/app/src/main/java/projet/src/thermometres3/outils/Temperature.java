@@ -49,6 +49,11 @@ public class Temperature {
 		this.temp = Double.parseDouble(decomposition[2]);
 	}
 
+	@Override
+	public String toString() {
+		return format.format(date) +" " + temp; // afichage de la date
+	}
+
 	/**
 	 * @return un objet Date correspondant � la String jj/MM/yyyy HH:mm:ss
 	 * de l'instance courante

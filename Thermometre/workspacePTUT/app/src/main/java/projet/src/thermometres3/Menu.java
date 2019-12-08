@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class Menu extends AppCompatActivity {
 
@@ -63,24 +64,27 @@ public class Menu extends AppCompatActivity {
                 .setTitleText("Etes vous sur ?")
                 .setContentText("Vous ne pourrez pas recuperer les temperatures apres suppression")
                 .setConfirmText("Supprimer")
+                // definition des actions apres appui sur le bouton pour de confirmation
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
-                        //TODO rajouter suppression
+                        /* Supprime les temperatures */
                         RechercheTemperature.supprimerTemp(getApplicationContext());
+                        /* Affiche message pour confirmer suppression */
                         new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Confirmation")
                                 .setContentText("Temperature supprimees")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismissWithAnimation();
+                                        sDialog.dismissWithAnimation(); // ferme la boite de dialog
                                     }
                                 }).show();
                                 sDialog.dismissWithAnimation();
                     }
                 })
-                .setCancelButton("Annuler", new SweetAlertDialog.OnSweetClickListener() {
+                .setCancelButton("Annuler", new SweetAlertDialog.OnSweetClickListener() { // definition des actions apres appui sur le bouton pour annuler
+                    /* Fermeture de la boite de dialog */
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         sDialog.dismissWithAnimation();
@@ -88,11 +92,18 @@ public class Menu extends AppCompatActivity {
                 })
                 .show();
     }
+
+    /**
+     * Ouvre la page accueil
+     */
     private void openAccueil(){
         Intent intent = new Intent(this, Accueil.class);
         startActivity(intent);
     }
 
+    /**
+     * Ouvre la page graphe
+     */
     private void openGraphe() {
         Intent intent = new Intent(this, Graphe.class);
         startActivity(intent);

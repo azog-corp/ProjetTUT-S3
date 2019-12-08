@@ -2,6 +2,7 @@ package projet.src.thermometres3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import projet.src.thermometres3.outils.Temperature;
+import projet.src.thermometres3.outils.RechercheTemperature;
 
-import static projet.src.thermometres3.RechercheTemperature.NOM_FICHIER;
-import static projet.src.thermometres3.RechercheTemperature.NOUVELLE_TEMP;
+import static projet.src.thermometres3.outils.RechercheTemperature.NOM_FICHIER;
+import static projet.src.thermometres3.outils.RechercheTemperature.NOUVELLE_TEMP;
 
 
 public class Accueil extends AppCompatActivity {
@@ -55,11 +56,13 @@ public class Accueil extends AppCompatActivity {
         if(!f.exists()) { // Si le fichier n'existe pas
             creerFichierLastCo(); // creer fichier derniereConnexion
             creerFichierTemperatures(); // creer fichier Temperature
+            TestAccueil.testFichierTemp(getApplicationContext());
         } else {
             /*Si le fichier existe alors on recupere
              * les nouvelles temperatures
              */
-            majFichierTemp();
+            majFichierTemp();// maj fichier Temperature\
+            TestAccueil.testFichierTemp(getApplicationContext());
 
         }
         RechercheTemperature.editTemp(getApplicationContext());//Ajoute les nouvelles temperatures
@@ -69,9 +72,10 @@ public class Accueil extends AppCompatActivity {
      * A la fermeture de l'application met a jour
      * le fichier derniereConnexion
      */
-    public void finish () {
+    protected void onDestroy(){
         System.out.println("MAJ");
         creerFichierLastCo();
+        super.onDestroy();
     }
 
     /**
@@ -79,7 +83,7 @@ public class Accueil extends AppCompatActivity {
      * Pour cela ouvre le fichier contenant les nouvelles temperatures et met a jour
      * le fichier des temperatures
      */
-    private void majFichierTemp() {
+    public void majFichierTemp() {
         String ligne;
         try (BufferedWriter fichEcri= new BufferedWriter(new FileWriter(new File(
                 Accueil.this.getFilesDir()+"/fichierTemp.txt")))) { // ouverture fichier temperatures
@@ -102,7 +106,7 @@ public class Accueil extends AppCompatActivity {
      * dans le dossier assets. On creer donc les fichiers dans la memoire de l'appareil
      * android
      */
-    private void creerFichierTemperatures() {
+    public void creerFichierTemperatures() {
         String ligne;
         try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(new File( // Ouvre / creer le fichier fichierTemp.txt
                 Accueil.this.getFilesDir()+"/fichierTemp.txt")))) {
@@ -120,9 +124,8 @@ public class Accueil extends AppCompatActivity {
 
     /**
      * Creer le fichier derniere Connexion/ ou le met a jour
-     *
      */
-    private void creerFichierLastCo() {
+    void creerFichierLastCo() {
         Date date = new Date(); // Recupere la date Actuelle
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
@@ -134,6 +137,10 @@ public class Accueil extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        /*test -- test visuel
+        System.out.println("TEST creerFichierLastCo");
+        TestAccueil.testLastCo(getApplicationContext());
+         */
     }
 
     /**
