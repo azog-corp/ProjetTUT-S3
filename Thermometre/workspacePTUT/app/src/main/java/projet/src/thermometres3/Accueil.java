@@ -2,7 +2,6 @@ package projet.src.thermometres3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import projet.src.thermometres3.outils.RechercheTemperature;
-
-import static projet.src.thermometres3.outils.RechercheTemperature.NOM_FICHIER;
-import static projet.src.thermometres3.outils.RechercheTemperature.NOUVELLE_TEMP;
+import static projet.src.thermometres3.RechercheTemperature.NOM_FICHIER;
+import static projet.src.thermometres3.RechercheTemperature.NOUVELLE_TEMP;
 
 
 public class Accueil extends AppCompatActivity {

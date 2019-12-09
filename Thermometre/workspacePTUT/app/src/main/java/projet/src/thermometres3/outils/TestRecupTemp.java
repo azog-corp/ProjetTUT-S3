@@ -6,6 +6,8 @@ package projet.src.thermometres3.outils;
 
 import java.util.ArrayList;
 
+import projet.src.thermometres3.RechercheTemperature;
+
 /**
  * Classe de test permettant de v�rifier le bon fonctionnement des classes 
  * RechercheTemperature Temperature et OutilsTemperature
