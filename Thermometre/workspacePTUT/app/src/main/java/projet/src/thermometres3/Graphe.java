@@ -25,6 +25,7 @@ import projet.src.thermometres3.outils.Temperature;
 import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurDate;
 import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurFichier;
 import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurListeDate;
+import static projet.src.thermometres3.OutilsInterface.getDateActuelle;
 import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
 import static projet.src.thermometres3.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
@@ -213,9 +214,7 @@ public class Graphe extends AppCompatActivity {
             String sDebut = OutilsInterface.getLastCo(getApplicationContext());
             String sFin = getDateActuelle();
             try {
-                //Verification validite des dates
-                dateOk(sDebut);
-                dateOk(sFin);
+                //Verifivation inutile des dates celles si ont ete ecrite par nous
                 System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
                 //Verification intervalle valide
                 intervalleOk(sDebut,sFin);
@@ -229,8 +228,6 @@ public class Graphe extends AppCompatActivity {
                // messageErreurIntervalle();
             }catch(ErreurDate e) {//les dates ne sont pas valide
                 messageErreurDate(getApplicationContext());
-            }catch(ErreurFichier e){//Erreur lecture fichier
-                messageErreurFichier(getApplicationContext());
             }
             //messageErreurLastCo();
     }

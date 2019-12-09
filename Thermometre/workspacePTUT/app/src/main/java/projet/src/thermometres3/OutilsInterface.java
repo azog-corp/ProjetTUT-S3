@@ -32,14 +32,10 @@ public class OutilsInterface {
      * Creer le fichier derniere Connexion/ ou le met a jour
      */
     public static void creerFichierLastCo(Context myContext) {
-        Date date = new Date(); // Recupere la date Actuelle
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
-        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
-
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            System.out.println(sdf.format(date)); // affichage debug
-            fic.write(sdf.format(date)); // ecrit dans le fichier la date
+            System.out.println(getDateActuelle()); // affichage debug
+            fic.write(getDateActuelle()); // ecrit dans le fichier la date
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -91,5 +87,12 @@ public class OutilsInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getDateActuelle() {
+        Date date = new Date(); // Recupere la date Actuelle
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
+        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
+        return sdf.format(date);
     }
 }
