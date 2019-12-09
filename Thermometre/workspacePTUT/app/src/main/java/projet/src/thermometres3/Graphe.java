@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -95,7 +97,24 @@ public class Graphe extends AppCompatActivity {
     //TODO essayer de grossir les points + faire les labels
     //TODO plus faire des tests pour intervalle significatif (intervalle Ok)
     public void conversionGraph(ArrayList<Temperature> temp) {
+        //Definition du graph
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
+        //Changement du titre des axes
+        GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
+        gridLabel.setVerticalAxisTitle("Temperature");
+        gridLabel.setHorizontalAxisTitle("Date");
+        //Definition des entrees de l'utilisateur
+        TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
+        TextView tvFin = (TextView) findViewById(R.id.dateFin);
+        //recuperation des entrees de l'utilisateur
+        String sDebut = tvDebut.getText().toString();
+        String sFin = tvFin.getText().toString();
+
+        //Definition des labels de debut et de fin du graph
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {sDebut, sFin});
+        graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
         * Tableau qui contient les point du graphe*/
@@ -119,6 +138,7 @@ public class Graphe extends AppCompatActivity {
                 /*Puis ajoute la series de point au graph si notre tableau a une taille > a 0
                  Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
                 if(listePoints.size() > 0) {
+                    //Definition de l'apparence de la serie que l'on ajoute
                     series = new LineGraphSeries<>(pointGraphe);
                     series.setDataPointsRadius(10);
                     series.setThickness(8);
@@ -143,6 +163,7 @@ public class Graphe extends AppCompatActivity {
                 for (int j = 0; j < listePoints.size(); j++) {
                     pointGraphe[j] = listePoints.get(j);
                 }
+                //Definition de l'apparence de la serie que l'on ajoute
                 series = new LineGraphSeries<>(pointGraphe);
                 series.setDataPointsRadius(10);
                 series.setThickness(8);
