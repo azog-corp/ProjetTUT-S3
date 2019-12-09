@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class TestAccueil {
+public class TestOutilsInterface {
     public static void testLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedReader fic = new BufferedReader(new FileReader(new File(derniereCo)))) { // Lecture du fichier

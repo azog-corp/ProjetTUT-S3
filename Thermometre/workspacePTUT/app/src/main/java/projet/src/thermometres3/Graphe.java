@@ -1,5 +1,6 @@
 package projet.src.thermometres3;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,17 +14,17 @@ import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurFichier;
-import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.Erreur.MessageErreur;
 import projet.src.thermometres3.outils.Temperature;
 
+import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurDate;
+import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurFichier;
+import static projet.src.thermometres3.Erreur.MessageErreur.messageErreurListeDate;
 import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
 import static projet.src.thermometres3.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
@@ -57,10 +58,10 @@ public class Graphe extends AppCompatActivity {
         //Definition des actions a effectuer lors du clic sur le bouton derniere connexion
         btnLastCo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                creerGraph();//appel la creation du graph
+                lastCo();//appel la creation du graph
             }
         });
-
+        //TODO lancement par defaut de l'application avec des donnees par defaut
     }
 
     /**
@@ -78,23 +79,24 @@ public class Graphe extends AppCompatActivity {
         String sFin = tvFin.getText().toString(); //
         System.out.println("Debut " + sDebut + " Fin " + sFin);
         try {
+            //Verification validite des dates
             dateOk(sDebut);
             dateOk(sFin);
             System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
-                intervalleOk(sDebut,sFin);
-                if (RechercheTemperature.getListTemp().size() != 0) {
-                    conversionGraph(dateIntervalle(sDebut, sFin));
-                } else {
-                    messageErreurListeDate();
-                }
-
-
-        }catch (ErreurIntervalle e) {
-            messageErreurIntervalle();
-        }catch(ErreurDate e) {
-            messageErreurDate();
-        }catch(ErreurFichier e){
-            messageErreurFichier();
+            //Verification intervalle valide
+            intervalleOk(sDebut,sFin);
+            //Si des temperatures existes
+            if (RechercheTemperature.getListTemp().size() != 0) {
+                conversionGraph(dateIntervalle(sDebut, sFin));
+            } else { //sinon message erreur
+                messageErreurListeDate(getApplicationContext());
+            }
+        //}catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+            //messageErreurIntervalle();
+        }catch(ErreurDate e) {//les dates ne sont pas valide
+            messageErreurDate(getApplicationContext());
+        }catch(ErreurFichier e){//Erreur lecture fichier
+            messageErreurFichier(getApplicationContext());
         }
     }
 
@@ -182,7 +184,7 @@ public class Graphe extends AppCompatActivity {
 
             System.out.println("Donnees ? " +donneeOk);
             if(!donneeOk) {
-                messageErreurListeDate();
+                messageErreurListeDate(getApplicationContext());
             }
 
             /* Défninition des propriétés du graph */
@@ -206,71 +208,31 @@ public class Graphe extends AppCompatActivity {
      * Fonction qui permet d'aficher les températures depuis la dernière connexion
      * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
      * et inferieur a 2 jours
-     * @param
-
-    //public void lastCo(ArrayList<Temperature> temp) {
-        try{
-            BufferedReader fichier = new BufferedReader(new InputStreamReader(getResources().getAssets().open("derniereCo.txt")));
-            String sDebut = fichier.readLine();
-            String sFin = Date.;
-            //todo convertir
-            //todo appel fonction intervalle entr date
-            //recuperer arraylist et appeller conversionGraph
-            //todo verifier que si plsu de 2 jours etc prendre que les deux derniers jour
-                // todo faire fonction qui recupere le jour actuellement et ils ya
-                if (dateOk(sDebut,sFin)) {
-                    if (intervalleOk(sDebut,sFin)) {
-                        conversionGraph(dateIntervalle(sDebut,sFin));
-                    } else {
-                        messageErreurIntervalle();
-                    }
-                } else {
-                    messageErreurDate();
+     * @param */
+     public void lastCo() {
+            String sDebut = OutilsInterface.getLastCo(getApplicationContext());
+            String sFin = getDateActuelle();
+            try {
+                //Verification validite des dates
+                dateOk(sDebut);
+                dateOk(sFin);
+                System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
+                //Verification intervalle valide
+                intervalleOk(sDebut,sFin);
+                //Si des temperatures existes
+                if (RechercheTemperature.getListTemp().size() != 0) {
+                    conversionGraph(dateIntervalle(sDebut, sFin));
+                } else { //sinon message erreur
+                    messageErreurListeDate(getApplicationContext());
                 }
-            } catch(IOException e) {
-            //TODO si se cas intervient initialiser la date a maintenant
-            messageErreurLastCo();
-        }
-    }*/
-
-    public void messageErreurLastCo() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR")
-                .setContentText("Impossible de lire le fichier dernière connexion")
-                .setConfirmText("OK").show();
+           // }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+               // messageErreurIntervalle();
+            }catch(ErreurDate e) {//les dates ne sont pas valide
+                messageErreurDate(getApplicationContext());
+            }catch(ErreurFichier e){//Erreur lecture fichier
+                messageErreurFichier(getApplicationContext());
+            }
+            //messageErreurLastCo();
     }
 
-    public void messageErreurDate() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR: Date")
-                .setContentText("Erreur: date non valide(format: dd/MM/yyyy HH:mm:ss) ou non ordonnees")
-                .setConfirmText("OK").show();
-    }
-
-
-    public void messageErreurIntervalle() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR: Intervalle")
-                .setContentText("Erreur: Intervalle non valide")
-                .setConfirmText("OK").show();
-
-    }
-
-    public void messageErreurListeDate() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR: Liste Températures")
-                .setContentText("Erreur: Pas de date disponible")
-                .setConfirmText("OK")
-                .show();
-
-    }
-
-    public void messageErreurFichier() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR: Lecture Fichier")
-                .setContentText("Oups une erreur c'est produite lors de la lecture du fichier")
-                .setConfirmText("OK")
-                .show();
-
-    }
 }

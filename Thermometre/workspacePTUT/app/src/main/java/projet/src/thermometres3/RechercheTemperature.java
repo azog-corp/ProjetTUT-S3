@@ -32,6 +32,30 @@ public class RechercheTemperature {
 
 	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
 
+    public static String getNomFichier() {
+        return NOM_FICHIER;
+    }
+
+    public static String getNouvelleTemp() {
+        return NOUVELLE_TEMP;
+    }
+
+    /**
+     * revoie la liste des températures
+     * @return
+     */
+    public static ArrayList<Temperature> getListTemp() {
+        return listeTemp;
+    }
+
+    /**
+     * Renvoie la derniÃ¨re température
+     * de la liste de températures
+     */
+    public double getDerniereTemp() {
+        return listeTemp.get(listeTemp.size()-1).getTemp();
+    }
+
 	/**
 	 * Fonction qui lit un fichier texte contenant
 	 * des dates liées Ã  des températures et créé une
@@ -60,22 +84,6 @@ public class RechercheTemperature {
 			System.out.println("Problème avec l'ouverture du fichier fichierTemp.txt");
 			// problème d'accès au fichier
 		}
-	}
-
-	/**
-	 * revoie la liste des températures
-	 * @return
-	 */
-	public static ArrayList<Temperature> getListTemp() {
-		return listeTemp;
-	}
-
-	/**
-	 * Renvoie la derniÃ¨re température
-	 * de la liste de températures
-	 */
-	public double getDerniereTemp() {
-		return listeTemp.get(listeTemp.size()-1).getTemp();
 	}
 
 	/**
@@ -130,7 +138,6 @@ public class RechercheTemperature {
 	 * @return
 	 * @throws ErreurDate
 	 */
-	//TODO la date max est pas bonne
 	public static boolean dateOk(String date) throws ErreurFichier, ErreurDate  {
 		Date dateMin = conversion("01/01/2019 00:00:00");
 		Date dateMax = new Date();
