@@ -3,16 +3,10 @@ package projet.src.thermometres3;
 import android.content.Context;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 
-import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class TestAccueil {
     public static void testLastCo(Context myContext) {

@@ -29,32 +29,48 @@ public class Graphe extends AppCompatActivity {
 
     final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
 
+    /**
+     * Fonction execute au lancement de la page Graphe
+     * Initialise les actions des boutons de la page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphe);
+        //Definition du bouton afficher
         Button btnAfficher = (Button) findViewById(R.id.btnAfficher);
+        //Definition des actions a effectuer lors du clic sur le bouton afficher
         btnAfficher.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                creerGraph();
+                creerGraph(); //appel la creation du graph
             }
         });
 
+        //Definition du bouton derniere connexion
         Button btnLastCo = (Button) findViewById(R.id.btnLastCo);
+        //Definition des actions a effectuer lors du clic sur le bouton derniere connexion
         btnLastCo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                creerGraph();
+                creerGraph();//appel la creation du graph
             }
         });
 
     }
-    //TODO ajouter méthode pour verifier intervalle significatif
+
+    /**
+     * Fonction qui recupere les entrees de l'utilisateur
+     * Puis verifie leur validite
+     * Si celles ci sont valides appel la methode conversionGraph
+     * Sinon affiche un mesasge d'erreur a l'utilisateur
+     */
     public void creerGraph() {
+        //Definition des entrees de l'utilisateur
         TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
         TextView tvFin = (TextView) findViewById(R.id.dateFin);
-
+        //recuperation des entrees de l'utilisateur
         String sDebut = tvDebut.getText().toString();
-        String sFin = tvFin.getText().toString();
+        String sFin = tvFin.getText().toString(); //
         System.out.println("Debut " + sDebut + " Fin " + sFin);
             if (dateOk(sDebut) && dateOk(sFin)) {
                 System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size());
