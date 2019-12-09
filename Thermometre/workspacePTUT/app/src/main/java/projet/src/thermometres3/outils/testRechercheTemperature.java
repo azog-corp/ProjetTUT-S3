@@ -5,6 +5,8 @@ package projet.src.thermometres3.outils;
 import java.util.ArrayList;
 import java.util.Date;
 
+import projet.src.thermometres3.RechercheTemperature;
+
 public class TestRechercheTemperature {
 	
 	private static ArrayList<Temperature> testTemp = new ArrayList<Temperature>();

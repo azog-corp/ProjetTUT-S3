@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class Menu extends AppCompatActivity {
 

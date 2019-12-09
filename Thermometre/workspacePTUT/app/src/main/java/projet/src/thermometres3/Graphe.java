@@ -19,11 +19,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import projet.src.thermometres3.outils.RechercheTemperature;
+import projet.src.thermometres3.Erreur.ErreurDate;
+import projet.src.thermometres3.Erreur.ErreurFichier;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
 
-import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
-import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
+import static projet.src.thermometres3.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
 
 //TODO creer boutons last connexion
 //
@@ -74,20 +77,25 @@ public class Graphe extends AppCompatActivity {
         String sDebut = tvDebut.getText().toString();
         String sFin = tvFin.getText().toString(); //
         System.out.println("Debut " + sDebut + " Fin " + sFin);
-            if (dateOk(sDebut) && dateOk(sFin)) {
-                System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size());
-                //if (intervalleOk(sDebut,sFin)) {
-                    if(RechercheTemperature.getListTemp().size() != 0) {
-                        conversionGraph(dateIntervalle(sDebut, sFin));
-                    } else {
-                        messageErreurListeDate();
-                    }
-                /*} else {
-                    messageErreurIntervalle();
-                }*/
-            } else {
-                messageErreurDate();
-            }
+        try {
+            dateOk(sDebut);
+            dateOk(sFin);
+            System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
+                intervalleOk(sDebut,sFin);
+                if (RechercheTemperature.getListTemp().size() != 0) {
+                    conversionGraph(dateIntervalle(sDebut, sFin));
+                } else {
+                    messageErreurListeDate();
+                }
+
+
+        }catch (ErreurIntervalle e) {
+            messageErreurIntervalle();
+        }catch(ErreurDate e) {
+            messageErreurDate();
+        }catch(ErreurFichier e){
+            messageErreurFichier();
+        }
     }
 
     /**
@@ -252,6 +260,15 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
                 .setContentText("Erreur: Pas de date disponible")
+                .setConfirmText("OK")
+                .show();
+
+    }
+
+    public void messageErreurFichier() {
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("ERREUR: Lecture Fichier")
+                .setContentText("Oups une erreur c'est produite lors de la lecture du fichier")
                 .setConfirmText("OK")
                 .show();
 
