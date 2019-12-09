@@ -144,11 +144,11 @@ public class RechercheTemperature {
 			Date dateMax = new Date();
 			format.format(dateMax);
 			Date aVerifier = conversion(date);
+            // si aVerifier est entre dateMin et dateMax
+            return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
 		} catch (ParseException e) {
 			throw new ErreurDate();
 		}
-		// si aVerifier est entre dateMin et dateMax
-		return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
 	}
 
 	/**
@@ -161,11 +161,12 @@ public class RechercheTemperature {
 		try {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+            long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
+            return diff < 2 && diff > 0;
 		} catch (ParseException e) {
 			throw new ErreurDate();
 		}
-		long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
-		return diff < 2 && diff > 0;
+
 	}
 
 	/**
@@ -177,9 +178,10 @@ public class RechercheTemperature {
 	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) throws ErreurDate {
 
 		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
+        try {
+            Date date1formate = conversion(date1);
+            Date date2formate = conversion(date2);
 
-		Date date1formate = conversion(date1);
-		Date date2formate = conversion(date2);
 		System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString());
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
 			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
@@ -195,6 +197,10 @@ public class RechercheTemperature {
 			System.out.println(tempIntervalle.get(x).getDate());
 		}
 		return tempIntervalle;
+        } catch(ParseException e) {
+            // l'une des dates n'est pas correcte
+            throw new ErreurDate();
+        }
 	}
 
 	/** TODO refaire plus tard mais necessite context donc risque erreur
@@ -222,7 +228,7 @@ public class RechercheTemperature {
 	 */
 	public static boolean dateExiste(String date) {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (return listeTemp.get(x).getDate().toString() == date) {
+			if (listeTemp.get(x).getDate().toString() == date) {
 				return true;
 			}
 		}
@@ -235,13 +241,9 @@ public class RechercheTemperature {
 	 * @return
 	 * @throws ErreurDate si le format de la date n'est pas valide
 	 */
-	public static Date conversion(String date) throws ErreurDate {
+	public static Date conversion(String date) throws ParseException {
 		Date dateFormate;
-		try {
-			dateFormate  = format.parse(date);
-		} catch (ParseException e) {
-			throw new ErreurDate();
-		}
+		dateFormate  = format.parse(date);
 		return dateFormate;
 	}
 }
