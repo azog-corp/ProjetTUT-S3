@@ -138,11 +138,15 @@ public class RechercheTemperature {
 	 * @return
 	 * @throws ErreurDate
 	 */
-	public static boolean dateOk(String date) throws ErreurFichier, ErreurDate  {
-		Date dateMin = conversion("01/01/2019 00:00:00");
-		Date dateMax = new Date();
-		format.format(dateMax);
-		Date aVerifier = conversion(date);
+	public static boolean dateOk(String date) throws ErreurDate  {
+		try {
+			Date dateMin = conversion("01/01/2019 00:00:00");
+			Date dateMax = new Date();
+			format.format(dateMax);
+			Date aVerifier = conversion(date);
+		} catch (ParseException e) {
+			throw new ErreurDate();
+		}
 		// si aVerifier est entre dateMin et dateMax
 		return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
 	}
@@ -154,8 +158,12 @@ public class RechercheTemperature {
 	 * @return
 	 */
 	public static boolean intervalleOk(String date1, String date2) throws ErreurDate  {
-		Date date1formate = conversion(date1);
-		Date date2formate = conversion(date2);
+		try {
+			Date date1formate = conversion(date1);
+			Date date2formate = conversion(date2);
+		} catch (ParseException e) {
+			throw new ErreurDate();
+		}
 		long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
 		return diff < 2 && diff > 0;
 	}
@@ -214,7 +222,7 @@ public class RechercheTemperature {
 	 */
 	public static boolean dateExiste(String date) {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (listeTemp.get(x).getDate().toString() == date) {
+			if (return listeTemp.get(x).getDate().toString() == date) {
 				return true;
 			}
 		}
