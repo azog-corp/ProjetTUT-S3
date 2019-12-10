@@ -1,36 +1,36 @@
 package projet.src.thermometres3;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.outils.Temperature;
+import static projet.src.thermometres3.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.OutilsInterface.getDateActuelle;
 import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
 import static projet.src.thermometres3.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
 
-//TODO creer boutons last connexion
-//
 public class Graphe extends AppCompatActivity {
 
-    final SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
+    final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     /**
      * Fonction execute au lancement de la page Graphe
@@ -41,6 +41,7 @@ public class Graphe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphe);
+        lancementDefaut();
         //Definition du bouton afficher
         Button btnAfficher = (Button) findViewById(R.id.btnAfficher);
         //Definition des actions a effectuer lors du clic sur le bouton afficher
@@ -59,6 +60,38 @@ public class Graphe extends AppCompatActivity {
             }
         });
         //TODO lancement par defaut de l'application avec des donnees par defaut
+    }
+
+    /**
+     * Fonction qui permet d'aficher les températures depuis la dernière connexion
+     * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
+     * et inferieur a 2 jours
+     * @param */
+    public void lancementDefaut() {
+        String sDebut = getDate2JoursPrec();
+        String sFin = getDateActuelle();
+
+
+
+        TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
+        TextView tvFin = (TextView) findViewById(R.id.dateFin);
+        tvDebut.setText(sDebut);
+        tvFin.setText(sFin);
+        try {
+            //Verification inutile des dates celles si ont ete ecrite par nous
+            System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
+            //Si des temperatures existes
+            if (RechercheTemperature.getListTemp().size() != 0) {
+                conversionGraph(dateIntervalle(sDebut, sFin));
+            } else { //sinon message erreur
+                messageErreurListeDate();
+            }
+            // }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+            // messageErreurIntervalle();
+        }catch(ErreurDate e) {//les dates ne sont pas valide
+            messageErreurDate();
+        }
+        //messageErreurLastCo();
     }
 
     /**
@@ -136,8 +169,6 @@ public class Graphe extends AppCompatActivity {
         //Definition du graph
         GraphView graphView = (GraphView) findViewById(R.id.graphique);
 
-
-
         //Definition des entrees de l'utilisateur
         TextView tvDebut = (TextView) findViewById(R.id.dateDebut);
         TextView tvFin = (TextView) findViewById(R.id.dateFin);
@@ -145,27 +176,10 @@ public class Graphe extends AppCompatActivity {
         String sDebut = tvDebut.getText().toString();
         String sFin = tvFin.getText().toString();
         System.err.println(sDebut + " " + sFin);
-        //Definition des labels de debut et de fin du graph
-        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
-        staticLabelsFormatter.setHorizontalLabels(new String[] {sDebut, sFin});
-        graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
 
         /* Défninition des propriétés du graph */
-        GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
-        gridLabel.setVerticalAxisTitle("Temperature");
-        gridLabel.setHorizontalAxisTitle("Date");
-        graphView.getGridLabelRenderer().setTextSize(25f);
-        graphView.getGridLabelRenderer().reloadStyles();
-        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return sdf.format(new Date((long)value));
-                } else {
-                    return super.formatLabel(value, isValueX);
-                }
-            }
-        });
+
 
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
@@ -230,6 +244,30 @@ public class Graphe extends AppCompatActivity {
             }
 
 
+            graphView.getGridLabelRenderer().setNumHorizontalLabels(3);// only 4 because of the space
+            graphView.getGridLabelRenderer().setHumanRounding(false);
+
+            GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
+            gridLabel.setVerticalAxisTitle("Temperature");
+            gridLabel.setHorizontalAxisTitle("Date");
+            graphView.getGridLabelRenderer().setTextSize(25f);
+            graphView.getGridLabelRenderer().reloadStyles();
+            //Definition des labels de debut et de fin du graph
+            /*StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graphView);
+            staticLabelsFormatter.setHorizontalLabels(new String[] {sDebut, sFin});
+            graphView.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+            graphView.getViewport().setXAxisBoundsManual(true);*/
+            graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                @Override
+                public String formatLabel(double value, boolean isValueX) {
+                    if (isValueX) {
+                        System.out.println("Test : conversion label ; " +sdf.format(new Date((long)value)));
+                        return sdf.format(new Date((long)value));
+                    } else {
+                        return super.formatLabel(value, isValueX);
+                    }
+                }
+            });
         }
 
     }

@@ -16,6 +16,7 @@ import static projet.src.thermometres3.RechercheTemperature.getNomFichier;
 import static projet.src.thermometres3.RechercheTemperature.getNouvelleTemp;
 
 public class OutilsInterface {
+
     public static String getLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt";
         try (BufferedReader fic = new BufferedReader(new FileReader(new File(derniereCo)))) { // Lecture du fichier
@@ -72,6 +73,8 @@ public class OutilsInterface {
      * Fonction qui permet de mettre a jour le fichier des temperatures
      * Pour cela ouvre le fichier contenant les nouvelles temperatures et met a jour
      * le fichier des temperatures
+     * Cette fonction permet de simuler le fonctionnement finale de
+     * l'application qui mettra ses donnees a jour grace a la BD
      */
     public static void majFichierTemp(Context myContext) {
         String ligne;
@@ -93,4 +96,12 @@ public class OutilsInterface {
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
+
+    public static String getDate2JoursPrec(){
+        long DAY_IN_MS = 1000 * 60 * 60 * 24;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
+        Date date = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
+        return sdf.format(date);
+    }
+
 }
