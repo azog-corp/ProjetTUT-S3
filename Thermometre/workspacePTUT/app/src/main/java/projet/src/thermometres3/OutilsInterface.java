@@ -85,8 +85,8 @@ public class OutilsInterface {
      */
     public static void majFichierTemp(Context myContext) {
         String ligne;
-        try (BufferedWriter fichEcri= new BufferedWriter(new FileWriter(new File(
-                myContext.getFilesDir()+"/fichierTemp.txt")))) { // ouverture fichier temperatures
+        try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(
+                "/fichierTemp.txt", true))) {// ouverture fichier temperatures
             BufferedReader fichLir = new BufferedReader(new InputStreamReader(
                     myContext.getAssets().open(getNouvelleTemp()))); // ouverture fichier Nouvelles temperatures
             while ((ligne = fichLir.readLine()) != null) { // Lecture fichier nouvellesTemperatures

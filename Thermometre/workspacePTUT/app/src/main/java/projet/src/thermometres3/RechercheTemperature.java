@@ -1,4 +1,4 @@
-ackage projet.src.thermometres3;
+package projet.src.thermometres3;
 
 
 
