@@ -23,7 +23,7 @@ public class testRerchercheTemperature {
 		System.out.print("Résultats obtenus : ");
 		for (int i = 0; i < dates.length; i++) {
 			try {
-				System.out.print(bite.intervalleOk(dates[i][0],dates[i][1]) + " ");
+				System.out.print(RechercheTemperature.intervalleOk(dates[i][0],dates[i][1]) + " ");
 			} catch (ErreurDate e) {
 				System.out.println("testNOK");
 			}
