@@ -16,6 +16,12 @@ import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurFichier;
 import projet.src.thermometres3.outils.Temperature;
 
+public static void main(String[] args) {
+		long DAY_IN_MS = 1000 * 60 * 60 * 24;
+		Date date = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
+		System.out.println(date.toString());
+	}
+
 public class RechercheTemperature {
 
 	/**
