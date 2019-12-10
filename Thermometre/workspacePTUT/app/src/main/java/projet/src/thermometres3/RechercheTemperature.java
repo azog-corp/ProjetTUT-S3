@@ -1,4 +1,4 @@
-package projet.src.thermometres3;
+ackage projet.src.thermometres3;
 
 
 
@@ -152,22 +152,26 @@ public class RechercheTemperature {
 	}
 
 	/**
-	 * Vérifie si deux date sont chronologique avec deux jour d'écart
+	 * Permet de vérifier que l'intervalle de date est 
+	 * inférieur à 1 jours 59 minutes et 59 secondes.
 	 * @param date1
 	 * @param date2
-	 * @return
+	 * @return un booleen qui indique si les deux dates ont un intervalle < 2j
+	 * @throw Propage une exception si une des string n'a pas un format valide. 
 	 */
 	public static boolean intervalleOk(String date1, String date2) throws ErreurDate  {
+		
 		try {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
-            long diff = ((date2formate.getTime() - date1formate.getTime()) / (1000*60*60*24));
-            return diff < 2 && diff > 0;
+            long diff = ((Math.abs(date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24));
+            return diff < 2;
 		} catch (ParseException e) {
 			throw new ErreurDate();
 		}
 
 	}
+
 
 	/**
 	 * Créer une ArrayList contenant les instances de température conpris entre 2 intervalles
@@ -186,11 +190,11 @@ public class RechercheTemperature {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
 			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 					&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-				//TODO des que cst NOK arrete la lecture
 				tempIntervalle.add(listeTemp.get(x));
 				System.out.println("C'est OK : " + listeTemp.get(x).getDate());
 			} else {
 				System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
+				break;
 			}
 		}
 		for(int x = 0 ; x < tempIntervalle.size() ; x++) {
