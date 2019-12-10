@@ -1,7 +1,6 @@
 package projet.src.thermometres3;
 
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,18 +16,24 @@ import static projet.src.thermometres3.RechercheTemperature.getNouvelleTemp;
 
 public class OutilsInterface {
 
+    /**
+     * Lit le fichier derniereCo.txt
+     * @param myContext Contexte de l'application au moment de l'execution
+     * @returnretourne la ligne en String de la derniere connexion
+     */
     public static String getLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt";
         try (BufferedReader fic = new BufferedReader(new FileReader(new File(derniereCo)))) { // Lecture du fichier
-            return fic.readLine();
+            return fic.readLine(); // retourne la ligne date
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ""; //stub la date ne peut theoriquement pas etre fausse / lue
+        return ""; //bouchon la date ne peut theoriquement pas etre fausse
     }
 
     /**
-     * Creer le fichier derniere Connexion/ ou le met a jour
+     * Creer le fichier derniere Connexion / ou le met a jour
+     * @param myContext Contexte de l'application au moment de l'execution
      */
     public static void creerFichierLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
@@ -52,6 +57,7 @@ public class OutilsInterface {
      * Fonctionnement necessaire car il est impossible de modifier des fichiers present
      * dans le dossier assets. On creer donc les fichiers dans la memoire de l'appareil
      * android
+     * @param myContext Contexte de l'application au moment de l'execution
      */
     public static void creerFichierTemperatures(Context myContext) {
         String ligne;
@@ -75,6 +81,7 @@ public class OutilsInterface {
      * le fichier des temperatures
      * Cette fonction permet de simuler le fonctionnement finale de
      * l'application qui mettra ses donnees a jour grace a la BD
+     * @param myContext Contexte de l'application au moment de l'execution
      */
     public static void majFichierTemp(Context myContext) {
         String ligne;
@@ -90,13 +97,20 @@ public class OutilsInterface {
         }
     }
 
+    /**
+     * Fonction qui permet d'obtenir la date a un instant
+     * @return la date en String avec le format dd/MM/yyyy HH:mm:ss
+     */
     public static String getDateActuelle() {
         Date date = new Date(); // Recupere la date Actuelle
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
-
+    /**
+     * Fonction qui permet d'obtenir la date 2 jours avant
+     * @return la date en String avec le format dd/MM/yyyy HH:mm:ss
+     */
     public static String getDate2JoursPrec(){
         long DAY_IN_MS = 1000 * 60 * 60 * 24;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date

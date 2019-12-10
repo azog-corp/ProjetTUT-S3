@@ -18,7 +18,6 @@ public class Accueil extends AppCompatActivity {
      * initialise les boutons
      * et met a jour le fichier temperatures avec les nouvelles
      * temperatures disponibles
-     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class Accueil extends AppCompatActivity {
             /*Si le fichier existe alors on recupere
              * les nouvelles temperatures
              */
-            OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature\
+            OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature
             TestOutilsInterface.testFichierTemp(getApplicationContext());
 
         }

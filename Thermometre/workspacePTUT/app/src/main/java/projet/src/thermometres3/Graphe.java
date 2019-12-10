@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.outils.Temperature;
@@ -21,6 +26,8 @@ import static projet.src.thermometres3.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
+
+    final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     /**
      * Fonction execute au lancement de la page Graphe
      * Initialise les actions des boutons de la page
@@ -52,10 +59,10 @@ public class Graphe extends AppCompatActivity {
     }
 
     /**
-     * Fonction qui permet d'aficher les températures depuis la dernière connexion
-     * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
-     * et inferieur a 2 jours
-     * @param */
+     * Fonction lancee automatiquement au lancement de la page Graphe
+     * apppel la fonction conersionGraph() qui affichera les temperatures
+     * sur le graph s'il y en a
+     */
     public void lancementDefaut() {
         /* Recuperation de la date actuelle et de la date de 2 jours avant*/
         String sDebut = getDate2JoursPrec();
@@ -69,7 +76,6 @@ public class Graphe extends AppCompatActivity {
         tvFin.setText(sFin);
         try {
             //Verification inutile des dates celles si ont ete ecrite par nous
-            System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
             //Si des temperatures existes
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
@@ -81,7 +87,6 @@ public class Graphe extends AppCompatActivity {
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
-        //messageErreurLastCo();
     }
 
     /**
@@ -102,9 +107,8 @@ public class Graphe extends AppCompatActivity {
             //Verification validite des dates
             dateOk(sDebut);
             dateOk(sFin);
-            System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
             //Verification intervalle valide
-            intervalleOk(sDebut,sFin);
+            //intervalleOk(sDebut,sFin);
             //Si des temperatures existes
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
@@ -118,52 +122,47 @@ public class Graphe extends AppCompatActivity {
         }
     }
 
-
     /**
      * Fonction qui permet d'aficher les températures depuis la dernière connexion
      * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
      * et inferieur a 2 jours
      * @param */
     public void lastCo() {
+        /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());
         String sFin = getDateActuelle();
-
+        /* On ecrit dans les textView les deux dates */
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
         tvDebut.setText(sDebut);
         tvFin.setText(sFin);
         try {
             //Verification inutile des dates celles si ont ete ecrite par nous
-            System.out.println("Date OK taille :" + RechercheTemperature.getListTemp().size()); // debug
             //Si des temperatures existes
             //TODO ajouter intervalle ok + si catch lancerDefaut
-            if(intervalleOk(sDebut,sFin)) {
+            //if(intervalleOk(sDebut,sFin)) {
                 if (RechercheTemperature.getListTemp().size() != 0) {
                     conversionGraph(dateIntervalle(sDebut, sFin));
                 } else { //sinon message erreur
                     messageErreurListeDate();
                 }
-            }
+            //}
             // }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
-            // messageErreur
+            //messageErreurLastCo();
             // lancementDefaut
             // messageErreurIntervalle();
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
-        //messageErreurLastCo();
     }
 
     /**
-     * Fonction qui convertit une liste de température en point sur le graph
-     * @param temp liste des températures dans l'intervalle entré par l'utilisateur
-     *///TODO attention si intervalle exemple verifier que intervalle ok significatif
-    //TODO essayer de grossir les points + faire les labels
+     * Fonction qui convertie une liste de température en point sur le graph
+     * @param temp liste des températures dans l'intervalle */
     //TODO plus faire des tests pour intervalle significatif (intervalle Ok)
     public void conversionGraph(ArrayList<Temperature> temp) {
         //Definition du graph
         GraphView graphView = findViewById(R.id.graphique);
-
         //Definition des entrees de l'utilisateur
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
@@ -172,10 +171,7 @@ public class Graphe extends AppCompatActivity {
         String sFin = tvFin.getText().toString();
         System.err.println(sDebut + " " + sFin);
 
-
-        /* Défninition des propriétés du graph */
-
-
+        /* Définition des propriétés du graph */
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
         * Tableau qui contient les point du graphe*/
@@ -190,8 +186,7 @@ public class Graphe extends AppCompatActivity {
             if(temp.get(i).getTemp() == -300.0) { // Si temperature invalide
                 // on definit la  taille du tableau a la taille de listePoints ( qui contient tous les points récupérer )
                 pointGraphe = new DataPoint[listePoints.size()];
-                // On transfere toutes les points dans le tableau
-                //TODO mettre dans une fct a part ?
+                // On transfert tous les points dans le tableau
                 for(int j = 0; j < listePoints.size(); j++) {
                     pointGraphe[j] = listePoints.get(j);
                     System.out.println("-----" + pointGraphe[j]);
@@ -232,35 +227,40 @@ public class Graphe extends AppCompatActivity {
                 donneeOk = true;
                 graphView.addSeries(series);
             }
-
-            System.out.println("Donnees ? " +donneeOk);
-            if(!donneeOk) {
-                messageErreurListeDate();
-            }
-
-            /* Modification interface graph */
-            graphView.getGridLabelRenderer().setNumHorizontalLabels(0);//fait disparaitre les labels temp
-            GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
-            gridLabel.setVerticalAxisTitle("Temperature");
-            gridLabel.setHorizontalAxisTitle("Date");
-            graphView.getGridLabelRenderer().reloadStyles();
-            /*Code permettant de mettre des dates en label X
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            graphView.getGridLabelRenderer().setTextSize(25f);
-            graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                @Override
-                public String formatLabel(double value, boolean isValueX) {
-                    if (isValueX) {
-                        return sdf.format(new Date((long)value));
-                    } else {
-                        return super.formatLabel(value, isValueX);
-                    }
-                }
-            });*/
+        }
+        System.out.println("Donnees ? " +donneeOk);
+        if(!donneeOk) {
+            messageErreurListeDate();
         }
 
+        /* Modification interface graph */
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(0);//fait disparaitre les labels temp
+        graphView.getGridLabelRenderer().setHumanRounding(false);
+        graphView.getViewport().setScalable(true);
+        graphView.getViewport().setScrollable(true);
+        GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
+        gridLabel.setVerticalAxisTitle("Temperature");
+        gridLabel.setHorizontalAxisTitle("Date");
+        graphView.getGridLabelRenderer().reloadStyles();
+        /*Code permettant de mettre des dates en label X*/
+
+        graphView.getGridLabelRenderer().setTextSize(25f);
+        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+            @Override
+            public String formatLabel(double value, boolean isValueX) {
+                if (isValueX) {
+                    return sdf.format(new Date((long)value));
+                } else {
+                    return super.formatLabel(value, isValueX);
+                }
+            }
+        });
     }
 
+
+    /**
+     * Message d'erreur affiche quand la date de connexion est trop ancienne
+     */
     public void messageErreurCo() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
@@ -268,6 +268,10 @@ public class Graphe extends AppCompatActivity {
                 .setConfirmText("OK").show();
     }
 
+    /**
+     * Message d'erreur affiche quand la date est incorrect -> format non respecte
+     * ou date impossible
+     */
     public void messageErreurDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Date")
@@ -275,7 +279,9 @@ public class Graphe extends AppCompatActivity {
                 .setConfirmText("OK").show();
     }
 
-
+    /**
+     * Message d'erreur affiche quand l'intervalle est incorrect
+     */
     public void messageErreurIntervalle() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Intervalle")
@@ -284,6 +290,9 @@ public class Graphe extends AppCompatActivity {
 
     }
 
+    /**
+     * Message d'erreur affiche quand aucune temperature n'existe dans l'intervalle
+     */
     public void messageErreurListeDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
@@ -292,7 +301,9 @@ public class Graphe extends AppCompatActivity {
                 .show();
 
     }
-
+    /**
+     * Message d'erreur affiche quand un fichier n'est pas accessible
+     */
     public void messageErreurFichier() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Lecture Fichier")

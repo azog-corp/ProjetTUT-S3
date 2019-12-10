@@ -171,22 +171,25 @@ public class RechercheTemperature {
 
 	/**
 	 * Créer une ArrayList contenant les instances de température conpris entre 2 intervalles
-	 * @param date1
-	 * @param date2
-	 * @return
+	 * @param date1 premiere date de l'intervalle
+	 * @param date2 deuxieme date de l'intervalle
+	 * @return liste des temperatures comprises dans l'intervalle
 	 */
 	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) throws ErreurDate {
 
 		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
         try {
+        	/* Conversion des dates */
             Date date1formate = conversion(date1);
             Date date2formate = conversion(date2);
 
-		System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString());
+		System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString()); //-- debug
+		/* Lecture fichier et ajout dans la liste temperature
+		* des temperatures dans l'intervalle */
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
 			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 					&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-				//TODO des que cst NOK arrete la lecture
+				//TODO des que date > date2 stop NOK arrete la lecture
 				tempIntervalle.add(listeTemp.get(x));
 				System.out.println("C'est OK : " + listeTemp.get(x).getDate());
 			} else {
@@ -225,7 +228,7 @@ public class RechercheTemperature {
 	 * Vérifie si une date existe dans listeTemp
 	 * @param date
 	 * @return
-	 */
+
 	public static boolean dateExiste(String date) {
 		for (int x = 0 ; x < listeTemp.size() ; x++) {
 			if (listeTemp.get(x).getDate().toString() == date) {
@@ -233,12 +236,12 @@ public class RechercheTemperature {
 			}
 		}
 		return false;
-	}
+	}*/
 
 	/**
 	 * Convertie un date en String Ã  une date en Date
 	 * @param date
-	 * @return
+	 * @return la date formate avec le format dd/MM/yyyy hh:mm:ss
 	 * @throws ErreurDate si le format de la date n'est pas valide
 	 */
 	public static Date conversion(String date) throws ParseException {
