@@ -1,6 +1,7 @@
 package projet.src.thermometres3.outils;
 
 import projet.src.thermometres3.Erreur.ErreurDate;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
 
 import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
 
@@ -30,7 +31,7 @@ public class TestRechercheTemperature {
 		for (int i = 0; i < dates.length; i++) {
 			try {
 				System.out.print(intervalleOk(dates[i][0],dates[i][1]) + " ");
-			} catch (ErreurDate e) {
+			} catch (ErreurIntervalle e) {
 				System.out.println("testNOK");
 			}
 		}

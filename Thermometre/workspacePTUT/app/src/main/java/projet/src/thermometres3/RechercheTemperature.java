@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurFichier;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
 
 public class RechercheTemperature {
@@ -92,7 +93,6 @@ public class RechercheTemperature {
 	 */
 	public static boolean supprimerTemp(Context myContext) {
 		try {
-			//TODO utliser une constante global plutot
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput(NOM_FICHIER, Context.MODE_PRIVATE));
 			outputStreamWriter.write("");
 			outputStreamWriter.close();
@@ -159,7 +159,7 @@ public class RechercheTemperature {
 	 * @return un booleen qui indique si les deux dates ont un intervalle < 2j
 	 * @throw Propage une exception si une des string n'a pas un format valide. 
 	 */
-	public static boolean intervalleOk(String date1, String date2) throws ErreurDate  {
+	public static boolean intervalleOk(String date1, String date2) throws ErreurIntervalle {
 		
 		try {
 			Date date1formate = conversion(date1);
@@ -167,7 +167,7 @@ public class RechercheTemperature {
             long diff = ((Math.abs(date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24));
             return diff < 2;
 		} catch (ParseException e) {
-			throw new ErreurDate();
+			throw new ErreurIntervalle();
 		}
 
 	}
@@ -197,7 +197,6 @@ public class RechercheTemperature {
 				System.out.println("C'est OK : " + listeTemp.get(x).getDate());
 			} else {
 				System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
-				break;
 			}
 		}
 		for(int x = 0 ; x < tempIntervalle.size() ; x++) {

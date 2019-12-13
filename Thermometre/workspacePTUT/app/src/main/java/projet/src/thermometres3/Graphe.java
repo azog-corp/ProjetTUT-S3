@@ -18,6 +18,7 @@ import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
 import static projet.src.thermometres3.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.OutilsInterface.getDateActuelle;
@@ -82,9 +83,7 @@ public class Graphe extends AppCompatActivity {
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
-            // }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
-            // messageErreurIntervalle();
-        }catch(ErreurDate e) {//les dates ne sont pas valide
+        } catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
     }
@@ -108,15 +107,15 @@ public class Graphe extends AppCompatActivity {
             dateOk(sDebut);
             dateOk(sFin);
             //Verification intervalle valide
-            //intervalleOk(sDebut,sFin);
+            intervalleOk(sDebut,sFin);
             //Si des temperatures existes
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
-        //}catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
-            //messageErreurIntervalle();
+        }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+            messageErreurIntervalle();
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
@@ -140,17 +139,15 @@ public class Graphe extends AppCompatActivity {
             //Verification inutile des dates celles si ont ete ecrite par nous
             //Si des temperatures existes
             //TODO ajouter intervalle ok + si catch lancerDefaut
-            //if(intervalleOk(sDebut,sFin)) {
-                if (RechercheTemperature.getListTemp().size() != 0) {
-                    conversionGraph(dateIntervalle(sDebut, sFin));
-                } else { //sinon message erreur
-                    messageErreurListeDate();
-                }
-            //}
-            // }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
-            //messageErreurLastCo();
-            // lancementDefaut
-            // messageErreurIntervalle();
+            intervalleOk(sDebut,sFin);
+            if (RechercheTemperature.getListTemp().size() != 0) {
+                conversionGraph(dateIntervalle(sDebut, sFin));
+            } else { //sinon message erreur
+                messageErreurListeDate();
+            }
+        }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+            messageErreurCo();
+            lancementDefaut();
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }

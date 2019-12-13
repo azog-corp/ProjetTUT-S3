@@ -1,9 +1,14 @@
+package projet.src.thermometres3;
+
+import projet.src.thermometres3.Erreur.ErreurDate;
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
+
 /**
  * Classe de test de la méthode intervalleOK
  * @author Mathieu Capo
  *
  */
-public class testRerchercheTemperature {
+public class TestRechercheTemperature {
 
 	public static void main(String args[]) {
 		// ensemble de données à tester
@@ -24,7 +29,7 @@ public class testRerchercheTemperature {
 		for (int i = 0; i < dates.length; i++) {
 			try {
 				System.out.print(RechercheTemperature.intervalleOk(dates[i][0],dates[i][1]) + " ");
-			} catch (ErreurDate e) {
+			} catch (ErreurIntervalle e) {
 				System.out.println("testNOK");
 			}
 		}
