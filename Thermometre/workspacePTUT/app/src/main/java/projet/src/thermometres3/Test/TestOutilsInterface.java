@@ -46,6 +46,10 @@ public class TestOutilsInterface {
         }
     }
 
+    /**
+     * Test qui affiche la date actuelle et celle renvoyee par la fonction pour les comparer
+     * Test visuel
+     */
     private static void testGetDateActuelle() {
         Date test = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -58,6 +62,10 @@ public class TestOutilsInterface {
         System.out.println(res + " " + test + " leger decallage du au temps d'execution");
     }
 
+    /**
+     * Test visuel qui verifie que la date retourner par la fonction
+     * getDate2joursPrec correspond bien a la date de jours precedent.
+     */
     private static void testDate2joursPrec() {
         Date test = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
