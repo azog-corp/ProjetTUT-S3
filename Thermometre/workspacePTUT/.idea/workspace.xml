@@ -30,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestRechercheTemperature.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestRechercheTemperature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1348">
-              <caret line="114" column="13" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+            <state relative-caret-position="177">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#593#606#0" expanded="true" />
@@ -46,10 +46,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestOutilsInterface.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/RechercheTemperature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+            <state relative-caret-position="476">
+              <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestOutilsInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/OutilsInterface.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/OutilsInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="44" />
+            <state relative-caret-position="177">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,8 +152,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Menu.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Graphe.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/RechercheTemperature.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestRechercheTemperature.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestOutilsInterface.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestRechercheTemperature.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestRechercheTemperature.java" />
       </list>
     </option>
   </component>
@@ -270,6 +289,20 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="thermometres3" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="outils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thermometreS3" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="thermometres3" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thermometreS3" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="thermometres3" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="thermometreS3" type="1abcf292:AndroidViewProjectNode" />
@@ -368,7 +401,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestOutilsInterface">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -430,11 +463,11 @@
       </method>
     </configuration>
     <configuration name="TestOutilsInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="projet.src.thermometres3.TestOutilsInterface" />
+      <option name="MAIN_CLASS_NAME" value="projet.src.thermometres3.Test.TestOutilsInterface" />
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projet.src.thermometres3.*" />
+          <option name="PATTERN" value="projet.src.thermometres3.Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -443,11 +476,11 @@
       </method>
     </configuration>
     <configuration name="TestRechercheTemperature" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="projet.src.thermometres3.TestRechercheTemperature" />
+      <option name="MAIN_CLASS_NAME" value="projet.src.thermometres3.Test.TestRechercheTemperature" />
       <module name="app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projet.src.thermometres3.*" />
+          <option name="PATTERN" value="projet.src.thermometres3.Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -476,11 +509,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16364606" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16364606" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -496,7 +528,7 @@
       <window_info anchor="bottom" id="Version Control" order="5" />
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49253732" weight="0.32936078" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" sideWeight="0.48667377" visible="true" weight="0.3716143" />
+      <window_info anchor="bottom" id="Run" order="8" sideWeight="0.48667377" visible="true" weight="0.3716143" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32936078" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -506,6 +538,18 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Assistant" order="6" visible="true" weight="0.32995737" />
     </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestRechercheTemperature.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/PageSupprimer.java" />
@@ -658,13 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="71" column="92" lean-forward="true" selection-start-line="71" selection-start-column="92" selection-end-line="71" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Graphe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-46">
@@ -672,13 +709,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/OutilsTemperature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -693,42 +723,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/RechercheTemperature.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/OutilsTemperature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="220" column="7" lean-forward="true" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
+        <state relative-caret-position="-17">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestOutilsInterface.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestOutilsInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
+        <state relative-caret-position="476">
+          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/OutilsInterface.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Test/TestRechercheTemperature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="113" column="25" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/TestRechercheTemperature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1348">
-          <caret line="114" column="13" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+        <state relative-caret-position="177">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#593#606#0" expanded="true" />
             <element signature="e#3648#3661#0" expanded="true" />
             <element signature="e#4180#4193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/RechercheTemperature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="43" column="14" lean-forward="true" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="60" column="7" lean-forward="true" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/OutilsInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

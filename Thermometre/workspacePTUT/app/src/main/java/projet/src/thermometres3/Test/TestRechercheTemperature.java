@@ -1,4 +1,4 @@
-package projet.src.thermometres3;
+package projet.src.thermometres3.Test;
 
 import android.content.Context;
 
@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
 
-import static projet.src.thermometres3.RechercheTemperature.listeTemp;
+import static projet.src.thermometres3.outils.RechercheTemperature.listeTemp;
 
 /**
  * Classe de test de la méthode intervalleOK
@@ -43,7 +44,11 @@ public class TestRechercheTemperature {
 		}
 
 
-		private static void testIntervalleOk() {
+	/**
+	 * TEST qui verifie le fonctionnement de la fonction avec des cas d'erreurs
+	 * Fonction: intervalleOk
+	 */
+	private static void testIntervalleOk() {
 			String[][] dates = {
 					{"02/01/2019 23:59:59","01/01/2019 00:00:00"},
 					{"04/02/2019 00:00:00","01/01/2019 00:00:00"},

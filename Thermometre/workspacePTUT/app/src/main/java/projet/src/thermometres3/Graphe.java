@@ -19,12 +19,14 @@ import java.util.Date;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.outils.OutilsInterface;
+import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
-import static projet.src.thermometres3.OutilsInterface.getDate2JoursPrec;
-import static projet.src.thermometres3.OutilsInterface.getDateActuelle;
-import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
-import static projet.src.thermometres3.RechercheTemperature.dateOk;
-import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
+import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
+import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
+import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
+import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
