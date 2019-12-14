@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Temperature;
@@ -48,58 +46,74 @@ public class TestRechercheTemperature {
 		private static void testIntervalleOk() {
 			String[][] dates = {
 					{"02/01/2019 23:59:59","01/01/2019 00:00:00"},
-					{"04/01/2019 00:00:00","01/01/2019 00:00:00"},
-					{"03/02/2019 00:00:00","01/01/2019 00:00:00"},
+					{"04/02/2019 00:00:00","01/01/2019 00:00:00"},
 					{"03/01/2029 00:00:00","01/01/2019 00:00:00"},
-					{"03/01/2019 00:00:00","01/01/2019 00:00:00"},
-					{"03/01/2019 00:00:00","01/01/2019 00:00:15"},
 					{"03/01/2019 00:00:00","03/01/2019 00:00:00"},
 			};
-			// tableau contenant les résultats attendu pour les tests effectués
-			boolean[] results = {true, false, false, false, false, true, true};
-
+			int testOk = 0;
+			System.out.println("TEST INTERVALLE VALIDE");
+			try {
+				RechercheTemperature.intervalleOk(dates[0][0],dates[0][1]);
+				testOk++;
+				System.out.println(dates[0][0] + " et " + dates[0][1] + " represente bien un intervalle valide TEST OK");
+			} catch (ErreurIntervalle e) {
+				System.out.println(dates[0][0] + " et " + dates[0][1] + " represente un intervalle valide TEST NOK");
+			}
 			// affichage des résultats
-			System.out.print("Résultats obtenus : ");
-			for (int i = 0; i < dates.length; i++) {
+			System.out.println("TEST INTERVALLE NON VALIDE");
+			System.out.println("Résultats obtenus : ");
+
+			for (int i = 1; i < dates.length; i++) {
 				try {
-					System.out.print(RechercheTemperature.intervalleOk(dates[i][0],dates[i][1]) + " ");
+					RechercheTemperature.intervalleOk(dates[i][0],dates[i][1]);
+					System.out.println(dates[i][0] + " et " + dates[i][1] + " ne represente pas un intervalle valide TEST NOK");
 				} catch (ErreurIntervalle e) {
-					System.out.println("testNOK");
+					System.out.println(dates[i][0] + " et " + dates[i][1] + " represente bien un intervalle non valide TEST OK");
+					testOk++;
 				}
 			}
-			System.out.print("\nrésultats supposés : ");
-			for(int y = 0; y < results.length; y++) {
-				System.out.print(results[y] + " ");
-			}
+			System.out.println(testOk + " tests reussi sur " + dates.length);
 		}
 
-		private static void TestDateOk() {
+	/**
+	 * TEST de la fonction dateOk verifie tous les cas d'erreurs
+	 */
+	private static void TestDateOk() {
 			String date1 = "01/11/2019 10:11:12 14.5";
-			String date2 = "02/11/2018 20:11:12 15.5";
+			String date2 = "02/11/1900 20:11:12 15.5";
 			String date3 = "03/11/2022 20:11:12 16.5";
+			/* Test avec une date si la fonction throw une ErreurDate cela signifie que la fonction
+			* ne marche pas correctement*/
+			int nbTestOk = 0;
 			try {
-				if (RechercheTemperature.dateOk(date1)) {
-					System.out.println("Test avec date correct OK");
-				}
+				RechercheTemperature.dateOk(date1);
+				System.out.println("Test avec date correct OK -> date : "+ date1);
+				nbTestOk++;
 			} catch (ErreurDate e) {
 				System.out.println("Test avec date correct NOK");
 			}
-
+			/* Test avec une date trop petite si la fonction throw une ErreurDate cela signifie
+			 * Que la fonction marche correctement est a bien vu l'erreur
+			 */
 			try {
-				if (!RechercheTemperature.dateOk(date2)) {
-					System.out.println("Test avec date trop petite OK");
-				}
-			} catch (ErreurDate e) {
+				RechercheTemperature.dateOk(date2);
 				System.out.println("Test avec date trop petite NOK");
+			} catch (ErreurDate e) {
+				System.out.println("Test avec date trop petite OK ->" + date2);
+				nbTestOk++;
 			}
 
+			/* Test avec une date trop grande si la fonction throw une ErreurDate cela signifie
+			 * Que la fonction marche correctement est a bien vu l'erreur
+			 */
 			try {
-				if (!RechercheTemperature.dateOk(date3)) {
-					System.out.println("Test avec date trop grande OK");
-				}
-			} catch (ErreurDate e) {
+				RechercheTemperature.dateOk(date3);
 				System.out.println("Test avec date trop grande NOK");
+			} catch (ErreurDate e) {
+				System.out.println("Test avec date trop grande OK ->" + date3);
+				nbTestOk++;
 			}
+			System.out.println(nbTestOk + " reussi sur " + 3);
 		}
 
 		private static void testDateIntervalle() {
@@ -136,7 +150,6 @@ public class TestRechercheTemperature {
 		}
 
 		public static void main(String[] args) {
-			testEditTemp();
 			TestDateOk();
 			testIntervalleOk();
 			testDateIntervalle(); // marche pas

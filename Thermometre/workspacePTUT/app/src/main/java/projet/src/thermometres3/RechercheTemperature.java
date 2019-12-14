@@ -109,14 +109,16 @@ public class RechercheTemperature {
 	 * @return
 	 * @throws ErreurDate
 	 */
-	public static boolean dateOk(String date) throws ErreurDate  {
+	public static void dateOk(String date) throws ErreurDate  {
 		try {
-			Date dateMin = conversion("01/01/2019 00:00:00");
+			Date dateMin = conversion("01/01/2000 00:00:00");
 			Date dateMax = new Date();
 			format.format(dateMax);
 			Date aVerifier = conversion(date);
             // si aVerifier est entre dateMin et dateMax
-            return (dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime());
+            if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime())) {
+				throw new ErreurDate();
+			}
 		} catch (ParseException e) {
 			throw new ErreurDate();
 		}
@@ -130,17 +132,21 @@ public class RechercheTemperature {
 	 * @return un booleen qui indique si les deux dates ont un intervalle < 2j
 	 * @throw Propage une exception si une des string n'a pas un format valide. 
 	 */
-	public static boolean intervalleOk(String date1, String date2) throws ErreurIntervalle {
+	public static void intervalleOk(String date1, String date2) throws ErreurIntervalle {
 		
 		try {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+			if (date2formate.getTime() == date1formate.getTime()) {
+				throw new ErreurIntervalle();
+			}
             long diff = ((Math.abs(date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24));
-            return diff < 2;
+            if(diff > 2) {
+				throw new ErreurIntervalle();
+			}
 		} catch (ParseException e) {
 			throw new ErreurIntervalle();
 		}
-
 	}
 
 

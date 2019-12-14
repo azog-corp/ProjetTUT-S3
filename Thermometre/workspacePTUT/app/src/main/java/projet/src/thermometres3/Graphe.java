@@ -56,7 +56,6 @@ public class Graphe extends AppCompatActivity {
                 lastCo();//appel la creation du graph
             }
         });
-        //TODO lancement par defaut de l'application avec des donnees par defaut
     }
 
     /**

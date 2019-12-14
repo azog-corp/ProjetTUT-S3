@@ -6,11 +6,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class TestOutilsInterface {
     /**
-     * TEST qui verifie que l'ecriture dans le ficheir c'est bien produite
+     * TEST qui verifie que l'ecriture dans le fichier c'est bien produite
      * @param myContext
      */
     public static void testLastCo(Context myContext) {
@@ -42,6 +45,29 @@ public class TestOutilsInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void testGetDateActuelle() {
+        Date test = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date res = null;
+        try {
+            res = sdf.parse(OutilsInterface.getDateActuelle());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(res + " " + test + " leger decallage du au temps d'execution");
+    }
+
+    private static void testDate2joursPrec() {
+        Date test = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        System.out.println(sdf.format(test) + " -> 2 jours avant :" + OutilsInterface.getDate2JoursPrec());
+    }
+
+    public static void main(String[] args) {
+        testGetDateActuelle();
+        testDate2joursPrec();
     }
 
 
