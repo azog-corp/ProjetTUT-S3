@@ -18,28 +18,37 @@ import static projet.src.thermometres3.outils.RechercheTemperature.listeTemp;
  *
  */
 public class TestRechercheTemperature {
-		private static ArrayList<Temperature> testTemp = new ArrayList<Temperature>();
-
-		public static void testEditTemp() {
-			System.out.println("TEST EDIT TEMP");
-			for (int i = 0; i < listeTemp.size(); i++) {
-				System.out.println(listeTemp.get(i));
-			}
+	/**TEST de la fonction edit temp
+	 * affiche toutes les temperatures cree apres lexecution de la fonction
+	 * pour les comparer avec celles comprises dans le fichier
+	 * Pour verifier que la fonction recupere bien toutes les temperatures
+	 */
+	public static void testEditTemp() {
+		System.out.println("TEST EDIT TEMP");
+		for (int i = 0; i < listeTemp.size(); i++) {
+			System.out.println(listeTemp.get(i));
 		}
+	}
 
-		public static void testSupprimerTemp(Context myContext) {
-			String ligne;
-			try (BufferedReader fic = new BufferedReader(new FileReader(new File(
-					myContext.getFilesDir() + "/fichierTemp.txt")))) { // Lecture du fichier
-				System.out.println("DEBUT TEST supprimerTemp : si rien de s'affiche test concluant");
-				while ((ligne = fic.readLine()) != null) {
-					System.out.println(ligne);
-				}
-				System.out.println("FIN TEST supprimerTemp");
-			} catch (IOException e) {
-				e.printStackTrace();
+	/**
+	 * TEST de la fonction supprimer
+	 * Verifie que la fonction supprime bien toutes les lignes
+	 * Lit le fichier apres la suppression pour verifier que auncune ligne n'est encore presente
+	 * @param myContext contexte de l'application au lancement de la fonction
+	 */
+	public static void testSupprimerTemp(Context myContext) {
+		String ligne;
+		try (BufferedReader fic = new BufferedReader(new FileReader(new File(
+				myContext.getFilesDir() + "/fichierTemp.txt")))) { // Lecture du fichier
+			System.out.println("DEBUT TEST supprimerTemp : si rien de s'affiche test concluant");
+			while ((ligne = fic.readLine()) != null) {
+				System.out.println(ligne);
 			}
+			System.out.println("FIN TEST supprimerTemp");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+	}
 
 
 	/**
@@ -80,47 +89,54 @@ public class TestRechercheTemperature {
 
 	/**
 	 * TEST de la fonction dateOk verifie tous les cas d'erreurs
+	 * En testant avec des dates correctes , trop grandes, trop petites
 	 */
 	private static void TestDateOk() {
-			String date1 = "01/11/2019 10:11:12 14.5";
-			String date2 = "02/11/1900 20:11:12 15.5";
-			String date3 = "03/11/2022 20:11:12 16.5";
-			/* Test avec une date si la fonction throw une ErreurDate cela signifie que la fonction
-			* ne marche pas correctement*/
-			int nbTestOk = 0;
-			try {
-				RechercheTemperature.dateOk(date1);
-				System.out.println("Test avec date correct OK -> date : "+ date1);
-				nbTestOk++;
-			} catch (ErreurDate e) {
-				System.out.println("Test avec date correct NOK");
-			}
-			/* Test avec une date trop petite si la fonction throw une ErreurDate cela signifie
-			 * Que la fonction marche correctement est a bien vu l'erreur
-			 */
-			try {
-				RechercheTemperature.dateOk(date2);
-				System.out.println("Test avec date trop petite NOK");
-			} catch (ErreurDate e) {
-				System.out.println("Test avec date trop petite OK ->" + date2);
-				nbTestOk++;
-			}
-
-			/* Test avec une date trop grande si la fonction throw une ErreurDate cela signifie
-			 * Que la fonction marche correctement est a bien vu l'erreur
-			 */
-			try {
-				RechercheTemperature.dateOk(date3);
-				System.out.println("Test avec date trop grande NOK");
-			} catch (ErreurDate e) {
-				System.out.println("Test avec date trop grande OK ->" + date3);
-				nbTestOk++;
-			}
-			System.out.println(nbTestOk + " reussi sur " + 3);
+		String date1 = "01/11/2019 10:11:12 14.5";
+		String date2 = "02/11/1900 20:11:12 15.5";
+		String date3 = "03/11/2022 20:11:12 16.5";
+		/* Test avec une date si la fonction throw une ErreurDate cela signifie que la fonction
+		* ne marche pas correctement*/
+		int nbTestOk = 0;
+		try {
+			RechercheTemperature.dateOk(date1);
+			System.out.println("Test avec date correct OK -> date : "+ date1);
+			nbTestOk++;
+		} catch (ErreurDate e) {
+			System.out.println("Test avec date correct NOK");
+		}
+		/* Test avec une date trop petite si la fonction throw une ErreurDate cela signifie
+		 * Que la fonction marche correctement est a bien vu l'erreur
+		 */
+		try {
+			RechercheTemperature.dateOk(date2);
+			System.out.println("Test avec date trop petite NOK");
+		} catch (ErreurDate e) {
+			System.out.println("Test avec date trop petite OK ->" + date2);
+			nbTestOk++;
 		}
 
-		private static void testDateIntervalle() {
-			ArrayList<Temperature> testIntervalle = new ArrayList<Temperature>();
+		/* Test avec une date trop grande si la fonction throw une ErreurDate cela signifie
+		 * Que la fonction marche correctement est a bien vu l'erreur
+		 */
+		try {
+			RechercheTemperature.dateOk(date3);
+			System.out.println("Test avec date trop grande NOK");
+		} catch (ErreurDate e) {
+			System.out.println("Test avec date trop grande OK ->" + date3);
+			nbTestOk++;
+		}
+		System.out.println(nbTestOk + " reussi sur " + 3);
+	}
+
+
+	/**
+	 * TEST dateIntervalle
+	 * verifie que la fonction ne renvoi que les dates comprises dans l'intervalle
+	 * Test visuel
+	 * affiche toutes temperatures et verifie que la fonction de renvoi que les dates voulues
+	 */
+	private static void testDateIntervalle() {
 			Temperature[] dates = {
 					new Temperature("02/01/2019 17:59:59 -3"),
 					new Temperature("02/01/2019 18:00:00 2"),
