@@ -900,7 +900,6 @@ id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
-id temperatureAcceuil
 id text
 id text2
 id textSpacerNoButtons
@@ -912,7 +911,6 @@ id titleDividerNoCustom
 id title_template
 id title_text
 id titreAcceuil
-id titreTemp
 id top
 id topPanel
 id uniform
@@ -1035,7 +1033,6 @@ string dialog_default_title
 string dialog_ok
 string search_menu_title
 string status_bar_notification_info_overflow
-string temperatureActuelle
 string titre
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

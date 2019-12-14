@@ -294,7 +294,7 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurListeDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
-                .setContentText("Erreur: Aucune date n'existe dans l'intervalle saisi")
+                .setContentText("Erreur: Aucune température n'existe dans l'intervalle saisi")
                 .setConfirmText("OK")
                 .show();
 

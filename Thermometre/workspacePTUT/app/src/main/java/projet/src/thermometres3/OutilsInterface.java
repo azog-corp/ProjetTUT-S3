@@ -116,6 +116,7 @@ public class OutilsInterface {
         long DAY_IN_MS = 1000 * 60 * 60 * 24;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
         Date date = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
+        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
 
