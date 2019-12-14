@@ -1,7 +1,6 @@
 package projet.src.thermometres3.Test;
 
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +10,6 @@ import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
-
 import static projet.src.thermometres3.outils.RechercheTemperature.listeTemp;
 
 /**

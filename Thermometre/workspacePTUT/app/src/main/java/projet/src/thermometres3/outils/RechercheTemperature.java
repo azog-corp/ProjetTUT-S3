@@ -3,7 +3,6 @@ package projet.src.thermometres3.outils;
 
 
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -79,8 +78,9 @@ public class RechercheTemperature {
 	}
 
 	/**
-	 * Supprime toutes les températures
-	 * @return
+	 * Supprime toutes les températures dans le fichier fichierTemp
+	 * @return true si le fichier a bien ete supprimee
+	 * 			false si erreur lors de la suppression
 	 */
 	public static boolean supprimerTemp(Context myContext) {
 		try {
@@ -100,22 +100,24 @@ public class RechercheTemperature {
 
 
 	/**
-	 * Vérifie si une date se trouve entre 2019 et 2020
-	 * @param date
-	 * @return
-	 * @throws ErreurDate
+	 * Vérifie si une date est valide
+	 * Donc si celle ci n'est pas trop petite en considerant 2000 comme l'annee minimale
+	 * Et la date actuelle comem la date maximale
+	 * @param date date a verifier
+	 * @throws ErreurDate si la date n'est pas correcte
 	 */
 	public static void dateOk(String date) throws ErreurDate  {
 		try {
-			Date dateMin = conversion("01/01/2000 00:00:00");
-			Date dateMax = new Date();
-			format.format(dateMax);
+			Date dateMin = conversion("01/01/2000 00:00:00"); //date min
+			Date dateMax = new Date(); // date actuelle
+			format.format(dateMax); // met la date max au bon format
 			Date aVerifier = conversion(date);
-            // si aVerifier est entre dateMin et dateMax
+            // si aVerifier n'est pas entre dateMin et dateMax
             if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime())) {
 				throw new ErreurDate();
 			}
 		} catch (ParseException e) {
+			//si le format n'est pas bon
 			throw new ErreurDate();
 		}
 	}
@@ -131,16 +133,20 @@ public class RechercheTemperature {
 	public static void intervalleOk(String date1, String date2) throws ErreurIntervalle {
 		
 		try {
+			//convertit les deux dates de String a Date
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+			//Si les deux dates sont egales erreur
 			if (date2formate.getTime() == date1formate.getTime()) {
 				throw new ErreurIntervalle();
 			}
             long diff = ((Math.abs(date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24));
+			//Si plus de deux jours erreur
             if(diff > 2) {
 				throw new ErreurIntervalle();
 			}
 		} catch (ParseException e) {
+			//bouchon obligatoire acces impossible car le format sera toujours correct
 			throw new ErreurIntervalle();
 		}
 	}

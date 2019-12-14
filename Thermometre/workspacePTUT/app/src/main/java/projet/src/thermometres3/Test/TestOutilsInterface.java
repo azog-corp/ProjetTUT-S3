@@ -1,7 +1,6 @@
 package projet.src.thermometres3.Test;
 
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,9 +8,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import projet.src.thermometres3.outils.OutilsInterface;
-
 
 public class TestOutilsInterface {
     /**

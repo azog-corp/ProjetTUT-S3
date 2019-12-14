@@ -1,20 +1,15 @@
 package projet.src.thermometres3;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import java.io.File;
-
 import projet.src.thermometres3.Test.TestOutilsInterface;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
-
 import static projet.src.thermometres3.outils.OutilsInterface.creerFichierLastCo;
-
 
 public class Accueil extends AppCompatActivity {
     /**
