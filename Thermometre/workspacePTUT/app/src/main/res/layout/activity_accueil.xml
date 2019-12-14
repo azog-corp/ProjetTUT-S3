@@ -26,60 +26,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp"></TextView>
 
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout
-       android:id="@+id/linearTemp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_weight="3"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/titreTemp">-->
-
-
-
-    <!--</LinearLayout>-->
-
     <ImageView
         android:id="@+id/imageAcceuil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/thermometre"
         android:maxHeight="50dp"
+        android:src="@drawable/thermometre"
+        app:layout_constraintBottom_toTopOf="@+id/btnMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titreAcceuil">
 
     </ImageView>
-
-    <TextView
-        android:id="@+id/titreTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Derniere Temperature :"
-        android:textAlignment="center"
-        android:textColor="@color/couleurAppli"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageAcceuil"> <!-- todo-->
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/temperatureAcceuil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/textview_cadre"
-        android:text="@string/temperatureActuelle"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="50sp"
-        app:layout_constraintTop_toBottomOf="@+id/titreTemp">
-
-    </TextView>
 
     <Button
         android:id="@+id/btnMenu"

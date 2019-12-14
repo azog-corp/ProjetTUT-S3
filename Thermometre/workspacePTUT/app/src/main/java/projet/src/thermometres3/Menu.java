@@ -60,8 +60,8 @@ public class Menu extends AppCompatActivity {
     private void openDelete() {
         /* Affichage de la boite de dialogue */
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Etes vous sur ?")
-                .setContentText("Vous ne pourrez pas recuperer les temperatures apres suppression")
+                .setTitleText("Etes vous sûr ?")
+                .setContentText("Vous ne pourrez pas recupérer les températures après suppression")
                 .setConfirmText("Supprimer")
                 // definition des actions apres appui sur le bouton pour de confirmation
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -72,11 +72,11 @@ public class Menu extends AppCompatActivity {
                         /* Affiche message pour confirmer suppression */
                         new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Confirmation")
-                                .setContentText("Temperature supprimees")
+                                .setContentText("Température supprimées")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismissWithAnimation(); // ferme la boite de dialog
+                                        sDialog.dismissWithAnimation(); // ferme la boite de dialogue
                                     }
                                 }).show();
                                 sDialog.dismissWithAnimation();

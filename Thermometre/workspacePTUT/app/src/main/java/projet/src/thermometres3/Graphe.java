@@ -138,7 +138,6 @@ public class Graphe extends AppCompatActivity {
         try {
             //Verification inutile des dates celles si ont ete ecrite par nous
             //Si des temperatures existes
-            //TODO ajouter intervalle ok + si catch lancerDefaut
             intervalleOk(sDebut,sFin);
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
@@ -156,7 +155,6 @@ public class Graphe extends AppCompatActivity {
     /**
      * Fonction qui convertie une liste de température en point sur le graph
      * @param temp liste des températures dans l'intervalle */
-    //TODO plus faire des tests pour intervalle significatif (intervalle Ok)
     public void conversionGraph(ArrayList<Temperature> temp) {
         //Definition du graph
         GraphView graphView = findViewById(R.id.graphique);
@@ -225,7 +223,7 @@ public class Graphe extends AppCompatActivity {
                 graphView.addSeries(series);
             }
         }
-        System.out.println("Donnees ? " +donneeOk);
+        System.out.println("Données ? " +donneeOk);
         if(!donneeOk) {
             messageErreurListeDate();
         }
@@ -236,7 +234,7 @@ public class Graphe extends AppCompatActivity {
         graphView.getViewport().setScalable(true);
         graphView.getViewport().setScrollable(true);
         GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
-        gridLabel.setVerticalAxisTitle("Temperature");
+        gridLabel.setVerticalAxisTitle("Température (°C)");
         gridLabel.setHorizontalAxisTitle("Date");
         graphView.getGridLabelRenderer().reloadStyles();
         /*Code permettant de mettre des dates en label X*/
@@ -261,7 +259,8 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurCo() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
-                .setContentText("Impossible de lire le fichier dernière connexion")
+                .setContentText("La dernière connexion est trop ancienne." +
+                        "Affichage des températures inférieur a 2 jours")
                 .setConfirmText("OK").show();
     }
 
@@ -272,7 +271,8 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Date")
-                .setContentText("Erreur: date non valide(format: dd/MM/yyyy HH:mm:ss) ou non ordonnees")
+                .setContentText("Erreur: Date non valide(format: dd/MM/yyyy HH:mm:ss)" +
+                        " ou non ordonnées")
                 .setConfirmText("OK").show();
     }
 
@@ -282,7 +282,8 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurIntervalle() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Intervalle")
-                .setContentText("Erreur: Intervalle non valide")
+                .setContentText("Erreur: L'intervalle entré n'est pas valide celui ci " +
+                        "doit être inférieur a 2 jours et les 2 dates doivent être différentes")
                 .setConfirmText("OK").show();
 
     }
@@ -293,18 +294,7 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurListeDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
-                .setContentText("Erreur: Pas de date disponible")
-                .setConfirmText("OK")
-                .show();
-
-    }
-    /**
-     * Message d'erreur affiche quand un fichier n'est pas accessible
-     */
-    public void messageErreurFichier() {
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("ERREUR: Lecture Fichier")
-                .setContentText("Oups une erreur c'est produite lors de la lecture du fichier")
+                .setContentText("Erreur: Aucune date n'existe dans l'intervalle saisi")
                 .setConfirmText("OK")
                 .show();
 
