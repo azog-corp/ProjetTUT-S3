@@ -54,6 +54,7 @@ public class Accueil extends AppCompatActivity {
 
         }
         RechercheTemperature.editTemp(getApplicationContext());//Ajoute les nouvelles temperatures
+        //TestRechercheTemperature.testEditTemp(); // test
     }
 
     /**

@@ -9,6 +9,10 @@ import java.io.IOException;
 
 
 public class TestOutilsInterface {
+    /**
+     * TEST qui verifie que l'ecriture dans le ficheir c'est bien produite
+     * @param myContext
+     */
     public static void testLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedReader fic = new BufferedReader(new FileReader(new File(derniereCo)))) { // Lecture du fichier
@@ -22,6 +26,11 @@ public class TestOutilsInterface {
         }
     }
 
+    /**
+     * TEST qui lit le fichier gichierTemp.txt et verifie que le fichier
+     * a bien ecrit les temperatures
+     * @param myContext
+     */
     public static void testFichierTemp(Context myContext){
         System.out.println("Test fichier temp");
         String fichTemp = myContext.getFilesDir()+"/fichierTemp.txt"; // defini le chemin du fichier

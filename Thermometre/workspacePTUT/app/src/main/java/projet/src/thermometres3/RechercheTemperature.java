@@ -5,6 +5,8 @@ package projet.src.thermometres3;
 import android.content.Context;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -22,7 +24,7 @@ public class RechercheTemperature {
 	/**
 	 * Liste contenant toutes les instances de température
 	 */
-	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
+	public static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * format prédéfinis pour les Dates
@@ -68,20 +70,13 @@ public class RechercheTemperature {
 		String ligne;    // ligne lue dans le fichier
 
 		try { // déclaration et création de l'objet fichier
-			BufferedReader fichier = new BufferedReader(new InputStreamReader(myContext.getAssets().open(NOUVELLE_TEMP)));
-
+			BufferedReader fichier = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
 			while (((ligne = fichier.readLine()) != null)) {
-
-				try {
-					listeTemp.add(new Temperature(ligne));
-				} catch (ParseException e) {
-					System.out.println(e +" problème création liste de températures");
-				}
+				listeTemp.add(new Temperature(ligne));
 			}
 			fichier.close();
 			// fermeture du fichier automatique avec try-with-ressource
 		} catch (IOException ex) {
-			//TODO faire une exception pour que linterface puisse savoir
 			System.out.println("Problème avec l'ouverture du fichier fichierTemp.txt");
 			// problème d'accès au fichier
 		}
@@ -107,30 +102,6 @@ public class RechercheTemperature {
 		return true;
 	}
 
-	/**
-	 * écrit dans le fichier fichierTemp les données contenu dans listeTemp
-	 */
-	public static void saveTemp(Context myContext) throws ErreurFichier {
-		System.out.println("je sauvegarde");
-		try {
-			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(myContext.openFileOutput("fichierTemp.txt", Context.MODE_PRIVATE));
-			for (int x = 0 ; x < listeTemp.size() ; x++) {
-				outputStreamWriter.write(listeTemp.get(x).toString());
-			}
-			outputStreamWriter.close();
-		} catch (Exception ex) {
-			throw new ErreurFichier();
-		}
-	}
-
-	/**
-	 * Ajoute les nouvelle températures dans listeTemp et les enregistre
-	 * dans le fichier listeTemp
-	 */
-	public static void addTemp(Context myContext) throws ErreurFichier  {
-		editTemp(myContext);
-		saveTemp(myContext);
-	}
 
 	/**
 	 * Vérifie si une date se trouve entre 2019 et 2020

@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
-import static projet.src.thermometres3.RechercheTemperature.getNomFichier;
 import static projet.src.thermometres3.RechercheTemperature.getNouvelleTemp;
 
 public class OutilsInterface {
@@ -63,8 +62,8 @@ public class OutilsInterface {
         String ligne;
         try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(new File( // Ouvre / creer le fichier fichierTemp.txt
                 myContext.getFilesDir() + "/fichierTemp.txt")))) {
-            BufferedReader fichLir = new BufferedReader(new InputStreamReader( // Ouvre le fichier fichierTemp dans le dossier assets
-                    myContext.getAssets().open(getNomFichier())));
+            BufferedReader fichLir = new BufferedReader(new FileReader( // Ouvre le fichier fichierTemp dans le dossier assets
+                    myContext.getAssets()+ "/fichierTemp.txt"));
             while (((ligne = fichLir.readLine()) != null)) { // Lecture des temperatures
                 System.out.println(ligne); // Inutile pour debug
                 fichEcri.write(ligne + "\n"); //Ecriture dans le fichier en memoire

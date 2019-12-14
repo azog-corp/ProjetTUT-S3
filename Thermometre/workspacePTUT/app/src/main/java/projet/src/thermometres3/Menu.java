@@ -69,6 +69,7 @@ public class Menu extends AppCompatActivity {
                     public void onClick(SweetAlertDialog sDialog) {
                         /* Supprime les temperatures */
                         RechercheTemperature.supprimerTemp(getApplicationContext());
+                        TestRechercheTemperature.testSupprimerTemp(getApplicationContext());
                         /* Affiche message pour confirmer suppression */
                         new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Confirmation")
