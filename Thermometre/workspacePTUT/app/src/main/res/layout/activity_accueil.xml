@@ -4,16 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!--<LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:weightSum="4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">-->
-
+    <!-- Titre de la page -->
     <TextView
         android:id="@+id/titreAcceuil"
         android:layout_width="match_parent"
@@ -25,7 +16,7 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp"></TextView>
-
+    <!-- Image -->
     <ImageView
         android:id="@+id/imageAcceuil"
         android:layout_width="wrap_content"
@@ -39,6 +30,7 @@
 
     </ImageView>
 
+    <!-- Bouton menu -->
     <Button
         android:id="@+id/btnMenu"
         android:layout_width="match_parent"
