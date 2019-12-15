@@ -124,9 +124,8 @@ public class Graphe extends AppCompatActivity {
 
     /**
      * Fonction qui permet d'aficher les températures depuis la dernière connexion
-     * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
      * et inferieur a 2 jours
-     * @param */
+     */
     public void lastCo() {
         /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());

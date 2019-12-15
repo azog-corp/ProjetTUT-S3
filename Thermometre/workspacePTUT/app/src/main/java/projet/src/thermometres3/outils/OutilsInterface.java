@@ -8,9 +8,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import projet.src.thermometres3.Erreur.ErreurIntervalle;
+
+import static projet.src.thermometres3.outils.RechercheTemperature.conversion;
 import static projet.src.thermometres3.outils.RechercheTemperature.getNouvelleTemp;
 
 public class OutilsInterface {
@@ -118,5 +123,4 @@ public class OutilsInterface {
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
-
 }

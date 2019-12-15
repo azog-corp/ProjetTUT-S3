@@ -140,10 +140,15 @@ public class RechercheTemperature {
 			//convertit les deux dates de String a Date
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
+			//Si les dates sont egales
+			if(date1formate.compareTo(date2formate) == 0) {
+				throw new ErreurIntervalle();
+			}
 			//Si les deux dates sont egales erreur
             long diff = ((date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24);
 			//Si plus de deux jours erreur ou inferieur a 0 signifie que dates non ordonnees
-            if(diff >= 2 || diff <=0) {
+			System.out.println("Diff : " +diff);
+            if(diff >= 2 || diff < 0) {
 				throw new ErreurIntervalle();
 			}
 		} catch (ParseException e) {
