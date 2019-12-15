@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<ram-component manifest-version="2.0.02" name="JDK" version="8" release="191" clevel="0" modelioVersion="3.8.00" provider="Update site">
+  <description><![CDATA[<p>JDK 1.8.00_191 for Modelio 3.8.</p>
+]]></description>
+  <dependencies></dependencies>
+  <contributors>
+    <contributor name="JavaDesigner" version="3.8.06"/>
+    <contributor name="ModelerModule" version="9.0.06"/>
+  </contributors>
+  <metamodels>
+    <metamodel name="Infrastructure" version="2.1.02"/>
+    <metamodel name="Standard" version="2.3.00"/>
+  </metamodels>
+  <roots>
+    <root metaclass="Standard.Project" name="JDK" uuid="666f4fbf-2cc7-4920-86b2-f41be3344039"/>
+  </roots>
+</ram-component>

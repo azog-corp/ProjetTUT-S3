@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="thermometres3" version="4">
+  <OBJECT>
+    <ID name="thermometres3" mc="Standard.Package" uid="5d31cac1-e0e0-43b1-a621-8f3f59f61e06"/>
+    <PID name="src" mc="Standard.Package" uid="6edf90c5-e35c-494b-a247-a34e507c5db7"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[thermometres3]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Erreur" mc="Standard.Package" uid="c0b32437-fa1b-4621-add9-aaf86cd17662"/>
+        <COMPID name="Menu" mc="Standard.Class" uid="84e0d1df-d7af-4dad-9d22-55c2f58d0fb9"/>
+        <COMPID name="Graphe" mc="Standard.Class" uid="fdcd755e-79fb-4d76-8cf7-ad5090abdfe4"/>
+        <COMPID name="Accueil" mc="Standard.Class" uid="4c8803d4-b4aa-4386-b592-b56f4d008d35"/>
+        <COMPID name="outils" mc="Standard.Package" uid="7fb17203-16f1-4966-8911-8f27197d5207"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

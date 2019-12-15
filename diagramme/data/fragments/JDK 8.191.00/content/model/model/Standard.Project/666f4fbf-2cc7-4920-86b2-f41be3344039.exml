@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="JDK" version="4">
+  <OBJECT>
+    <ID name="JDK" mc="Standard.Project" uid="666f4fbf-2cc7-4920-86b2-f41be3344039"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[JDK]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="JDK" mc="Standard.Package" uid="5a09c718-7a0d-454d-85c6-193079e4d410"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

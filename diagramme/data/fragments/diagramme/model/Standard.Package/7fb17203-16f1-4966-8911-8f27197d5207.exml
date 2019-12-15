@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="outils" version="4">
+  <OBJECT>
+    <ID name="outils" mc="Standard.Package" uid="7fb17203-16f1-4966-8911-8f27197d5207"/>
+    <PID name="thermometres3" mc="Standard.Package" uid="5d31cac1-e0e0-43b1-a621-8f3f59f61e06"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[outils]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="OutilsInterface" mc="Standard.Class" uid="a50de7f3-9fe1-4e0c-aa90-8e7a45709fa0"/>
+        <COMPID name="OutilsTemperature" mc="Standard.Class" uid="e44f30b0-c704-4458-8e4b-4a51a540fa47"/>
+        <COMPID name="RechercheTemperature" mc="Standard.Class" uid="d83cee22-3024-4471-9545-939e3907f956"/>
+        <COMPID name="Temperature" mc="Standard.Class" uid="52ec2b0d-4e72-4705-932d-00c8015ec393"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
