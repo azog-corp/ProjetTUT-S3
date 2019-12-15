@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="project2" version="4">
+  <OBJECT>
+    <ID name="project2" mc="Standard.Package" uid="b80b0577-a3f5-464e-86d3-9f68760c9e11"/>
+    <PID name="Project2" mc="Standard.Project" uid="83463d45-c969-4947-a064-40428ea45655"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[project2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="projet" mc="Standard.Package" uid="01b0ef0e-a38e-425d-a8cc-dbbf80040dbf"/>
+        <COMPID name="ErreurDate" mc="Standard.Class" uid="a855949a-620a-4511-9e90-ce90b5c7acf2"/>
+        <COMPID name="ErreurIntervalle" mc="Standard.Class" uid="54b5dda5-639d-4c36-9358-b5eb53aa965e"/>
+        <COMPID name="SimpleDateFormat" mc="Standard.Class" uid="4c8a8d82-5e3a-4bbd-900e-aa76ac842d29"/>
+        <COMPID name="Context" mc="Standard.Class" uid="8ef056e9-5093-465e-93ea-6d5e4cf7a50d"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="project2 Class diagram" mc="Standard.ClassDiagram" uid="9706582d-8d9b-4e04-b026-2a2c80503d79"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -9,7 +9,7 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedReference">
-        <COMPID name="Archimate.Element" mc="Infrastructure.MetaclassReference" uid="0a139a09-a6d0-4671-a1f1-f5a17fe0f869"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="0a139a09-a6d0-4671-a1f1-f5a17fe0f869"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

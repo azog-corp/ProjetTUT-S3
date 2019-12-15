@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.AssociationEnd" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.AssociationEnd" mc="Infrastructure.MetaclassReference" uid="7a804dc3-44ec-11e0-8f73-0027103f347c"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="7a804dc3-44ec-11e0-8f73-0027103f347c"/>
     <PID name="XMI" mc="Infrastructure.Profile" uid="01ec045c-0000-3739-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.AssociationEnd]]></ATT>

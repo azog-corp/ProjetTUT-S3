@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.Operation" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.Operation" mc="Infrastructure.MetaclassReference" uid="deb348a5-2653-11e1-9161-002564c97630"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="deb348a5-2653-11e1-9161-002564c97630"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.Operation]]></ATT>

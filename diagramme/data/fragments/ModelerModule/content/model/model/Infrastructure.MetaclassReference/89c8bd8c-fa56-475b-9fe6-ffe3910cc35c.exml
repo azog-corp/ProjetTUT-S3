@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.Clause" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.Clause" mc="Infrastructure.MetaclassReference" uid="89c8bd8c-fa56-475b-9fe6-ffe3910cc35c"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="89c8bd8c-fa56-475b-9fe6-ffe3910cc35c"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.Clause]]></ATT>

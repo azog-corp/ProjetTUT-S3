@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.ActivityGroup" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.ActivityGroup" mc="Infrastructure.MetaclassReference" uid="a27efc42-08b8-4e7d-95c6-b393e6fe5fba"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="a27efc42-08b8-4e7d-95c6-b393e6fe5fba"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.ActivityGroup]]></ATT>

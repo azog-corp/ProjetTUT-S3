@@ -65,7 +65,7 @@ public class TestRechercheTemperature {
 			int testOk = 0;
 			System.out.println("TEST INTERVALLE VALIDE");
 			try {
-				RechercheTemperature.intervalleOk(dates[0][0],dates[0][1]);
+				RechercheTemperature.intervalleOk(dates[0][1],dates[0][0]);
 				testOk++;
 				System.out.println(dates[0][0] + " et " + dates[0][1] + " represente bien un intervalle valide TEST OK");
 			} catch (ErreurIntervalle e) {
@@ -77,7 +77,7 @@ public class TestRechercheTemperature {
 
 			for (int i = 1; i < dates.length; i++) {
 				try {
-					RechercheTemperature.intervalleOk(dates[i][0],dates[i][1]);
+					RechercheTemperature.intervalleOk(dates[i][1],dates[i][0]);
 					System.out.println(dates[i][0] + " et " + dates[i][1] + " ne represente pas un intervalle valide TEST NOK");
 				} catch (ErreurIntervalle e) {
 					System.out.println(dates[i][0] + " et " + dates[i][1] + " represente bien un intervalle non valide TEST OK");

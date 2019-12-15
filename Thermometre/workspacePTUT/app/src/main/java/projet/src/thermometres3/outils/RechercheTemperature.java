@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
+
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
 
@@ -108,13 +110,15 @@ public class RechercheTemperature {
 	 */
 	public static void dateOk(String date) throws ErreurDate  {
 		try {
+			format.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 			Date dateMin = conversion("01/01/2000 00:00:00"); //date min
 			Date dateMax = new Date(); // date actuelle
 			format.format(dateMax); // met la date max au bon format
 			Date aVerifier = conversion(date);
             // si aVerifier n'est pas entre dateMin et dateMax
-            if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() > aVerifier.getTime())) {
-				throw new ErreurDate();
+            if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() >= aVerifier.getTime())) {
+				System.out.println("Erreur date pas dans intervalle" + aVerifier.getTime() + " min " + dateMin + " max"+ dateMax + " " + dateMax.getTime());
+            	throw new ErreurDate();
 			}
 		} catch (ParseException e) {
 			//si le format n'est pas bon
@@ -124,7 +128,7 @@ public class RechercheTemperature {
 
 	/**
 	 * Permet de vérifier que l'intervalle de date est 
-	 * inférieur à 1 jours 59 minutes et 59 secondes.
+	 * inférieur à 1 jours 23heures 59 minutes et 59 secondes.
 	 * @param date1
 	 * @param date2
 	 * @return un booleen qui indique si les deux dates ont un intervalle < 2j
@@ -137,12 +141,9 @@ public class RechercheTemperature {
 			Date date1formate = conversion(date1);
 			Date date2formate = conversion(date2);
 			//Si les deux dates sont egales erreur
-			if (date2formate.getTime() == date1formate.getTime()) {
-				throw new ErreurIntervalle();
-			}
-            long diff = ((Math.abs(date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24));
-			//Si plus de deux jours erreur
-            if(diff > 2) {
+            long diff = ((date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24);
+			//Si plus de deux jours erreur ou inferieur a 0 signifie que dates non ordonnees
+            if(diff >= 2 || diff <=0) {
 				throw new ErreurIntervalle();
 			}
 		} catch (ParseException e) {
@@ -173,13 +174,10 @@ public class RechercheTemperature {
 			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 					&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 				tempIntervalle.add(listeTemp.get(x));
-				System.out.println("C'est OK : " + listeTemp.get(x).getDate());
+				System.out.println("C'est OK : " + listeTemp.get(x).getDate());//debug
 			} else {
-				System.out.println("C'est NOK : " + listeTemp.get(x).getDate());
+				System.out.println("C'est NOK : " + listeTemp.get(x).getDate());//debug
 			}
-		}
-		for(int x = 0 ; x < tempIntervalle.size() ; x++) {
-			System.out.println(tempIntervalle.get(x).getDate());
 		}
 		return tempIntervalle;
         } catch(ParseException e) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Infrastructure.ModelElement" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Infrastructure.ModelElement" mc="Infrastructure.MetaclassReference" uid="1f889934-8d90-11df-98b9-0014224f9977"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="1f889934-8d90-11df-98b9-0014224f9977"/>
     <PID name="TemplateProfile" mc="Infrastructure.Profile" uid="d7ea54fa-8913-11df-8dda-0014224f9977"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Infrastructure.ModelElement]]></ATT>

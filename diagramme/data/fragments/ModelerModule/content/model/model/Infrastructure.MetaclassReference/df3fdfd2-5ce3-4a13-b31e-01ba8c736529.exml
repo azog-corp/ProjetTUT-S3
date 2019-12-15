@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.EnumerationLiteral" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.EnumerationLiteral" mc="Infrastructure.MetaclassReference" uid="df3fdfd2-5ce3-4a13-b31e-01ba8c736529"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="df3fdfd2-5ce3-4a13-b31e-01ba8c736529"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.EnumerationLiteral]]></ATT>

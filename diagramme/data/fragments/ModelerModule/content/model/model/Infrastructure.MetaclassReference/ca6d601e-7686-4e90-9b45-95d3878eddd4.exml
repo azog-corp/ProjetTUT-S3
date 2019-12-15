@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.ProvidedInterface" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.ProvidedInterface" mc="Infrastructure.MetaclassReference" uid="ca6d601e-7686-4e90-9b45-95d3878eddd4"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="ca6d601e-7686-4e90-9b45-95d3878eddd4"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.ProvidedInterface]]></ATT>

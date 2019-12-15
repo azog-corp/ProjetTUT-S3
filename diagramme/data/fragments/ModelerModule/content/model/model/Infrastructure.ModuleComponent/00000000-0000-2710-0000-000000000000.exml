@@ -5,8 +5,8 @@
     <ATTRIBUTES>
       <ATT name="LicenseKey">0</ATT>
       <ATT name="MajVersion">9</ATT>
-      <ATT name="MinVersion">0</ATT>
-      <ATT name="MinMinVersion"><![CDATA[6]]></ATT>
+      <ATT name="MinVersion">1</ATT>
+      <ATT name="MinMinVersion"><![CDATA[0]]></ATT>
       <ATT name="MinBinVersionCompatibility"></ATT>
       <ATT name="JavaClassName"><![CDATA[org.modelio.module.modelermodule.impl.ModelerModuleModule]]></ATT>
       <ATT name="Name"><![CDATA[ModelerModule]]></ATT>

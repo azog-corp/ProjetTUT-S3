@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.BpmnBaseElement" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.BpmnBaseElement" mc="Infrastructure.MetaclassReference" uid="aeb07ec3-af96-4069-af14-0436082805ca"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="aeb07ec3-af96-4069-af14-0436082805ca"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.BpmnBaseElement]]></ATT>

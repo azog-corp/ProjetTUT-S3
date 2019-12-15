@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.RaisedException" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.RaisedException" mc="Infrastructure.MetaclassReference" uid="ccc1df05-0464-11e0-b652-002564c97630"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="ccc1df05-0464-11e0-b652-002564c97630"/>
     <PID name="JavaExtensions" mc="Infrastructure.Profile" uid="25801104-0000-1069-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.RaisedException]]></ATT>

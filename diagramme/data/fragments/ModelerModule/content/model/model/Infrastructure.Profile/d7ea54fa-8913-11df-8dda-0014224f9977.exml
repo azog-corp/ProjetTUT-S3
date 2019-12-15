@@ -14,7 +14,7 @@
         <COMPID name="PatternParameter" mc="Infrastructure.Stereotype" uid="3c4678f8-f169-11df-ae59-0014224f9977"/>
       </COMP>
       <COMP relation="OwnedReference">
-        <COMPID name="Infrastructure.ModelElement" mc="Infrastructure.MetaclassReference" uid="1f889934-8d90-11df-98b9-0014224f9977"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="1f889934-8d90-11df-98b9-0014224f9977"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

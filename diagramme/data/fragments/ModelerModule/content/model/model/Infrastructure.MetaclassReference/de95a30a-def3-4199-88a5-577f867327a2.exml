@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.StateVertex" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.StateVertex" mc="Infrastructure.MetaclassReference" uid="de95a30a-def3-4199-88a5-577f867327a2"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="de95a30a-def3-4199-88a5-577f867327a2"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.StateVertex]]></ATT>

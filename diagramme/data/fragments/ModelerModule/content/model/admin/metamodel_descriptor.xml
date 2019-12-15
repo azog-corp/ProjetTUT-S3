@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metamodel format="1" MetamodelDescriptor.format="1">
-  <fragment name="Infrastructure" version="2.1.02" provider="Modeliosoft" providerVersion="3.8.00">
+  <fragment name="Infrastructure" version="2.1.03" provider="Modeliosoft" providerVersion="3.8.01">
     <dependencies>
       <metamodel_fragment name="modelio.kernel" version="1.0.00"/>
     </dependencies>
@@ -9,6 +9,7 @@
         <parent fragment="Infrastructure" name="ModelElement"/>
         <attribute name="UiDataVersion" type="java.lang.Integer"></attribute>
         <attribute name="UiData" type="java.lang.String"></attribute>
+        <attribute name="PreviewData" type="java.lang.String"></attribute>
         <dependency name="Represented" min="0" max="-1" navigate="true" weakReference="true">
           <target fragment="Infrastructure" name="Element"/>
           <opposite name="DiagramElement"/>
@@ -109,6 +110,16 @@
         <dependency name="OccurenceConfigParam" min="0" max="-1" navigate="false">
           <target fragment="Infrastructure" name="ModuleParameter"/>
           <opposite name="EnumType"/>
+        </dependency>
+      </metaclass>
+      <metaclass name="ExternElement" version="0.0.00">
+        <parent fragment="Infrastructure" name="ModelElement"/>
+        <attribute name="Provider" type="java.lang.String"></attribute>
+        <attribute name="ExternId" type="java.lang.String"></attribute>
+        <attribute name="Location" type="java.lang.String"></attribute>
+        <dependency name="Owner" min="1" max="1" navigate="false">
+          <target fragment="Infrastructure" name="MethodologicalLink"/>
+          <opposite name="ExternElement"/>
         </dependency>
       </metaclass>
       <metaclass name="ExternProcessor" version="0.0.9054">
@@ -243,6 +254,10 @@
       </metaclass>
       <link_metaclass name="MethodologicalLink" version="2.1.01">
         <parent fragment="Infrastructure" name="Dependency"/>
+        <dependency name="ExternElement" min="0" max="1" aggregation="Composition" navigate="true">
+          <target fragment="Infrastructure" name="ExternElement"/>
+          <opposite name="Owner"/>
+        </dependency>
         <sources>
           <dep name="Impacted"/>
         </sources>

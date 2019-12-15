@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Analyst.AnalystElement" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Analyst.AnalystElement" mc="Infrastructure.MetaclassReference" uid="2d98d6ca-5644-418a-9bae-94b5362d3c51"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="2d98d6ca-5644-418a-9bae-94b5362d3c51"/>
     <PID name="Analyst" mc="Infrastructure.Profile" uid="1be2e3fc-27ca-11e1-8d9c-002564c97630"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Analyst.AnalystElement]]></ATT>

@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.Enumeration" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.Enumeration" mc="Infrastructure.MetaclassReference" uid="01ec24fc-0000-000d-0000-000000000000"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="01ec24fc-0000-000d-0000-000000000000"/>
     <PID name="JavaCompatibility" mc="Infrastructure.Profile" uid="01ec24fc-0000-0208-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.Enumeration]]></ATT>

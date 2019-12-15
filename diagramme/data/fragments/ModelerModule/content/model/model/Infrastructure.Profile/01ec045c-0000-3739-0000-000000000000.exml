@@ -103,8 +103,8 @@
         <COMPID name="UML2Variable" mc="Infrastructure.Stereotype" uid="de38398e-c746-11e1-8624-0027103f347d"/>
       </COMP>
       <COMP relation="OwnedReference">
-        <COMPID name="Infrastructure.ModelElement" mc="Infrastructure.MetaclassReference" uid="01ec045c-0000-10a1-0000-000000000000"/>
-        <COMPID name="Standard.AssociationEnd" mc="Infrastructure.MetaclassReference" uid="7a804dc3-44ec-11e0-8f73-0027103f347c"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="01ec045c-0000-10a1-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="7a804dc3-44ec-11e0-8f73-0027103f347c"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

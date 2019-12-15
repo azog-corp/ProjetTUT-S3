@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.AssociationEnd" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.AssociationEnd" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fd8-0000-000000000000"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fd8-0000-000000000000"/>
     <PID name="default" mc="Infrastructure.Profile" uid="007004e8-0000-0282-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.AssociationEnd]]></ATT>

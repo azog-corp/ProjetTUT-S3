@@ -77,29 +77,29 @@
         <COMPID name="Methodology" mc="Infrastructure.Stereotype" uid="769b4d1b-614e-4503-892c-b59d0de23158"/>
       </COMP>
       <COMP relation="OwnedReference">
-        <COMPID name="Standard.Association" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-0258-0000-000000000000"/>
-        <COMPID name="Standard.Attribute" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-02a9-0000-000000000000"/>
-        <COMPID name="Standard.Classifier" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-037a-0000-000000000000"/>
-        <COMPID name="Infrastructure.Dependency" mc="Infrastructure.MetaclassReference" uid="01ec2468-0000-0894-0000-000000000000"/>
-        <COMPID name="Infrastructure.ModelElement" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-08c8-0000-000000000000"/>
-        <COMPID name="Standard.ModelTree" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-092f-0000-000000000000"/>
-        <COMPID name="Standard.Operation" mc="Infrastructure.MetaclassReference" uid="deb348a5-2653-11e1-9161-002564c97630"/>
-        <COMPID name="Standard.UseCase" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-0e0b-0000-000000000000"/>
-        <COMPID name="Standard.AssociationEnd" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fd8-0000-000000000000"/>
-        <COMPID name="Standard.Instance" mc="Infrastructure.MetaclassReference" uid="3ac00e06-3921-4b35-bb60-84618d4da048"/>
-        <COMPID name="Standard.ActivityNode" mc="Infrastructure.MetaclassReference" uid="3d7b14d7-4de3-4b8b-8a91-00c002a833bb"/>
-        <COMPID name="Standard.StateVertex" mc="Infrastructure.MetaclassReference" uid="de95a30a-def3-4199-88a5-577f867327a2"/>
-        <COMPID name="Analyst.AnalystItem" mc="Infrastructure.MetaclassReference" uid="0c841642-4e99-4f0d-8a80-4f6d24bf8656"/>
-        <COMPID name="Standard.ActivityGroup" mc="Infrastructure.MetaclassReference" uid="a27efc42-08b8-4e7d-95c6-b393e6fe5fba"/>
-        <COMPID name="Standard.Behavior" mc="Infrastructure.MetaclassReference" uid="1b62b1eb-de82-44cb-be22-ed350ae5cf8c"/>
-        <COMPID name="Standard.BpmnBaseElement" mc="Infrastructure.MetaclassReference" uid="aeb07ec3-af96-4069-af14-0436082805ca"/>
-        <COMPID name="Standard.Clause" mc="Infrastructure.MetaclassReference" uid="89c8bd8c-fa56-475b-9fe6-ffe3910cc35c"/>
-        <COMPID name="Standard.CollaborationUse" mc="Infrastructure.MetaclassReference" uid="8281b44e-16ea-4e9b-94d1-dc28a2be86a9"/>
-        <COMPID name="Standard.Constraint" mc="Infrastructure.MetaclassReference" uid="4bd5d0c9-d5de-41d0-9515-f36f0ac34454"/>
-        <COMPID name="Standard.EnumerationLiteral" mc="Infrastructure.MetaclassReference" uid="df3fdfd2-5ce3-4a13-b31e-01ba8c736529"/>
-        <COMPID name="Standard.InteractionFragment" mc="Infrastructure.MetaclassReference" uid="a6e0f5bd-2649-4c75-a926-3e833fb13002"/>
-        <COMPID name="Standard.ProvidedInterface" mc="Infrastructure.MetaclassReference" uid="ca6d601e-7686-4e90-9b45-95d3878eddd4"/>
-        <COMPID name="Standard.RequiredInterface" mc="Infrastructure.MetaclassReference" uid="433bb965-77f8-4b1b-9ace-864e5af81454"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-0258-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-02a9-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-037a-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="01ec2468-0000-0894-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-08c8-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-092f-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="deb348a5-2653-11e1-9161-002564c97630"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc27b8-0000-0e0b-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fd8-0000-000000000000"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="3ac00e06-3921-4b35-bb60-84618d4da048"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="3d7b14d7-4de3-4b8b-8a91-00c002a833bb"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="de95a30a-def3-4199-88a5-577f867327a2"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="0c841642-4e99-4f0d-8a80-4f6d24bf8656"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="a27efc42-08b8-4e7d-95c6-b393e6fe5fba"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="1b62b1eb-de82-44cb-be22-ed350ae5cf8c"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="aeb07ec3-af96-4069-af14-0436082805ca"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="89c8bd8c-fa56-475b-9fe6-ffe3910cc35c"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="8281b44e-16ea-4e9b-94d1-dc28a2be86a9"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="4bd5d0c9-d5de-41d0-9515-f36f0ac34454"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="df3fdfd2-5ce3-4a13-b31e-01ba8c736529"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="a6e0f5bd-2649-4c75-a926-3e833fb13002"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="ca6d601e-7686-4e90-9b45-95d3878eddd4"/>
+        <COMPID name="" mc="Infrastructure.MetaclassReference" uid="433bb965-77f8-4b1b-9ace-864e5af81454"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

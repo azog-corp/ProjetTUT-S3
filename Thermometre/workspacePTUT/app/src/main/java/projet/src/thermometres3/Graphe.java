@@ -261,7 +261,7 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
                 .setContentText("La dernière connexion est trop ancienne." +
-                        "Affichage des températures inférieur a 2 jours")
+                        "Affichage des températures inférieures à 2 jours")
                 .setConfirmText("OK").show();
     }
 
@@ -272,8 +272,9 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Date")
-                .setContentText("Erreur: Date non valide(format: dd/MM/yyyy HH:mm:ss)" +
-                        " ou non ordonnées")
+                .setContentText("Erreur: Dates non valides, celles-ci doivent respecter le format suivant" +
+                        "(format: dd/MM/yyyy HH:mm:ss) et doivent être inférieures à la date actuelle et supérieures" +
+                        " au 01/01/2000 ")
                 .setConfirmText("OK").show();
     }
 
@@ -283,8 +284,9 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurIntervalle() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Intervalle")
-                .setContentText("Erreur: L'intervalle entré n'est pas valide celui ci " +
-                        "doit être inférieur a 2 jours et les 2 dates doivent être différentes")
+                .setContentText("Erreur: L'intervalle entré n'est pas valide, il " +
+                        "doit être inférieur à 2 jours. Les 2 dates doivent être différentes " +
+                        "et ordonnées")
                 .setConfirmText("OK").show();
 
     }
@@ -295,7 +297,7 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurListeDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
-                .setContentText("Erreur: Aucune température n'existe dans l'intervalle saisi")
+                .setContentText("Erreur: Aucune température existante dans l'intervalle saisi")
                 .setConfirmText("OK")
                 .show();
 

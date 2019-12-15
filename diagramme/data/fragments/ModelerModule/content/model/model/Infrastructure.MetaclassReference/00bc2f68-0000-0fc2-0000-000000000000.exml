@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Standard.Parameter" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="" version="4">
   <OBJECT>
-    <ID name="Standard.Parameter" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fc2-0000-000000000000"/>
+    <ID name="" mc="Infrastructure.MetaclassReference" uid="00bc2f68-0000-0fc2-0000-000000000000"/>
     <PID name="Code" mc="Infrastructure.Profile" uid="00300000-0000-0032-0000-000000000000"/>
     <ATTRIBUTES>
       <ATT name="ReferencedClassName"><![CDATA[Standard.Parameter]]></ATT>
