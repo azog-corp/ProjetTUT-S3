@@ -167,10 +167,21 @@ public class TestRechercheTemperature {
 				System.out.println("Test NOK : pas assez de ou trop de date " + dateRecup + " recupere sur 5 attendues");
 			}
 		}
-
-		public static void main(String[] args) {
-			TestDateOk();
-			testIntervalleOk();
-			testDateIntervalle(); // marche pas
+	
+	public static void testConvertion() {
+		String dateTest = RechercheTemperature.conversion("23/05/2019 15:16:17");
+		if (dateTest.toString() == Mon May 15:16:17 CET 2019) {
+			System.out.println("Test Ok");
+		} else {
+			System.out.println("Test raté");
 		}
+		
+	}
+
+	public static void main(String[] args) {
+		// TestDateOk();
+		// testIntervalleOk();
+		// testDateIntervalle(); // marche pas
+		testConversion();
+	}
 }
