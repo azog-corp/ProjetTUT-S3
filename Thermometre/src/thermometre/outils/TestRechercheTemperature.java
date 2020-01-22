@@ -11,6 +11,27 @@ public class TestRechercheTemperature {
 	
 	private static ArrayList<Temperature> testTemp = new ArrayList<Temperature>();
 	
+	private static void testEditTemp() {
+		RechercheTemperature.editTemp("fichierTempTest.txt");
+		if (RechercheTemperature.getListTemp() != null) {
+			System.out.println("Test OK pour editTemp");
+		} else {
+			System.out.println("Test pas OK");
+		}
+	}
+	
+	private static void testSupprimerTemp() {
+		if (RechercheTemperature.supprimerTemp()) {
+			System.out.println("Test OK pour supprimerTemp");
+		} else {
+			System.out.println("Test pas OK");
+		}
+	}
+	
+	private static void testSaveTemp() {
+		
+	}
+	
 	public static void testGetDerniereTemp() {
 		Date test = RechercheTemperature.conversion("09/11/2019 20:11:12");
 		if (testTemp.get(testTemp.size()-1).getDate().getTime() == test.getTime()) {
@@ -55,7 +76,7 @@ public class TestRechercheTemperature {
 		}
 	}
 	
-	private static void TestDateIntervalle() {
+	private static void testDateIntervalle() {
 		ArrayList<Temperature> testIntervalle = new ArrayList<Temperature>();
 		testIntervalle.add(testTemp.get(3));
 		testIntervalle.add(testTemp.get(4));
@@ -66,8 +87,8 @@ public class TestRechercheTemperature {
 		
 		ArrayList<Temperature> intervalle = RechercheTemperature.dateIntervalle("03/11/2019 20:11:12 16.5", "06/11/2019 20:11:12 9");
 		
-			for (int x = 0 ; x < intervalle.size() ; x++) {
-				System.out.println(testIntervalle.get(x).toString() + intervalle.get(x).toString());
+			for (int x = 1 ; x < intervalle.size() ; x++) {
+				System.out.println(testIntervalle.get(x-1).toString() + intervalle.get(x).toString());
 				if (testIntervalle.get(x) == intervalle.get(x)) {
 					dateBonne++;
 				} else {
@@ -79,13 +100,17 @@ public class TestRechercheTemperature {
 		}
 	}
 	
-	private static void testDateExiste() {
-		String[] dateTest = {"01/11/2019 10:11:12 14.5","02/11/2019 20:11:12 15.5","03/11/2019 20:11:12 16.5"};
+	private static void testSupprimerIntervalle() {
 		
-		if (RechercheTemperature.dateExiste(dateTest[0]) && RechercheTemperature.dateExiste(dateTest[1])) {
+	}
+	
+	private static void testDateExiste() {
+		String[] dateTest = {"03/11/2019 20:11:12", "03/11/2099 20:11:12"};
+		
+		if (RechercheTemperature.dateExiste(dateTest[0])) {
 			System.out.println("dateExiste OK avec date valides");
 		}
-		if (!RechercheTemperature.dateExiste(dateTest[2])) {
+		if (!RechercheTemperature.dateExiste(dateTest[1])) {
 			System.out.println("dateExiste OK avec date invalide");
 		}
 	}
@@ -93,11 +118,15 @@ public class TestRechercheTemperature {
 	public static void main(String[] args) {
 		RechercheTemperature.editTemp("fichierTempTest.txt");
 		testTemp = RechercheTemperature.getListTemp();
-		// testGetDerniereTemp();
-		// testIntervalleOk();
+		// testEditTemp();
+		// testSupprimerTemp();
+		// testSaveTemp();
 		// TestDateOk();
-		// TestDateIntervalle(); // ne marche pas
-		// testDateExiste(); //ne marchye pas
+		// testIntervalleOk();
+		// testGetDerniereTemp();
+		// testDateIntervalle(); // marche pas
+		// testSupprimerIntervalle(); // Pas fait
+		// testDateExiste(); // marche pas
 	}
 
 }

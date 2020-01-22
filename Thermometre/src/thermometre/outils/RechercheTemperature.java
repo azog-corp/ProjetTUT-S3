@@ -17,7 +17,7 @@ public class RechercheTemperature {
 	/**
 	 * Liste contenant toutes les instances de température
 	 */
-	private static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
+	static ArrayList<Temperature> listeTemp = new ArrayList<Temperature>();
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -54,6 +54,14 @@ public class RechercheTemperature {
 	 */
 	public static ArrayList<Temperature> getListTemp() {
 		return listeTemp;
+	}
+	
+	/**
+	 * 
+	 * @param newTemp
+	 */
+	public static void setListTemp(ArrayList<Temperature> newTemp) {
+		listeTemp = newTemp;
 	}
 
 	/**
