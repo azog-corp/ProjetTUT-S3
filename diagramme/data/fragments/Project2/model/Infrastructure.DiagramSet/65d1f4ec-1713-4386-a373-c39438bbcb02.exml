@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Project2" version="4">
+  <OBJECT>
+    <ID name="Project2" mc="Infrastructure.DiagramSet" uid="65d1f4ec-1713-4386-a373-c39438bbcb02"/>
+    <PID name="Project2" mc="Standard.Project" uid="83463d45-c969-4947-a064-40428ea45655"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Project2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Sub">
+        <COMPID name="Auto Diagrams" mc="Infrastructure.DiagramSet" uid="428d91f9-ee83-46bc-a541-5f0b12952323"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

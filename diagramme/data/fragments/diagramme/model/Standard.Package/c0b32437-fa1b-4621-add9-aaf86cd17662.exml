@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Erreur" version="4">
+  <OBJECT>
+    <ID name="Erreur" mc="Standard.Package" uid="c0b32437-fa1b-4621-add9-aaf86cd17662"/>
+    <PID name="thermometres3" mc="Standard.Package" uid="5d31cac1-e0e0-43b1-a621-8f3f59f61e06"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Erreur]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="ErreurDate" mc="Standard.Class" uid="f33a9843-54a9-4eb5-8ad4-f41dc5d8ade2"/>
+        <COMPID name="ErreurFichier" mc="Standard.Class" uid="acb92c9b-0fb4-4dd9-86f1-1ed251e1f011"/>
+        <COMPID name="ErreurIntervalle" mc="Standard.Class" uid="02ee1447-62c0-431d-8c4d-546d8c780d91"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaPackage" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0126-0000-000000000000"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

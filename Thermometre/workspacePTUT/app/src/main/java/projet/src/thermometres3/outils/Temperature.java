@@ -31,7 +31,7 @@ public class Temperature {
 	 * @param newTemp la string contenant la temp�rature et la date
 	 * @throws ParseException 
 	 */
-	public Temperature(String newTemp) throws ParseException {
+	public Temperature(String newTemp) {
 		
 		String[] decomposition = newTemp.split(" ");
 		
@@ -40,10 +40,8 @@ public class Temperature {
 			this.date = format.parse(decomposition[0] + " " + decomposition[1]);
 			
 		} catch (ParseException e) {
-			// on fait remonter l'erreur de format, ce cas ne devrais pas arriver
-			throw new ParseException("Erreur lors du formattage de la date " 
-										+ decomposition[0] + " " + decomposition[1], 0);
-			
+			// ce cas ne devrais pas arriver les temperatures dans le fichier sont inscrites par nous
+			// elle ne pourront pas avoir un mauvais format
 		}
 		
 		this.temp = Double.parseDouble(decomposition[2]);

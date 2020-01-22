@@ -19,12 +19,14 @@ import java.util.Date;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.outils.OutilsInterface;
+import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
-import static projet.src.thermometres3.OutilsInterface.getDate2JoursPrec;
-import static projet.src.thermometres3.OutilsInterface.getDateActuelle;
-import static projet.src.thermometres3.RechercheTemperature.dateIntervalle;
-import static projet.src.thermometres3.RechercheTemperature.dateOk;
-import static projet.src.thermometres3.RechercheTemperature.intervalleOk;
+import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
+import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
+import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
+import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
+import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
@@ -56,7 +58,6 @@ public class Graphe extends AppCompatActivity {
                 lastCo();//appel la creation du graph
             }
         });
-        //TODO lancement par defaut de l'application avec des donnees par defaut
     }
 
     /**
@@ -123,9 +124,8 @@ public class Graphe extends AppCompatActivity {
 
     /**
      * Fonction qui permet d'aficher les températures depuis la dernière connexion
-     * //TODO ajouter verif pour intervalle valide ( pas trop petit et pertinent)
      * et inferieur a 2 jours
-     * @param */
+     */
     public void lastCo() {
         /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());
@@ -260,7 +260,7 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
                 .setContentText("La dernière connexion est trop ancienne." +
-                        "Affichage des températures inférieur a 2 jours")
+                        "Affichage des températures inférieures à 2 jours")
                 .setConfirmText("OK").show();
     }
 
@@ -271,8 +271,9 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Date")
-                .setContentText("Erreur: Date non valide(format: dd/MM/yyyy HH:mm:ss)" +
-                        " ou non ordonnées")
+                .setContentText("Erreur: Dates non valides, celles-ci doivent respecter le format suivant" +
+                        "(format: dd/MM/yyyy HH:mm:ss) et doivent être inférieures à la date actuelle et supérieures" +
+                        " au 01/01/2000 ")
                 .setConfirmText("OK").show();
     }
 
@@ -282,8 +283,9 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurIntervalle() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Intervalle")
-                .setContentText("Erreur: L'intervalle entré n'est pas valide celui ci " +
-                        "doit être inférieur a 2 jours et les 2 dates doivent être différentes")
+                .setContentText("Erreur: L'intervalle entré n'est pas valide, il " +
+                        "doit être inférieur à 2 jours. Les 2 dates doivent être différentes " +
+                        "et ordonnées")
                 .setConfirmText("OK").show();
 
     }
@@ -294,7 +296,7 @@ public class Graphe extends AppCompatActivity {
     public void messageErreurListeDate() {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR: Liste Températures")
-                .setContentText("Erreur: Aucune température n'existe dans l'intervalle saisi")
+                .setContentText("Erreur: Aucune température existante dans l'intervalle saisi")
                 .setConfirmText("OK")
                 .show();
 

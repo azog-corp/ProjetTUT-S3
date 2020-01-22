@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="diagramme" version="4">
+  <OBJECT>
+    <ID name="diagramme" mc="Standard.Project" uid="e5375247-ef38-4521-a8cd-b8593e26b459"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[diagramme]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="diagramme" mc="Standard.Package" uid="639681f0-b4f1-450b-9381-6a709f7e4e36"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="diagramme" mc="Infrastructure.DiagramSet" uid="ea08827f-810d-4be7-b251-d26d0be86c2d"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
