@@ -1,0 +1,21 @@
+-----Lancement appli
+Se met a jour automatiquement (Fichier temperatures)
+Met a jour fichier derniere connexion ? creer un fichier dernier transfert a la place ?
+--La mise a jour de la derniere connexion rendrant non pertinent l'affichage depuis la derniere connexion 
+--ducoup garder la derniere connexion et creer un fichier dernier transfert 
+--et placer la date du dernier transfert a la fermeture de l'application
+--en gros garder la date du dernier transfert et la date du derniere transfert de la derniere fois
+
+-----Page graphe
+Si il clique sur continu
+on actualise les donnees toutes les minutes
+et ducoup on met a jour le fichier derniere connexion / transfert
+
+
+
+?enlever la maj automatique cause pas mal de probleme de coherence par la suite
+ Pour recuperer les temperatures on appel derniere connnexion qui met a jour depuis le dernier transfert
+--il faudra garder la date du debut 
+Puis afficher de la date a maintenant et actualsier a chaque fois
+
+--> creer bouton actualiser ducoup

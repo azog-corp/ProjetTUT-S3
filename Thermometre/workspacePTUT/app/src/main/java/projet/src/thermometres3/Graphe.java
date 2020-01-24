@@ -15,6 +15,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
@@ -152,7 +153,31 @@ public class Graphe extends AppCompatActivity {
         }
     }
 
-    public void connexionContinu() { }//TODO RESEAU
+    public void connexionContinu() {
+        //recuperer date debu continu
+        String dateDebut = getDateActuelle();
+        //mettre a jour les temperature depuis derniere connexion
+        while(true) {
+            //communication reseau
+            //ecrire dans le fichier temperature
+
+            //mettre a jour le graphe appeller date debut continu - maintenant
+            try {
+                conversionGraph(dateIntervalle(dateDebut, getDateActuelle()));
+            }catch(ErreurDate e) {//les dates ne sont pas valide
+                messageErreurDate();
+            }
+            OutilsInterface.majFichierTemp(this.getApplicationContext());
+            //attendre 1min - 30 s
+        }
+    }//TODO RESEAU
+
+    /*
+     fonction communication
+     se connecte au serveur et envoi la date derniere connexion lu dans le fichier
+     puis recupere ce qui est envoye par le serveur et met a jour le fichier des temperatures
+     puis met a jour le fichier derniere connexion
+     */
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph
