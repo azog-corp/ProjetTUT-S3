@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\dfb17c32c9e1bced7bb89f3e844a7607\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [com.jjoe64:graphview:4.2.2] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\f183daa8bb5c26dc395afe24680f9499\jetified-graphview-4.2.2\AndroidManifest.xml:2:1-14:12
@@ -36,25 +36,25 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\kille\.g
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\e72949b043b8df7a6068dab5e7cd21f2\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\2d1f640c1b4beb33089ff5c91bbd7f31\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.pnikosis:materialish-progress:1.7] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\51d399b4281088d76826716396405309\materialish-progress-1.7\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
+INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
 	package
 		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:3:5-39
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-23:12
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:1-24:12
 		INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:5:5-21:19
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:5:5-22:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\c1763829f79bc3811543d2bb9a22b866\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [com.jjoe64:graphview:4.2.2] C:\Users\kille\.gradle\caches\transforms-2\files-2.1\f183daa8bb5c26dc395afe24680f9499\jetified-graphview-4.2.2\AndroidManifest.xml:11:5-12:19
@@ -81,28 +81,32 @@ MERGED from [com.pnikosis:materialish-progress:1.7] C:\Users\kille\.gradle\cache
 		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:11:9-40
+activity#projet.src.thermometres3.Supprimer
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:12:9-56
+	android:name
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:12:19-44
 activity#projet.src.thermometres3.Graphe
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:12:9-53
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:13:9-44
 	android:name
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:12:19-41
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:13:19-41
 activity#projet.src.thermometres3.Menu
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:13:9-42
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:14:9-42
 	android:name
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:13:19-39
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:14:19-39
 activity#projet.src.thermometres3.Accueil
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:14:9-20:20
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:15:9-21:20
 	android:name
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:14:19-42
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:15:19-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:15:13-19:29
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:16:13-20:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:16:17-69
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:17:17-69
 	android:name
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:16:25-66
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:17:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:18:17-77
+ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:19:17-77
 	android:name
-		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:18:27-74
+		ADDED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml:19:27-74
 uses-sdk
 INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\kille\Desktop\workspacePTUT\ProjetTUT-S3\Thermometre\workspacePTUT\app\src\main\AndroidManifest.xml

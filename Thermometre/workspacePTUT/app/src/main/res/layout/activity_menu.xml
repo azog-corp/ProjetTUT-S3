@@ -79,6 +79,28 @@
                     android:layout_marginRight="15dp"
                     android:textSize="25sp"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:layout_marginTop="50dp">
+                <!-- Bouton graphe -->
+                <Button
+                    android:id="@+id/btnMaj"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Mise a jour des temperatures"
+                    android:minHeight="75dp"
+                    android:maxHeight="100dp"
+                    android:textColor="@color/blanc"
+                    tools:layout_editor_absoluteX="163dp"
+                    tools:layout_editor_absoluteY="193dp"
+                    android:background="@drawable/btn_arrond"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="25sp"
+                    />
+            </LinearLayout>
             <!-- Element de mise en page -->
             <LinearLayout
                 android:layout_width="match_parent"

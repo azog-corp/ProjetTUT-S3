@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Graphe"></activity>
+        <activity android:name=".Supprimer"></activity>
+        <activity android:name=".Graphe" />
         <activity android:name=".Menu" />
         <activity android:name=".Accueil">
             <intent-filter>
