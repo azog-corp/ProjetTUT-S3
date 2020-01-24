@@ -40,6 +40,7 @@ public class Accueil extends AppCompatActivity {
          * S' il n'existe pas cela signifie que c'est le premiere lancement de l'application
          * Il faut donc recuperer les temperatures et creer le fichier de temperatures
          */
+        //TODO RESEAU changer fonctionnement enlever les asssets
         if(!f.exists()) { // Si le fichier n'existe pas
             creerFichierLastCo(getApplicationContext()); // creer fichier derniereConnexion
             OutilsInterface.creerFichierTemperatures(getApplicationContext()); // creer fichier Temperature
@@ -48,7 +49,7 @@ public class Accueil extends AppCompatActivity {
             /*Si le fichier existe alors on recupere
              * les nouvelles temperatures
              */
-            OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature
+            OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature//TODO RESEAU
             TestOutilsInterface.testFichierTemp(getApplicationContext());
 
         }

@@ -126,7 +126,7 @@ public class Graphe extends AppCompatActivity {
      * Fonction qui permet d'aficher les températures depuis la dernière connexion
      * et inferieur a 2 jours
      */
-    public void lastCo() {
+    public void lastCo() { //TODO RESEAU
         /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());
         String sFin = getDateActuelle();
@@ -151,6 +151,8 @@ public class Graphe extends AppCompatActivity {
             messageErreurDate();
         }
     }
+
+    public void connexionContinu() { }//TODO RESEAU
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph

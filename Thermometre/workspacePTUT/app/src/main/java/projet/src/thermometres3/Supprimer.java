@@ -11,4 +11,6 @@ public class Supprimer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supprimer);
     }
+
+    //TODO RESEAU
 }

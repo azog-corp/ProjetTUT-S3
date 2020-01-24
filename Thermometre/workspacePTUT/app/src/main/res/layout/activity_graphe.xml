@@ -107,6 +107,15 @@
 
                     </Button>
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btnContinu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/btnContinu"
+                    android:layout_weight="1">
+
+                </Button>
             </LinearLayout>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

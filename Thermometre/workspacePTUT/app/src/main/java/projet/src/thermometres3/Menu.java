@@ -108,4 +108,6 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(this, Graphe.class);
         startActivity(intent);
     }
+
+    //TODO RESEAU faire bouton actualisation + lien vers page supprimer
 }
