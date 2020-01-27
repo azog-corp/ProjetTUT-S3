@@ -4,7 +4,10 @@ package projet.src.thermometres3.outils;
 
 import android.content.Context;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.ParseException;
@@ -191,38 +194,6 @@ public class RechercheTemperature {
         }
 	}
 
-	/** TODO refaire plus tard mais necessite context donc risque erreur
-	 * Suprime de listeTemp toutes les température contenu dans un intervalle
-	 * @param date1
-	 * @param date2
-
-	public static void supprimerIntervalle(String date1, String date2) {
-
-	Date date1formate = conversion(date1);
-	Date date2formate = conversion(date2);
-	for (int x = 0 ; x < listeTemp.size() ; x++) {
-	if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
-	&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-	listeTemp.remove(listeTemp.get(x));
-	}
-	}
-	saveTemp();
-	}*/
-
-	/**
-	 * Vérifie si une date existe dans listeTemp
-	 * @param date
-	 * @return
-
-	public static boolean dateExiste(String date) {
-		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (listeTemp.get(x).getDate().toString() == date) {
-				return true;
-			}
-		}
-		return false;
-	}*/
-
 	/**
 	 * Convertie un date en String Ã  une date en Date
 	 * @param date
@@ -233,5 +204,39 @@ public class RechercheTemperature {
 		Date dateFormate;
 		dateFormate  = format.parse(date);
 		return dateFormate;
+	}
+
+	public boolean supprimerIntervalle(Context myContext,String dateInf, String dateSup) {
+		try {
+			Date dateInfformate = conversion(dateInf);
+			Date dateSupformate = conversion(dateSup);
+			ArrayList<String> lignehorsintervalle = new ArrayList<String>();
+			String ligne;
+			Temperature atester;
+			BufferedReader fichier = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
+			while (((ligne = fichier.readLine()) != null)) {
+				atester = new Temperature(ligne);
+				if(!(atester.getDate().compareTo(dateInfformate) >= 0 && atester.getDate().compareTo(dateSupformate) <= 0)) {
+					lignehorsintervalle.add(ligne);
+				}
+			}
+			reecrireFichier(myContext,lignehorsintervalle);
+			return true;
+		} catch(ParseException e) {
+			//stub impossible verifie avant
+		} catch (IOException e) {
+			//stub impossible verifie avant
+		}
+		return false;
+	}
+
+	private void reecrireFichier(Context myContext,ArrayList<String> tempAEcrire) {
+		try (BufferedWriter fic = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt"))) { // Lecture du fichier
+			for(int i = 0; i < tempAEcrire.size(); i++) {
+				fic.write(tempAEcrire.get(i));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

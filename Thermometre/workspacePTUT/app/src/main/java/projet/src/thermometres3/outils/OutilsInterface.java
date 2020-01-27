@@ -87,6 +87,7 @@ public class OutilsInterface {
      * l'application qui mettra ses donnees a jour grace a la BD
      * @param myContext Contexte de l'application au moment de l'execution
      */
+    //TODO RESEAU
     public static void majFichierTemp(Context myContext) {
         String ligne;
         //BufferedWriter fichEcri = new BufferedWriter(new FileWriter("/fichierTemp.txt", true))) { //TODO maj en fin fichier
@@ -123,4 +124,6 @@ public class OutilsInterface {
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
+
+
 }
