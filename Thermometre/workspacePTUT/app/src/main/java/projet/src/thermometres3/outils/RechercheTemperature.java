@@ -231,7 +231,8 @@ public class RechercheTemperature {
 	}
 
 	private void reecrireFichier(Context myContext,ArrayList<String> tempAEcrire) {
-		try (BufferedWriter fic = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt"))) { // Lecture du fichier
+		try (BufferedWriter fic = new BufferedWriter(new FileWriter(myContext.getFilesDir()
+				+ "/fichierTemp.txt"))) { // Lecture du fichier
 			for(int i = 0; i < tempAEcrire.size(); i++) {
 				fic.write(tempAEcrire.get(i));
 			}
