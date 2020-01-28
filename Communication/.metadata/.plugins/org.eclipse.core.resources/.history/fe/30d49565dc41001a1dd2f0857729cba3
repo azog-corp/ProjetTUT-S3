@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package projet;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author pierremarie.combalbe
+ */
+public class Service extends Thread{
+    byte[] buffer;
+    
+    DatagramPacket paquet;
+    
+    DatagramSocket socket;
+    
+    Thread t;
+    
+  public Service(String name,DatagramSocket socket,DatagramPacket paquet, byte[] buffer){
+    super(name);
+    this.socket = socket;
+    this.paquet = paquet;
+    this.buffer = buffer;
+    System.out.println("statut du thread " + name + " = " +this.getState());
+    this.start();
+    System.out.println("statut du thread " + name + " = " +this.getState());
+
+  }
+  
+  
+  
+public void run(){
+	System.out.println("RUN");
+        String msg, ar; // Message reçu et accusé réception
+        InetAddress ipClient;
+        int portClient;
+        try {
+            while(true) {
+            	System.out.println("Boucle paquet");
+                // Lire un paquet
+                msg = new String(buffer);
+                msg = msg.trim();
+                ipClient = paquet.getAddress();
+                portClient = paquet.getPort();
+                System.out.println("Recu : "+ msg+ " Thread : " + this.getName() 
+                +"IP : " + ipClient + " PORT : " + portClient);
+                ar = "Recu : "+msg;
+                socket.send(new DatagramPacket(ar.getBytes(), ar.getBytes().length,
+                              ipClient, portClient));
+                // Pour vider le buffer : remplir buffer par des espaces puis supprimer par trim()
+                // les espaces en trop si la chaîne reçue est plus courte que la taille du buffer
+                for (int i=0; i<buffer.length; i++) buffer[i] = '\u0020';
+            }
+        } catch (IOException e) {
+            System.out.println("nsm" + e);
+        }
+  }
+
+}
+
