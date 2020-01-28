@@ -51,9 +51,7 @@ public class Communication {
 		return null;
 	}
 	
-	public majDerniereConnexion(Context myContext) {
-		//lire fichier derniere co dans date
-		transfert(date,myContext);
-		//mettre a jour fichier connexion avec date actuelle
+	public majDerniereConnexion() {
+		
 	}
 }
