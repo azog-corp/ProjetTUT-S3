@@ -1,9 +1,5 @@
 package projet;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -16,6 +12,9 @@ public class Communication {
 	private InetAddress iPserveur;
 	private int portServeur;
 
+	public void transfert(String date,Context myContext) {
+		ajouterFichier(comRasp(date)); // ajoute les temp a la fin du fichier
+	}
 	/**
 	 * Ajoute a la fin du fichier
 	 * @param temperatures
@@ -27,7 +26,7 @@ public class Communication {
 
 	public void remiseAzero(Context myContext) {
 		RechercheTemperature.supprimerTemp(myContext);
-		ajouterFichier(comRasp(date)); // date 1900
+		transfert("01/01/1900",myContext);
 	}
 
 	public ArrayList<String> comRasp(String date) {
@@ -55,33 +54,7 @@ public class Communication {
 	
 	public majDerniereConnexion(Context myContext) {
 		//lire fichier derniere co dans date
-		ajouterFichier(comRasp(date));
+		transfert(date,myContext);
 		//mettre a jour fichier connexion avec date actuelle
-	}
-	
-	coteServ(){
-		//recoit
-		//recupere la date
-		//Recupere les dates apres celle envoye
-		//ajoute a une arrayList -> lectureFichier
-		//envoi la taille de l'arrayList
-		//envoi toutes les temp
-	}
-	
-	public ArrayList<String> lectureFichier(String date){
-		//CONVERSION = fct convertir date en string
-		try {
-			String ligne;
-			date = conversion(date);
-			ArrayList<String> temp = new ArrayList<String>();
-			BufferedReader fic = new BufferedReader(new FileReader(new File("temperatures.txt")));
-			while((ligne = fic.readLine()) != null) {
-				if(date.compareTo(conversion(ligne))) {
-					temp.add(ligne);
-				}
-			}
-		}catch(IOException e) {
-			System.out.println(e);
-		}
 	}
 }

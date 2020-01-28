@@ -63,7 +63,7 @@ public class Communication {
 		//recoit
 		//recupere la date
 		//Recupere les dates apres celle envoye
-		//ajoute a une arrayList -> lectureFichier
+		//ajoute a une arrayList
 		//envoi la taille de l'arrayList
 		//envoi toutes les temp
 	}
