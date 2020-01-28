@@ -1,0 +1,10 @@
+package projet;
+
+public class Communication {
+
+	public void transfert(String date) {
+		int nbTemp = 0;
+		//envoyer au serveur la date
+		//recuperer le nombre de donnees a recupere
+	}
+}

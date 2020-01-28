@@ -1,0 +1,53 @@
+package projet;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.ArrayList;
+
+public class Communication {
+	
+	private DatagramSocket dSocket ;
+    private InetAddress iPserveur;
+    private int portServeur;
+
+	public void transfert(String date,Context myContext) {
+		int nbTemp = 0;
+		ArrayList<String> temperatures = new ArrayList<String>();
+		//envoyer au serveur la date
+		//recuperer le nombre de donnees a recupere dans nbTemp
+		
+		for(int i =0; i < nbTemp; i++) {
+			temperature.add(//receive);
+		}
+		ajouterFichier(temperatures); // ajoute les temp a la fin du fichier
+	}
+	/**
+	 * Ajoute a la fin du fichier
+	 * @param temperatures
+	 */
+	private void ajouterFichier(ArrayList<String> temperatures) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void remiseAzero(Context myContext) {
+		RechercheTemperature.supprimerTemp(Context myContext);
+		transfert("01/01/1900",Context myContext);
+	}
+	
+	public void comRasp() {
+		byte[] buffer; // message sous forme de tableau d'octets
+        buffer = txtMessage.getText().getBytes();
+        dSocket.send(new DatagramPacket(buffer, buffer.length, 
+                iPserveur, portServeur));
+        
+        // Lire et afficher accusé réception du serveur
+        buffer = new byte[100];
+        dSocket.setSoTimeout(2000); // Temps d'attente réception max en millisecondes 
+        dSocket.receive(new DatagramPacket(buffer,100));
+        String reponse = new String(buffer);
+        txtAccuseReception.append(reponse.trim()+"\n");
+        
+	}
+}
