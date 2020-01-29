@@ -1,12 +1,19 @@
 package projet.src.thermometres3;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.ArrayList;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Test.TestRechercheTemperature;
+import projet.src.thermometres3.outils.OutilsCommunication;
+import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class Menu extends AppCompatActivity {
@@ -108,6 +115,13 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(this, Graphe.class);
         startActivity(intent);
     }
+
+    public void majTemperature(View view) {
+        OutilsCommunication.majDerniereConnexion(getApplicationContext());
+    }
+
+
+
 
     //TODO RESEAU faire bouton actualisation + lien vers page supprimer
 }

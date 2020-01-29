@@ -125,5 +125,4 @@ public class OutilsInterface {
         return sdf.format(date);
     }
 
-
 }
