@@ -1,8 +1,0 @@
-package projet;
-
-public class Communication {
-
-	public transfert(String date) {
-		//envoyer au serveur la date
-	}
-}

@@ -52,13 +52,13 @@ public class Communication {
 		}
 		return null;
 	}
-	
+
 	public majDerniereConnexion(Context myContext) {
 		//lire fichier derniere co dans date
 		ajouterFichier(comRasp(date));
 		//mettre a jour fichier connexion avec date actuelle
 	}
-	
+
 	coteServ(){
 		//recoit
 		//recupere la date
@@ -67,21 +67,6 @@ public class Communication {
 		//envoi la taille de l'arrayList
 		//envoi toutes les temp
 	}
-	
-	public ArrayList<String> lectureFichier(String date){
-		//CONVERSION = fct convertir date en string
-		try {
-			String ligne;
-			date = conversion(date);
-			ArrayList<String> temp = new ArrayList<String>();
-			BufferedReader fic = new BufferedReader(new FileReader(new File("temperatures.txt")));
-			while((ligne = fic.readLine()) != null) {
-				if(date.compareTo(conversion(ligne))) {
-					temp.add(ligne);
-				}
-			}
-		}catch(IOException e) {
-			System.out.println(e);
-		}
-	}
+
+
 }
