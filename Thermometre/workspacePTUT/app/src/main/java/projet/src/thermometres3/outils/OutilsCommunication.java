@@ -1,37 +1,47 @@
 package projet.src.thermometres3.outils;
 
+import android.app.AlertDialog;
 import android.content.Context;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 import java.util.ArrayList;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import projet.src.thermometres3.Menu;
+
 public class OutilsCommunication {
+    static DatagramSocket dSocket;
+
     public static ArrayList<String> comRasp(String date) {
         try {
             ArrayList<String> temperatures = new ArrayList<String>();
             int nbTemp = 0;
-            byte[] buffer = new byte[100]; // message sous forme de tableau d'octet
-            buffer = date.getBytes();
-            InetAddress iPserveur = InetAddress.getByName("10.0.0.0"); //todo modifier
-            DatagramSocket dSocket = new DatagramSocket();//todo modifier pas verifier
-            int portServeur = 423; //todo modifier
+            int portServeur = 4523;
+            byte[] buffer = date.getBytes();
+            InetAddress iPserveur = InetAddress.getByName("10.3.141.1"); //todo modifier
+            System.out.println("Avant socket");
+            dSocket = new DatagramSocket(4523);//todo modifier pas verifier
+            System.out.println("Avant socket");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
-            dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
-            dSocket.receive(new DatagramPacket(buffer,100));
-            nbTemp = Integer.parseInt(new String(buffer));
-            for(int i =0; i < nbTemp; i++) {
-                dSocket.receive(new DatagramPacket(buffer,100));
+            //dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
+            dSocket.receive(new DatagramPacket(buffer, buffer.length));
+           /* nbTemp = Integer.parseInt(new String(buffer));
+            for (int i = 0; i < nbTemp; i++) {
+                dSocket.receive(new DatagramPacket(buffer, 100));
                 temperatures.add(new String(buffer));
-            }
+            }*/
             return temperatures;
+        } catch(SocketException e) {
+            System.out.println("erreur socket");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("erreur connexion");
         }
+
         return null;
     }
 
@@ -45,8 +55,7 @@ public class OutilsCommunication {
     }
 
     public static void majDerniereConnexion(Context myContext) {
-        String dateDernCo = OutilsInterface.getLastCo(myContext);
-        OutilsCommunication.ajouterFichier(OutilsCommunication.comRasp(dateDernCo)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
-        OutilsInterface.creerFichierLastCo(myContext);//mettre a jour fichier Derniere co
+        new Communication().execute(myContext);
+
     }
 }

@@ -117,6 +117,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void majTemperature(View view) {
+        System.out.println("MISE A JOUR");
         OutilsCommunication.majDerniereConnexion(getApplicationContext());
     }
 

@@ -771,12 +771,16 @@ id async
 id barrier
 id beginning
 id blocking
+id borneINF
+id borneSUP
 id bottom
 id btnAccueil
 id btnAfficher
+id btnContinu
 id btnDelete
 id btnGraph
 id btnLastCo
+id btnMaj
 id btnMenu
 id buttonPanel
 id buttons_container
@@ -854,6 +858,7 @@ id notification_main_column_container
 id packed
 id parent
 id parentPanel
+id partSupprimer
 id percent
 id progressWheel
 id progress_circular
@@ -913,6 +918,9 @@ id title_text
 id titreAcceuil
 id top
 id topPanel
+id toutSupprimer
+id txtborneINF
+id txtborneSUP
 id uniform
 id up
 id useLogo
@@ -959,6 +967,7 @@ layout abc_tooltip
 layout activity_accueil
 layout activity_graphe
 layout activity_menu
+layout activity_supprimer
 layout alert_dialog
 layout notification_action
 layout notification_action_tombstone
@@ -1025,6 +1034,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string afficher
 string app_name
+string btnContinu
 string btnLastCo
 string btnMenu
 string default_progressbar
