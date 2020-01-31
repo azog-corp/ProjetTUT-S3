@@ -34,7 +34,7 @@ public class Service extends Thread{
 	Thread t;
 	
 	/**
-	 * format pr�d�finis pour les Dates
+	 * format prédéfinis pour les Dates
 	 */
 	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
@@ -53,7 +53,7 @@ public class Service extends Thread{
 
 	public void run(){
 		System.out.println("RUN");
-		String msg, ar; // Message reçu et accusé réception
+		String msg, ar; // Message reÃ§u et accusÃ© rÃ©ception
 		InetAddress ipClient;
 		int portClient;
 		try {
@@ -73,8 +73,10 @@ public class Service extends Thread{
 					ipClient, portClient));
 			for(int i = 0; i < tempValide.size(); i++) {
 				ar = tempValide.get(i);
+				System.out.println(ar);
 				socket.send(new DatagramPacket(ar.getBytes(), ar.getBytes().length,
 						ipClient, portClient));
+				//TODO rajouter sleep ?
 			}
 
 		} catch (IOException e) {
@@ -103,7 +105,7 @@ public class Service extends Thread{
 	}
 	
 	/**
-	 * Convertie un date en String à une date en Date
+	 * Convertie un date en String Ã  une date en Date
 	 * @param date
 	 * @return la date formate avec le format dd/MM/yyyy hh:mm:ss
 	 * @throws ErreurDate si le format de la date n'est pas valide
