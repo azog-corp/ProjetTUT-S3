@@ -16,7 +16,7 @@ import projet.src.thermometres3.Menu;
 public class OutilsCommunication {
     static DatagramSocket dSocket;
 
-    public static ArrayList<String> comRasp(String date) {
+    public static ArrayList<String> comRasp(String date) throws ErreurConnexion {
         try {
             ArrayList<String> temperatures = new ArrayList<String>();
             int nbTemp = 0;
@@ -38,10 +38,11 @@ public class OutilsCommunication {
             return temperatures;
         } catch(SocketException e) {
             System.out.println("erreur socket");
+            throw new ErreurConnexion();
         } catch (IOException e) {
             System.out.println("erreur connexion");
+            throw new ErreurConnexion();
         }
-
         return null;
     }
 
