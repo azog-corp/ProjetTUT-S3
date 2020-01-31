@@ -51,7 +51,7 @@ public class OutilsCommunication {
      * @param temperatures
      */
     public static void ajouterFichier(ArrayList<String> temperatures) {
-        // TODO Auto-generated method stub
+        //FileWriter( String Filename, boolean append) 
 
     }
 
