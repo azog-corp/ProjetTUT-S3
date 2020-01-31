@@ -59,5 +59,14 @@ public class OutilsTemperature {
 		}
 	}
 	
+	//TODO
+	public String[] convertirTab(ArrayList<String> tempS) {
+		String[] temp = new String[tempS.size()];
+		for(int i = 0; i < tempS.size(); i++) {
+			temp[i] = tempS.get(i);
+		}	
+		return temp;
+	}
+	
 	
 }
