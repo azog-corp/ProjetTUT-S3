@@ -11,6 +11,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import projet.src.thermometres3.Erreur.ErreurConnexion;
 import projet.src.thermometres3.Menu;
 
 public class OutilsCommunication {
@@ -43,7 +44,6 @@ public class OutilsCommunication {
             System.out.println("erreur connexion");
             throw new ErreurConnexion();
         }
-        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package projet.src.thermometres3.outils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -44,7 +45,7 @@ public class OutilsTemperature {
 	 * "hh:mm:ss"
 	 * De plus, l'horaire doit etre un horaire de la journee (donc heure compris entre
 	 * 0 et 23 et minute entre 0 et 59)
-	 * @param aTester  cha�ne contenant l'horaire a tester
+	 * @param horaire  cha�ne contenant l'horaire a tester
 	 * @return un booleen egal a vrai si l'horaire teste est valide
 	 */
 	public static boolean estValide(String horaire) {

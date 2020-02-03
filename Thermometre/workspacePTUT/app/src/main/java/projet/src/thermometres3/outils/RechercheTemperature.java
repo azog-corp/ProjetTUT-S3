@@ -220,7 +220,7 @@ public class RechercheTemperature {
 					lignehorsintervalle.add(ligne);
 				}
 			}
-			reecrireFichier(myContext,lignehorsintervalle);
+			ecrireFinFichier(myContext,lignehorsintervalle); // on reecrit els lignes correctes
 			return true;
 		} catch(ParseException e) {
 			//stub impossible verifie avant
