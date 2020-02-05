@@ -9,6 +9,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -31,13 +32,16 @@ public class OutilsCommunication {
             System.out.println("Avant socket");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
-            //dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
+            dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
+            String s = new String(buffer, StandardCharsets.UTF_8);
+            System.out.println("Recu" + s);
            /* nbTemp = Integer.parseInt(new String(buffer));
             for (int i = 0; i < nbTemp; i++) {
                 dSocket.receive(new DatagramPacket(buffer, 100));
                 temperatures.add(new String(buffer));
             }*/
+            dSocket.close();
             return temperatures;
         } catch(SocketException e) {
             System.out.println("erreur socket");
@@ -55,7 +59,7 @@ public class OutilsCommunication {
     public static void ajouterFichier(ArrayList<String> temperatures) {
         System.out.println("Recu");
         for(int i =0; i < temperatures.size(); i++) {
-            System.out.println(temperatures.get(i));
+            System.out.println("Lu :"+temperatures.get(i));
         }
     }
 
