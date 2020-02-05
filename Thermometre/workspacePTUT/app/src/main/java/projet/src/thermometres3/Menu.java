@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,10 @@ import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 
 public class Menu extends AppCompatActivity {
+
+    public static String texteRecu;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,10 +124,7 @@ public class Menu extends AppCompatActivity {
     public void majTemperature(View view) {
         System.out.println("MISE A JOUR");
         OutilsCommunication.majDerniereConnexion(getApplicationContext());
+
     }
-
-
-
-
     //TODO RESEAU faire bouton actualisation + lien vers page supprimer
 }

@@ -49,6 +49,7 @@ public class Accueil extends AppCompatActivity {
             /*Si le fichier existe alors on recupere
              * les nouvelles temperatures
              */
+            creerFichierLastCo(getApplicationContext());
             OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature//TODO RESEAU
             TestOutilsInterface.testFichierTemp(getApplicationContext());
 

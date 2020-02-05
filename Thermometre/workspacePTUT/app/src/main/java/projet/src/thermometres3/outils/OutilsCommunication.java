@@ -2,6 +2,7 @@ package projet.src.thermometres3.outils;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurConnexion;
 import projet.src.thermometres3.Menu;
+import projet.src.thermometres3.R;
 
 public class OutilsCommunication {
     static DatagramSocket dSocket;
@@ -51,8 +53,10 @@ public class OutilsCommunication {
      * @param temperatures
      */
     public static void ajouterFichier(ArrayList<String> temperatures) {
-        //FileWriter( String Filename, boolean append) 
-
+        System.out.println("Recu");
+        for(int i =0; i < temperatures.size(); i++) {
+            System.out.println(temperatures.get(i));
+        }
     }
 
     public static void majDerniereConnexion(Context myContext) {

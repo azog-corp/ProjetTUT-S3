@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\e7201af0ac6a1eb782d2b896d1ec4242\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\b64f80842d3d302e8b4275c4ce2e897c\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\dfb17c32c9e1bced7bb89f3e844a7607\\appcompat-1.0.2\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
