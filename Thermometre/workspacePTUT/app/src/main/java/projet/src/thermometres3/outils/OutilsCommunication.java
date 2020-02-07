@@ -68,3 +68,72 @@ public class OutilsCommunication {
 
     }
 }
+
+/*
+
+
+public ArrayList<String> lectureFichier(Date date) throws ParseException{
+		//CONVERSION = fct convertir date en string
+		try {
+			String ligne;
+			ArrayList<String> temp = new ArrayList<String>();
+			BufferedReader fic = new BufferedReader(new FileReader(new File("temperatures.txt")));
+			while((ligne = fic.readLine()) != null) {
+				if(date.compareTo(conversion(ligne)) < 0) {
+					temp.add(ligne);
+				}
+			}
+			return temp;
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+
+	public String preparerRqt(ArrayList<String> temperature) {
+	//TODO verif taille 2600 max
+		StringBuilder chaine;
+		for(int i =0; i < temperature.size(); i++) {
+			chaine.append("|"+temperature.get(i));
+		}
+		return chaine.toString();
+	}
+
+
+	public String[] decoupageRep(String rep) {
+		return rep.split("|",9999);
+
+	}
+
+	/**
+     * Ajoute a la fin du fichier
+     * @param temperatures
+     */
+    public static void ajouterFichier(String temperatures) {
+        System.out.println("Recu");
+        decoupageRep(temperatures);
+        for(int i =0; i < temperatures.size(); i++) {
+            System.out.println("Lu :"+temperatures.get(i));
+        }
+    }
+
+
+    private static void ecrireFinFichier(Context myContext, String[] tempAEcrire) {
+		// Positionnement en fin de fichier pour ne pas écraser les températures déjà présentes
+		try (BufferedWriter fichier = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt", true))) {
+			// Lecture de la ArrayList et écriture
+			for(int i = 0; i < tempAEcrire.length; i++) {
+				fichier.write(tempAEcrire[i] + "\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+//retracer graphe   graph.redrawAll();
+
+
+05/05/2000 11:11:11 -300
+    */
