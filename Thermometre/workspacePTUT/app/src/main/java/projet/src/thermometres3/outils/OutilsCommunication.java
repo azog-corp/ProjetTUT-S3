@@ -31,10 +31,11 @@ public class OutilsCommunication {
             System.out.println("recu : " + new String(buffer));
             /*nbTemp = Integer.parseInt(new String(buffer));
             for (int i = 0; i < nbTemp; i++) {*/
+            byte[] buffer2 = new byte[99999];
             System.out.println("new : " + new String(buffer));
-                dSocket.receive(new DatagramPacket(buffer, buffer.length));
-                System.out.println("recu : " + new String(buffer));
-                temperatures.add(new String(buffer));
+                dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
+                System.out.println("recu : " + new String(buffer2));
+                temperatures.add(new String(buffer2));
            // }
             dSocket.close();
             return temperatures;
@@ -64,8 +65,7 @@ public class OutilsCommunication {
 
 
         public static String[] decoupageRep(String rep) {
-            return rep.split("|",9999);
-
+            return rep.split("|",100);
         }
 
 }
