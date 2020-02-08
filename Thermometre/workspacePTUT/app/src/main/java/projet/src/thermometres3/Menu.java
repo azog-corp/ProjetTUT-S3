@@ -120,11 +120,5 @@ public class Menu extends AppCompatActivity {
         Intent intent = new Intent(this, Graphe.class);
         startActivity(intent);
     }
-
-    public void majTemperature(View view) {
-        System.out.println("MISE A JOUR");
-        OutilsCommunication.majDerniereConnexion(getApplicationContext());
-
-    }
     //TODO RESEAU faire bouton actualisation + lien vers page supprimer
 }

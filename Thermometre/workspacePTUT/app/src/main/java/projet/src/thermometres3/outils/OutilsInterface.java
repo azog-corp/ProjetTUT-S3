@@ -42,8 +42,12 @@ public class OutilsInterface {
     public static void creerFichierLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
+            /* TODO REMETTRE APRES
             System.out.println(getDateActuelle()); // affichage debug
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
+            */
+            System.out.println("MAJ FICHIER LAST CO");
+            fic.write("14/12/2019 18:00:00");
         } catch (IOException e) {
             e.printStackTrace();
         }

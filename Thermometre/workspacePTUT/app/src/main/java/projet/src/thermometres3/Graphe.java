@@ -20,6 +20,7 @@ import java.util.TimeZone;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
@@ -131,6 +132,7 @@ public class Graphe extends AppCompatActivity {
         /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());
         String sFin = getDateActuelle();
+        OutilsCommunication.majDerniereConnexion(getApplicationContext());
         /* On ecrit dans les textView les deux dates */
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
@@ -139,15 +141,15 @@ public class Graphe extends AppCompatActivity {
         try {
             //Verification inutile des dates celles si ont ete ecrite par nous
             //Si des temperatures existes
-            intervalleOk(sDebut,sFin);
+            //intervalleOk(sDebut,sFin); TODO REMETTRE ENLEVER SECU 2 JOURS
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
-        }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+        /*}catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
             messageErreurCo();
-            lancementDefaut();
+            lancementDefaut();*/
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }

@@ -230,15 +230,23 @@ public class RechercheTemperature {
 		return false;
 	}
 
-	private static void ecrireFinFichier(Context myContext, ArrayList<String> tempAEcrire) {
+	public static void ecrireFinFichier(Context myContext, ArrayList<String> tempAEcrire) {
 		// Positionnement en fin de fichier pour ne pas écraser les températures déjà présentes
-		try (BufferedWriter fichier = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt", true))) {
+		/*try (BufferedWriter fichier = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt", true))) {
 			// Lecture de la ArrayList et écriture
 			for(int i = 0; i < tempAEcrire.size(); i++) {
 				fichier.write(tempAEcrire.get(i) + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		}*/
+
+		for(int i = 0; i < tempAEcrire.size();i++) {
+			String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
+			for(int j = 0; j < temp.length; j++) {
+				System.out.println(temp[j]);
+			}
 		}
+
 	}
 }
