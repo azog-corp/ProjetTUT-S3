@@ -44,15 +44,7 @@ public class Accueil extends AppCompatActivity {
         if(!f.exists()) { // Si le fichier n'existe pas
             creerFichierLastCo(getApplicationContext()); // creer fichier derniereConnexion
             OutilsInterface.creerFichierTemperatures(getApplicationContext()); // creer fichier Temperature
-            TestOutilsInterface.testFichierTemp(getApplicationContext());
-        } else {
-            /*Si le fichier existe alors on recupere
-             * les nouvelles temperatures
-             */
-            creerFichierLastCo(getApplicationContext());
-            OutilsInterface.majFichierTemp(getApplicationContext());// maj fichier Temperature//TODO RESEAU
-            TestOutilsInterface.testFichierTemp(getApplicationContext());
-
+            //TestOutilsInterface.testFichierTemp(getApplicationContext());
         }
         RechercheTemperature.editTemp(getApplicationContext());//Ajoute les nouvelles temperatures
         //TestRechercheTemperature.testEditTemp(); // test

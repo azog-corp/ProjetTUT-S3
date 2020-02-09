@@ -1,5 +1,6 @@
 package projet.src.thermometres3;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import java.util.TimeZone;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
+import projet.src.thermometres3.outils.Communication;
 import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
@@ -132,7 +134,12 @@ public class Graphe extends AppCompatActivity {
         /*Recupere la date de derniere connexion et la date actuelle */
         String sDebut = OutilsInterface.getLastCo(getApplicationContext());
         String sFin = getDateActuelle();
-        OutilsCommunication.majDerniereConnexion(getApplicationContext());
+        //OutilsCommunication.majDerniereConnexion(getApplicationContext());
+        Communication test = new Communication();
+        test.execute(getApplicationContext());
+        while(test.getStatus() != AsyncTask.Status.FINISHED){
+            //Boucle infinie pour empecher le programme de continuer
+        }
         /* On ecrit dans les textView les deux dates */
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
@@ -169,7 +176,6 @@ public class Graphe extends AppCompatActivity {
             }catch(ErreurDate e) {//les dates ne sont pas valide
                 messageErreurDate();
             }
-            OutilsInterface.majFichierTemp(this.getApplicationContext());
             //attendre 1min - 30 s
         }
     }//TODO RESEAU
@@ -194,7 +200,7 @@ public class Graphe extends AppCompatActivity {
         String sDebut = tvDebut.getText().toString();
         String sFin = tvFin.getText().toString();
         System.err.println(sDebut + " " + sFin);
-
+        RechercheTemperature.editTemp(getApplicationContext());
         /* Définition des propriétés du graph */
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument

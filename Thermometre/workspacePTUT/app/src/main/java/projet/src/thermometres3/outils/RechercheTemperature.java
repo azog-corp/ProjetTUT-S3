@@ -35,29 +35,29 @@ public class RechercheTemperature {
 
 	private final static String NOUVELLE_TEMP = "nouvellesTemperature.txt";
 
-    public static String getNomFichier() {
-        return NOM_FICHIER;
-    }
+	public static String getNomFichier() {
+		return NOM_FICHIER;
+	}
 
-    public static String getNouvelleTemp() {
-        return NOUVELLE_TEMP;
-    }
+	public static String getNouvelleTemp() {
+		return NOUVELLE_TEMP;
+	}
 
-    /**
-     * revoie la liste des températures
-     * @return
-     */
-    public static ArrayList<Temperature> getListTemp() {
-        return listeTemp;
-    }
+	/**
+	 * revoie la liste des températures
+	 * @return
+	 */
+	public static ArrayList<Temperature> getListTemp() {
+		return listeTemp;
+	}
 
-    /**
-     * Renvoie la derniÃ¨re température
-     * de la liste de températures
-     */
-    public double getDerniereTemp() {
-        return listeTemp.get(listeTemp.size()-1).getTemp();
-    }
+	/**
+	 * Renvoie la derniÃ¨re température
+	 * de la liste de températures
+	 */
+	public double getDerniereTemp() {
+		return listeTemp.get(listeTemp.size()-1).getTemp();
+	}
 
 	/**
 	 * Fonction qui lit un fichier texte contenant
@@ -72,6 +72,7 @@ public class RechercheTemperature {
 		try { // déclaration et création de l'objet fichier
 			BufferedReader fichier = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
 			while (((ligne = fichier.readLine()) != null)) {
+				System.out.println("LECTURE" +ligne);
 				listeTemp.add(new Temperature(ligne));
 			}
 			fichier.close();
@@ -118,10 +119,10 @@ public class RechercheTemperature {
 			Date dateMax = new Date(); // date actuelle
 			format.format(dateMax); // met la date max au bon format
 			Date aVerifier = conversion(date);
-            // si aVerifier n'est pas entre dateMin et dateMax
-            if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() >= aVerifier.getTime())) {
+			// si aVerifier n'est pas entre dateMin et dateMax
+			if(!(dateMin.getTime() < aVerifier.getTime() && dateMax.getTime() >= aVerifier.getTime())) {
 				System.out.println("Erreur date pas dans intervalle" + aVerifier.getTime() + " min " + dateMin + " max"+ dateMax + " " + dateMax.getTime());
-            	throw new ErreurDate();
+				throw new ErreurDate();
 			}
 		} catch (ParseException e) {
 			//si le format n'est pas bon
@@ -138,7 +139,7 @@ public class RechercheTemperature {
 	 * @throw Propage une exception si une des string n'a pas un format valide. 
 	 */
 	public static void intervalleOk(String date1, String date2) throws ErreurIntervalle {
-		
+
 		try {
 			//convertit les deux dates de String a Date
 			Date date1formate = conversion(date1);
@@ -148,10 +149,10 @@ public class RechercheTemperature {
 				throw new ErreurIntervalle();
 			}
 			//Si les deux dates sont egales erreur
-            long diff = ((date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24);
+			long diff = ((date2formate.getTime() - date1formate.getTime())) / (1000*60*60*24);
 			//Si plus de deux jours erreur ou inferieur a 0 signifie que dates non ordonnees
 			System.out.println("Diff : " +diff);
-            if(diff >= 2 || diff < 0) {
+			if(diff >= 2 || diff < 0) {
 				throw new ErreurIntervalle();
 			}
 		} catch (ParseException e) {
@@ -170,28 +171,28 @@ public class RechercheTemperature {
 	public static ArrayList<Temperature> dateIntervalle(String date1, String date2) throws ErreurDate {
 
 		ArrayList<Temperature> tempIntervalle = new ArrayList<Temperature>();
-        try {
-        	/* Conversion des dates */
-            Date date1formate = conversion(date1);
-            Date date2formate = conversion(date2);
+		try {
+			/* Conversion des dates */
+			Date date1formate = conversion(date1);
+			Date date2formate = conversion(date2);
 
-		System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString()); //-- debug
-		/* Lecture fichier et ajout dans la liste temperature
-		* des temperatures dans l'intervalle */
-		for (int x = 0 ; x < listeTemp.size() ; x++) {
-			if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
-					&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
-				tempIntervalle.add(listeTemp.get(x));
-				System.out.println("C'est OK : " + listeTemp.get(x).getDate());//debug
-			} else {
-				System.out.println("C'est NOK : " + listeTemp.get(x).getDate());//debug
+			System.out.println("Date 1 " + date1formate.toString() + " date 2 " + date2formate.toString()); //-- debug
+			/* Lecture fichier et ajout dans la liste temperature
+			 * des temperatures dans l'intervalle */
+			for (int x = 0 ; x < listeTemp.size() ; x++) {
+				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
+						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
+					tempIntervalle.add(listeTemp.get(x));
+					System.out.println("C'est OK : " + listeTemp.get(x).getDate());//debug
+				} else {
+					System.out.println("C'est NOK : " + listeTemp.get(x).getDate());//debug
+				}
 			}
+			return tempIntervalle;
+		} catch(ParseException e) {
+			// l'une des dates n'est pas correcte
+			throw new ErreurDate();
 		}
-		return tempIntervalle;
-        } catch(ParseException e) {
-            // l'une des dates n'est pas correcte
-            throw new ErreurDate();
-        }
 	}
 
 	/**
@@ -231,20 +232,24 @@ public class RechercheTemperature {
 	}
 
 	public static void ecrireFinFichier(Context myContext, ArrayList<String> tempAEcrire) {
-		// Positionnement en fin de fichier pour ne pas écraser les températures déjà présentes
-		/*try (BufferedWriter fichier = new BufferedWriter(new FileWriter(myContext.getFilesDir() + "/fichierTemp.txt", true))) {
-			// Lecture de la ArrayList et écriture
-			for(int i = 0; i < tempAEcrire.size(); i++) {
-				fichier.write(tempAEcrire.get(i) + "\n");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-
+		System.out.println("ECRITURE");
 		for(int i = 0; i < tempAEcrire.size();i++) {
-			String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
-			for(int j = 0; j < temp.length; j++) {
-				System.out.println(temp[j]);
+			// Positionnement en fin de fichier pour ne pas écraser les températures déjà présentes
+			try (BufferedWriter fichier = new BufferedWriter(new FileWriter(
+					myContext.getFilesDir() + "/fichierTemp.txt", true))) {
+				String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
+				for(int j = 0; j < temp.length-1; j++) {
+					System.out.println(temp[j]);
+					fichier.write(temp[j] + "\n");
+				}
+				String ligne;
+				BufferedReader fich = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
+				while (((ligne = fich.readLine()) != null)) {
+					System.out.println("LECTURE" +ligne);
+					listeTemp.add(new Temperature(ligne));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 

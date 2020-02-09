@@ -780,7 +780,6 @@ id btnContinu
 id btnDelete
 id btnGraph
 id btnLastCo
-id btnMaj
 id btnMenu
 id buttonPanel
 id buttons_container

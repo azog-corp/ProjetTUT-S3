@@ -53,19 +53,8 @@ public class OutilsCommunication {
     }
 
 
-
-        public static String preparerRqt(ArrayList<String> temperature) {
-        //TODO verif taille 2600 max
-            StringBuilder chaine = new StringBuilder();
-            for(int i =0; i < temperature.size(); i++) {
-                chaine.append("|"+temperature.get(i));
-            }
-            return chaine.toString();
-        }
-
-
         public static String[] decoupageRep(String rep) {
-            return rep.split("|",100);
+            return rep.split("\\|");
         }
 
 }

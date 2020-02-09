@@ -46,7 +46,7 @@ public class OutilsInterface {
             System.out.println(getDateActuelle()); // affichage debug
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
             */
-            System.out.println("MAJ FICHIER LAST CO");
+            System.out.println("CREATION LAST CO");
             fic.write("14/12/2019 18:00:00");
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,6 +56,20 @@ public class OutilsInterface {
         TestOutilsInterface.testLastCo(getApplicationContext());
          */
     }
+
+    /**
+     * Creer le fichier derniere Connexion / ou le met a jour
+     * @param myContext Contexte de l'application au moment de l'execution
+     *
+    public static void majFichierLastCo(Context myContext) {
+        String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
+        try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
+            System.out.println(getDateActuelle()); // affichage debug
+            fic.write(getDateActuelle()); // ecrit dans le fichier la date
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     /**
      * Creer le fichier des temperatures
@@ -71,13 +85,7 @@ public class OutilsInterface {
         String ligne;
         try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(new File( // Ouvre / creer le fichier fichierTemp.txt
                 myContext.getFilesDir() + "/fichierTemp.txt")))) {
-            BufferedReader fichLir = new BufferedReader(new FileReader( // Ouvre le fichier fichierTemp dans le dossier assets
-                    myContext.getAssets()+ "/fichierTemp.txt"));
-            while (((ligne = fichLir.readLine()) != null)) { // Lecture des temperatures
-                System.out.println(ligne); // Inutile pour debug
-                fichEcri.write(ligne + "\n"); //Ecriture dans le fichier en memoire
-            }
-            fichLir.close();
+                fichEcri.write(  ""); //Ecriture dans le fichier en memoire
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,7 +98,7 @@ public class OutilsInterface {
      * Cette fonction permet de simuler le fonctionnement finale de
      * l'application qui mettra ses donnees a jour grace a la BD
      * @param myContext Contexte de l'application au moment de l'execution
-     */
+     *
     //TODO RESEAU
     public static void majFichierTemp(Context myContext) {
         String ligne;
@@ -105,7 +113,7 @@ public class OutilsInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Fonction qui permet d'obtenir la date a un instant
