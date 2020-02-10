@@ -239,7 +239,7 @@ public class RechercheTemperature {
 					myContext.getFilesDir() + "/fichierTemp.txt", true))) {
 				String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
 				for(int j = 0; j < temp.length-1; j++) {
-					System.out.println("|" +temp[j]);
+					System.out.println(temp[j]);
 					fichier.write(temp[j] + "\n");
 				}
 			} catch (IOException e) {
