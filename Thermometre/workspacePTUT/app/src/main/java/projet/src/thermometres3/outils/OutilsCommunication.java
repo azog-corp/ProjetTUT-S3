@@ -53,7 +53,7 @@ public class OutilsCommunication {
     }
 
 
-        public static String[] decoupageRep(String rep) {
+    public static String[] decoupageRep(String rep) {
             return rep.split("\\|");
         }
 

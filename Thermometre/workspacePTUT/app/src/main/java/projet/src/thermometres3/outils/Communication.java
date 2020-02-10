@@ -14,6 +14,7 @@ public class Communication extends AsyncTask<Context,Integer,Void> {
         try {
             RechercheTemperature.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
             OutilsInterface.creerFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
+            this.cancel(true);
         } catch(ErreurConnexion e) {
             System.err.println("Erreur connexion");
         }

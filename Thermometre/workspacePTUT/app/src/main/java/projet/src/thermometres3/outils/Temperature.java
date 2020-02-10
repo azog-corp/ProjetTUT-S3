@@ -32,7 +32,7 @@ public class Temperature {
 	 * @throws ParseException 
 	 */
 	public Temperature(String newTemp) {
-		
+		System.out.println("DECOMPOSITION TEMP :" + newTemp);
 		String[] decomposition = newTemp.split(" ");
 		
 		/* cr�ation de l'objet date grace au parser et formatter  */

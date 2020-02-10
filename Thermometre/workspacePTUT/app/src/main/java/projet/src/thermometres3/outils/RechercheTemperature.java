@@ -239,16 +239,11 @@ public class RechercheTemperature {
 					myContext.getFilesDir() + "/fichierTemp.txt", true))) {
 				String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
 				for(int j = 0; j < temp.length-1; j++) {
-					System.out.println(temp[j]);
+					System.out.println("|" +temp[j]);
 					fichier.write(temp[j] + "\n");
 				}
-				String ligne;
-				BufferedReader fich = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
-				while (((ligne = fich.readLine()) != null)) {
-					System.out.println("LECTURE" +ligne);
-					listeTemp.add(new Temperature(ligne));
-				}
 			} catch (IOException e) {
+				System.err.println("ERREUR ECRITURE FIN FICHIER");
 				e.printStackTrace();
 			}
 		}

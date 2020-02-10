@@ -137,9 +137,12 @@ public class Graphe extends AppCompatActivity {
         //OutilsCommunication.majDerniereConnexion(getApplicationContext());
         Communication test = new Communication();
         test.execute(getApplicationContext());
-        while(test.getStatus() != AsyncTask.Status.FINISHED){
+        System.out.println("Thread continu");
+        while(test.getStatus() != AsyncTask.Status.FINISHED && !test.isCancelled()){
             //Boucle infinie pour empecher le programme de continuer
         }
+        System.out.println("Thread FIN");
+        RechercheTemperature.editTemp(getApplicationContext());
         /* On ecrit dans les textView les deux dates */
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
@@ -200,7 +203,7 @@ public class Graphe extends AppCompatActivity {
         String sDebut = tvDebut.getText().toString();
         String sFin = tvFin.getText().toString();
         System.err.println(sDebut + " " + sFin);
-        RechercheTemperature.editTemp(getApplicationContext());
+
         /* Définition des propriétés du graph */
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
