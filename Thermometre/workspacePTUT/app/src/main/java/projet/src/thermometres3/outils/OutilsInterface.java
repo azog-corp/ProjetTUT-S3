@@ -36,62 +36,6 @@ public class OutilsInterface {
     }
 
     /**
-     * Creer le fichier derniere Connexion / ou le met a jour
-     * @param myContext Contexte de l'application au moment de l'execution
-     */
-    public static void creerFichierLastCo(Context myContext) {
-        String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
-        try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            /* TODO REMETTRE APRES
-            System.out.println(getDateActuelle()); // affichage debug
-            fic.write(getDateActuelle()); // ecrit dans le fichier la date
-            */
-            System.out.println("CREATION LAST CO");
-            fic.write("14/12/2019 18:00:00");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        /*test -- test visuel
-        System.out.println("TEST creerFichierLastCo");
-        TestOutilsInterface.testLastCo(getApplicationContext());
-         */
-    }
-
-    /**
-     * Creer le fichier derniere Connexion / ou le met a jour
-     * @param myContext Contexte de l'application au moment de l'execution
-     */
-    public static void majFichierLastCo(Context myContext) {
-        String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
-        try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            System.out.println("MAJ DATE"+getDateActuelle()); // affichage debug
-            fic.write(getDateActuelle()); // ecrit dans le fichier la date
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Creer le fichier des temperatures
-     * Lors du lancement de l'application pour la premiere fois
-     * Lit le fichier des temperatures dans le dossier assets
-     * Creer le fichier fichierTem.txt et y place les temperatures
-     * Fonctionnement necessaire car il est impossible de modifier des fichiers present
-     * dans le dossier assets. On creer donc les fichiers dans la memoire de l'appareil
-     * android
-     * @param myContext Contexte de l'application au moment de l'execution
-     */
-    public static void creerFichierTemperatures(Context myContext) {
-        String ligne;
-        try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(new File( // Ouvre / creer le fichier fichierTemp.txt
-                myContext.getFilesDir() + "/fichierTemp.txt")))) {
-                fichEcri.write(  ""); //Ecriture dans le fichier en memoire
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Fonction qui permet d'obtenir la date a un instant
      * @return la date en String avec le format dd/MM/yyyy HH:mm:ss
      */

@@ -9,7 +9,7 @@ import java.io.File;
 import projet.src.thermometres3.Test.TestOutilsInterface;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
-import static projet.src.thermometres3.outils.OutilsInterface.creerFichierLastCo;
+import static projet.src.thermometres3.outils.OutilsFichier.creerFichierLastCo;
 
 public class Accueil extends AppCompatActivity {
     /**
@@ -43,7 +43,7 @@ public class Accueil extends AppCompatActivity {
         //TODO RESEAU changer fonctionnement enlever les asssets
         if(!f.exists()) { // Si le fichier n'existe pas
             creerFichierLastCo(getApplicationContext()); // creer fichier derniereConnexion
-            OutilsInterface.creerFichierTemperatures(getApplicationContext()); // creer fichier Temperature
+            OutilsFichier.creerFichierTemperatures(getApplicationContext()); // creer fichier Temperature
             //TestOutilsInterface.testFichierTemp(getApplicationContext());
         }
         RechercheTemperature.editTemp(getApplicationContext());//Ajoute les nouvelles temperatures
