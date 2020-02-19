@@ -173,19 +173,20 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        String debutContinu = getLastCo(getApplicationContext());
         //mettre a jour les temperature depuis derniere connexion
         //lastCo();
-        //while(true) {
-           // try {
+        String debutContinu = getLastCo(getApplicationContext());
+        while(true) {
+            try {
                 //Thread.sleep(20000);
-                //TimeUnit.MINUTES.sleep(1);
+                TimeUnit.MINUTES.wait(1);
                 majGrapheContinu(debutContinu);
-           /* } catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
-            }*/
+            }
             //appendData
-        //}
+        }
+
     }
 
     public void majGrapheContinu(String sDebut) {
