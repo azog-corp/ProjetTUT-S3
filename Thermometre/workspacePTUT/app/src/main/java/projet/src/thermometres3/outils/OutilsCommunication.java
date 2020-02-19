@@ -48,10 +48,6 @@ public class OutilsCommunication {
         }
     }
 
-    public static void majDerniereConnexion(Context myContext) {
-        new Communication().execute(myContext);
-    }
-
 
     public static String[] decoupageRep(String rep) {
             return rep.split("\\|");

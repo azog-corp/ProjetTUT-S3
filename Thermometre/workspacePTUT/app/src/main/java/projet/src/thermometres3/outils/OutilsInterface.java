@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -61,16 +60,16 @@ public class OutilsInterface {
     /**
      * Creer le fichier derniere Connexion / ou le met a jour
      * @param myContext Contexte de l'application au moment de l'execution
-     *
+     */
     public static void majFichierLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            System.out.println(getDateActuelle()); // affichage debug
+            System.out.println("MAJ DATE"+getDateActuelle()); // affichage debug
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     /**
      * Creer le fichier des temperatures
@@ -91,30 +90,6 @@ public class OutilsInterface {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Fonction qui permet de mettre a jour le fichier des temperatures
-     * Pour cela ouvre le fichier contenant les nouvelles temperatures et met a jour
-     * le fichier des temperatures
-     * Cette fonction permet de simuler le fonctionnement finale de
-     * l'application qui mettra ses donnees a jour grace a la BD
-     * @param myContext Contexte de l'application au moment de l'execution
-     *
-    //TODO RESEAU
-    public static void majFichierTemp(Context myContext) {
-        String ligne;
-        //BufferedWriter fichEcri = new BufferedWriter(new FileWriter("/fichierTemp.txt", true))) { //TODO maj en fin fichier
-        System.out.println("MAJ fich temp");
-        try (BufferedWriter fichEcri = new BufferedWriter(new FileWriter(new File(myContext.getFilesDir() + "/fichierTemp.txt")))){
-            BufferedReader fichLir = new BufferedReader(new InputStreamReader(
-                    myContext.getAssets().open(getNouvelleTemp()))); // ouverture fichier Nouvelles temperatures
-            while ((ligne = fichLir.readLine()) != null) { // Lecture fichier nouvellesTemperatures
-                fichEcri.write(ligne + "\n"); // ecrit dans le fichier temperature
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
 
     /**
      * Fonction qui permet d'obtenir la date a un instant
