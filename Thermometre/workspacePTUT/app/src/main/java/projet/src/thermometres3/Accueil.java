@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import java.io.File;
 import projet.src.thermometres3.Test.TestOutilsInterface;
+import projet.src.thermometres3.outils.OutilsFichier;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import static projet.src.thermometres3.outils.OutilsFichier.creerFichierLastCo;

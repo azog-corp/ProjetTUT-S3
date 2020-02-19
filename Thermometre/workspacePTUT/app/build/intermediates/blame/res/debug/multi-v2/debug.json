@@ -1305,22 +1305,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4_values-hdpi-v4.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "6",
-                        "endColumns": "13",
-                        "endOffsets": "327"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\values-vi_values-vi.arsc.flat",
             "map": [
                 {
@@ -1348,6 +1332,22 @@
                         "startOffsets": "2901",
                         "endColumns": "100",
                         "endOffsets": "2997"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4_values-hdpi-v4.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
                     }
                 }
             ]

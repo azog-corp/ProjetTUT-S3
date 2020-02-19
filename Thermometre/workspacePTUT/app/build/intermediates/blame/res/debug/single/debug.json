@@ -132,12 +132,12 @@
         "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\layout\\activity_menu.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_shrink_fade_out_from_bottom.xml.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_search_view.xml.flat",
@@ -156,12 +156,12 @@
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_switch_track.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color\\abc_tint_switch_track.xml"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_switch_track.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color\\abc_tint_switch_track.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -184,24 +184,24 @@
         "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\anim\\abc_tooltip_exit.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_spinner.xml.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\anim\\abc_tooltip_exit.xml"
-    },
-    {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_error_circle.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\b092314f5f8667a5bb91d033d6bd78bf\\library-1.5.6\\res\\drawable\\error_circle.xml"
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_error_circle.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\b092314f5f8667a5bb91d033d6bd78bf\\library-1.5.6\\res\\drawable\\error_circle.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -292,12 +292,12 @@
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_borderless_text_material.xml.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color-v23\\abc_tint_seek_thumb.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple.xml.flat",
@@ -428,12 +428,12 @@
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\layout-v26\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_voice_search_api_material.xml.flat",
@@ -468,12 +468,12 @@
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_popup_exit.xml.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
@@ -528,16 +528,16 @@
         "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_singlechoice_material.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\layout\\select_dialog_singlechoice_material.xml"
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_singlechoice_material.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_textview_cadre.xml.flat",
@@ -592,12 +592,12 @@
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-mdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
-        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable\\abc_item_background_holo_light.xml"
-    },
-    {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_item_background_holo_light.xml.flat",
+        "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\906744c4ddcbc384c5a8d2d69414f8fa\\appcompat-1.0.2\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
         "merged": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\res\\merged\\debug\\layout-watch-v20_abc_alert_dialog_button_bar_material.xml.flat",
