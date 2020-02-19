@@ -167,26 +167,21 @@ public class Graphe extends AppCompatActivity {
         }
     }
 
-    public void connexionContinu() {
-        //recuperer date debu continu
-        String dateDebut = getDateActuelle();
+    public void connexionContinu(View view) {
         //mettre a jour les temperature depuis derniere connexion
         while(true) {
-            //communication reseau
-            //ecrire dans le fichier temperature
-
-            //mettre a jour le graphe appeller date debut continu - maintenant
             try {
-                conversionGraph(dateIntervalle(dateDebut, getDateActuelle()));
-            }catch(ErreurDate e) {//les dates ne sont pas valide
-                messageErreurDate();
+                lastCo();
+                Thread.sleep(50000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            //attendre 1min - 30 s
 
 
 
 
             //appendData
+
         }
     }//TODO RESEAU
 

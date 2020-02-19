@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Test.TestRechercheTemperature;
 import projet.src.thermometres3.outils.OutilsCommunication;
-import projet.src.thermometres3.outils.OutilsFichier;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 
@@ -81,7 +80,7 @@ public class Menu extends AppCompatActivity {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                         /* Supprime les temperatures */
-                        OutilsFichier.supprimerTemp(getApplicationContext());
+                        RechercheTemperature.supprimerTemp(getApplicationContext());
                         TestRechercheTemperature.testSupprimerTemp(getApplicationContext());
                         /* Affiche message pour confirmer suppression */
                         new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
