@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
@@ -178,6 +179,7 @@ public class Graphe extends AppCompatActivity {
         //while(true) {
            // try {
                 //Thread.sleep(20000);
+                //TimeUnit.MINUTES.sleep(1);
                 majGrapheContinu(debutContinu);
            /* } catch (InterruptedException e) {
                 e.printStackTrace();
