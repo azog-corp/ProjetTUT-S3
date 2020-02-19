@@ -29,7 +29,8 @@
         android:textColor="@color/blanc"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:onClick="supprimerPartie"/>
 
     <!-- Bouton graphe -->
     <Button
@@ -46,7 +47,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"/>
+        android:layout_marginBottom="25dp"
+        android:onClick="toutSupprimer"/>
 
     <TextView
         android:id="@+id/txtborneINF"
@@ -64,6 +66,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="ex: 21/11/2000 11:50:25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtborneINF" />
 
     <TextView
@@ -81,7 +85,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="ex: 21/11/2000 11:50:25"
-        app:layout_constraintTop_toBottomOf="@+id/txtborneSUP"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtborneSUP" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

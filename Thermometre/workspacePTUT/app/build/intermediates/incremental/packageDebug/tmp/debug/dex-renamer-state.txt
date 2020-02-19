@@ -1,4 +1,7 @@
-#Mon Feb 10 20:30:19 CET 2020
+#Wed Feb 19 11:10:10 CET 2020
 base.0=C\:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=C\:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
