@@ -35,7 +35,7 @@ import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
-    GraphView graphView;
+
 
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     /**
@@ -65,7 +65,6 @@ public class Graphe extends AppCompatActivity {
                 lastCo();//appel la creation du graph
             }
         });
-        graphView = findViewById(R.id.graphique);
     }
 
     /**
@@ -142,6 +141,7 @@ public class Graphe extends AppCompatActivity {
         Communication test = new Communication();
         test.execute(getApplicationContext());
         System.out.println("Thread continu");
+        System.out.println("Debut " + sDebut);
         while(test.getStatus() != AsyncTask.Status.FINISHED && !test.isCancelled()){
             //Boucle infinie pour empecher le programme de continuer
         }
@@ -170,22 +170,22 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        String debutContinu = getLastCo(getApplicationContext());
+        //String debutContinu = getLastCo(getApplicationContext());
         //mettre a jour les temperature depuis derniere connexion
         lastCo();
         while(true) {
             try {
-                majGrapheContinu(debutContinu);
                 Thread.sleep(20000);
+                majGrapheContinu();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //appendData
         }
-    }//TODO RESEAU
+    }
 
-    public void majGrapheContinu(String debutContinu) {
-        String sDebut = OutilsInterface.getLastCo(getApplicationContext());
+    public void majGrapheContinu() {
+       String sDebut = OutilsInterface.getLastCo(getApplicationContext());
         String sFin = getDateActuelle();
         Communication test = new Communication();
         test.execute(getApplicationContext());
@@ -197,22 +197,12 @@ public class Graphe extends AppCompatActivity {
         RechercheTemperature.editTemp(getApplicationContext());
         try {
             if (RechercheTemperature.getListTemp().size() != 0) {
-                ajouterGraph(dateIntervalle(sDebut, sFin),debutContinu);
+                conversionGraph(dateIntervalle(sDebut, sFin));
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
         } catch (ErreurDate erreurDate) {
             erreurDate.printStackTrace();
-        }
-    }
-
-    public void ajouterGraph(ArrayList<Temperature> tempAajouter,String debutContinu) {
-        TextView tvDebut = findViewById(R.id.dateDebut);
-        TextView tvFin = findViewById(R.id.dateFin);
-        tvDebut.setText(debutContinu);
-        tvFin.setText(getDateActuelle());
-        for(int i = 0; i < tempAajouter.size(); i++) {
-            conversionGraph(tempAajouter);
         }
     }
 
@@ -228,7 +218,7 @@ public class Graphe extends AppCompatActivity {
      * @param temp liste des températures dans l'intervalle */
     public void conversionGraph(ArrayList<Temperature> temp) {
         //Definition du graph
-
+        GraphView graphView = findViewById(R.id.graphique);
         //Definition des entrees de l'utilisateur
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
