@@ -170,13 +170,13 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        //String debutContinu = getLastCo(getApplicationContext());
+        String debutContinu = getLastCo(getApplicationContext());
         //mettre a jour les temperature depuis derniere connexion
         lastCo();
         while(true) {
             try {
                 Thread.sleep(20000);
-                majGrapheContinu();
+                majGrapheContinu(debutContinu);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -184,8 +184,8 @@ public class Graphe extends AppCompatActivity {
         }
     }
 
-    public void majGrapheContinu() {
-       String sDebut = OutilsInterface.getLastCo(getApplicationContext());
+    public void majGrapheContinu(String sDebut) {
+
         String sFin = getDateActuelle();
         Communication test = new Communication();
         test.execute(getApplicationContext());
