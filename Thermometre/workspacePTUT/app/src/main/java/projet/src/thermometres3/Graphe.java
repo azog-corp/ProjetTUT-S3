@@ -34,6 +34,8 @@ import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
+    GraphView graphView = findViewById(R.id.graphique);
+
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     /**
      * Fonction execute au lancement de la page Graphe
@@ -180,6 +182,11 @@ public class Graphe extends AppCompatActivity {
                 messageErreurDate();
             }
             //attendre 1min - 30 s
+
+
+
+
+            //appendData
         }
     }//TODO RESEAU
 
@@ -195,7 +202,7 @@ public class Graphe extends AppCompatActivity {
      * @param temp liste des températures dans l'intervalle */
     public void conversionGraph(ArrayList<Temperature> temp) {
         //Definition du graph
-        GraphView graphView = findViewById(R.id.graphique);
+
         //Definition des entrees de l'utilisateur
         TextView tvDebut = findViewById(R.id.dateDebut);
         TextView tvFin = findViewById(R.id.dateFin);
@@ -276,7 +283,7 @@ public class Graphe extends AppCompatActivity {
         gridLabel.setHorizontalAxisTitle("Date");
         graphView.getGridLabelRenderer().reloadStyles();
         /*Code permettant de mettre des dates en label X*/
-
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(2);
         graphView.getGridLabelRenderer().setTextSize(25f);
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
