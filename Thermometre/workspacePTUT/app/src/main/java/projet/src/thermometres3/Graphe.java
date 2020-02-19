@@ -28,6 +28,8 @@ import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
+import projet.src.thermometres3.outils.ThreadActualisation;
+
 import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
 import static projet.src.thermometres3.outils.OutilsInterface.getLastCo;
@@ -181,6 +183,11 @@ public class Graphe extends AppCompatActivity {
                 //Thread.sleep(20000);
                 TimeUnit.MINUTES.wait(1);
                 majGrapheContinu(debutContinu);
+
+               /* ThreadActualisation t = new ThreadActualisation();
+                t.dateDebut = debutContinu;
+                t.contexte = getApplicationCont*/
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
