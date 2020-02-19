@@ -13,6 +13,7 @@ import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,7 @@ import projet.src.thermometres3.outils.Temperature;
 import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
 import static projet.src.thermometres3.outils.OutilsInterface.getLastCo;
+import static projet.src.thermometres3.outils.RechercheTemperature.conversion;
 import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
 import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
@@ -172,16 +174,16 @@ public class Graphe extends AppCompatActivity {
     public void connexionContinu(View view) {
         String debutContinu = getLastCo(getApplicationContext());
         //mettre a jour les temperature depuis derniere connexion
-        lastCo();
-        while(true) {
-            try {
-                Thread.sleep(20000);
+        //lastCo();
+        //while(true) {
+           // try {
+                //Thread.sleep(20000);
                 majGrapheContinu(debutContinu);
-            } catch (InterruptedException e) {
+           /* } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
             //appendData
-        }
+        //}
     }
 
     public void majGrapheContinu(String sDebut) {
@@ -290,7 +292,15 @@ public class Graphe extends AppCompatActivity {
         }
 
         /* Modification interface graph */
-        graphView.getGridLabelRenderer().setNumHorizontalLabels(0);//fait disparaitre les labels temp
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(3);//fait disparaitre les labels temp
+        try { //TODO tester
+            graphView.getViewport().setMinX(conversion(sDebut).getTime());
+            graphView.getViewport().setMaxX(conversion(sFin).getTime()); // + 3 days
+        } catch (ParseException e) {
+            //impossible
+        }
+
         graphView.getGridLabelRenderer().setHumanRounding(false);
         graphView.getViewport().setScalable(true);
         graphView.getViewport().setScrollable(true);
@@ -299,7 +309,6 @@ public class Graphe extends AppCompatActivity {
         gridLabel.setHorizontalAxisTitle("Date");
         graphView.getGridLabelRenderer().reloadStyles();
         /*Code permettant de mettre des dates en label X*/
-        graphView.getGridLabelRenderer().setNumHorizontalLabels(2);
         graphView.getGridLabelRenderer().setTextSize(25f);
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
