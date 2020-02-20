@@ -54,6 +54,3 @@ public class OutilsCommunication {
         }
 
 }
-
-
-//retracer graphe   graph.redrawAll();

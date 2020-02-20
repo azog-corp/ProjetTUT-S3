@@ -132,7 +132,7 @@ public class OutilsFichier {
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
             */
             System.out.println("CREATION LAST CO");
-            fic.write("19/02/2020 15:00:00");
+            fic.write("20/02/2020 15:00:00");
         } catch (IOException e) {
             e.printStackTrace();
         }

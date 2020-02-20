@@ -12,6 +12,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,6 @@ import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
-import projet.src.thermometres3.outils.ThreadActualisation;
 
 import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
@@ -175,25 +175,32 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        //mettre a jour les temperature depuis derniere connexion
-        //lastCo();
+        System.out.println("CONTINU");
         String debutContinu = getLastCo(getApplicationContext());
-        while(true) {
-            try {
-                //Thread.sleep(20000);
-                TimeUnit.MINUTES.wait(1);
+        //mettre a jour les temperature depuis derniere connexion
+        lastCo();
+        String debutCom = getDateActuelle();
+        /*while(true) {
+            if(getDateActuelle().equals(ajout30sec(debutCom))) {
+                debutCom = ajout30sec(debutCom);
                 majGrapheContinu(debutContinu);
-
-               /* ThreadActualisation t = new ThreadActualisation();
-                t.dateDebut = debutContinu;
-                t.contexte = getApplicationCont*/
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("ACTUALISATION GRAPHE");
             }
-            //appendData
-        }
+        }*/
+    }
 
+    public String ajout30sec(String date) {
+        try {
+            long DIXSEC_EN_MS = 1000*30;
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
+            Date dateD = conversion(date);
+            long dateMillis = dateD.getTime() + DIXSEC_EN_MS;
+            sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
+            return sdf.format(new Date(dateMillis));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void majGrapheContinu(String sDebut) {
@@ -217,13 +224,6 @@ public class Graphe extends AppCompatActivity {
             erreurDate.printStackTrace();
         }
     }
-
-    /*
-     fonction communication
-     se connecte au serveur et envoi la date derniere connexion lu dans le fichier
-     puis recupere ce qui est envoye par le serveur et met a jour le fichier des temperatures
-     puis met a jour le fichier derniere connexion
-     */
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph
@@ -257,7 +257,6 @@ public class Graphe extends AppCompatActivity {
                 // On transfert tous les points dans le tableau
                 for(int j = 0; j < listePoints.size(); j++) {
                     pointGraphe[j] = listePoints.get(j);
-                    System.out.println("-----" + pointGraphe[j]);
                 }
                 /*Puis ajoute la series de point au graph si notre tableau a une taille > a 0
                  Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
@@ -274,6 +273,7 @@ public class Graphe extends AppCompatActivity {
             } else { // si la température est valide
                 //on ajoute le point a la liste
                 listePoints.add(new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp()));
+                System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
             }
         }
         if (temp.size() > 0) { // si il ya eu des températures
@@ -306,7 +306,7 @@ public class Graphe extends AppCompatActivity {
         graphView.getGridLabelRenderer().setNumHorizontalLabels(3);//fait disparaitre les labels temp
         try { //TODO tester
             graphView.getViewport().setMinX(conversion(sDebut).getTime());
-            graphView.getViewport().setMaxX(conversion(sFin).getTime()); // + 3 days
+            graphView.getViewport().setMaxX(conversion(sFin).getTime());
         } catch (ParseException e) {
             //impossible
         }
@@ -319,7 +319,7 @@ public class Graphe extends AppCompatActivity {
         gridLabel.setHorizontalAxisTitle("Date");
         graphView.getGridLabelRenderer().reloadStyles();
         /*Code permettant de mettre des dates en label X*/
-        graphView.getGridLabelRenderer().setTextSize(25f);
+        graphView.getGridLabelRenderer().setTextSize(20f);
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {

@@ -68,11 +68,11 @@ public class RechercheTemperature {
 	public static void editTemp(Context myContext) {
 
 		String ligne;    // ligne lue dans le fichier
+		listeTemp = new ArrayList<Temperature>();
 
 		try { // déclaration et création de l'objet fichier
 			BufferedReader fichier = new BufferedReader(new FileReader( myContext.getFilesDir() + "/fichierTemp.txt"));
 			while (((ligne = fichier.readLine()) != null)) {
-				System.out.println("LECTURE" + ligne);
 				if (!ligne.equals(""))
 					listeTemp.add(new Temperature(ligne));
 			}
@@ -162,9 +162,6 @@ public class RechercheTemperature {
 				if (listeTemp.get(x).getDate().getTime() >= date1formate.getTime()
 						&& listeTemp.get(x).getDate().getTime() <= date2formate.getTime()) {
 					tempIntervalle.add(listeTemp.get(x));
-					System.out.println("C'est OK : " + listeTemp.get(x).getDate());//debug
-				} else {
-					System.out.println("C'est NOK : " + listeTemp.get(x).getDate());//debug
 				}
 			}
 			return tempIntervalle;
