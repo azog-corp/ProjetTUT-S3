@@ -63,6 +63,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         } catch (SocketException e) {
             System.err.println("Erreur socket Actu");
         }
+        return null;
     }
 
     @Override

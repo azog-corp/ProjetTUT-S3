@@ -71,14 +71,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/ThreadActualisation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
+            <state relative-caret-position="504">
+              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3125#3136#0" expanded="true" />
                 <element signature="e#7246#7593#0" expanded="true" />
                 <element signature="e#7592#7593#0" expanded="true" />
-                <element signature="e#7764#7765#0" expanded="true" />
+                <element signature="e#7787#7788#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -577,7 +577,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32885087" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.32885087" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -591,10 +591,10 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32922733" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5133262" side_tool="true" weight="0.28724545" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49253732" weight="0.24636059" />
+      <window_info active="true" anchor="bottom" id="Build" order="6" sideWeight="0.49253732" visible="true" weight="0.24636059" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32922733" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.48667377" visible="true" weight="0.2844345" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.48667377" weight="0.2844345" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -895,14 +895,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/projet/src/thermometres3/outils/ThreadActualisation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="106" column="18" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
+        <state relative-caret-position="504">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3125#3136#0" expanded="true" />
             <element signature="e#7246#7593#0" expanded="true" />
             <element signature="e#7592#7593#0" expanded="true" />
-            <element signature="e#7764#7765#0" expanded="true" />
+            <element signature="e#7787#7788#0" expanded="true" />
           </folding>
         </state>
       </provider>
