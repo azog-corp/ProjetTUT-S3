@@ -181,6 +181,7 @@ public class Graphe extends AppCompatActivity {
         lastCo();
         ThreadActualisation t = new ThreadActualisation();
         t.graphe = findViewById(R.id.graphique);
+        t.execute(getApplicationContext());
     }
 
     /*public void majGrapheContinu(String sDebut) {
@@ -283,13 +284,14 @@ public class Graphe extends AppCompatActivity {
 
         /* Modification interface graph */
         graphView.getViewport().setXAxisBoundsManual(true);
-        graphView.getGridLabelRenderer().setNumHorizontalLabels(3);//fait disparaitre les labels temp
-        try { //TODO tester
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(2);//fait disparaitre les labels temp
+        graphView.getGridLabelRenderer().setNumVerticalLabels(2);
+        /*try { //TODO tester
             graphView.getViewport().setMinX(conversion(sDebut).getTime());
             graphView.getViewport().setMaxX(conversion(sFin).getTime());
         } catch (ParseException e) {
             //impossible
-        }
+        }*/
 
         graphView.getGridLabelRenderer().setHumanRounding(false);
         graphView.getViewport().setScalable(true);

@@ -10,6 +10,8 @@ import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import static projet.src.thermometres3.outils.RechercheTemperature.conversion;
 import static projet.src.thermometres3.outils.RechercheTemperature.editTemp;
 import static projet.src.thermometres3.outils.RechercheTemperature.getListTemp;
 
-public class ThreadActualisation extends AsyncTask<Context,Integer,Void> {
+public class ThreadActualisation extends AsyncTask<Context,String,Void> {
 
     public GraphView graphe;
 
@@ -41,25 +43,31 @@ public class ThreadActualisation extends AsyncTask<Context,Integer,Void> {
         String debutContinu = getLastCo(myContext[0]);
         //mettre a jour les temperature depuis derniere connexion
         String debutCom = getDateActuelle();
-        while(true) {
-            if(getDateActuelle().equals(ajout30sec(debutCom))) {
-                debutCom = ajout30sec(debutCom);
-                String sFin = getDateActuelle();
-                System.out.println("RUN");
-                String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
-                try {
-                    OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
-                    OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
-                    this.cancel(true);
-                } catch(ErreurConnexion e) {
-                    System.err.println("Erreur connexion");
+        try {
+            DatagramSocket dSocket = new DatagramSocket(4523);//todo modifier pas verifier
+            while(true) {
+                if(getDateActuelle().equals(ajout30sec(debutCom))) {
+                    debutCom = ajout30sec(debutCom);
+                    String sFin = getDateActuelle();
+                    System.out.println("RUN");
+                    String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
+                    try {
+                        OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRaspContinu(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
+                        OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
+                    } catch(ErreurConnexion e) {
+                        System.err.println("Erreur connexion");
+                    }
+                    publishProgress( "Update" );
                 }
             }
+        } catch (SocketException e) {
+            System.err.println("Erreur socket Actu");
         }
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    protected void onProgressUpdate(String... values) {
+        System.out.println("PROGRESS");
         editTemp(contextAppli);
         ArrayList<Temperature> temp = getListTemp();
         /* Définition des propriétés du graph */
@@ -96,7 +104,7 @@ public class ThreadActualisation extends AsyncTask<Context,Integer,Void> {
             } else { // si la température est valide
                 //on ajoute le point a la liste
                 listePoints.add(new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp()));
-                System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
+                //System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
             }
         }
         if (temp.size() > 0) { // si il ya eu des températures
@@ -126,7 +134,8 @@ public class ThreadActualisation extends AsyncTask<Context,Integer,Void> {
 
         /* Modification interface graph */
         graphe.getViewport().setXAxisBoundsManual(true);
-        graphe.getGridLabelRenderer().setNumHorizontalLabels(3);//fait disparaitre les labels temp
+        graphe.getGridLabelRenderer().setNumHorizontalLabels(2);//fait disparaitre les labels temp
+        graphe.getGridLabelRenderer().setNumVerticalLabels(2);
         /*try { //TODO tester
             graphe.getViewport().setMinX(conversion(sDebut).getTime());
             graphe.getViewport().setMaxX(conversion(sFin).getTime());
@@ -153,6 +162,11 @@ public class ThreadActualisation extends AsyncTask<Context,Integer,Void> {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        OutilsCommunication.fermerContinu();
     }
 
     public String ajout30sec(String date) {
