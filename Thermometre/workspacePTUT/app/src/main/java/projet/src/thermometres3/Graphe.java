@@ -2,6 +2,7 @@ package projet.src.thermometres3;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
+import projet.src.thermometres3.outils.ThreadActualisation;
 
 import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
@@ -43,6 +45,7 @@ public class Graphe extends AppCompatActivity {
 
 
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
     /**
      * Fonction execute au lancement de la page Graphe
      * Initialise les actions des boutons de la page
@@ -175,35 +178,12 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        System.out.println("CONTINU");
-        String debutContinu = getLastCo(getApplicationContext());
-        //mettre a jour les temperature depuis derniere connexion
         lastCo();
-        String debutCom = getDateActuelle();
-        /*while(true) {
-            if(getDateActuelle().equals(ajout30sec(debutCom))) {
-                debutCom = ajout30sec(debutCom);
-                majGrapheContinu(debutContinu);
-                System.out.println("ACTUALISATION GRAPHE");
-            }
-        }*/
+        ThreadActualisation t = new ThreadActualisation();
+        t.graphe = findViewById(R.id.graphique);
     }
 
-    public String ajout30sec(String date) {
-        try {
-            long DIXSEC_EN_MS = 1000*30;
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
-            Date dateD = conversion(date);
-            long dateMillis = dateD.getTime() + DIXSEC_EN_MS;
-            sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
-            return sdf.format(new Date(dateMillis));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void majGrapheContinu(String sDebut) {
+    /*public void majGrapheContinu(String sDebut) {
 
         String sFin = getDateActuelle();
         Communication test = new Communication();
@@ -214,16 +194,16 @@ public class Graphe extends AppCompatActivity {
         }
         System.out.println("Thread FIN");
         RechercheTemperature.editTemp(getApplicationContext());
-        try {
-            if (RechercheTemperature.getListTemp().size() != 0) {
-                conversionGraph(dateIntervalle(sDebut, sFin));
-            } else { //sinon message erreur
-                messageErreurListeDate();
-            }
-        } catch (ErreurDate erreurDate) {
-            erreurDate.printStackTrace();
+        //try {
+        if (RechercheTemperature.getListTemp().size() != 0) {
+            //conversionGraph(dateIntervalle(sDebut, sFin));
+        } else { //sinon message erreur
+            messageErreurListeDate();
         }
-    }
+       /* } catch (ErreurDate erreurDate) {
+            erreurDate.printStackTrace();
+        }*/
+    //}
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph

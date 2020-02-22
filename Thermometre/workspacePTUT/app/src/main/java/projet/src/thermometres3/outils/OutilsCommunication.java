@@ -26,17 +26,15 @@ public class OutilsCommunication {
             //TODO ajoute verif + ack
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
-            //dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
+            dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
             System.out.println("recu : " + new String(buffer));
-            /*nbTemp = Integer.parseInt(new String(buffer));
-            for (int i = 0; i < nbTemp; i++) {*/
             byte[] buffer2 = new byte[99999];
             System.out.println("new : " + new String(buffer));
-                dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
-                System.out.println("recu : " + new String(buffer2));
-                temperatures.add(new String(buffer2));
-           // }
+            dSocket.setSoTimeout(60000);
+            dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
+            System.out.println("recu : " + new String(buffer2));
+            temperatures.add(new String(buffer2));
             dSocket.close();
             return temperatures;
         } catch (SocketException e) {
