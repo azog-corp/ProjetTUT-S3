@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\b64f80842d3d302e8b4275c4ce2e897c\\media-1.0.0\\res\\values\\values.xml",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "3,1,6,5,4,2",
                         "startColumns": "4,4,4,4,4,4",
@@ -76,6 +76,42 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\56d6fcdb5985e6cc554f18b590835f16\\jetified-graphview-4.2.2\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "256",
+                        "endOffsets": "307"
+                    },
+                    "to": {
+                        "startLines": "2885",
+                        "startColumns": "4",
+                        "startOffsets": "185430",
+                        "endColumns": "256",
+                        "endOffsets": "185682"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "376"
+                    },
+                    "to": {
+                        "startLines": "448",
+                        "startColumns": "4",
+                        "startOffsets": "26590",
+                        "endLines": "453",
+                        "endColumns": "12",
+                        "endOffsets": "26904"
+                    }
+                },
+                {
                     "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\3b95216347b91b0d0d6d33ef33ac3197\\coordinatorlayout-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,102,3,13",
@@ -92,23 +128,6 @@
                         "endLines": "15,1919,2658,2747",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "720,126278,172073,177284"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "6,4,2,3,5,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "252,157,57,105,204,293",
-                        "endColumns": "39,45,46,50,46,39",
-                        "endOffsets": "287,198,99,151,246,328"
-                    },
-                    "to": {
-                        "startLines": "148,160,161,162,163,177",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "7273,8118,8164,8211,8262,9124",
-                        "endColumns": "39,45,46,50,46,39",
-                        "endOffsets": "7308,8159,8206,8257,8304,9159"
                     }
                 },
                 {
@@ -131,22 +150,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\kille\\Desktop\\workspacePTUT\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\kille\\Desktop\\workspaceEclipse\\mergeMaster\\ProjetTUT-S3\\Thermometre\\workspacePTUT\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endLines": "8",
-                        "endColumns": "12",
-                        "endOffsets": "376"
+                        "startLines": "6,4,2,3,5,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "252,157,57,105,204,293",
+                        "endColumns": "39,45,46,50,46,39",
+                        "endOffsets": "287,198,99,151,246,328"
                     },
                     "to": {
-                        "startLines": "448",
-                        "startColumns": "4",
-                        "startOffsets": "26590",
-                        "endLines": "453",
-                        "endColumns": "12",
-                        "endOffsets": "26904"
+                        "startLines": "148,160,161,162,163,177",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "7273,8118,8164,8211,8262,9124",
+                        "endColumns": "39,45,46,50,46,39",
+                        "endOffsets": "7308,8159,8206,8257,8304,9159"
                     }
                 },
                 {
@@ -166,23 +183,6 @@
                         "endLines": "211,212,322,323,324,325,326,327,328,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,367,368,374,375,379,380,381,382,383,384,390,441,1763,1767,1769,1775,1777,1915,1916,2619,2808,2840,2877,2884",
                         "endColumns": "68,62,69,67,71,69,60,73,72,60,60,61,63,61,60,67,99,59,65,72,68,56,51,61,71,75,34,34,49,60,56,33,34,34,69,70,116,12,109,12,128,71,66,24,24,24,24,24",
                         "endOffsets": "11095,11158,18526,18594,18666,18736,18797,18871,18944,19838,19899,19961,20025,20087,20148,20216,20316,20376,20442,20515,20584,20641,20693,20755,21546,21622,21896,21931,22123,22184,22241,22275,22310,22345,22690,26097,114145,114346,114522,114906,115101,126066,126133,164101,181223,183288,185048,185425"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\kille\\.gradle\\caches\\transforms-2\\files-2.1\\8cf8eb01021436cdad0606aab8372f88\\jetified-graphview-4.2.2\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "256",
-                        "endOffsets": "307"
-                    },
-                    "to": {
-                        "startLines": "2885",
-                        "startColumns": "4",
-                        "startOffsets": "185430",
-                        "endColumns": "256",
-                        "endOffsets": "185682"
                     }
                 },
                 {

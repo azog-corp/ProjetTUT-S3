@@ -2,6 +2,7 @@ package projet.src.thermometres3;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,11 +13,14 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurDate;
@@ -26,15 +30,22 @@ import projet.src.thermometres3.outils.OutilsCommunication;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
+import projet.src.thermometres3.outils.ThreadActualisation;
+
 import static projet.src.thermometres3.outils.OutilsInterface.getDate2JoursPrec;
 import static projet.src.thermometres3.outils.OutilsInterface.getDateActuelle;
+import static projet.src.thermometres3.outils.OutilsInterface.getLastCo;
+import static projet.src.thermometres3.outils.RechercheTemperature.conversion;
 import static projet.src.thermometres3.outils.RechercheTemperature.dateIntervalle;
 import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
+
+
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
     /**
      * Fonction execute au lancement de la page Graphe
      * Initialise les actions des boutons de la page
@@ -138,6 +149,7 @@ public class Graphe extends AppCompatActivity {
         Communication test = new Communication();
         test.execute(getApplicationContext());
         System.out.println("Thread continu");
+        System.out.println("Debut " + sDebut);
         while(test.getStatus() != AsyncTask.Status.FINISHED && !test.isCancelled()){
             //Boucle infinie pour empecher le programme de continuer
         }
@@ -165,30 +177,34 @@ public class Graphe extends AppCompatActivity {
         }
     }
 
-    public void connexionContinu() {
-        //recuperer date debu continu
-        String dateDebut = getDateActuelle();
-        //mettre a jour les temperature depuis derniere connexion
-        while(true) {
-            //communication reseau
-            //ecrire dans le fichier temperature
+    public void connexionContinu(View view) {
+        lastCo();
+        ThreadActualisation t = new ThreadActualisation();
+        t.graphe = findViewById(R.id.graphique);
+        t.execute(getApplicationContext());
+    }
 
-            //mettre a jour le graphe appeller date debut continu - maintenant
-            try {
-                conversionGraph(dateIntervalle(dateDebut, getDateActuelle()));
-            }catch(ErreurDate e) {//les dates ne sont pas valide
-                messageErreurDate();
-            }
-            //attendre 1min - 30 s
+    /*public void majGrapheContinu(String sDebut) {
+
+        String sFin = getDateActuelle();
+        Communication test = new Communication();
+        test.execute(getApplicationContext());
+        System.out.println("Thread continu");
+        while(test.getStatus() != AsyncTask.Status.FINISHED && !test.isCancelled()){
+            //Boucle infinie pour empecher le programme de continuer
         }
-    }//TODO RESEAU
-
-    /*
-     fonction communication
-     se connecte au serveur et envoi la date derniere connexion lu dans le fichier
-     puis recupere ce qui est envoye par le serveur et met a jour le fichier des temperatures
-     puis met a jour le fichier derniere connexion
-     */
+        System.out.println("Thread FIN");
+        RechercheTemperature.editTemp(getApplicationContext());
+        //try {
+        if (RechercheTemperature.getListTemp().size() != 0) {
+            //conversionGraph(dateIntervalle(sDebut, sFin));
+        } else { //sinon message erreur
+            messageErreurListeDate();
+        }
+       /* } catch (ErreurDate erreurDate) {
+            erreurDate.printStackTrace();
+        }*/
+    //}
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph
@@ -207,10 +223,10 @@ public class Graphe extends AppCompatActivity {
         /* Définition des propriétés du graph */
         graphView.removeAllSeries(); // enleve les données precendentes si deja un graph affiché
         /*Tableau necessaire car LineGraphSeries necessite un tableau en argument
-        * Tableau qui contient les point du graphe*/
+         * Tableau qui contient les point du graphe*/
         DataPoint[] pointGraphe =  new DataPoint[temp.size()];//initialisation par defaut
         /*Array list qui récupère les points
-        * Creer a cause de null exception dans le tableau définit trop grand*/
+         * Creer a cause de null exception dans le tableau définit trop grand*/
         ArrayList<DataPoint> listePoints = new ArrayList<DataPoint>();
         LineGraphSeries<DataPoint> series;
         boolean donneeOk = false;
@@ -222,7 +238,6 @@ public class Graphe extends AppCompatActivity {
                 // On transfert tous les points dans le tableau
                 for(int j = 0; j < listePoints.size(); j++) {
                     pointGraphe[j] = listePoints.get(j);
-                    System.out.println("-----" + pointGraphe[j]);
                 }
                 /*Puis ajoute la series de point au graph si notre tableau a une taille > a 0
                  Ce cas d'erreur peut arriver si 2 températures invalide a la suite */
@@ -239,6 +254,7 @@ public class Graphe extends AppCompatActivity {
             } else { // si la température est valide
                 //on ajoute le point a la liste
                 listePoints.add(new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp()));
+                System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
             }
         }
         if (temp.size() > 0) { // si il ya eu des températures
@@ -267,7 +283,16 @@ public class Graphe extends AppCompatActivity {
         }
 
         /* Modification interface graph */
-        graphView.getGridLabelRenderer().setNumHorizontalLabels(0);//fait disparaitre les labels temp
+        graphView.getViewport().setXAxisBoundsManual(true);
+        graphView.getGridLabelRenderer().setNumHorizontalLabels(2);//fait disparaitre les labels temp
+        graphView.getGridLabelRenderer().setNumVerticalLabels(2);
+        /*try { //TODO tester
+            graphView.getViewport().setMinX(conversion(sDebut).getTime());
+            graphView.getViewport().setMaxX(conversion(sFin).getTime());
+        } catch (ParseException e) {
+            //impossible
+        }*/
+
         graphView.getGridLabelRenderer().setHumanRounding(false);
         graphView.getViewport().setScalable(true);
         graphView.getViewport().setScrollable(true);
@@ -276,8 +301,7 @@ public class Graphe extends AppCompatActivity {
         gridLabel.setHorizontalAxisTitle("Date");
         graphView.getGridLabelRenderer().reloadStyles();
         /*Code permettant de mettre des dates en label X*/
-
-        graphView.getGridLabelRenderer().setTextSize(25f);
+        graphView.getGridLabelRenderer().setTextSize(20f);
         graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {

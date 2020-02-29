@@ -26,17 +26,15 @@ public class OutilsCommunication {
             //TODO ajoute verif + ack
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
-            //dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
+            dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
             System.out.println("recu : " + new String(buffer));
-            /*nbTemp = Integer.parseInt(new String(buffer));
-            for (int i = 0; i < nbTemp; i++) {*/
             byte[] buffer2 = new byte[99999];
             System.out.println("new : " + new String(buffer));
-                dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
-                System.out.println("recu : " + new String(buffer2));
-                temperatures.add(new String(buffer2));
-           // }
+            dSocket.setSoTimeout(60000);
+            dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
+            System.out.println("recu : " + new String(buffer2));
+            temperatures.add(new String(buffer2));
             dSocket.close();
             return temperatures;
         } catch (SocketException e) {
@@ -48,8 +46,38 @@ public class OutilsCommunication {
         }
     }
 
-    public static void majDerniereConnexion(Context myContext) {
-        new Communication().execute(myContext);
+    public static ArrayList<String> comRaspContinu(String date,DatagramSocket dSocket) throws ErreurConnexion {
+        try {
+            ArrayList<String> temperatures = new ArrayList<String>();
+            int nbTemp = 0;
+            int portServeur = 4523;
+            byte[] buffer = date.getBytes();
+            InetAddress iPserveur = InetAddress.getByName("10.3.141.1"); //todo modifier
+            System.out.println("Envoi");
+            //TODO ajoute verif + ack
+            dSocket.send(new DatagramPacket(buffer, buffer.length,
+                    iPserveur, portServeur));
+            dSocket.setSoTimeout(4000); // Temps d'attente rÃ©ception max en millisecondes
+            dSocket.receive(new DatagramPacket(buffer, buffer.length));
+            System.out.println("recu : " + new String(buffer));
+            byte[] buffer2 = new byte[99999];
+            System.out.println("new : " + new String(buffer));
+            dSocket.setSoTimeout(60000);
+            dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
+            System.out.println("recu : " + new String(buffer2));
+            temperatures.add(new String(buffer2));
+            return temperatures;
+        } catch (SocketException e) {
+            System.out.println("erreur socket");
+            throw new ErreurConnexion();
+        } catch (IOException e) {
+            System.out.println("erreur connexion");
+            throw new ErreurConnexion();
+        }
+    }
+
+    public static void fermerContinu() {
+        dSocket.close();
     }
 
 
@@ -58,6 +86,3 @@ public class OutilsCommunication {
         }
 
 }
-
-
-//retracer graphe   graph.redrawAll();

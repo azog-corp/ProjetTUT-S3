@@ -126,11 +126,11 @@ public final class R {
         public static final int progress_dialog = 0x7f07007c;
         public static final int success_frame = 0x7f0700a1;
         public static final int success_tick = 0x7f0700a2;
-        public static final int title_text = 0x7f0700b1;
-        public static final int warning_frame = 0x7f0700bb;
-        public static final int x = 0x7f0700bf;
-        public static final int y = 0x7f0700c0;
-        public static final int z = 0x7f0700c1;
+        public static final int title_text = 0x7f0700b0;
+        public static final int warning_frame = 0x7f0700ba;
+        public static final int x = 0x7f0700be;
+        public static final int y = 0x7f0700bf;
+        public static final int z = 0x7f0700c0;
     }
     public static final class layout {
         private layout() {}
