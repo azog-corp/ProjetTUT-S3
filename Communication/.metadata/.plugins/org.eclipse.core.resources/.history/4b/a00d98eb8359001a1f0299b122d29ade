@@ -1,0 +1,27 @@
+package test;
+
+import java.io.IOException;
+import java.io.PipedReader;
+import java.io.PipedWriter;
+
+public class Test {
+
+	public static void main(String[] args) {
+	Thre t = new Thre();
+	PipedWriter ecr = new PipedWriter();
+	try {
+		t.red = new PipedReader(ecr);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	t.start();
+	try {
+		ecr.write("test");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+
+}
