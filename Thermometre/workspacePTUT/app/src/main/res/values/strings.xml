@@ -5,4 +5,5 @@
     <string name="btnMenu">Menu</string>
     <string name="btnLastCo">Dern. Connexion</string>
     <string name="btnContinu">Actualisation continu</string>
+    <string name="btnFinContinu">ARRET ACTUALISATION</string>
 </resources>

@@ -2,6 +2,7 @@ package projet.src.thermometres3.outils;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -31,6 +32,8 @@ import static projet.src.thermometres3.outils.RechercheTemperature.getListTemp;
 public class ThreadActualisation extends AsyncTask<Context,String,Void> {
 
     public GraphView graphe;
+
+    public EditText dateFin;
 
     Context contextAppli;
 
@@ -163,6 +166,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
                 }
             }
         });
+        dateFin.setText(getDateActuelle());
     }
 
     @Override

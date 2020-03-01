@@ -778,6 +778,7 @@ id btnAccueil
 id btnAfficher
 id btnContinu
 id btnDelete
+id btnFinContinu
 id btnGraph
 id btnLastCo
 id btnMenu
@@ -1034,6 +1035,7 @@ string abc_toolbar_collapse_description
 string afficher
 string app_name
 string btnContinu
+string btnFinContinu
 string btnLastCo
 string btnMenu
 string default_progressbar

@@ -42,7 +42,7 @@ import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Graphe extends AppCompatActivity {
 
-
+    ThreadActualisation t;
 
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
@@ -73,6 +73,8 @@ public class Graphe extends AppCompatActivity {
                 lastCo();//appel la creation du graph
             }
         });
+        Button btnArretContinu = findViewById(R.id.btnFinContinu);
+        btnArretContinu.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -178,33 +180,20 @@ public class Graphe extends AppCompatActivity {
     }
 
     public void connexionContinu(View view) {
-        lastCo();
-        ThreadActualisation t = new ThreadActualisation();
+        Button btnLast = findViewById(R.id.btnLastCo);
+        Button btnAfficher = findViewById(R.id.btnAfficher);
+        Button btnActualisationContinu = findViewById(R.id.btnContinu);
+        Button btnArretContinu = findViewById(R.id.btnFinContinu);
+        btnArretContinu.setVisibility(View.VISIBLE);
+        btnLast.setVisibility(View.INVISIBLE);
+        btnAfficher.setVisibility(View.INVISIBLE);
+        btnActualisationContinu.setVisibility(View.INVISIBLE);
+        //lastCo();
+        t = new ThreadActualisation();
         t.graphe = findViewById(R.id.graphique);
+        t.dateFin = findViewById(R.id.dateFin);
         t.execute(getApplicationContext());
     }
-
-    /*public void majGrapheContinu(String sDebut) {
-
-        String sFin = getDateActuelle();
-        Communication test = new Communication();
-        test.execute(getApplicationContext());
-        System.out.println("Thread continu");
-        while(test.getStatus() != AsyncTask.Status.FINISHED && !test.isCancelled()){
-            //Boucle infinie pour empecher le programme de continuer
-        }
-        System.out.println("Thread FIN");
-        RechercheTemperature.editTemp(getApplicationContext());
-        //try {
-        if (RechercheTemperature.getListTemp().size() != 0) {
-            //conversionGraph(dateIntervalle(sDebut, sFin));
-        } else { //sinon message erreur
-            messageErreurListeDate();
-        }
-       /* } catch (ErreurDate erreurDate) {
-            erreurDate.printStackTrace();
-        }*/
-    //}
 
     /**
      * Fonction qui convertie une liste de température en point sur le graph
@@ -312,6 +301,24 @@ public class Graphe extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void finContinu(View vue) {
+        Button btnLast = findViewById(R.id.btnLastCo);
+        Button btnAfficher = findViewById(R.id.btnAfficher);
+        Button btnActualisationContinu = findViewById(R.id.btnContinu);
+        Button btnArretContinu = findViewById(R.id.btnFinContinu);
+        btnArretContinu.setVisibility(View.INVISIBLE);
+        btnLast.setVisibility(View.VISIBLE);
+        btnAfficher.setVisibility(View.VISIBLE);
+        btnActualisationContinu.setVisibility(View.VISIBLE);
+        t.cancel(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        t.cancel(true);
+        super.onDestroy();
     }
 
 
