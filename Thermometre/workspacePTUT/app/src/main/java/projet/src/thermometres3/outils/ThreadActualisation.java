@@ -50,6 +50,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
             DatagramSocket dSocket = new DatagramSocket(4523);//todo modifier pas verifier
             while(true) {
                 if(getDateActuelle().equals(ajout30sec(debutCom))) {
+                    System.out.println("Continu");
                     debutCom = ajout30sec(debutCom);
                     String sFin = getDateActuelle();
                     System.out.println("RUN");
@@ -133,7 +134,8 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         }
         System.out.println("Données ? " +donneeOk);
         if(!donneeOk) {
-            messageErreurListeDate(contextAppli);
+            System.out.println("Pas de données");
+            //messageErreurListeDate(contextAppli);
         }
 
         /* Modification interface graph */
