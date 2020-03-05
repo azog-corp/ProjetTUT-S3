@@ -132,7 +132,7 @@ public class Serveur {
 		String[] decomp = message.split("\\|");
 		System.out.println("Message apres decomposition :" + decomp[1]);
 		listeClient.add(new Client(paquet.getAddress(),decomp[1]));
-		//ack(paquet.getAddress());
+		ack(paquet.getAddress());
 	}
 
 	private static void ack(InetAddress adresseIp) {
