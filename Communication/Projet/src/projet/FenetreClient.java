@@ -155,9 +155,10 @@ public class FenetreClient extends javax.swing.JFrame {
 
 			// Lire et afficher accusé réception du serveur
 			buffer = new byte[100];
-			dSocket.setSoTimeout(2000); // Temps d'attente réception max en millisecondes 
-			dSocket.receive(new DatagramPacket(buffer,100));
+ // Temps d'attente réception max en millisecondes 
+			dSocket.receive(new DatagramPacket(buffer,2000));
 			String reponse = new String(buffer);
+			System.out.println(reponse);
 			txtAccuseReception.append(reponse.trim()+"\n");
 
 		} catch (Exception e) {
