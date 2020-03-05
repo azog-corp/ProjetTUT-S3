@@ -5,128 +5,128 @@
     android:layout_height="match_parent"
     android:layout_weight="1">
     <!-- Element de mise en page -->
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!-- Element de mise en page -->
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="19">
+            <!-- Graphe -->
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graphique"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_height="match_parent">
+
+            </com.jjoe64.graphview.GraphView>
+        </LinearLayout>
+        <!-- Element de mise en page -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
-            android:weightSum="20"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
             <!-- Element de mise en page -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="19">
-                <!-- Graphe -->
-                <com.jjoe64.graphview.GraphView
-                    android:id="@+id/graphique"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_height="match_parent">
-
-                </com.jjoe64.graphview.GraphView>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <!-- Label Debut -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="Debut"
+                    android:textSize="20sp"></TextView>
+                <!-- Formulaire date debut -->
+                <EditText
+                    android:id="@+id/dateDebut"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="ex: 21/11/2000 11:50:25">
+                </EditText>
             </LinearLayout>
             <!-- Element de mise en page -->
             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <!-- Label Fin -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:text="Fin"
+                    android:textSize="20sp">
+                </TextView>
+                <!-- Formulaire de date de fin -->
+                <EditText
+                    android:id="@+id/dateFin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="ex: 21/11/2000 11:50:25">
+                </EditText>
+            </LinearLayout>
+            <!-- Element de mise en page -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="2">
+                <!-- Bouton afficher -->
+                <Button
+                    android:id="@+id/btnAfficher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/afficher"
+                    android:layout_weight="1">
+
+                </Button>
+                <!-- Bouton derniere connexion -->
+                <Button
+                    android:id="@+id/btnLastCo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/btnLastCo"
+                    android:layout_weight="1">
+
+                </Button>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnContinu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:weightSum="3"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-                <!-- Element de mise en page -->
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <!-- Label Debut -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:text="Debut"
-                        android:textSize="20sp"></TextView>
-                    <!-- Formulaire date debut -->
-                    <EditText
-                        android:id="@+id/dateDebut"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="ex: 21/11/2000 11:50:25">
-                    </EditText>
-                </LinearLayout>
-                <!-- Element de mise en page -->
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <!-- Label Fin -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:text="Fin"
-                        android:textSize="20sp">
-                    </TextView>
-                    <!-- Formulaire de date de fin -->
-                    <EditText
-                        android:id="@+id/dateFin"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:hint="ex: 21/11/2000 11:50:25">
-                    </EditText>
-                </LinearLayout>
-                <!-- Element de mise en page -->
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:weightSum="2">
-                    <!-- Bouton afficher -->
-                    <Button
-                        android:id="@+id/btnAfficher"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/afficher"
-                        android:layout_weight="1">
+                android:layout_margin="10dp"
+                android:text="@string/btnContinu"
+                android:layout_weight="1"
+                android:onClick="connexionContinu">
 
-                    </Button>
-                    <!-- Bouton derniere connexion -->
-                    <Button
-                        android:id="@+id/btnLastCo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="@string/btnLastCo"
-                        android:layout_weight="1">
+            </Button>
+            <Button
+                android:id="@+id/btnFinContinu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/btnFinContinu"
+                android:layout_weight="1"
+                android:onClick="finContinu">
 
-                    </Button>
-                </LinearLayout>
-                <Button
-                    android:id="@+id/btnContinu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/btnContinu"
-                    android:layout_weight="1"
-                    android:onClick="connexionContinu">
-
-                </Button>
-                <Button
-                    android:id="@+id/btnFinContinu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/btnFinContinu"
-                    android:layout_weight="1"
-                    android:onClick="finContinu">
-
-                </Button>
-            </LinearLayout>
+            </Button>
         </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@ public class OutilsCommunication {
             System.out.println("recu : " + new String(buffer));
             byte[] buffer2 = new byte[99999];
             System.out.println("new : " + new String(buffer));
-            dSocket.setSoTimeout(60000);
+            dSocket.setSoTimeout(10000);
             dSocket.receive(new DatagramPacket(buffer2, buffer2.length));
             System.out.println("recu : " + new String(buffer2));
             temperatures.add(new String(buffer2));
