@@ -1,4 +1,4 @@
-package projet;
+package nvProjet;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

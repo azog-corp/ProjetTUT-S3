@@ -17,11 +17,11 @@ public class OutilsCommunication {
         try {
             ArrayList<String> temperatures = new ArrayList<String>();
             int nbTemp = 0;
-            int portServeur = 4523;
+            int portServeur = 65230;
             byte[] buffer = date.getBytes();
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1"); //todo modifier
             System.out.println("Avant socket");
-            dSocket = new DatagramSocket(4523);//todo modifier pas verifier
+            dSocket = new DatagramSocket(portServeur);//todo modifier pas verifier
             System.out.println("Avant socket");
             //TODO ajoute verif + ack
             dSocket.send(new DatagramPacket(buffer, buffer.length,
@@ -38,10 +38,10 @@ public class OutilsCommunication {
             dSocket.close();
             return temperatures;
         } catch (SocketException e) {
-            System.out.println("erreur socket");
+            System.out.println(e);
             throw new ErreurConnexion();
         } catch (IOException e) {
-            System.out.println("erreur connexion");
+            System.out.println(e);
             throw new ErreurConnexion();
         }
     }
@@ -50,7 +50,7 @@ public class OutilsCommunication {
         try {
             ArrayList<String> temperatures = new ArrayList<String>();
             int nbTemp = 0;
-            int portServeur = 4523;
+            int portServeur = 65230;
             byte[] buffer = date.getBytes();
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1"); //todo modifier
             System.out.println("Envoi");
