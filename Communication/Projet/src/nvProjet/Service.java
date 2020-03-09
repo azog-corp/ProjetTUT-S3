@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nvProjet;
+package projet;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -48,9 +48,13 @@ public class Service extends Thread{
 		while(true) {
 			clients = Serveur.getListeClient();
 			for(int i = 0; i < clients.size(); i++) {
-				if(!clients.get(i).tempTraiter) {
-					traitement(i,clients.get(i));
-					Serveur.setClient(i,clients.get(i));
+				try {
+					if(!clients.get(i).isTempTraiter()) {
+						traitement(i,clients.get(i));
+						Serveur.setClient(i,clients.get(i));
+					}
+				}catch (NullPointerException e) {
+				
 				}
 			}
 		}
@@ -61,12 +65,9 @@ public class Service extends Thread{
 			System.out.println("TRAITEMENT");
 			Date date = conversion(client.getMessage());
 			ArrayList<String> tempValide = new ArrayList<String>();
-			//tempValide = lectureFichier(date);
-			tempValide.add("23/02/2020 18:00:00");
-			tempValide.add("23/02/2020 18:00:10");
-			//TODO preparer requete bouchon
+			tempValide = lectureFichier(date);
+			preparerRqt(tempValide);
 			client.paquets.add(tempValide.get(0));
-			client.paquets.add(tempValide.get(1));
 			client.setTempTraiter(true); 
 			clients.set(index, client);
 			
@@ -80,7 +81,7 @@ public class Service extends Thread{
 		try {
 			String ligne;
 			ArrayList<String> temp = new ArrayList<String>();
-			BufferedReader fic = new BufferedReader(new FileReader(new File("temperatures.txt")));
+			BufferedReader fic = new BufferedReader(new FileReader(new File("projet/temperatures.txt")));
 			while((ligne = fic.readLine()) != null) {
 				if(date.compareTo(conversion(ligne)) < 0) {
 					temp.add(ligne);
@@ -104,6 +105,25 @@ public class Service extends Thread{
 		dateFormate  = format.parse(date);
 		return dateFormate;
 	}
+	
+	public static ArrayList<String> preparerRqt(ArrayList<String> temperatures) {
+		ArrayList<String> paquets = new ArrayList<String>();
+		StringBuilder chaine = new StringBuilder();
+		for(int i =0; i < temperatures.size(); i++) {
+			chaine.append("|"+temperatures.get(i));
+			if(i%2600 == 0) {
+				chaine.append("|");
+				paquets.add(chaine.toString());
+				chaine = new StringBuilder();
+			}
+		}
+		if(!chaine.toString().equals("")) {
+			paquets.add(chaine.toString());
+		}
+		
+		System.out.println("Reponse");
+		return paquets;
+	}	
 
 }
 

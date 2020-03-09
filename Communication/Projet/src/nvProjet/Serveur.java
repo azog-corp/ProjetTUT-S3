@@ -1,4 +1,4 @@
-package nvProjet;
+package projet;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -32,7 +32,7 @@ public class Serveur {
 
 
 	public static void main(String[] args) {
-		System.out.println("Serveur lancé !");
+		System.out.println("Serveur lancÃ© !");
 		int compteur = 0;
 		try {
 			socket = new DatagramSocket(4523);
@@ -92,7 +92,8 @@ public class Serveur {
 	private static void verifierPretAEnvoyer() throws IOException{
 		System.out.println("Verification pret a envoyer");
 		for(int i=0; i < listeClient.size(); i++) {
-			if(listeClient.get(i).isTempTraiter()) {
+			if(listeClient.get(i).isTempTraiter()
+					&& !listeClient.get(i).isFini()) {
 				System.out.println("Pret a envoyer :" + listeClient.get(i).getAdresseIp());
 				envoyer(listeClient.get(i),listeClient.get(i).getAdresseIp());
 			}
@@ -102,7 +103,7 @@ public class Serveur {
 	private static void envoyer(Client client,InetAddress adresseIp)  throws IOException{
 		String msg = client.paquet();
 		//TODO preparer requete et decouper
-		System.out.println("Message a envoye : " + msg);
+		System.out.println("ENVOI MESSAGE : " + msg);
 		socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length,
 				adresseIp, port));
 		//si tous les ack ok
@@ -132,7 +133,8 @@ public class Serveur {
 		String[] decomp = message.split("\\|");
 		System.out.println("Message apres decomposition :" + decomp[1]);
 		listeClient.add(new Client(paquet.getAddress(),decomp[1]));
-		//ack(paquet.getAddress());
+		System.out.println("AJOUT CLIENT TAILLE ARRAYLIST :" +listeClient.size() );
+		ack(paquet.getAddress());
 	}
 
 	private static void ack(InetAddress adresseIp) {
@@ -149,6 +151,7 @@ public class Serveur {
 		System.out.println("ACK");
 		for(int i=0; i < listeClient.size(); i++) {
 			if(listeClient.get(i).getAdresseIp().equals(paquet.getAddress())) {
+				System.out.println("PAQUET BON");
 				listeClient.get(i).paquetOk();
 				if(listeClient.get(i).envoiFini()) {
 					System.out.println("TOUS LES PAQUETS ACK");
