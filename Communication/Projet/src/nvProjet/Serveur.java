@@ -60,9 +60,10 @@ public class Serveur {
 					terminer();
 					break;
 				case 'r': // r = retry rappel au serveur
+					verifierPretAEnvoyer();
 					break;
 				}
-				verifierPretAEnvoyer();
+				
 				verifierFini();
 				compteur++;
 				affichageEtat();
@@ -92,10 +93,12 @@ public class Serveur {
 	private static void verifierPretAEnvoyer() throws IOException{
 		System.out.println("Verification pret a envoyer");
 		for(int i=0; i < listeClient.size(); i++) {
-			if(listeClient.get(i).isTempTraiter()
+			if(listeClient.get(i).getAdresseIp().equals(paquet.getAddress()))) {
+				if(listeClient.get(i).isTempTraiter()
 					&& !listeClient.get(i).isFini()) {
-				System.out.println("Pret a envoyer :" + listeClient.get(i).getAdresseIp());
-				envoyer(listeClient.get(i),listeClient.get(i).getAdresseIp());
+					System.out.println("Pret a envoyer :" + listeClient.get(i).getAdresseIp());
+					envoyer(listeClient.get(i),listeClient.get(i).getAdresseIp());
+				}
 			}
 		}
 	}
