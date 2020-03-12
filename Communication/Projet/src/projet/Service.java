@@ -82,7 +82,7 @@ public class Service extends Thread{
 		try {
 			String ligne;
 			ArrayList<String> temp = new ArrayList<String>();
-			BufferedReader fic = new BufferedReader(new FileReader(new File("temperatures.txt")));
+			BufferedReader fic = new BufferedReader(new FileReader(new File("projet/temperatures.txt")));
 			while((ligne = fic.readLine()) != null) {
 				if(date.compareTo(conversion(ligne)) < 0) {
 					temp.add(ligne);

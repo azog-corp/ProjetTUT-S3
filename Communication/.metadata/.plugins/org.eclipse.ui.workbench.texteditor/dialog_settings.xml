@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="comptThread"/>
 		<list key="findhistory">
+			<item value="comptThread"/>
 			<item value="ack"/>
 			<item value="terminer"/>
 			<item value="Ille"/>

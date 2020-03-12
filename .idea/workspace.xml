@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e80c7c28-d8b7-4449-9f88-d95a1c2b6f08" name="Default Changelist" comment="" />
+    <list default="true" id="e80c7c28-d8b7-4449-9f88-d95a1c2b6f08" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.resources/.projects/Projet/org.eclipse.jdt.core/state.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.launching.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/233345993.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/2674025601.index" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/2674025601.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/externalLibsTimeStamps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/.metadata/version.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/Projet/src/projet/Serveur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/Projet/src/projet/Serveur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Communication/Projet/src/projet/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/Communication/Projet/src/projet/Service.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +70,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,11 +190,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../AppData/Local" />
+    <property name="android.sdk.path" value="S:/../../AppData/Local" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Thermometre/workspacePTUT" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />

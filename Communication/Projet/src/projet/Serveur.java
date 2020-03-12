@@ -14,8 +14,7 @@ public class Serveur {
 	static byte[] buffer;
 	static String message;
 	static DatagramPacket paquet;
-	static int comptThread;
-	static int port = 4523;
+	static int port = 65230;
 
 	public static ArrayList<Client> getListeClient() {
 		return listeClient;
@@ -33,7 +32,7 @@ public class Serveur {
 		System.out.println("Serveur lancé !");
 		int compteur = 0;
 		try {
-			socket = new DatagramSocket(4523);
+			socket = new DatagramSocket(port);
 		} catch (SocketException e1) {
 		} 
 		traiterClient();
@@ -128,8 +127,7 @@ public class Serveur {
 
 	private static void traiterClient() {
 		System.out.println("Creation thread");
-		comptThread+=1;
-		new Service(""+comptThread);
+		new Service("Thread");
 	}
 
 
