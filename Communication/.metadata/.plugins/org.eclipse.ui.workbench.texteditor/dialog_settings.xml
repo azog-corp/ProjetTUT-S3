@@ -6,23 +6,24 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Ille"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
-			<item value="Ille"/>
 			<item value="ack"/>
+			<item value="terminer"/>
+			<item value="Ille"/>
 			<item value="setTempTraiter"/>
 			<item value="TempTr"/>
 			<item value="tempTr"/>
 			<item value="ACK"/>
 			<item value="affichageEtat"/>
-			<item value="terminer"/>
 			<item value="envoyer"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1363"/>
+		<item key="DIALOG_X_ORIGIN" value="1004"/>
 		<item key="DIALOG_Y_ORIGIN" value="307"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

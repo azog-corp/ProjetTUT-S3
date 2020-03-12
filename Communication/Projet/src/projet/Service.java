@@ -24,25 +24,21 @@ import java.util.logging.Logger;
  *
  * @author pierremarie.combalbe
  */
-public class Service extends Thread{
-	byte[] buffer;
+public class Service extends Thread{	
 
-	DatagramPacket paquet;
+	/** Liste des clients */
+	static ArrayList<Client> clients;
 
-	DatagramSocket socket;
-
-	Thread t;
-	
 	/**
 	 * format prédéfinis pour les Dates
 	 */
 	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-	public Service(String name,DatagramSocket socket,DatagramPacket paquet, byte[] buffer){
+	/**Constructeur Service
+	* Initialise un nouveau Thread Service et le démarre 
+	*/
+	public Service(String name){
 		super(name);
-		this.socket = socket;
-		this.paquet = paquet;
-		this.buffer = buffer;
 		System.out.println("statut du thread " + name + " = " +this.getState());
 		this.start();
 		System.out.println("statut du thread " + name + " = " +this.getState());
@@ -50,44 +46,39 @@ public class Service extends Thread{
 	}
 
 
-
+	/**
+	 * Commandes a executer a l'execution du Thread
+	 */
 	public void run(){
 		System.out.println("RUN");
-		String msg, ar; // Message reÃ§u et accusÃ© rÃ©ception
-		InetAddress ipClient;
-		int portClient;
-		try {
-			msg = new String(buffer);
-			msg = msg.trim();
-			// Lire un paquet
-			ipClient = paquet.getAddress();
-			portClient = paquet.getPort();
-			System.out.println("Recu : " + msg +" Thread : " + this.getName() 
-			+"IP : " + ipClient + " PORT : " + portClient);
-			Date date = conversion(msg);
-			
-			ArrayList<String> tempValide;
-			tempValide = lectureFichier(date);
-			ar = ""+tempValide.size();
-			socket.send(new DatagramPacket(ar.getBytes(), ar.getBytes().length,
-					ipClient, portClient));
-			for(int i = 0; i < tempValide.size(); i++) {
-				ar = tempValide.get(i);
-				System.out.println(ar);
-				socket.send(new DatagramPacket(ar.getBytes(), ar.getBytes().length,
-						ipClient, portClient));
-				//TODO rajouter sleep ?
+		while(true) { // Boucle infinie
+			clients = Serveur.getListeClient(); //Récupère la liste des clients
+			for(int i = 0; i < clients.size(); i++) { //pour tous les clients
+				try {
+					if(!clients.get(i).isTempTraiter()) { //Traite leur requete si tempTraiter == false
+						traitement(i,clients.get(i)); //Traite le client
+						Serveur.setClient(i,clients.get(i)); //Met a jour le client dans le serveur
+					}
+				}catch (NullPointerException e) {
+				
+				}
 			}
+		}
+	}
 
-		} catch (IOException e) {
-			System.out.println("nsm" + e);
-		} catch(ParseException e) {
-			//stub impossible
+	public void traitement(int index,Client client) {
+		try {
+			Date date = conversion(client.getMessage()); //Récupère la date
+			ArrayList<String> tempValide = lectureFichier(date); //Récupère toutes les lignes ultérieure a la date demandée par le client
+			client.setPaquets(preparerRqt(tempValide));// Transforme toutes les lignes en paquets préparés
+			System.out.println("NB Paquets" + client.getPaquets().size());
+			client.setTempTraiter(true); //Classe le client comme traité
+			clients.set(index, client); // Modifie le client dans la liste
+		}catch(ParseException E) {
 		}
 	}
 
 	public ArrayList<String> lectureFichier(Date date) throws ParseException{
-		//CONVERSION = fct convertir date en string
 		try {
 			String ligne;
 			ArrayList<String> temp = new ArrayList<String>();
@@ -103,7 +94,7 @@ public class Service extends Thread{
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Convertie un date en String Ã  une date en Date
 	 * @param date
@@ -115,6 +106,30 @@ public class Service extends Thread{
 		dateFormate  = format.parse(date);
 		return dateFormate;
 	}
+	
+	public static ArrayList<String> preparerRqt(ArrayList<String> temperatures) {
+		ArrayList<String> paquets = new ArrayList<String>();
+		StringBuilder chaine = new StringBuilder();
+		for(int i =0; i < temperatures.size(); i++) {
+			if(i == temperatures.size()-1) {
+				chaine.append(temperatures.get(i));
+			} else {
+				chaine.append(temperatures.get(i)+"|");
+			}
+			if(i%1999 == 0 && i!= 0) {
+				System.out.println("Nouveau paquet" + i);
+				chaine.append(temperatures.get(i));
+				paquets.add(chaine.toString());
+				chaine = new StringBuilder();
+			}
+		}
+		if(!chaine.toString().equals("")) {
+			System.out.println((chaine.toString()));
+			paquets.add(chaine.toString());
+		}
+		
+		return paquets;
+	}	
 
 }
 
