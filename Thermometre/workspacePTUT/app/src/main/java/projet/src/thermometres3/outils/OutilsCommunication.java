@@ -69,6 +69,7 @@ public class OutilsCommunication {
             String[] aAjouter = decoupageRep(testPremierOk);
             for (int i = 0; i < aAjouter.length; i++)
                 temperatures.add(aAjouter[i]);
+            indexFirstDateLastPaquet = 0;
             envoiOk();
             envoiRetry();
 
@@ -238,6 +239,7 @@ public class OutilsCommunication {
         }
         System.out.println("Recu : " + new String(buffer));
         if(verifPaquet(new String(buffer))) {
+            indexFirstDateLastPaquet = temperatures.size();
             String[] aAjouter = decoupageRep(new String(buffer));
             for (int i = 0; i < aAjouter.length; i++)
                 temperatures.add(aAjouter[i]);
