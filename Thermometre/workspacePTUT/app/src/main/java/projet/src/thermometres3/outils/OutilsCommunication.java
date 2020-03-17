@@ -18,11 +18,17 @@ public class OutilsCommunication {
     static DatagramSocket dSocket;
     static int nbPaquets, nbTemp;
     static ArrayList<String> temperatures;
+    static String testPremierOk;
+    static char charPremierOk;
+    static int indexFirstDateLastPaquet;
+
+
+
 
     public static ArrayList<String> comRasp(String date) throws ErreurConnexion {
         try {
 
-            byte[] buffer = "".getBytes();
+            byte[] buffer;
             temperatures = new ArrayList<String>();
 
             int portServeur = 65230;
@@ -33,38 +39,45 @@ public class OutilsCommunication {
 
             String stringPaquetInit = premierEnvoi(date);
             String[] tabPaquetInit = decoupageRep(stringPaquetInit);
-            nbPaquets = /*tabPaquetInit[0].charAt(0)*/ 1;
-            nbTemp = tabPaquetInit[1].charAt(0);
+            nbPaquets = Integer.parseInt(tabPaquetInit[1]);
 
-            buffer = "r".getBytes();
+
+            // envoi "p" pour dire "c'est bon j'ai bien mon paquetInit envoie les dates", le serv passe au premier paquet, "p" sert juste pour le paquetInit
+            // si le serv n'a pas recu le "p" il va envoyer "p" au client, il faudra analyser la 1ère lettre (p ou date ?) et répondre en conséquence (p ou a)
+            // envoi "a" lorque paquet reçu, le serveur attends de recevoir "r" pour passer au paquet suivant
+            // si le serv ne recoit pas le "a" (donc recoit un "r" à un moment) il va envoyer le même paquet
+            // dans ce cas il faut regarder le premier caractère et savoir si on a déjà le paquet ou pas
+            // on positionnera un index pour se referrer à la première date du dernier paquet, histoire de s'y référer plus vite
+            // envoi "r" pour demander au serveur où il en est, cad toutes les 5sec, le serveur reagit à ce moment-là
+
+            // on a reçu le paquet init
+            buffer = "p".getBytes();
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
 
-            buffer = "a".getBytes();
-            dSocket.send(new DatagramPacket(buffer, buffer.length,
-                    iPserveur, portServeur));
-
-            dSocket.send(new DatagramPacket(buffer, buffer.length,
-                    iPserveur, portServeur));
-
-            dSocket.setSoTimeout(4000); // Temps d'attente réception max en millisecondes
-            dSocket.receive(new DatagramPacket(buffer, buffer.length));
-
+            do {
+                byte[] bufferTest = "".getBytes();
+                dSocket.setSoTimeout(5000);
+                dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
+                testPremierOk = new String(bufferTest);
+                charPremierOk = testPremierOk.charAt(0);
+                envoiOkPremier();
+            } while (charPremierOk == 'p');
 
 
-            // Récupération des temp
-            System.out.println("Recup temp");
-            recupTemp();
-
-            while (!verifTemp(temperatures)) {
-                envoiErreur();
-                recupTemp();
-            }
-
+            // Ajout de la temp à la ArrayList
+            String[] aAjouter = decoupageRep(testPremierOk);
+            for (int i = 0; i < aAjouter.length; i++)
+                temperatures.add(aAjouter[i]);
             envoiOk();
+            envoiRetry();
+
+            // Récupération des temp restantes
+            System.out.println("Recup temp");
+            recupTempEnveloppe();
+
             dSocket.close();
             return temperatures;
-
 
         } catch (SocketException e) {
             System.out.println("erreur socket");
@@ -111,7 +124,7 @@ public class OutilsCommunication {
 
 
     public static String[] decoupageRep(String rep) {
-            return rep.split("\\|");
+        return rep.split("\\|");
     }
 
 
@@ -126,7 +139,7 @@ public class OutilsCommunication {
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
 
-            dSocket.setSoTimeout(4000); // Temps d'attente réception max en millisecondes
+            dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
             System.out.println("recu : " + new String(buffer));
 
@@ -142,16 +155,15 @@ public class OutilsCommunication {
     }
 
 
-    public static void envoiErreur() throws ErreurConnexion {
+    public static void envoiRetry() throws ErreurConnexion {
+
         try {
             byte[] buffer = "r".getBytes();
             int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
-
-            System.out.println("Envoi Erreur");
+            System.out.println("Envoi Retry");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
-
         } catch (SocketException e) {
             System.out.println("erreur socket");
             throw new ErreurConnexion();
@@ -159,6 +171,8 @@ public class OutilsCommunication {
             System.out.println("erreur connexion");
             throw new ErreurConnexion();
         }
+
+
     }
 
 
@@ -182,19 +196,16 @@ public class OutilsCommunication {
     }
 
 
-    public static void recupTemp() throws ErreurConnexion {
+    public static void envoiOkPremier() throws ErreurConnexion {
+
         try {
-            byte[] buffer = "".getBytes();
-            for (int i = 0; i < nbPaquets; i++) {
-                dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
-                dSocket.receive(new DatagramPacket(buffer, buffer.length));
-                System.out.println("Recu : " + new String(buffer));
-                temperatures.add(new String(buffer));
-                envoiOk();
-            }
-        } catch (SocketTimeoutException e) {
-            envoiErreur();
-            recupTemp();
+            byte[] buffer = "p".getBytes();
+            int portServeur = 65230;
+            InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
+            System.out.println("Envoi Ok");
+            dSocket.send(new DatagramPacket(buffer, buffer.length,
+                    iPserveur, portServeur));
+
         } catch (SocketException e) {
             System.out.println("erreur socket");
             throw new ErreurConnexion();
@@ -205,18 +216,52 @@ public class OutilsCommunication {
     }
 
 
-    public static boolean verifTemp(ArrayList<String> temp) {
-        String[] tabString = new String[temp.size()];
-        for (int i = 0; i < temp.size(); i++) {
-            tabString[i] = temp.get(i);
+    public static void recupTempEnveloppe() throws ErreurConnexion {
+
+        byte[] buffer = "".getBytes();
+        for (int i = 0; i < nbPaquets - 1; i++) {
+            recupTemp(buffer);
+        }
+    }
+
+    public static void recupTemp(byte[] buffer) throws ErreurConnexion {
+        try {
+            dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
+            dSocket.receive(new DatagramPacket(buffer, buffer.length));
+        } catch (SocketTimeoutException e) {
+            envoiRetry();
+            recupTemp(buffer);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Recu : " + new String(buffer));
+        if(verifPaquet(new String(buffer))) {
+            String[] aAjouter = decoupageRep(new String(buffer));
+            for (int i = 0; i < aAjouter.length; i++)
+                temperatures.add(aAjouter[i]);
+            envoiOk();
+        } else {
+            envoiRetry();
+            recupTemp(buffer);
         }
 
-        /*
-        if
+    }
 
-         */
 
-        // bouchon
+
+    public static boolean verifPaquet(String temp) {
+        // doit vérifier que la première date du paquet :
+        // si c'est la même que la première date du dernier paquet reçu, on retourne false
+        // ou une nouvelle date, auquel cas on return true
+        // on fait ce test pour savoir si un paquet ne nous a pas été envoyé en double
+
+        String aTester = decoupageRep(temp)[0];
+        if (aTester.equals(temperatures.get(indexFirstDateLastPaquet)))
+            return false;
+
         return true;
     }
+
 }
