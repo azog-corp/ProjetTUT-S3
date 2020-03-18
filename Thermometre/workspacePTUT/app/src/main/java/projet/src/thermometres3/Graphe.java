@@ -317,7 +317,9 @@ public class Graphe extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        t.cancel(true);
+        if (t != null) {
+            t.cancel(true);
+        }
         super.onDestroy();
     }
 

@@ -27,21 +27,16 @@ public class OutilsCommunication {
 
     public static ArrayList<String> comRasp(String date) throws ErreurConnexion {
         try {
-
             byte[] buffer;
+            byte[] bufferTest;
             temperatures = new ArrayList<String>();
 
             int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
             dSocket = new DatagramSocket(portServeur);
-
+            dSocket.setSoTimeout(5000);
             System.out.println("Premier envoi");
-
             String stringPaquetInit = premierEnvoi(date);
-            String[] tabPaquetInit = decoupageRep(stringPaquetInit);
-            nbPaquets = Integer.parseInt(tabPaquetInit[1]);
-
-
             // envoi "p" pour dire "c'est bon j'ai bien mon paquetInit envoie les dates", le serv passe au premier paquet, "p" sert juste pour le paquetInit
             // si le serv n'a pas recu le "p" il va envoyer "p" au client, il faudra analyser la 1ère lettre (p ou date ?) et répondre en conséquence (p ou a)
             // envoi "a" lorque paquet reçu, le serveur attends de recevoir "r" pour passer au paquet suivant
@@ -50,36 +45,49 @@ public class OutilsCommunication {
             // on positionnera un index pour se referrer à la première date du dernier paquet, histoire de s'y référer plus vite
             // envoi "r" pour demander au serveur où il en est, cad toutes les 5sec, le serveur reagit à ce moment-là
 
-            // on a reçu le paquet init
-            buffer = "p".getBytes();
-            dSocket.send(new DatagramPacket(buffer, buffer.length,
-                    iPserveur, portServeur));
+            dSocket.setSoTimeout(5000);
+            do {
+                envoiRetry();
+                try {
+                    bufferTest = new byte[9999];
+                    System.out.println("receive : p ");
+                    dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
+                    testPremierOk = new String(bufferTest);
+                    System.out.println("recu : p " + new String(bufferTest));
+                    charPremierOk = testPremierOk.charAt(0);
+                    envoiOkPremier();
+                } catch(SocketException e) {
+                    System.out.println("Erreur reception p");
+                } catch (IOException e) {
+                    System.out.println("erreur connexion p");
+                }
+            } while (charPremierOk != 'p');
+            System.out.println("SORTI P");
 
             do {
-                byte[] bufferTest = "".getBytes();
-                dSocket.setSoTimeout(5000);
-                dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
-                testPremierOk = new String(bufferTest);
-                charPremierOk = testPremierOk.charAt(0);
-                envoiOkPremier();
+                envoiRetry();
+                try {
+                    bufferTest = new byte[9999];
+                    dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
+                    testPremierOk = new String(bufferTest);
+                    System.out.println("recu : " + new String(bufferTest));
+                    charPremierOk = testPremierOk.charAt(0);
+                    if(charPremierOk == 'p') {
+                        System.out.println("RENVOI P");
+                        envoiOkPremier();
+                    }
+                } catch(SocketException e) {
+                    System.out.println("Erreur reception 2");
+                } catch (IOException e) {
+                    System.out.println("erreur connexion 2");
+                    throw new ErreurConnexion();
+                }
             } while (charPremierOk == 'p');
-
-
-            // Ajout de la temp à la ArrayList
-            String[] aAjouter = decoupageRep(testPremierOk);
-            for (int i = 0; i < aAjouter.length; i++)
-                temperatures.add(aAjouter[i]);
-            indexFirstDateLastPaquet = 0;
-            envoiOk();
-            envoiRetry();
-
-            // Récupération des temp restantes
+            // Récupération des temps
             System.out.println("Recup temp");
             recupTempEnveloppe();
-
             dSocket.close();
             return temperatures;
-
         } catch (SocketException e) {
             System.out.println("erreur socket");
             throw new ErreurConnexion();
@@ -131,28 +139,30 @@ public class OutilsCommunication {
 
 
     public static String premierEnvoi(String date) throws ErreurConnexion {
-        try {
-            byte[] buffer = ("i|" + date).getBytes();
-            int portServeur = 65230;
-            InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
+        boolean sortFDP = false;
+        while(!sortFDP) { // todo faire 3 essai
+            try {
+                byte[] buffer = ("i|" + date).getBytes();
+                int portServeur = 65230;
+                InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
 
-            System.out.println("Envoi");
-            dSocket.send(new DatagramPacket(buffer, buffer.length,
-                    iPserveur, portServeur));
+                System.out.println("Envoi");
+                dSocket.send(new DatagramPacket(buffer, buffer.length,
+                        iPserveur, portServeur));
 
-            dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
-            dSocket.receive(new DatagramPacket(buffer, buffer.length));
-            System.out.println("recu : " + new String(buffer));
-
-            return new String(buffer);
-
-        } catch (SocketException e) {
-            System.out.println("erreur socket");
-            throw new ErreurConnexion();
-        } catch (IOException e) {
-            System.out.println("erreur connexion");
-            throw new ErreurConnexion();
+                dSocket.setSoTimeout(10000); // Temps d'attente réception max en millisecondes
+                dSocket.receive(new DatagramPacket(buffer, buffer.length));
+                System.out.println("recu : " + new String(buffer));
+                sortFDP = true;
+                return new String(buffer);
+            } catch (SocketException e) {
+                System.out.println("erreur socket : Premier envoi");
+                throw new ErreurConnexion();
+            } catch (IOException e) {
+                System.out.println("erreur connexion : Premier envoi");
+            }
         }
+        return null;//stub
     }
 
 
@@ -166,10 +176,10 @@ public class OutilsCommunication {
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
         } catch (SocketException e) {
-            System.out.println("erreur socket");
+            System.out.println("erreur socket RETRY");
             throw new ErreurConnexion();
         } catch (IOException e) {
-            System.out.println("erreur connexion");
+            System.out.println("erreur connexion RETRY");
             throw new ErreurConnexion();
         }
 
@@ -218,7 +228,12 @@ public class OutilsCommunication {
 
 
     public static void recupTempEnveloppe() throws ErreurConnexion {
-
+        // Ajout de la temp à la ArrayList
+        String[] aAjouter = decoupageRep(testPremierOk);
+        for (int i = 0; i < aAjouter.length; i++)
+            temperatures.add(aAjouter[i]);
+        indexFirstDateLastPaquet = 0;
+        envoiOk();
         byte[] buffer = "".getBytes();
         for (int i = 0; i < nbPaquets - 1; i++) {
             recupTemp(buffer);
@@ -227,6 +242,7 @@ public class OutilsCommunication {
 
     public static void recupTemp(byte[] buffer) throws ErreurConnexion {
         try {
+            envoiRetry();
             dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
         } catch (SocketTimeoutException e) {

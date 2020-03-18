@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import projet.src.thermometres3.Erreur.ErreurConnexion;
 
 public class Communication extends AsyncTask<Context,Integer,Void> {
+    boolean acrasher;
 
     @Override
     protected Void doInBackground(Context... myContext) {
@@ -19,5 +20,11 @@ public class Communication extends AsyncTask<Context,Integer,Void> {
             System.err.println("Erreur connexion");
         }
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        //afficher msg erreur
+        super.onPostExecute(aVoid);
     }
 }
