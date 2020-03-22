@@ -95,18 +95,15 @@ public class Serveur {
 	private static void affichageEtat() {
 		for(int i =0; i <listeClient.size(); i++) {
 			System.out.println("Client : numero :" + i + listeClient.get(i).getAdresseIp()
-					+ " Etat Temp traiter :" +listeClient.get(i).isTempTraiter()
-					+ " Etat Fini :" + listeClient.get(i).isFini());
+					+ " Etat Temp traiter :" +listeClient.get(i).isTempTraiter());
 		}
 	}
 
 	private static void verifierPretAEnvoyer(int index) throws IOException{
 		System.out.println("Verification pret a envoyer");
-		if(listeClient.get(index).isTempTraiter()
-				&& !listeClient.get(index).isFini()) {
+		if(listeClient.get(index).isTempTraiter()) {
 			System.out.println("Pret a envoyer :" + listeClient.get(index).getAdresseIp());
 			envoyer(listeClient.get(index),listeClient.get(index).getAdresseIp());
-			verifierFini(index);
 		}		
 	}
 
@@ -117,14 +114,6 @@ public class Serveur {
 				adresseIp, port));
 	}
 
-	private static void verifierFini(int index) {
-		System.out.println("Verification fini");
-		if(listeClient.get(index).isFini()) {
-			System.out.println("Client fini :" + listeClient.get(index).getAdresseIp());
-			listeClient.remove(index);
-		}
-	}
-
 	private static void traiterClient() {
 		System.out.println("Creation thread");
 		new Service("Thread");
@@ -132,11 +121,25 @@ public class Serveur {
 
 
 	public static void inscription() {
+		boolean ajouter = true;
 		System.out.println("Message recu :" + message);
 		String[] decomp = message.split("\\|");
 		System.out.println("Message apres decomposition :" + decomp[1]);
-		listeClient.add(new Client(paquet.getAddress(),decomp[1]));
-		System.out.println("AJOUT CLIENT TAILLE ARRAYLIST :" +listeClient.size() );
+		for(int i = 0; i < listeClient.size();i++) {
+			if(listeClient.get(i).getAdresseIp().equals(paquet.getAddress())) {
+				if(listeClient.get(i).envoiFini()) {
+					System.out.println("Client oublié :" + listeClient.get(i).getAdresseIp());
+					listeClient.remove(i);
+				} else {
+					ajouter = false;
+				}
+				
+			}
+		}
+		if(ajouter) {
+			listeClient.add(new Client(paquet.getAddress(),decomp[1]));
+			System.out.println("AJOUT CLIENT TAILLE ARRAYLIST :" +listeClient.size() );
+		}
 		ack(paquet.getAddress());
 	}
 
@@ -146,7 +149,7 @@ public class Serveur {
 			socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length,
 					adresseIp, port));
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Erreu ACK");
 		}
 	}
 
@@ -156,7 +159,8 @@ public class Serveur {
 		listeClient.get(index).paquetOk();
 		if(listeClient.get(index).envoiFini()) {
 			System.out.println("TOUS LES PAQUETS ACK");
-			listeClient.get(index).setFini(true);	
+			System.out.println("Client fini :" + listeClient.get(index).getAdresseIp());
+			listeClient.remove(index);
 		}
 
 	}

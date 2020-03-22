@@ -71,7 +71,7 @@ public class Service extends Thread{
 			Date date = conversion(client.getMessage()); //Récupère la date
 			ArrayList<String> tempValide = lectureFichier(date); //Récupère toutes les lignes ultérieure a la date demandée par le client
 			client.setPaquets(preparerRqt(tempValide));// Transforme toutes les lignes en paquets préparés
-			System.out.println("NB Paquets" + client.getPaquets().size());
+			System.out.println("NB Paquets " + client.getPaquets().size());
 			client.setTempTraiter(true); //Classe le client comme traité
 			clients.set(index, client); // Modifie le client dans la liste
 		}catch(ParseException E) {

@@ -12,8 +12,6 @@ public class Client {
 	 true = Temp traiter donc les paquets sont préparés
 	 false = Traitement non fini*/
 	boolean tempTraiter;
-	/**Lorsque qu'il n'y a plus de paquet a envoyer on considere aue le client est fini et qu'il faut le supprimer */
-	boolean fini;
 	/** Liste des paquets a envoyés */
 	ArrayList<String> paquets = new ArrayList<String>();
 	
@@ -82,16 +80,6 @@ public class Client {
 	/**Setter attribut message */
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	/** Getter attribut fini*/
-	public boolean isFini() {
-		return fini;
-	}
-
-	/** Setter attribut fini */
-	public void setFini(boolean fini) {
-		this.fini = fini;
 	}
 
 	public boolean getNbPaquetRecu() {
