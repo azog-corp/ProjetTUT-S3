@@ -65,7 +65,14 @@ public class Service extends Thread{
 			}
 		}
 	}
-
+	
+	/**
+	 * Recupere la date envoye par le client
+	 * Puis lit le fichier recupere les dates apres la date du client et prepare des paquets 
+	 * contenant chacun au maximum 2000lignes
+	 * @param index index du client dans la liste
+	 * @param client Client a traiter
+	 */
 	public void traitement(int index,Client client) {
 		try {
 			Date date = conversion(client.getMessage()); //RÃ©cupÃ¨re la date
@@ -77,22 +84,27 @@ public class Service extends Thread{
 		}catch(ParseException E) {
 		}
 	}
-
+	/**
+	 * Lit le fichier recupere les dates posterieur a la date du client
+	 * @param date Date envoyé par le client
+	 * @return une ArrayList<String> contenant toutes les dates
+	 * @throws ParseException
+	 */
 	public ArrayList<String> lectureFichier(Date date) throws ParseException{
 		try {
-			String ligne;
+			String ligne; //ligne actuelle
 			ArrayList<String> temp = new ArrayList<String>();
 			BufferedReader fic = new BufferedReader(new FileReader(new File("projet/temperatures.txt")));
-			while((ligne = fic.readLine()) != null) {
-				if(date.compareTo(conversion(ligne)) < 0) {
+			while((ligne = fic.readLine()) != null) { //lit toutes les lignes du fichier
+				if(date.compareTo(conversion(ligne)) < 0) { // si elle est plus recente que celle demandée par le client l'ajoute a la liste
 					temp.add(ligne);
 				}
 			}
-			return temp;
+			return temp; //retourne la liste
 		}catch(IOException e) {
 			System.out.println(e);
 		}
-		return null;
+		return null;//stub
 	}
 
 	/**
@@ -107,6 +119,11 @@ public class Service extends Thread{
 		return dateFormate;
 	}
 	
+	/**
+	 * Prepare les paquets a envoye
+	 * @param temperatures la liste contenant toutes les lignes de temperature
+	 * @return une liste de paquet
+	 */
 	public static ArrayList<String> preparerRqt(ArrayList<String> temperatures) {
 		ArrayList<String> paquets = new ArrayList<String>();
 		StringBuilder chaine = new StringBuilder();
@@ -116,14 +133,14 @@ public class Service extends Thread{
 			} else {
 				chaine.append(temperatures.get(i)+"|");
 			}
-			if(i%1999 == 0 && i!= 0) {
+			if(i%1999 == 0 && i!= 0) { // si le paquet contient 1999 ligne ajoute une derniere ligne puis l'ajoute a la liste des paquets
 				System.out.println("Nouveau paquet" + i);
 				chaine.append(temperatures.get(i));
 				paquets.add(chaine.toString());
 				chaine = new StringBuilder();
 			}
 		}
-		if(!chaine.toString().equals("")) {
+		if(!chaine.toString().equals("")) { //s'il reste des lignes ajoute un dernier paquet
 			System.out.println((chaine.toString()));
 			paquets.add(chaine.toString());
 		}

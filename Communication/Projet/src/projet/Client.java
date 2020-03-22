@@ -81,11 +81,19 @@ public class Client {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
+	
+	/**
+	 * Getter attribut nbPaquetRecu
+	 * @return
+	 */
 	public boolean getNbPaquetRecu() {
 		return nbPaquetRecu;
 	}
 
+	/**
+	 * Setter nbPaquetRecu
+	 * @param nbPaquetRecu boolean etat a definir
+	 */
 	public void setNbPaquetRecu(boolean nbPaquetRecu) {
 		this.nbPaquetRecu = nbPaquetRecu;
 	}

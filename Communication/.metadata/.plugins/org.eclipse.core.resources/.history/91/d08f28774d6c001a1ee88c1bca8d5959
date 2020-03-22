@@ -1,0 +1,141 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package projet;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author pierremarie.combalbe
+ */
+public class Service extends Thread{	
+
+	/** Liste des clients */
+	static ArrayList<Client> clients;
+
+	/**
+	 * format prédéfinis pour les Dates
+	 */
+	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+	/**Constructeur Service
+	* Initialise un nouveau Thread Service et le démarre 
+	*/
+	public Service(String name){
+		super(name);
+		System.out.println("statut du thread " + name + " = " +this.getState());
+		this.start();
+		System.out.println("statut du thread " + name + " = " +this.getState());
+
+	}
+
+
+	/**
+	 * Commandes a executer a l'execution du Thread
+	 */
+	public void run(){
+		System.out.println("RUN");
+		while(true) { // Boucle infinie
+			clients = Serveur.getListeClient(); //Récupère la liste des clients
+			for(int i = 0; i < clients.size(); i++) { //pour tous les clients
+				try {
+					if(!clients.get(i).isTempTraiter()) { //Traite leur requete si tempTraiter == false
+						traitement(i,clients.get(i)); //Traite le client
+						Serveur.setClient(i,clients.get(i)); //Met a jour le client dans le serveur
+					}
+				}catch (NullPointerException e) {
+				
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Recupere la date envoye par le client
+	 * Puis lit le fichier recupere les dates anterieures
+	 * @param index index du client dans la liste
+	 * @param client Client 
+	 */
+	public void traitement(int index,Client client) {
+		try {
+			Date date = conversion(client.getMessage()); //Récupère la date
+			ArrayList<String> tempValide = lectureFichier(date); //Récupère toutes les lignes ultérieure a la date demandée par le client
+			client.setPaquets(preparerRqt(tempValide));// Transforme toutes les lignes en paquets préparés
+			System.out.println("NB Paquets " + client.getPaquets().size());
+			client.setTempTraiter(true); //Classe le client comme traité
+			clients.set(index, client); // Modifie le client dans la liste
+		}catch(ParseException E) {
+		}
+	}
+
+	public ArrayList<String> lectureFichier(Date date) throws ParseException{
+		try {
+			String ligne;
+			ArrayList<String> temp = new ArrayList<String>();
+			BufferedReader fic = new BufferedReader(new FileReader(new File("projet/temperatures.txt")));
+			while((ligne = fic.readLine()) != null) {
+				if(date.compareTo(conversion(ligne)) < 0) {
+					temp.add(ligne);
+				}
+			}
+			return temp;
+		}catch(IOException e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	/**
+	 * Convertie un date en String Ã  une date en Date
+	 * @param date
+	 * @return la date formate avec le format dd/MM/yyyy hh:mm:ss
+	 * @throws ErreurDate si le format de la date n'est pas valide
+	 */
+	public static Date conversion(String date) throws ParseException {
+		Date dateFormate;
+		dateFormate  = format.parse(date);
+		return dateFormate;
+	}
+	
+	public static ArrayList<String> preparerRqt(ArrayList<String> temperatures) {
+		ArrayList<String> paquets = new ArrayList<String>();
+		StringBuilder chaine = new StringBuilder();
+		for(int i =0; i < temperatures.size(); i++) {
+			if(i == temperatures.size()-1) {
+				chaine.append(temperatures.get(i));
+			} else {
+				chaine.append(temperatures.get(i)+"|");
+			}
+			if(i%1999 == 0 && i!= 0) {
+				System.out.println("Nouveau paquet" + i);
+				chaine.append(temperatures.get(i));
+				paquets.add(chaine.toString());
+				chaine = new StringBuilder();
+			}
+		}
+		if(!chaine.toString().equals("")) {
+			System.out.println((chaine.toString()));
+			paquets.add(chaine.toString());
+		}
+		
+		return paquets;
+	}	
+
+}
+
