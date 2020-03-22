@@ -139,8 +139,15 @@ public class OutilsCommunication {
 
 
     public static String premierEnvoi(String date) throws ErreurConnexion {
-        boolean sortFDP = false;
-        while(!sortFDP) { // todo faire 3 essai
+        boolean sort = false;
+        int essais = 0;
+        while(!sort) {
+            // 3 essais
+            essais++;
+            if (essais == 3) {
+                sort = true;
+            }
+
             try {
                 byte[] buffer = ("i|" + date).getBytes();
                 int portServeur = 65230;
@@ -153,7 +160,6 @@ public class OutilsCommunication {
                 dSocket.setSoTimeout(10000); // Temps d'attente réception max en millisecondes
                 dSocket.receive(new DatagramPacket(buffer, buffer.length));
                 System.out.println("recu : " + new String(buffer));
-                sortFDP = true;
                 return new String(buffer);
             } catch (SocketException e) {
                 System.out.println("erreur socket : Premier envoi");
@@ -161,6 +167,8 @@ public class OutilsCommunication {
             } catch (IOException e) {
                 System.out.println("erreur connexion : Premier envoi");
             }
+
+
         }
         return null;//stub
     }

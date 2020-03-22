@@ -47,7 +47,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         //mettre a jour les temperature depuis derniere connexion
         String debutCom = getDateActuelle();
         try {
-            DatagramSocket dSocket = new DatagramSocket(4523);//todo modifier pas verifier
+            DatagramSocket dSocket = new DatagramSocket(65230);//todo modifier pas verifier
             while(true) {
                 if(getDateActuelle().equals(ajout30sec(debutCom))) {
                     System.out.println("Continu");
