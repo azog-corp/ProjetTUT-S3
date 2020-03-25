@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/partSupprimer"
+        android:id="@+id/toutSupprimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -30,36 +30,37 @@
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:onClick="supprimerPartie"/>
+        android:onClick="toutSupprimer"/>
 
     <!-- Bouton graphe -->
+
     <Button
 
-        android:id="@+id/toutSupprimer"
+        android:id="@+id/partSupprimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:background="@drawable/btn_arrond"
         android:maxHeight="100dp"
         android:minHeight="75dp"
+        android:onClick="supprimerPartie"
         android:text="Supprimer"
         android:textColor="@color/blanc"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:onClick="toutSupprimer"/>
+        app:layout_constraintTop_toBottomOf="@+id/borneSUP" />
 
     <TextView
         android:id="@+id/txtborneINF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Borne inferieure"
         android:textAlignment="center"
         android:textColor="@color/couleurAppli"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/partSupprimer"
-        android:layout_marginTop="50dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/toutSupprimer"
+        tools:layout_editor_absoluteX="16dp" />
 
     <EditText
         android:id="@+id/borneINF"

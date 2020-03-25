@@ -67,43 +67,11 @@ public class Menu extends AppCompatActivity {
     }
 
     /**
-     * Methode qui ouvre une boite de dialogue demandant a l'utilisateur
-     * si celui ci souhaite supprimer les temperatures de l'application
+     * Ouvre la page supprimer
      */
     private void openDelete() {
-        /* Affichage de la boite de dialogue */
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Etes vous sûr ?")
-                .setContentText("Vous ne pourrez pas recupérer les températures après suppression")
-                .setConfirmText("Supprimer")
-                // definition des actions apres appui sur le bouton pour de confirmation
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        /* Supprime les temperatures */
-                        OutilsFichier.supprimerTemp(getApplicationContext());
-                        TestRechercheTemperature.testSupprimerTemp(getApplicationContext());
-                        /* Affiche message pour confirmer suppression */
-                        new SweetAlertDialog(Menu.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Confirmation")
-                                .setContentText("Température supprimées")
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        sDialog.dismissWithAnimation(); // ferme la boite de dialogue
-                                    }
-                                }).show();
-                                sDialog.dismissWithAnimation();
-                    }
-                })
-                .setCancelButton("Annuler", new SweetAlertDialog.OnSweetClickListener() { // definition des actions apres appui sur le bouton pour annuler
-                    /* Fermeture de la boite de dialog */
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
-                    }
-                })
-                .show();
+        Intent intent = new Intent(this, Supprimer.class);
+        startActivity(intent);
     }
 
     /**
