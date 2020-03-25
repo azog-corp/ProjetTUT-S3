@@ -35,7 +35,6 @@ public class OutilsCommunication {
             int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
             dSocket = new DatagramSocket(portServeur);
-            dSocket.setSoTimeout(5000);
             System.out.println("Premier envoi");
             String stringPaquetInit = premierEnvoi(date);
 
@@ -51,7 +50,7 @@ public class OutilsCommunication {
             // on positionnera un index pour se referrer à la première date du dernier paquet, histoire de s'y référer plus vite
             // envoi "r" pour demander au serveur où il en est, cad toutes les 5sec, le serveur reagit à ce moment-là
 
-            dSocket.setSoTimeout(5000);
+            dSocket.setSoTimeout(2000);
             do {
                 envoiRetry();
                 try {
@@ -150,7 +149,7 @@ public class OutilsCommunication {
         while(!sort) {
             // 3 essais
             essais++;
-            if (essais == 3) {
+            if (essais == 10) {
                 sort = true;
             }
 
@@ -163,7 +162,7 @@ public class OutilsCommunication {
                 dSocket.send(new DatagramPacket(buffer, buffer.length,
                         iPserveur, portServeur));
 
-                dSocket.setSoTimeout(10000); // Temps d'attente réception max en millisecondes
+                dSocket.setSoTimeout(3000); // Temps d'attente réception max en millisecondes
                 dSocket.receive(new DatagramPacket(buffer, buffer.length));
                 System.out.println("recu : " + new String(buffer));
                 return new String(buffer);
