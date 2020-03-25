@@ -26,6 +26,7 @@ public class OutilsCommunication {
 
 
     public static ArrayList<String> comRasp(String date) throws ErreurConnexion {
+        System.out.println("COMRASP");
         try {
             byte[] buffer;
             byte[] bufferTest;

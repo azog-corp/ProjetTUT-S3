@@ -19,23 +19,19 @@ public class OutilsFichier {
 
     private final static String NOM_FICHIER = "fichierTemp.txt";
 
-    public static void ecrireFinFichier(Context myContext, ArrayList<String> tempAEcrire) {
+    public static void ecrireFinFichier(Context myContext, ArrayList<String> paquets) {
         System.out.println("ECRITURE");
-        for(int i = 0; i < tempAEcrire.size();i++) {
             // Positionnement en fin de fichier pour ne pas écraser les températures déjà présentes
             try (BufferedWriter fichier = new BufferedWriter(new FileWriter(
                     myContext.getFilesDir() + "/fichierTemp.txt", true))) {
-                String[] temp = OutilsCommunication.decoupageRep(tempAEcrire.get(i));
-                for(int j = 0; j < temp.length-1; j++) {
-                    System.out.println(temp[j]);
-                    fichier.write(temp[j] + "\n");
+                for(int j = 0; j < paquets.size(); j++) {
+                    System.out.println("ecri" +paquets.get(j));
+                    fichier.write(paquets.get(j) + "\n");
                 }
             } catch (IOException e) {
                 System.err.println("ERREUR ECRITURE FIN FICHIER");
                 e.printStackTrace();
             }
-        }
-
     }
 
 

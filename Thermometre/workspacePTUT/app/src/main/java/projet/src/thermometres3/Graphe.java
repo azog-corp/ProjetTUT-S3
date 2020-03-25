@@ -166,6 +166,7 @@ public class Graphe extends AppCompatActivity {
             //Verification inutile des dates celles si ont ete ecrite par nous
             //Si des temperatures existes
             //intervalleOk(sDebut,sFin); TODO REMETTRE ENLEVER SECU 2 JOURS
+            System.out.println("TAILLE EDIT TEMP :" + RechercheTemperature.getListTemp().size());
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
             } else { //sinon message erreur
