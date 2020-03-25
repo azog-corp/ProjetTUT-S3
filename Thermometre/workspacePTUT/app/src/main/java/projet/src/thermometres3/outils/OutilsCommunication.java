@@ -37,6 +37,10 @@ public class OutilsCommunication {
             dSocket.setSoTimeout(5000);
             System.out.println("Premier envoi");
             String stringPaquetInit = premierEnvoi(date);
+
+            if (stringPaquetInit.equals("e")) {
+                return temperatures; // erreur, on renvoie la liste vide
+            }
             // envoi "p" pour dire "c'est bon j'ai bien mon paquetInit envoie les dates", le serv passe au premier paquet, "p" sert juste pour le paquetInit
             // si le serv n'a pas recu le "p" il va envoyer "p" au client, il faudra analyser la 1ère lettre (p ou date ?) et répondre en conséquence (p ou a)
             // envoi "a" lorque paquet reçu, le serveur attends de recevoir "r" pour passer au paquet suivant
@@ -153,7 +157,7 @@ public class OutilsCommunication {
                 int portServeur = 65230;
                 InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
 
-                System.out.println("Envoi");
+                System.out.println("Envoi " + essais);
                 dSocket.send(new DatagramPacket(buffer, buffer.length,
                         iPserveur, portServeur));
 
@@ -167,10 +171,8 @@ public class OutilsCommunication {
             } catch (IOException e) {
                 System.out.println("erreur connexion : Premier envoi");
             }
-
-
         }
-        throw new ErreurConnexion();
+        return "e"; // erreur
     }
 
 
