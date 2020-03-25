@@ -3,6 +3,9 @@ package projet.src.thermometres3.outils;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import java.net.DatagramSocket;
+import java.net.SocketException;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurConnexion;
 
@@ -12,13 +15,16 @@ public class Communication extends AsyncTask<Context,Integer,Context> {
     @Override
     protected Context doInBackground(Context... myContext) {
         System.out.println("RUN");
-        String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
         try {
-            OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
+            DatagramSocket dSocket = new DatagramSocket(65230);
+             String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
+            OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
             OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
             this.cancel(true);
         } catch(ErreurConnexion e) {
             System.err.println("Erreur connexion");
+        } catch (SocketException e) {
+            e.printStackTrace();
         }
         return null;
     }
