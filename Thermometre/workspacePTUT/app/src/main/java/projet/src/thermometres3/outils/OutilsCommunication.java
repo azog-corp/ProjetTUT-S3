@@ -170,7 +170,7 @@ public class OutilsCommunication {
 
 
         }
-        return null;//stub
+        throw new ErreurConnexion();
     }
 
 
