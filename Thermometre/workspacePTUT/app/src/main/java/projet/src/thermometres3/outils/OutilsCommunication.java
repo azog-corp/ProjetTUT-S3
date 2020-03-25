@@ -70,6 +70,7 @@ public class OutilsCommunication {
             } while (charPremierOk != 'p');
             System.out.println("SORTI P");
 
+            // verifier si = 0 si oui arreter /!\ si le serveur nme recoit pas la deuxieme partie alors que il ya 0 paquets envoyer f si possible pour le supprimer
             do {
                 envoiRetry();
                 try {
@@ -86,7 +87,6 @@ public class OutilsCommunication {
                     System.out.println("Erreur reception 2");
                 } catch (IOException e) {
                     System.out.println("erreur connexion 2");
-                    throw new ErreurConnexion();
                 }
             } while (charPremierOk == 'p');
             // Récupération des temps
