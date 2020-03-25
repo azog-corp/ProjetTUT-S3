@@ -6,11 +6,11 @@ import android.os.AsyncTask;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import projet.src.thermometres3.Erreur.ErreurConnexion;
 
-public class Communication extends AsyncTask<Context,Integer,Void> {
+public class Communication extends AsyncTask<Context,Integer,Context> {
     boolean acrasher;
 
     @Override
-    protected Void doInBackground(Context... myContext) {
+    protected Context doInBackground(Context... myContext) {
         System.out.println("RUN");
         String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
         try {
@@ -25,9 +25,10 @@ public class Communication extends AsyncTask<Context,Integer,Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    protected void onPostExecute(Context myContext) {
         //afficher msg erreur
-        super.onPostExecute(aVoid);
+        super.onPostExecute(myContext);
+        messageErreurReception(myContext);
     }
 
     /**
