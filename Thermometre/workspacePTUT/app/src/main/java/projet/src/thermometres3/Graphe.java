@@ -189,7 +189,6 @@ public class Graphe extends AppCompatActivity {
         btnLast.setVisibility(View.INVISIBLE);
         btnAfficher.setVisibility(View.INVISIBLE);
         btnActualisationContinu.setVisibility(View.INVISIBLE);
-        lastCo();
         t = new ThreadActualisation();
         t.graphe = findViewById(R.id.graphique);
         t.dateFin = findViewById(R.id.dateFin);

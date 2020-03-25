@@ -20,6 +20,7 @@ public class Communication extends AsyncTask<Context,Integer,Context> {
              String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
             OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
             OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
+            dSocket.close();
             this.cancel(true);
         } catch(ErreurConnexion e) {
             System.err.println("Erreur connexion");

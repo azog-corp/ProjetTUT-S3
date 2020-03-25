@@ -178,19 +178,12 @@ public class Serveur {
 		System.out.println("Message apres decomposition :" + decomp[1]);
 		for(int i = 0; i < listeClient.size();i++) { //on verifie que le client n'existe pas deja dans la liste
 			if(listeClient.get(i).getAdresseIp().equals(paquet.getAddress())) { // si le client existe
-				if(listeClient.get(i).envoiFini()) { //mais qu'il est fini
-					System.out.println("Client oublié :" + listeClient.get(i).getAdresseIp());
-					listeClient.remove(i); //on le supprime c'est un client oublie pour lequel le dernier ack n'est pas arrive
-				} else { //sinon le client est deja en traitement
-					ajouter = false;
-				}
-				
+				System.out.println("Client oublié :" + listeClient.get(i).getAdresseIp());
+				listeClient.remove(i); //on le supprime c'est un client oublie pour lequel le dernier ack n'est pas arrive
 			}
 		}
-		if(ajouter) { //S'il faut bien l'ajouter alors le programme l'ajoute
-			listeClient.add(new Client(paquet.getAddress(),decomp[1]));
-			System.out.println("AJOUT CLIENT TAILLE ARRAYLIST :" +listeClient.size() );
-		}
+		listeClient.add(new Client(paquet.getAddress(),decomp[1]));
+		System.out.println("AJOUT CLIENT TAILLE ARRAYLIST :" +listeClient.size() );
 		ack(paquet.getAddress()); // renvoi un ack au client pour confirmer l'inscription
 	}
 	

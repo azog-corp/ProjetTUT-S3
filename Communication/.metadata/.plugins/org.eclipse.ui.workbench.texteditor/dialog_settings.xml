@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="compteur"/>
+		<item key="selection" value="acquittement"/>
 		<list key="findhistory">
+			<item value="acquittement"/>
 			<item value="compteur"/>
 			<item value="traiterClient"/>
 			<item value="comptThread"/>
