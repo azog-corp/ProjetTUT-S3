@@ -19,7 +19,6 @@ public class Communication extends AsyncTask<Context,Integer,Context> {
             this.cancel(true);
         } catch(ErreurConnexion e) {
             System.err.println("Erreur connexion");
-            // messageErreurReception(getApplicationContext()); todo corriger cette merde
         }
         return null;
     }
