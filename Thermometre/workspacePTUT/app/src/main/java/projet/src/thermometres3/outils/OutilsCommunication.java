@@ -39,6 +39,7 @@ public class OutilsCommunication {
             String stringPaquetInit = premierEnvoi(date);
 
             if (stringPaquetInit.equals("e")) {
+                dSocket.close();
                 return temperatures; // erreur, on renvoie la liste vide
             }
             // envoi "p" pour dire "c'est bon j'ai bien mon paquetInit envoie les dates", le serv passe au premier paquet, "p" sert juste pour le paquetInit
