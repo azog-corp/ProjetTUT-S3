@@ -37,6 +37,8 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
 
     Context contextAppli;
 
+    public DatagramSocket dSocket;
+
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     @Override
@@ -46,31 +48,22 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         String debutContinu = getLastCo(myContext[0]);
         //mettre a jour les temperature depuis derniere connexion
         String debutCom = getDateActuelle();
-        try {
-            Thread.sleep(5000);
-            DatagramSocket dSocket = new DatagramSocket(65230);
-            while(true) {
-                if(getDateActuelle().equals(ajout30sec(debutCom))) {
-                    System.out.println("Continu");
-                    debutCom = ajout30sec(debutCom);
-                    String sFin = getDateActuelle();
-                    System.out.println("RUN");
-                    String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
-                    try {
-                        OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
-                        OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
-                    } catch(ErreurConnexion e) {
-                        System.err.println("Erreur connexion");
-                    }
-                    publishProgress( "Update" );
+        while(true) {
+            if(getDateActuelle().equals(ajout30sec(debutCom))) {
+                System.out.println("Continu");
+                debutCom = ajout30sec(debutCom);
+                String sFin = getDateActuelle();
+                System.out.println("RUN");
+                String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
+                try {
+                    OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
+                    OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
+                } catch(ErreurConnexion e) {
+                    System.err.println("Erreur connexion");
                 }
+                publishProgress( "Update" );
             }
-        } catch (SocketException e) {
-            System.err.println("Erreur socket Actu");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
-        return null;
     }
 
     @Override

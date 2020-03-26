@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +49,8 @@ public class Graphe extends AppCompatActivity {
 
     final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
+    DatagramSocket dSocket;
+
     /**
      * Fonction execute au lancement de la page Graphe
      * Initialise les actions des boutons de la page
@@ -75,6 +80,11 @@ public class Graphe extends AppCompatActivity {
         });
         Button btnArretContinu = findViewById(R.id.btnFinContinu);
         btnArretContinu.setVisibility(View.INVISIBLE);
+        try {
+            dSocket = new DatagramSocket(65230);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -149,6 +159,7 @@ public class Graphe extends AppCompatActivity {
         String sFin = getDateActuelle();
         //OutilsCommunication.majDerniereConnexion(getApplicationContext());
         Communication test = new Communication();
+        test.dSocket = dSocket;
         test.execute(getApplicationContext());
         System.out.println("Thread continu");
         System.out.println("Debut " + sDebut);
@@ -189,9 +200,12 @@ public class Graphe extends AppCompatActivity {
         btnLast.setVisibility(View.INVISIBLE);
         btnAfficher.setVisibility(View.INVISIBLE);
         btnActualisationContinu.setVisibility(View.INVISIBLE);
+        EditText debut = findViewById(R.id.dateDebut);
+        debut.setText(getLastCo(getApplicationContext()));
         t = new ThreadActualisation();
         t.graphe = findViewById(R.id.graphique);
         t.dateFin = findViewById(R.id.dateFin);
+        t.dSocket = dSocket;
         t.execute(getApplicationContext());
     }
 
@@ -320,6 +334,7 @@ public class Graphe extends AppCompatActivity {
         if (t != null) {
             t.cancel(true);
         }
+        dSocket.close();
         super.onDestroy();
     }
 

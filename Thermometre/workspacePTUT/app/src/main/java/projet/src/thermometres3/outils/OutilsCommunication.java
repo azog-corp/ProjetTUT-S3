@@ -37,7 +37,6 @@ public class OutilsCommunication {
             String stringPaquetInit = premierEnvoi(date);
 
             if (stringPaquetInit.equals("e")) {
-                dSocket.close();
                 return temperatures; // erreur, on renvoie la liste vide
             }
             // envoi "p" pour dire "c'est bon j'ai bien mon paquetInit envoie les dates", le serv passe au premier paquet, "p" sert juste pour le paquetInit
@@ -53,7 +52,7 @@ public class OutilsCommunication {
             do {
                 envoiRetry();
                 try {
-                    bufferTest = new byte[9999];
+                    bufferTest = new byte[55000];
                     System.out.println("receive : p ");
                     dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
                     testPremierOk = new String(bufferTest);
@@ -72,7 +71,7 @@ public class OutilsCommunication {
             do {
                 envoiRetry();
                 try {
-                    bufferTest = new byte[9999];
+                    bufferTest = new byte[55000];
                     dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
                     testPremierOk = new String(bufferTest);
                     System.out.println("recu : " + new String(bufferTest));
