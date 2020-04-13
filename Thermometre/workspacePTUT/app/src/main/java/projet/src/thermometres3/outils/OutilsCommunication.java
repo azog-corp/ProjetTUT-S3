@@ -126,7 +126,6 @@ public class OutilsCommunication {
                 InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
                 dSocket.send(new DatagramPacket(buffer, buffer.length,
                         iPserveur, portServeur));
-
                 dSocket.setSoTimeout(3000); // Temps d'attente réception max en millisecondes
                 dSocket.receive(new DatagramPacket(buffer, buffer.length));
                 System.out.println("recu : " + new String(buffer));
@@ -145,9 +144,9 @@ public class OutilsCommunication {
 
         try {
             byte[] buffer = "r".getBytes();
+            System.out.println("Envoi Retry");
             int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
-            System.out.println("Envoi Retry");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
         } catch (SocketException e) {
