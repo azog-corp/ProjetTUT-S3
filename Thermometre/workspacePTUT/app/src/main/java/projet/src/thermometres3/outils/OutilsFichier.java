@@ -47,6 +47,8 @@ public class OutilsFichier {
                 atester = new Temperature(ligne);
                 if(!(atester.getDate().compareTo(dateInfformate) >= 0 && atester.getDate().compareTo(dateSupformate) <= 0)) {
                     lignehorsintervalle.add(ligne);
+                } else { // la ligne doit etre supprimé. On ajoute une ligne avec la temperature a -300 pour ne plus l'afficher et ainsi faire un trou dans la courbe
+                    lignehorsintervalle.add(atester.getDate() + " -300");
                 }
             }
             ecrireFinFichier(myContext,lignehorsintervalle); // on reecrit els lignes correctes
@@ -128,7 +130,7 @@ public class OutilsFichier {
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
             */
             System.out.println("CREATION LAST CO");
-            fic.write("26/03/2020 20:34:00");
+            fic.write("22/04/2020 00:30:00");
         } catch (IOException e) {
             e.printStackTrace();
         }

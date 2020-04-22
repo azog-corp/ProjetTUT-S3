@@ -1,3 +1,4 @@
+
 package projet.src.thermometres3.outils;
 
 import android.content.Context;
@@ -50,6 +51,9 @@ public class OutilsCommunication {
             dSocket.setSoTimeout(2000);
             System.out.println("ENVOI P");
             do {
+                System.out.println(dSocket.isClosed());
+                System.out.println(dSocket.isConnected());
+                System.out.println(dSocket.isBound());
                 envoiRetry();
                 try {
                     bufferTest = new byte[55000];
@@ -113,10 +117,9 @@ public class OutilsCommunication {
         boolean sort = false;
         int essais = 0;
         while(!sort) {
-            // 10 essais
-            // todo remettre à 3 essais
+            // 15 essais
             essais++;
-            if (essais == 10) {
+            if (essais == 15) {
                 sort = true;
             }
             try {
@@ -202,6 +205,7 @@ public class OutilsCommunication {
 
 
     public static void recupTempEnveloppe() throws ErreurConnexion {
+        System.out.println("RECUP TEMP ENVELOPPE nb paquets : " + nbPaquets);
         // Ajout de la temp à la ArrayList
         String[] aAjouter = decoupageRep(testPremierOk);
         for (int i = 0; i < aAjouter.length; i++)
@@ -255,3 +259,4 @@ public class OutilsCommunication {
     }
 
 }
+

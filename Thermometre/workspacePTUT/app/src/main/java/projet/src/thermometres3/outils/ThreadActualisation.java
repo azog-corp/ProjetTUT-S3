@@ -45,25 +45,30 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
     protected Void doInBackground(Context... myContext) {
         System.out.println("CONTINU");
         contextAppli = myContext[0];
-        String debutContinu = getLastCo(myContext[0]);
         //mettre a jour les temperature depuis derniere connexion
-        String debutCom = getDateActuelle();
         while(true) {
-            if(getDateActuelle().equals(ajout30sec(debutCom))) {
-                System.out.println("Continu");
-                debutCom = ajout30sec(debutCom);
-                String sFin = getDateActuelle();
-                System.out.println("RUN");
-                String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
-                try {
-                    OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket)); // communique avec las rasp recuperre les temp puis les ecrit dans le fichier
-                    OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
-                } catch(ErreurConnexion e) {
-                    System.err.println("Erreur connexion");
-                }
-                publishProgress( "Update" );
+            if(isCancelled()) {
+                System.out.println("CANCEL");
+                break;
+            }
+            System.out.println("RUN");
+            String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
+            try {
+                OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket));// communique avec las rasp recuperre les temp puis les ecrit dans le fichier
+                OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
+            } catch(ErreurConnexion e) { System.err.println("Erreur connexion"); }
+            publishProgress( "Update" );
+            if(isCancelled()) {
+                System.out.println("CANCEL");
+                break;
+            }
+            try {
+                Thread.sleep(60000);
+            } catch (InterruptedException e) {
+                System.out.println(e);
             }
         }
+        return null; // bouchon
     }
 
     @Override
@@ -170,20 +175,6 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         OutilsCommunication.fermerContinu();
-    }
-
-    public String ajout30sec(String date) {
-        try {
-            long DIXSEC_EN_MS = 1000*30;
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
-            Date dateD = conversion(date);
-            long dateMillis = dateD.getTime() + DIXSEC_EN_MS;
-            sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
-            return sdf.format(new Date(dateMillis));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     /**
