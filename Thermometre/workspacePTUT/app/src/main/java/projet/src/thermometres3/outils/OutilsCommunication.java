@@ -24,9 +24,15 @@ public class OutilsCommunication {
     static int indexFirstDateLastPaquet;
 
 
-
-
-
+    /**
+     * Fait toute la communication avec le Raspberry
+     * C'est-à-dire envoie une requête, récupère les températures, gère tous les cas d'erreur et
+     * retourne une ArrayList contenant les températures reçues
+     * @param date date de dernière connexion de l'appareil
+     * @param socket
+     * @return la ArrayList des températures récupérées
+     * @throws ErreurConnexion
+     */
     public static ArrayList<String> comRasp(String date,DatagramSocket socket) throws ErreurConnexion {
         dSocket = socket;
         System.out.println("COMRASP");
@@ -45,7 +51,7 @@ public class OutilsCommunication {
             // envoi "a" lorque paquet reçu, le serveur attends de recevoir "r" pour passer au paquet suivant
             // si le serv ne recoit pas le "a" (donc recoit un "r" à un moment) il va envoyer le même paquet
             // dans ce cas il faut regarder le premier caractère et savoir si on a déjà le paquet ou pas
-            // on positionnera un index pour se referrer à la première date du dernier paquet, histoire de s'y référer plus vite
+            // on positionnera un index pour se referrer à la première date du dernier paquet, afin de s'y référer plus vite
             // envoi "r" pour demander au serveur où il en est, cad toutes les 5sec, le serveur reagit à ce moment-là
 
             dSocket.setSoTimeout(2000);
@@ -71,7 +77,7 @@ public class OutilsCommunication {
             } while (charPremierOk != 'p');
             System.out.println("SORTI P");
 
-            // verifier si = 0 si oui arreter /!\ si le serveur nme recoit pas la deuxieme partie alors que il ya 0 paquets envoyer f si possible pour le supprimer
+            // verifier si = 0 si oui arreter /!\ si le serveur ne recoit pas la deuxieme partie alors que il ya 0 paquets envoyer f si possible pour le supprimer
             do {
                 envoiRetry();
                 try {
@@ -112,6 +118,13 @@ public class OutilsCommunication {
         return rep.split("\\|");
     }
 
+    /**
+     * Envoie une première requête, attends la réponse et initialise les valeurs des variables qui
+     * serviront dans les tests
+     * @param date
+     * @return
+     * @throws ErreurConnexion
+     */
     public static String premierEnvoi(String date) throws ErreurConnexion {
         System.out.println("PREMIER ENVOI");
         boolean sort = false;
@@ -143,6 +156,10 @@ public class OutilsCommunication {
     }
 
 
+    /**
+     * Envoie un "r" pour signaler au serveur que le paquet a bien été reçu
+     * @throws ErreurConnexion
+     */
     public static void envoiRetry() throws ErreurConnexion {
 
         try {
@@ -164,6 +181,10 @@ public class OutilsCommunication {
     }
 
 
+    /**
+     * Envoie un "a" pour signaler au serveur que le paquet a bien été reçu
+     * @throws ErreurConnexion
+     */
     public static void envoiOk() throws ErreurConnexion {
         try {
             byte[] buffer = "a".getBytes();
@@ -184,6 +205,10 @@ public class OutilsCommunication {
     }
 
 
+    /**
+     * Envoie un "p" pour signaler au serveur que le paquet d'initialisetion a bien été reçu
+     * @throws ErreurConnexion
+     */
     public static void envoiOkPremier() throws ErreurConnexion {
 
         try {
@@ -204,6 +229,10 @@ public class OutilsCommunication {
     }
 
 
+    /**
+     * Méthode enveloppe de la méthode recupTemp, stocke la première température reçue
+     * @throws ErreurConnexion
+     */
     public static void recupTempEnveloppe() throws ErreurConnexion {
         System.out.println("RECUP TEMP ENVELOPPE nb paquets : " + nbPaquets);
         // Ajout de la temp à la ArrayList
@@ -218,6 +247,11 @@ public class OutilsCommunication {
         }
     }
 
+    /**
+     * Récupère en continu les températures et les stocke dans la ArrayList si l'on ne les a pas déjà
+     * @param buffer
+     * @throws ErreurConnexion
+     */
     public static void recupTemp(byte[] buffer) throws ErreurConnexion {
         try {
             envoiRetry();
@@ -245,6 +279,12 @@ public class OutilsCommunication {
     }
 
 
+    /**
+     * Vérifie que le paquet n'a pas déjà été reçu
+     * @param temp
+     * @return false si l'on a déjà le paquet
+     *         true sinon
+     */
     public static boolean verifPaquet(String temp) {
         // doit vérifier que la première date du paquet :
         // si c'est la même que la première date du dernier paquet reçu, on retourne false
