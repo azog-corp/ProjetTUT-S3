@@ -54,7 +54,7 @@ public class OutilsCommunication {
             // on positionnera un index pour se referrer à la première date du dernier paquet, afin de s'y référer plus vite
             // envoi "r" pour demander au serveur où il en est, cad toutes les 5sec, le serveur reagit à ce moment-là
 
-            dSocket.setSoTimeout(2000);
+            dSocket.setSoTimeout(5000);
             System.out.println("ENVOI P");
             do {
                 System.out.println(dSocket.isClosed());
@@ -68,6 +68,7 @@ public class OutilsCommunication {
                     testPremierOk = new String(bufferTest);
                     System.out.println("recu : p " + new String(bufferTest));
                     charPremierOk = testPremierOk.charAt(0);
+                    nbPaquets = decoupageNbPaquets(testPremierOk);
                     envoiOkPremier();
                 } catch(SocketException e) {
                     System.out.println("Erreur reception p");
@@ -107,6 +108,12 @@ public class OutilsCommunication {
             System.out.println("erreur connexion");
             throw new ErreurConnexion();
         }
+    }
+
+    private static int decoupageNbPaquets(String testPremierOk) {
+        String decoupe[] = testPremierOk.split("\\|");
+        System.out.println("NB PAQUETS : " + decoupe[1]);
+        return Integer.parseInt(decoupe[1]);
     }
 
     public static void fermerContinu() {
@@ -241,40 +248,36 @@ public class OutilsCommunication {
             temperatures.add(aAjouter[i]);
         indexFirstDateLastPaquet = 0;
         envoiOk();
-        byte[] buffer = "".getBytes();
         for (int i = 0; i < nbPaquets - 1; i++) {
-            recupTemp(buffer);
+            System.out.println("PAQUETS RESTANTS : " + ((nbPaquets - 1) -i));
+            recupTemp();
         }
     }
 
     /**
      * Récupère en continu les températures et les stocke dans la ArrayList si l'on ne les a pas déjà
-     * @param buffer
      * @throws ErreurConnexion
      */
-    public static void recupTemp(byte[] buffer) throws ErreurConnexion {
+    public static void recupTemp() throws ErreurConnexion {
+        byte[] buffer = new byte[55000];
         try {
             envoiRetry();
             dSocket.setSoTimeout(5000); // Temps d'attente réception max en millisecondes
             dSocket.receive(new DatagramPacket(buffer, buffer.length));
+            System.out.println("Recu : " + new String(buffer));
+            if(verifPaquet(new String(buffer))) {
+                indexFirstDateLastPaquet = temperatures.size();
+                String[] aAjouter = decoupageRep(new String(buffer));
+                for (int i = 0; i < aAjouter.length; i++)
+                    temperatures.add(aAjouter[i]);
+                envoiOk();
+            }
         } catch (SocketTimeoutException e) {
-            envoiRetry();
-            recupTemp(buffer);
+            System.out.println(e);
         } catch (SocketException e) {
-            e.printStackTrace();
+            System.out.println(e);
         } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Recu : " + new String(buffer));
-        if(verifPaquet(new String(buffer))) {
-            indexFirstDateLastPaquet = temperatures.size();
-            String[] aAjouter = decoupageRep(new String(buffer));
-            for (int i = 0; i < aAjouter.length; i++)
-                temperatures.add(aAjouter[i]);
-            envoiOk();
-        } else {
-            envoiRetry();
-            recupTemp(buffer);
+            System.out.println(e);
         }
     }
 
