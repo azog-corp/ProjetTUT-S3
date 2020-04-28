@@ -127,11 +127,7 @@ public class OutilsFichier {
     public static void creerFichierLastCo(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            /* TODO REMETTRE APRES
-            System.out.println(getDateActuelle()); // affichage debug
-            fic.write(getDateActuelle()); // ecrit dans le fichier la date
-            */
-            System.out.println("CREATION LAST CO");
+            System.out.println("CREATION LAST CO " + OutilsInterface.getDate1JourPrec());
             fic.write(OutilsInterface.getDate1JourPrec());
         } catch (IOException e) {
             e.printStackTrace();
@@ -145,10 +141,10 @@ public class OutilsFichier {
     /**Permet de changer la date de derniere connexion a une date egale a : 1jour avant
      * Pour permettre a l'utilisateur de lancer la fonction derniere connexion.
      */
-    public static void majDateCo(Context myContext) {
+    public static void majDateCo1J(Context myContext) {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
-            System.out.println("MAJ DATE"+OutilsInterface.getDateActuelle()); // affichage debug
+            System.out.println("MAJ DATE"+OutilsInterface.getDate1JourPrec()); // affichage debug
             fic.write(OutilsInterface.getDate1JourPrec()); // ecrit dans le fichier la date
         } catch (IOException e) {
             e.printStackTrace();

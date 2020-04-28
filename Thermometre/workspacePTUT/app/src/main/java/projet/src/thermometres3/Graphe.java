@@ -186,7 +186,7 @@ public class Graphe extends AppCompatActivity {
             }
         }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
             messageErreurCo();
-            OutilsFichier.majDateCo(getApplicationContext());
+            OutilsFichier.majDateCo1J(getApplicationContext());
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
@@ -290,13 +290,6 @@ public class Graphe extends AppCompatActivity {
         graphView.getViewport().setXAxisBoundsManual(true);
         graphView.getGridLabelRenderer().setNumHorizontalLabels(2);//fait disparaitre les labels temp
         graphView.getGridLabelRenderer().setNumVerticalLabels(2);
-        /*try { //TODO tester
-            graphView.getViewport().setMinX(conversion(sDebut).getTime());
-            graphView.getViewport().setMaxX(conversion(sFin).getTime());
-        } catch (ParseException e) {
-            //impossible
-        }*/
-
         graphView.getGridLabelRenderer().setHumanRounding(false);
         graphView.getViewport().setScalable(true);
         graphView.getViewport().setScrollable(true);
