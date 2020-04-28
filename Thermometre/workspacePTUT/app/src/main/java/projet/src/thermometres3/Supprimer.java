@@ -17,10 +17,13 @@ import static projet.src.thermometres3.outils.RechercheTemperature.dateOk;
 import static projet.src.thermometres3.outils.RechercheTemperature.intervalleOk;
 
 public class Supprimer extends AppCompatActivity {
-
+    /** Bouton pour tout supprimer */
     Button btnToutSupp;
+    /** Bouton pour supprimer dans un intervalle */
     Button btnSuppInter;
+    /** Champ de texte borne inferieure */
     EditText borneInf;
+    /** Champ de texte borne superieure */
     EditText borneSup;
 
 
@@ -36,11 +39,14 @@ public class Supprimer extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Supprime toutes les temperatures de l'application
+     * @param view
+     */
     public void toutSupprimer(View view) {
         //Si des temperatures existes
         if (RechercheTemperature.getListTemp().size() != 0) {
-            OutilsFichier.supprimerTemp(getApplicationContext());
+            OutilsFichier.supprimerTemp(getApplicationContext());//supprime les temperatures.
             messageConfirmationSupr();
         } else { //sinon message erreur
             messageErreurListeDate();
