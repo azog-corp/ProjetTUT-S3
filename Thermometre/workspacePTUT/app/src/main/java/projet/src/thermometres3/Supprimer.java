@@ -47,6 +47,10 @@ public class Supprimer extends AppCompatActivity {
         }
     }
 
+    /**
+     * Supprime l'intégralité des dates du fichier
+     * @param view
+     */
     public void supprimerPartie(View view) {
         String dateInf = borneInf.getText().toString();
         String dateSup = borneSup.getText().toString();
