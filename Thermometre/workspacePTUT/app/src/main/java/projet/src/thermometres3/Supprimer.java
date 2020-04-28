@@ -42,6 +42,7 @@ public class Supprimer extends AppCompatActivity {
         //Si des temperatures existes
         if (RechercheTemperature.getListTemp().size() != 0) {
             OutilsFichier.supprimerTemp(getApplicationContext());
+            messageConfirmationSupr();
         } else { //sinon message erreur
             messageErreurListeDate();
         }
@@ -61,6 +62,7 @@ public class Supprimer extends AppCompatActivity {
             //Si des temperatures existes
             if (RechercheTemperature.getListTemp().size() != 0) {
                 OutilsFichier.supprimerIntervalle(getApplicationContext(), dateInf, dateSup);
+                messageConfirmationSupr();
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
@@ -81,6 +83,17 @@ public class Supprimer extends AppCompatActivity {
                 .setContentText("Erreur: Dates non valides, celles-ci doivent respecter le format suivant" +
                         "(format: dd/MM/yyyy HH:mm:ss) et doivent être inférieures à la date actuelle et supérieures" +
                         " au 01/01/2000 ")
+                .setConfirmText("OK").show();
+    }
+
+    /**
+     * Message d'erreur affiche quand la date est incorrecte -> format non respecte
+     * ou date impossible
+     */
+    public void messageConfirmationSupr() {
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("CONFIRMATION: Suppression dates")
+                .setContentText("Suppression des dates terminés")
                 .setConfirmText("OK").show();
     }
 
