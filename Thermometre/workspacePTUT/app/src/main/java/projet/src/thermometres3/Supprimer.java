@@ -38,7 +38,6 @@ public class Supprimer extends AppCompatActivity {
 
 
     public void toutSupprimer(View view) {
-
         //Si des temperatures existes
         if (RechercheTemperature.getListTemp().size() != 0) {
             OutilsFichier.supprimerTemp(getApplicationContext());
