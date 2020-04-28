@@ -56,5 +56,16 @@ public class OutilsInterface {
         sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
         return sdf.format(date);
     }
+    /**
+     * Fonction qui permet d'obtenir la date 1 jour avant
+     * @return la date en String avec le format dd/MM/yyyy HH:mm:ss
+     */
+    public static String getDate1JourPrec() {
+        long DAY_IN_MS = 1000 * 60 * 60 * 24;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // defini le format de la date
+        Date date = new Date(System.currentTimeMillis() - (1 * DAY_IN_MS));
+        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris")); // Defini la zone de la date pour que l'heure soit correcte
+        return sdf.format(date);
+    }
 
 }

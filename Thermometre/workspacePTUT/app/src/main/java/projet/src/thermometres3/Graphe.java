@@ -30,6 +30,7 @@ import projet.src.thermometres3.Erreur.ErreurDate;
 import projet.src.thermometres3.Erreur.ErreurIntervalle;
 import projet.src.thermometres3.outils.Communication;
 import projet.src.thermometres3.outils.OutilsCommunication;
+import projet.src.thermometres3.outils.OutilsFichier;
 import projet.src.thermometres3.outils.OutilsInterface;
 import projet.src.thermometres3.outils.RechercheTemperature;
 import projet.src.thermometres3.outils.Temperature;
@@ -176,16 +177,16 @@ public class Graphe extends AppCompatActivity {
         try {
             //Verification inutile des dates celles si ont ete ecrite par nous
             //Si des temperatures existes
-            //intervalleOk(sDebut,sFin); TODO REMETTRE ENLEVER SECU 2 JOURS
+            intervalleOk(sDebut,sFin);
             System.out.println("TAILLE EDIT TEMP :" + RechercheTemperature.getListTemp().size());
             if (RechercheTemperature.getListTemp().size() != 0) {
                 conversionGraph(dateIntervalle(sDebut, sFin));
             } else { //sinon message erreur
                 messageErreurListeDate();
             }
-        /*}catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
+        }catch (ErreurIntervalle e) { //l'intervalle n'est pas valide
             messageErreurCo();
-            lancementDefaut();*/
+            OutilsFichier.majDateCo(getApplicationContext());
         }catch(ErreurDate e) {//les dates ne sont pas valide
             messageErreurDate();
         }
@@ -346,7 +347,8 @@ public class Graphe extends AppCompatActivity {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("ERREUR")
                 .setContentText("La dernière connexion est trop ancienne." +
-                        "Affichage des températures inférieures à 2 jours")
+                        "Celle-ci va être mise à jour pour être égale à :"
+                        + OutilsInterface.getDate1JourPrec() + "\nVeuillez relancer la fonction.")
                 .setConfirmText("OK").show();
     }
 

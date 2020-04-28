@@ -10,8 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static projet.src.thermometres3.outils.RechercheTemperature.conversion;
 
@@ -130,7 +132,7 @@ public class OutilsFichier {
             fic.write(getDateActuelle()); // ecrit dans le fichier la date
             */
             System.out.println("CREATION LAST CO");
-            fic.write("22/04/2020 00:30:00");
+            fic.write(OutilsInterface.getDate1JourPrec());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -140,5 +142,16 @@ public class OutilsFichier {
          */
     }
 
-
+    /**Permet de changer la date de derniere connexion a une date egale a : 1jour avant
+     * Pour permettre a l'utilisateur de lancer la fonction derniere connexion.
+     */
+    public static void majDateCo(Context myContext) {
+        String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
+        try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
+            System.out.println("MAJ DATE"+OutilsInterface.getDateActuelle()); // affichage debug
+            fic.write(OutilsInterface.getDate1JourPrec()); // ecrit dans le fichier la date
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
