@@ -110,7 +110,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
             } else { // si la température est valide
                 //on ajoute le point a la liste
                 listePoints.add(new DataPoint(temp.get(i).getDate(), temp.get(i).getTemp()));
-                //System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
+                System.out.println("Ajout point graphe" + temp.get(i).getDate() + " " + temp.get(i).getTemp());
             }
         }
         if (temp.size() > 0) { // si il ya eu des températures
@@ -143,13 +143,6 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         graphe.getViewport().setXAxisBoundsManual(true);
         graphe.getGridLabelRenderer().setNumHorizontalLabels(2);//fait disparaitre les labels temp
         graphe.getGridLabelRenderer().setNumVerticalLabels(2);
-        /*try { //TODO tester
-            graphe.getViewport().setMinX(conversion(sDebut).getTime());
-            graphe.getViewport().setMaxX(conversion(sFin).getTime());
-        } catch (ParseException e) {
-            //impossible
-        }*/
-
         graphe.getGridLabelRenderer().setHumanRounding(false);
         graphe.getViewport().setScalable(true);
         graphe.getViewport().setScrollable(true);
