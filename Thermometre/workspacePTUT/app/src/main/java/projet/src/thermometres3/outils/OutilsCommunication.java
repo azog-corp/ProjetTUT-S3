@@ -73,11 +73,11 @@ public class OutilsCommunication {
                 }
             } while (charPremierOk != 'p');
             System.out.println("SORTI P");
-            dSocket.setSoTimeout(10000);
+            dSocket.setSoTimeout(5000);
             do {
+                bufferTest = new byte[55000];
+                envoiRetry();
                 try {
-                    bufferTest = new byte[55000];
-                    envoiRetry();
                     dSocket.receive(new DatagramPacket(bufferTest, bufferTest.length));
                     testPremierOk = new String(bufferTest);
                     System.out.println("recu : " + new String(bufferTest));

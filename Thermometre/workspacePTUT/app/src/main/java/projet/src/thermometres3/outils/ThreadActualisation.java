@@ -55,6 +55,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
             String dateDernCo = OutilsInterface.getLastCo(myContext[0]);
             try {
                 OutilsFichier.ecrireFinFichier(myContext[0],OutilsCommunication.comRasp(dateDernCo,dSocket));// communique avec las rasp recuperre les temp puis les ecrit dans le fichier
+                System.out.println("MAJ FICHIER LAST CO");
                 OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
             } catch(ErreurConnexion e) { System.err.println("Erreur connexion"); }
             publishProgress( "Update" );
