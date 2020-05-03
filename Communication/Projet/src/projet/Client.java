@@ -54,6 +54,10 @@ public class Client {
 		return paquets;
 	}
 	
+	public int getNbPaquets() {
+		return paquets.size();
+	}
+	
 	/** Fonction qui retourne le premier paquet de l'ArrayList paquets*/
 	public String paquet() {
 		return paquets.get(0);

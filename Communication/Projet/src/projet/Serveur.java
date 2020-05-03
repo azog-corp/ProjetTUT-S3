@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Serveur {
 	/** Liste des clients a traiter */
 	static ArrayList<Client> listeClient = new ArrayList<Client>();
-	/** Socket écouté*/
+	/** Socket ecoute*/
 	static DatagramSocket socket; 
 	/** Buffer contenant le message recu */
 	static byte[] buffer;
@@ -43,12 +43,12 @@ public class Serveur {
 	 * @param element nouveau client
 	 */
 	public static void setClient(int index,Client element) {
-		Serveur.listeClient.set(index, element);
+		listeClient.set(index, element);
 	}
 
 
 	public static void main(String[] args) {
-		System.out.println("Serveur lancÃ© !");
+		System.out.println("Serveur lance !");
 		/* Initialisation du socket */
 		try {
 			socket = new DatagramSocket(port);
@@ -85,23 +85,28 @@ public class Serveur {
 					}
 					break;
 				}
-				affichageEtat(); //affiche l'etat des clients
+				//affichageEtat(); //affiche l'etat des clients
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Main" + e);
 			}
 		}
 	}
 	/**
 	 * Envoi le nombre de pqauet a envoyer
-	 * @param index index du client traité
+	 * @param index index du client traite
 	 * @throws IOException
 	 */
 	private static void envoyerNbPaquet(int index) throws IOException {
 		Client client = listeClient.get(index);
-		String msg = "p|"+client.getPaquets().size();
-		System.out.println("ENVOI NBPAQUET : " +  msg);
-		socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length,
+		if(client.getPaquets().size() != 0){
+			String msg = "p|"+client.getPaquets().size()+"|";
+			System.out.println("ENVOI NBPAQUET : " +  msg);
+			socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length,
 				client.getAdresseIp(), port));
+		}else {
+			System.out.println("Client pas encore pret");
+		}
+		
 	}
 
 	/**
@@ -128,8 +133,10 @@ public class Serveur {
 	/**Affiche l'etat de tous les clients */
 	private static void affichageEtat() {
 		for(int i =0; i <listeClient.size(); i++) {
-			System.out.println("Client : numero :" + i + listeClient.get(i).getAdresseIp()
-					+ " Etat Temp traiter :" +listeClient.get(i).isTempTraiter());
+			System.out.println("\nClient : numero :" + i + " " + listeClient.get(i).getAdresseIp()
+					+ "\n Etat Temp traiter :" +listeClient.get(i).isTempTraiter()
+					+ "\n Nb paquet recu :" + listeClient.get(i).getNbPaquetRecu()
+					+ "\n Envoi fini :" + listeClient.get(i).envoiFini());
 		}
 	}
 
@@ -154,7 +161,7 @@ public class Serveur {
 	 */
 	private static void envoyer(Client client,InetAddress adresseIp)  throws IOException{
 		String msg = client.paquet();
-		System.out.println("ENVOI MESSAGE : " + msg);
+		System.out.println("ENVOI PAQUET");
 		socket.send(new DatagramPacket(msg.getBytes(), msg.getBytes().length,
 				adresseIp, port));
 	}
@@ -169,7 +176,7 @@ public class Serveur {
 
 	/**
 	 * Inscrit le client a la liste des clients
-	 * Recupere la date envoyé par le client
+	 * Recupere la date envoye par le client
 	 */
 	public static void inscription() {
 		boolean ajouter = true;
@@ -178,8 +185,8 @@ public class Serveur {
 		System.out.println("Message apres decomposition :" + decomp[1]);
 		for(int i = 0; i < listeClient.size();i++) { //on verifie que le client n'existe pas deja dans la liste
 			if(listeClient.get(i).getAdresseIp().equals(paquet.getAddress())) { // si le client existe
-				System.out.println("Client oubliÃ© :" + listeClient.get(i).getAdresseIp());
-				listeClient.remove(i); //on le supprime c'est un client oublie pour lequel le dernier ack n'est pas arrive
+					System.out.println("Client oubliÃ© :" + listeClient.get(i).getAdresseIp());
+					listeClient.remove(i); //on le supprime c'est un client oublie pour lequel le dernier ack n'est pas arrive
 			}
 		}
 		listeClient.add(new Client(paquet.getAddress(),decomp[1]));
@@ -202,7 +209,7 @@ public class Serveur {
 	}
 
 	/**
-	 * Quand le serveur recoit un ack il supprime le dernier paquet envoyé
+	 * Quand le serveur recoit un ack il supprime le dernier paquet envoye
 	 * pour le client correspondant
 	 * @param index index du client
 	 * @throws IOException

@@ -82,11 +82,12 @@ public class Service extends Thread{
 			client.setTempTraiter(true); //Classe le client comme traitÃ©
 			clients.set(index, client); // Modifie le client dans la liste
 		}catch(ParseException E) {
+			System.out.println("Erreur parse service");
 		}
 	}
 	/**
 	 * Lit le fichier recupere les dates posterieur a la date du client
-	 * @param date Date envoyé par le client
+	 * @param date Date envoye par le client
 	 * @return une ArrayList<String> contenant toutes les dates
 	 * @throws ParseException
 	 */
@@ -96,7 +97,7 @@ public class Service extends Thread{
 			ArrayList<String> temp = new ArrayList<String>();
 			BufferedReader fic = new BufferedReader(new FileReader(new File("projet/temperatures.txt")));
 			while((ligne = fic.readLine()) != null) { //lit toutes les lignes du fichier
-				if(date.compareTo(conversion(ligne)) < 0) { // si elle est plus recente que celle demandée par le client l'ajoute a la liste
+				if(date.compareTo(conversion(ligne)) < 0) { // si elle est plus recente que celle demandee par le client l'ajoute a la liste
 					temp.add(ligne);
 				}
 			}
@@ -141,7 +142,7 @@ public class Service extends Thread{
 			}
 		}
 		if(!chaine.toString().equals("")) { //s'il reste des lignes ajoute un dernier paquet
-			System.out.println((chaine.toString()));
+			System.out.println("Reste ligne");
 			paquets.add(chaine.toString());
 		}
 		
