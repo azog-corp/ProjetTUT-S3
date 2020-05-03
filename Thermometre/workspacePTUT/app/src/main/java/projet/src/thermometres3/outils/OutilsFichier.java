@@ -128,7 +128,8 @@ public class OutilsFichier {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
             System.out.println("CREATION LAST CO " + OutilsInterface.getDate1JourPrec());
-            fic.write(OutilsInterface.getDate1JourPrec());
+            //fic.write(OutilsInterface.getDate1JourPrec());
+            fic.write("02/05/2020 12:00:00");
         } catch (IOException e) {
             e.printStackTrace();
         }

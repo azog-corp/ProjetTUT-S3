@@ -23,6 +23,8 @@ public class OutilsCommunication {
     static char charPremierOk;
     static int indexFirstDateLastPaquet;
 
+    static int portServeur = 65230;
+
 
     /**
      * Fait toute la communication avec le Raspberry
@@ -140,7 +142,6 @@ public class OutilsCommunication {
             try {
                 byte[] buffer = ("i|" + date).getBytes();
                 System.out.println("Envoi " + essais);
-                int portServeur = 65230;
                 InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
                 dSocket.send(new DatagramPacket(buffer, buffer.length,
                         iPserveur, portServeur));
@@ -167,7 +168,6 @@ public class OutilsCommunication {
         try {
             byte[] buffer = "r".getBytes();
             System.out.println("Envoi Retry");
-            int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
                     iPserveur, portServeur));
@@ -190,7 +190,6 @@ public class OutilsCommunication {
     public static void envoiOk() throws ErreurConnexion {
         try {
             byte[] buffer = "a".getBytes();
-            int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
 
             System.out.println("Envoi Ok");
@@ -215,7 +214,6 @@ public class OutilsCommunication {
 
         try {
             byte[] buffer = "p".getBytes();
-            int portServeur = 65230;
             InetAddress iPserveur = InetAddress.getByName("10.3.141.1");
             System.out.println("Envoi Ok");
             dSocket.send(new DatagramPacket(buffer, buffer.length,
@@ -253,15 +251,14 @@ public class OutilsCommunication {
     }
 
     /**
-     * Récupère en continu les températures et les stocke dans la ArrayList si l'on ne les a pas déjà
+     * Récupère en continu les températures et les stocks dans la ArrayList si l'on ne les a pas déjà
      * @throws ErreurConnexion
      */
     public static boolean recupTemp() throws ErreurConnexion {
         byte[] buffer = new byte[55000];
         try {
             envoiRetry();
-            dSocket.setSoTimeout(10000); // Temps d'attente réception max en millisecondes
-            dSocket.receive(new DatagramPacket(buffer, buffer.length));
+            dSocket.receive(new DatagramPacket(buffer, 55000));
             System.out.println("Recu : " + new String(buffer));
             if(verifPaquet(new String(buffer))) {
                 indexFirstDateLastPaquet = temperatures.size();

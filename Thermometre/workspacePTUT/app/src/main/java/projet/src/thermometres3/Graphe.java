@@ -328,7 +328,9 @@ public class Graphe extends AppCompatActivity {
         if (t != null) {
             t.cancel(true);
         }
-        dSocket.close();
+        if(dSocket!= null) {
+            dSocket.close();
+        }
         super.onDestroy();
     }
 

@@ -59,6 +59,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
                 OutilsFichier.majFichierLastCo(myContext[0]);//mettre a jour fichier Derniere co
             } catch(ErreurConnexion e) { System.err.println("Erreur connexion"); }
             publishProgress( "Update" );
+
             if(isCancelled()) {
                 System.out.println("CANCEL");
                 break;
@@ -87,7 +88,6 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
         ArrayList<DataPoint> listePoints = new ArrayList<DataPoint>();
         LineGraphSeries<DataPoint> series;
         boolean donneeOk = false;
-
         for(int i = 0; i < temp.size(); i++) {
             if(temp.get(i).getTemp() == -300.0) { // Si temperature invalide
                 // on definit la  taille du tableau a la taille de listePoints ( qui contient tous les points récupérer )
@@ -164,6 +164,7 @@ public class ThreadActualisation extends AsyncTask<Context,String,Void> {
             }
         });
         dateFin.setText(getDateActuelle());
+        graphe.refreshDrawableState();
     }
 
     @Override
