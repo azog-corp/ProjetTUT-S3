@@ -27,7 +27,7 @@ public class OutilsFichier {
             try (BufferedWriter fichier = new BufferedWriter(new FileWriter(
                     myContext.getFilesDir() + "/fichierTemp.txt", true))) {
                 for(int j = 0; j < paquets.size(); j++) {
-                    System.out.println("ecri" +paquets.get(j));
+                    System.out.println("ecrit : " + paquets.get(j));
                     fichier.write(paquets.get(j) + "\n");
                 }
             } catch (IOException e) {
@@ -37,6 +37,14 @@ public class OutilsFichier {
     }
 
 
+    /**
+     * Supprime toutes les températures comprises dans l'intervalle formé par les deux dates entrées
+     * dans le fichier fichierTemp
+     * @param myContext
+     * @param dateInf première date
+     * @param dateSup seconde date
+     * @return
+     */
     public static boolean supprimerIntervalle(Context myContext,String dateInf, String dateSup) {
         try {
             Date dateInfformate = conversion(dateInf);
@@ -49,11 +57,11 @@ public class OutilsFichier {
                 atester = new Temperature(ligne);
                 if(!(atester.getDate().compareTo(dateInfformate) >= 0 && atester.getDate().compareTo(dateSupformate) <= 0)) {
                     lignehorsintervalle.add(ligne);
-                } else { // la ligne doit etre supprimé. On ajoute une ligne avec la temperature a -300 pour ne plus l'afficher et ainsi faire un trou dans la courbe
+                } else { // la ligne doit etre supprimée. On ajoute une ligne avec la temperature a -300 pour ne plus l'afficher et ainsi faire un trou dans la courbe
                     lignehorsintervalle.add(atester.getDate() + " -300");
                 }
             }
-            ecrireFinFichier(myContext,lignehorsintervalle); // on reecrit els lignes correctes
+            ecrireFinFichier(myContext,lignehorsintervalle); // on reecrit les lignes correctes
             return true;
         } catch(ParseException e) {
             //stub impossible verifie avant
@@ -128,8 +136,7 @@ public class OutilsFichier {
         String derniereCo = myContext.getFilesDir()+"/derniereCo.txt"; // defini le chemin du fichier
         try (BufferedWriter fic = new BufferedWriter(new FileWriter(new File(derniereCo)))) { // Lecture du fichier
             System.out.println("CREATION LAST CO " + OutilsInterface.getDate1JourPrec());
-            //fic.write(OutilsInterface.getDate1JourPrec());
-            fic.write("02/05/2020 12:00:00");
+            fic.write(OutilsInterface.getDate1JourPrec());
         } catch (IOException e) {
             e.printStackTrace();
         }
